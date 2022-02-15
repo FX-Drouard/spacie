@@ -1,0 +1,328 @@
+@font-face {
+
+    font-family: "Comfortaa-Bold";
+    src: url(../polices/comfortaa/Comfortaa-Bold.ttf);
+}
+
+@font-face {
+    font-family: "Comfortaa-Light";
+    src: url(../polices/comfortaa/Comfortaa-Light.ttf);
+}
+
+body{
+    background-image: url("https://media.spacie.fr/default/pages/star.png");
+    background-size: cover;
+    color : #b0c9da;
+	background-color : black;
+    background-repeat: repeat;
+    background-attachment: fixed;
+    font-family:"Comfortaa-Bold";
+}
+
+header{
+    background-color: rgb(48, 52, 65,0.6);
+    border-radius: 10px;
+    border-color: rgb(17, 27, 87);
+    display: flex;
+    padding-bottom: 0.5cm;
+    padding-top: 0.5cm;
+    padding-left: 0.5cm;
+    height: 10%;
+}
+
+img{
+    border-radius: 30%;
+}
+/* header > *{
+    background-color: red;
+} */
+
+input{
+    height: 30px;
+    font-family: "Comfortaa-Light";  
+    border-radius:3px 3px 3px 3px;
+}
+
+input[type="submit"],input[type="button"]{
+    color: #293136;
+    background-color: #b0c9da;
+    font-family: "Comfortaa-Bold";  
+    border-radius: 3px 3px 3px 3px;
+    border-style: inset;    
+    font-size: 16px;
+}
+
+input:hover{
+    border-style: inset;
+    border-color: rgb(175, 111, 111);
+}
+
+input[type="submit"]:hover,input[type="button"]:hover{
+    color: #b0c9da ;
+    background-color: #1e262b;
+    font-size: 16px;
+    text-decoration: underline;
+    font-family: "Comfortaa-Bold";
+}
+
+#logo{
+    width: 30%;
+    display: flex;
+}
+
+#logo #header{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+#logo #header img{
+    width: 85%;
+    height: 80%; 
+    margin-top: 0%;
+    margin-bottom: 4%;
+}
+
+#logo #header p{
+    font-size: 40px;
+    margin-top: 25%;
+    width: 10%;
+    margin-left: 0px;
+}
+
+
+#onglet{
+    width: 50%;
+    display: flex;
+    align-items: flex-end;
+    font-size:150%;
+    justify-content: space-around;
+
+}
+
+#onglet span{
+    display: flex;
+    margin-bottom: 5%;
+    width: 12%;
+    justify-content: center;
+    padding-bottom: 1%;
+    border-bottom: 5px solid #b0c9da;
+}
+
+
+
+#onglet span:hover{
+    animation: hover 1s both;
+    border-color: rgb(175, 111, 111);
+}
+
+@keyframes hover {
+    to {
+        font-size: 30px;
+        border-bottom: 5px solid #fdbeab;
+        width: 15%
+    }
+}
+
+
+#lien_profil{
+    display: flex;
+    flex-direction: row-reverse;
+    /* margin-left: 5%; */
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+}
+#lien_profil img {
+    border-radius: 40%;
+    width: 55px;
+    height: 55px;
+    padding: 10%;
+    border-style: groove;
+    border-color: #b0c9da;
+}
+#lien_profil img:hover{
+    border-style: groove;
+    border-color: rgb(175, 111, 111);
+}
+
+#new_message input[type="text"]{
+    width: 100%;
+    height: 40px;
+    margin-bottom: 2%;
+}
+
+#new_message{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(48, 52, 65,0.6);
+    border-radius: 10px;
+    margin-bottom: 3%; 
+    width:100%;
+}
+
+section{
+    width: 100%;
+}
+
+.commentaire{
+    background-color: rgb(48, 52, 65,0.6);
+    border-radius: 10px;
+    margin-bottom: 3%;
+    width:100%
+}
+
+#corps{
+    display: flex;
+    /* justify-content: space-between; */
+    margin-top: 2%;
+}
+
+nav{
+    margin: auto 0cm; 
+    width: 15%;
+}
+
+@media  screen and (max-width:950px ){
+    nav{
+        display: none;
+        width:0%;
+    }
+    aside{
+        width: 30%;
+    }
+    .message{
+        width: 70%;
+    }
+    #logo #header p{
+        font-size: 30px;
+    }
+
+    #lien_profil img {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+#liste_commentaire article,#new_message{
+    padding : 3%;
+}
+
+
+.message{    
+    width: 70%
+}
+aside{
+    width: 10%;
+}
+.message_user_info{
+    display: flex;
+    position: relative;
+}
+
+.message_date{
+    position: absolute;
+    right: 2px;
+}
+
+.message p{
+    margin-left: 0.2cm;
+}
+
+a{
+    color: #b0c9da
+}
+
+#info_user{
+    display: flex;
+    background-color: rgb(48, 52, 65,0.6);
+    padding: 3%;
+    border-radius: 10px;
+    margin-bottom: 3%; 
+    justify-content:space-between;
+}
+
+#photo_de_profil{
+    width: 20%;
+    border-radius: 10px;
+}
+
+#info_ligne{
+    display: flex;  
+}
+#info_profil{
+    width: 76%;
+    background-color: rgb(48, 52, 65,0.6);
+    padding: 2%;
+    border-radius: 10px;
+}
+
+.info{
+    width: 25%;
+}
+
+#button_profil form{
+    display: flex;
+    width: 60%;
+}
+#button_profil form input{
+   
+   margin-left: 2%; 
+    width: 60%;
+}
+#button_profil{
+    width: 100%;
+    margin-top: 5%
+}
+
+
+/* ---- stats.js ---- */
+/* 
+.count-particles{
+    background: #000022;
+    position: absolute;
+    top: 48px;
+    left: 0;
+    width: 80px;
+    color: #13E8E9;
+    font-size: .8em;
+    text-align: left;
+    text-indent: 4px;
+    line-height: 14px;
+    padding-bottom: 2px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: bold;
+  }
+  
+  .js-count-particles{
+    font-size: 1.1em;
+  }
+  
+  #stats,
+  .count-particles{
+    -webkit-user-select: none;
+    margin-top: 5px;
+    margin-left: 5px;
+  }
+  
+  #stats{
+    border-radius: 3px 3px 0 0;
+    overflow: hidden;
+  }
+  
+  .count-particles{
+    border-radius: 0 0 3px 3px;
+  }
+  
+
+/* ---- particles.js container ---- */
+/*
+#particles-js{
+    width: 100%;
+    height: 100%;
+    background-color: #b61924;
+    background-image: url('');
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+  } */

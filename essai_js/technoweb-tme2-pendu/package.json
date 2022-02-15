@@ -1,0 +1,17 @@
+{
+  "name": "pendu",
+  "version": "1.0.0",
+  "description": "le jeu",
+  "main": "src/app.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^9.2.0"
+  },
+  "dependencies": {
+    "random": "^3.0.6"
+  }
+}
