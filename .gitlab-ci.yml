@@ -1,0 +1,12 @@
+
+stages:          # List of stages for jobs, and their order of execution
+  - build
+
+
+build-job:       
+  stage: build
+  script:
+    - echo "Compiling the code..."
+    - sleep 10
+    - echo "Compile complete."
+
