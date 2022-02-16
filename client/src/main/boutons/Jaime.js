@@ -3,10 +3,19 @@ import React, { Component } from 'react';
 class Jaime extends Component {
     constructor(props) {
         super(props);
+        // this.isLiked = this.props.serveur.isLiked(this.props.idMessage, this.props.token)
+        this.isLiked = true;
+    }
+
+    aimerPublication() {
+        if (this.props.token === "")
+            return
+        this.isLiked = this.props.serveur.likeMessage(this.props.idMessage, this.props.token)
     }
 
     render() {
-        return <nav></nav>
+        return <input type="button" onClick={event => { this.aimerPublication() }} id="aimer" name="j'aimer" value="J'aime" style={{ color: this.isLiked ? "green" : "" }} />
+
     }
 }
 

@@ -1,7 +1,6 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
-// import './login.css'
-import Main from './main/Main.js'
+import './assets/css/index.css'
+import Main from './Main.js'
 
 ReactDOM.render(
   <Main />

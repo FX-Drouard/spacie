@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class PublierPhoto extends Component {
+class ListeAmisConnecte extends Component {
     constructor(props) {
         super(props);
     }
 
     render() {
-        return <nav></nav>
+        return <dic></dic>
     }
 }
 
-export default PublierPhoto
+export default ListeAmisConnecte
