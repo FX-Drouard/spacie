@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 // import './login.css'
-import MainPage from './MainPage.js'
+import Main from './main/Main.js'
 
 ReactDOM.render(
-  <MainPage />
+  <Main />
   ,
   document.getElementById('root')
 );
