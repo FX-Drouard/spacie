@@ -14,7 +14,7 @@ class Jaime extends Component {
     }
 
     render() {
-        return <input type="button" onClick={event => { this.aimerPublication() }} id="aimer" name="j'aimer" value="J'aime" style={{ color: this.isLiked ? "green" : "" }} />
+        return <input type="button" onClick={event => { this.aimerPublication() }} id="aimer" name="Star" value="Star" style={{ color: this.isLiked ? "green" : "" }} />
 
     }
 }
