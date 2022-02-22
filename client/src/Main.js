@@ -8,7 +8,7 @@ import Nav from './main/pages/Nav.js';
 import ListeAmis from './main/amis/ListeAmis.js'
 import ListeAmisConnecte from './main/amis/ListeAmisConnecte.js';
 import ListeMessagePrive from './main/pages/ListeMessagePrive.js'
-
+import './assets/css/index.css'
 
 class Main extends Component {
     constructor(props) {

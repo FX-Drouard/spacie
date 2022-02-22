@@ -32,10 +32,10 @@ class App extends Component {
 
     render() {
 
-        if (this.state.css == "main")
-            import('./assets/css/index.css')
-        else
-            // import('./assets/css/login.css')
+        // if (this.state.css == "main")
+        //     // import('./assets/css/index.css')
+        // else
+        //     // import('./assets/css/login.css')
 
 
             return <div>
