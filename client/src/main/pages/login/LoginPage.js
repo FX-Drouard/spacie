@@ -15,22 +15,20 @@ class LoginPage extends Component {
     connecte() {
         let token = this.props.serveur.getConnection(this.login, this.password)
         if (token === "") return
-
         this.props.setToken(token);
-        this.props.setBody("main", <Main setToken={this.props.setToken} serveur={this.props.serveur} setBody={this.props.setBody} token={token} />)
+        this.props.setBody(<Main setToken={this.props.setToken} serveur={this.props.serveur} setBody={this.props.setBody} token={token} />)
     }
 
     gotoSignIn() {
-        this.props.setBody("signin", <SignIn setToken={this.props.setToken} serveur={this.props.serveur} setBody={this.props.setBody} token={this.props.token} />)
+        this.props.setBody(<SignIn setToken={this.props.setToken} serveur={this.props.serveur} setBody={this.props.setBody} />)
     }
 
     gotoAccueil() {
-        this.props.setBody("main", <Main setToken={this.props.setToken} serveur={this.props.serveur} setBody={this.props.setBody} token={this.props.token} />)
+        this.props.setBody(<Main setToken={this.props.setToken} serveur={this.props.serveur} setBody={this.props.setBody} token="" />)
     }
 
     render() {
         return <div id="login">
-
             <header>
                 <div id="header_login">
                     <div id="logo" >

@@ -200,29 +200,7 @@ nav{
     width: 13%;
 }
 
-@media  screen and (max-width:950px ){
-    nav{
-        display: none;
-        width:0%;
-    }
-    aside{
-        width: 29%;
-    }
-    .message{
-        width: 69%;
-    }
-    #logo #header_main p{
-        font-size: 30px;
-    }
 
-    #lien_profil img {
-        width: 40px;
-        height: 40px;
-    }
-    #onglet img {
-        width: 100%;
-    }
-}
 
 #liste_commentaire article,#new_message{
     padding : 3%;
@@ -257,25 +235,61 @@ a{
 #info_user{
     display: flex;
     background-color: rgb(48, 52, 65,0.6);
-    padding: 3%;
     border-radius: 10px;
     margin-bottom: 3%; 
-    justify-content:space-between;
+    justify-content:space-evenly;
+    align-items:center;
 }
 
 #photo_de_profil{
-    width: 20%;
+    width: 10%;
     border-radius: 10px;
 }
 
 #info_ligne{
     display: flex;  
+    justify-content:space-evenly
 }
 #info_profil{
-    width: 76%;
+    width: 70%;
     background-color: rgb(48, 52, 65,0.6);
     padding: 2%;
+    margin:2%;
     border-radius: 10px;
+}
+
+#creationProfil{
+    width:30%;
+}
+
+#emailProfil{
+    
+    width: 30%;
+}
+
+
+#loginProfil{
+    width: 15%;
+}
+
+#nickNameProfil{
+    width:25%
+}
+
+#info_ligne *{
+    background-color: rgb(48, 52, 65,0.6);
+    border-radius: 10px;
+    padding: 2%;
+    margin:1%
+}
+
+#info_ligne div h3{
+    text-decoration: underline;
+}
+
+#info_user span img{
+    border-style: groove;
+    border-color: #b0c9da;
 }
 
 .info{
@@ -287,8 +301,7 @@ a{
     width: 60%;
 }
 #button_profil form input{
-   
-   margin-left: 2%; 
+    margin-left: 2%; 
     width: 60%;
 }
 #button_profil{
@@ -296,7 +309,84 @@ a{
     margin-top: 5%
 }
 
+.userName{
+    display:flex;
+    width: 80%;
+    align-items: center;
+}
 
+@media screen and (max-width: 500px)  {
+    .name{
+        display: none;
+    }
+}
+
+.userName span{
+    align-items: center;
+}
+
+.name{
+    padding-left:1%
+}
+
+.userName span:hover{
+    animation: hove 2s both;
+    
+}
+
+@keyframes hove {
+    to {
+        color: #fdbeab;
+        text-decoration: underline;
+    }
+}
+
+@media  screen and (max-width:950px ){
+    nav{
+        display: none;
+        width:0%;
+    }
+    aside{
+        width: 29%;
+    }
+    .message{
+        width: 69%;
+    }
+    #logo #header_main p{
+        font-size: 30px;
+    }
+
+    #lien_profil img {
+        width: 40px;
+        height: 40px;
+    }
+    #onglet img {
+        width: 100%;
+    }
+
+    #creationProfil{
+        display: none;
+        width:0%;
+    }
+    #emailProfil{
+        display: none;
+        width: 0%;
+    }
+
+
+    #loginProfil{
+        width: 50%;
+    }
+
+    #info_ligne{
+        justify-content: space-evenly;
+    }
+
+}
+
+#profil{
+    width:100%;
+}
 
 /* ---- stats.js ---- */
 /* 

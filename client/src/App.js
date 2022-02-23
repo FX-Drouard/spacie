@@ -10,14 +10,14 @@ class App extends Component {
         // this.serveur = new Serveur()
         this.serveur = null
         this.state = {
-            token: "",
+            token: "l",
             page: "0",
         }
         this.pages = <Main token={this.state.token} serveur={this.serveur} setBody={this.setBody} setToken={this.setToken} />
 
     }
 
-    setBody(a, cl) {
+    setBody(cl) {
         this.pages = cl
         this.setState({ page: Math.random() })
     }

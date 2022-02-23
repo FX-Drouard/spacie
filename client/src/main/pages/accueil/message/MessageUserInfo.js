@@ -12,11 +12,11 @@ class MessageUserInfo extends Component {
 
     render() {
         return <div className="userName">
-            <a onClick={(event) => this.gotoProfil()}><img src={this.sender.photoProfil} alt="pdp"
-                width="40" height="40" /></a>
-            <a onClick={(event) => this.gotoProfil()}>
-                <p>{this.sender.nickName}</p>
-            </a>
+            <span className="photoProfil" onClick={(event) => this.gotoProfil()}><img src={this.sender.photoProfil} alt="pdp"
+                width="40" height="40" /></span>
+            <span className="name" onClick={(event) => this.gotoProfil()}>
+                {this.sender.nickName}
+            </span>
         </div>
 
     }

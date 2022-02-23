@@ -6,8 +6,11 @@ class MessageList extends Component {
     }
 
     getMessages() {
-        if (this.props.token === "")
+        if (this.props.token === "" && this.props.user == null)
             return this.props.serveur.getAleatoireMessages();
+
+        if (this.props.profil)
+            return this.props.serveur.getMessageUser(this.props.token);
 
         return this.props.serveur.getMessages(this.props.token);
     }

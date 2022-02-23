@@ -27,7 +27,6 @@ class Message extends Component {
                 <p className="message_date">Le 02/02/2022 à 22:22</p>
             </div>
             <p className="commentaire_textuel">{this.props.message.text}</p>
-
             <div className="message_button">
                 <Jaime token={this.props.token} serveur={this.props.serveur} setPage={this.setPage} message={this.props.message} />
                 <input type="button" onClick={event => { this.commentairePublication(event) }} id="commentaire" name="Commentaire" value="Commentaire" />
