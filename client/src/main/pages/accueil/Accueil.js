@@ -14,7 +14,7 @@ class Accueil extends Component {
     }
 
     render() {
-        return <div class="message">
+        return <div className="message">
             {this.getNewMessageComponent()}
             <MessageList token={this.props.token} serveur={this.props.serveur} setPage={this.setPage} />
         </div>

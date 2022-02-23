@@ -6,7 +6,7 @@ class ListeAmisConnecte extends Component {
     }
 
     render() {
-        return <dic></dic>
+        return <aside></aside>
     }
 }
 

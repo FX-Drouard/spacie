@@ -11,19 +11,20 @@ class App extends Component {
         this.serveur = null
         this.state = {
             token: "",
-            page: "0"
+            page: "0",
         }
-        this.pages = []
-        this.setBody("main", <Main token={this.state.token} serveur={this.serveur} setBody={this.setBody} setToken={this.setToken} />)
+        this.pages = <Main token={this.state.token} serveur={this.serveur} setBody={this.setBody} setToken={this.setToken} />
+
     }
 
-    setBody(cssType, cl) {
-        console.log(this.state.css)
-        this.pages.push(cl)
-        this.setState({ page: this.pages.indexOf(cl), css: cssType })
+    setBody(a, cl) {
+        this.pages = cl
+        this.setState({ page: Math.random() })
     }
     getBody() {
-        return this.pages[this.state.page]
+        console.log(this.page)
+
+        return this.pages
     }
 
     setToken(tkn) {
@@ -38,9 +39,8 @@ class App extends Component {
         //     // import('./assets/css/login.css')
 
 
-            return <div>
-                {this.getBody()}
-            </div>
+        return this.getBody()
+
     }
 }
 

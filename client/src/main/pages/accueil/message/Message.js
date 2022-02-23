@@ -28,7 +28,7 @@ class Message extends Component {
             </div>
             <p className="commentaire_textuel">{this.props.message.text}</p>
 
-            <div class="message_button">
+            <div className="message_button">
                 <Jaime token={this.props.token} serveur={this.props.serveur} setPage={this.setPage} message={this.props.message} />
                 <input type="button" onClick={event => { this.commentairePublication(event) }} id="commentaire" name="Commentaire" value="Commentaire" />
                 <input type="button" onClick={event => { this.partgerPublication(event) }} id="add_new_message" name="Partager" value="Partager" />

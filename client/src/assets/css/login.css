@@ -7,14 +7,25 @@
     font-family: "Comfortaa-Light";
     src: url(../polices/comfortaa/Comfortaa-Light.ttf);
 }
-header{
+
+#login{
+    background-image: url("https://media.spacie.fr/default/pages/back.jpg");
+    background-color: black;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family:"Comfortaa-Bold" ;
+    height: 100%;
+}
+
+#login header{
     display: flex;
 }
 
-#header{
+#header_login{
     margin: 0cm auto;
-    margin-top: 2cm;
-    width: 500px;
+    margin-top: 1cm;
+    width: 400px;
     display: flex;
     text-align: center;
 }
@@ -29,16 +40,9 @@ header{
     color: #b0c9da;
 }
 
-body{
-    background-image: url("https://media.spacie.fr/default/pages/back.jpg");
-    background-color: black;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    font-family:"Comfortaa-Bold" ;
-}
 
-input{
+
+#login input{
     height: 30px;
     font-family: "Comfortaa-Light";  
     border-radius: 0px 0px 0px 10px;
@@ -46,12 +50,12 @@ input{
     height: 37px;
 }
 
-input[type="text"],input[type="password"]{
+#login input[type="text"],input[type="password"]{
     text-align: center;
     border-color: #1e262b;
 }
 
-input[type="email"],input[type="password"]{
+#login input[type="email"],input[type="password"]{
     text-align: center;
     border-color: #1e262b;
 }
@@ -92,14 +96,10 @@ input[type="email"],input[type="password"]{
     margin-right: 0.1cm;
 }
 
-form{
-    border-style: groove;
-    border-radius: 30px;
-    border-color: beige;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    background-color: #1e262b;
-    
+@keyframes hove {
+    to {
+        color: #fdbeab
+    }
 }
 
 .text{
@@ -110,17 +110,23 @@ form{
     padding: 0.3cm 0.07cm 0.4cm 0.07cm;
 }
 
-a {
-    color:#b0c9da;
-}
 
-#lien{
+
+.lien{
     margin: 2%;
     font-family: "Comfortaa-Light";
     font-size: 17px;
 
 }
 
+.lien span{
+    color:#b0c9da;
+    text-decoration: underline;
+}
+
+.lien span:hover{
+    animation: hove 2s both
+}
 .name input{
     width: 33%;
 }
@@ -134,7 +140,7 @@ a {
     font-size: 16px;
 }
 
-input[type="submit"]:hover,input[type="button"]:hover{
+#login input[type="submit"]:hover,input[type="button"]:hover{
     color: #b0c9da ;
     background-color: #1e262b;
     font-size: 14px;
@@ -150,6 +156,5 @@ footer{
     width: 100%;
     position: absolute;
     bottom: 0px;
-
 }
 
