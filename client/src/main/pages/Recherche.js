@@ -6,7 +6,8 @@ class Recherche extends Component {
     }
 
     render() {
-        return <div id="recherche"></div>
+        return <div id="millieu">
+        </div>
     }
 }
 

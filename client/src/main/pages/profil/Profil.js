@@ -18,7 +18,7 @@ class Profil extends Component {
     }
 
     render() {
-        return <div id="profil">
+        return <div className="millieu">
             <section id="info_user">
                 <span className="photoProfil"><img id="pdp" src={this.props.user.photoProfil} alt="Photo de Profil" /></span>
                 <div id="info_profil">

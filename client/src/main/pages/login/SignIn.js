@@ -58,7 +58,6 @@ class SignIn extends Component {
                 <div className="h-captcha" data-sitekey="5ecff875-84d2-42d0-939c-32fe8d536fb0"></div>
                 <div className="button">
                     <input type="submit" name="Enregistre" value="Envoyer" />
-
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'center' }}>
                     <div className="lien">
@@ -67,9 +66,7 @@ class SignIn extends Component {
                     <div className="lien">
                         <span onClick={(event) => { this.gotoConnection(); event.stopPropagation() }}>Connexion</span>
                     </div>
-
                 </div>
-
             </section >
             <footer>
                 <p>Copyright © 2022 Spacie - Tous droits réservés.</p>
