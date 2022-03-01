@@ -27,7 +27,7 @@ class NewMessage extends Component {
     render() {
         return (
             <section id="new_message">
-                <input type="text" ref={this.publication} name="commentaire" placeholder="votre vie" />
+                <textarea ref={this.publication} name="commentaire" placeholder="votre vie" />
                 <div id="button_new_message">
                     <input type="button" onClick={event => { this.sendPhoto(event) }} id="new_image" name="image" value="Photo" />
                     <input type="button" onClick={event => { this.sendVideo(event) }} id="new_video" name="video" value="Video" />

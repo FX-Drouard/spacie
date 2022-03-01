@@ -180,10 +180,13 @@ input[type="submit"]:hover,input[type="button"]:hover{
     border-color: rgb(175, 111, 111);
 }
 
-#new_message input[type="text"]{
-    width: 100%;
-    height: 40px;
+#new_message textarea{
+    width: 96%;
+    height: 60px;
     margin-bottom: 2%;
+    font-size: 16px;
+    padding: 1%;
+    max-width: 96%;
 }
 
 #new_message{
@@ -193,6 +196,16 @@ input[type="submit"]:hover,input[type="button"]:hover{
     border-radius: 10px;
     margin-bottom: 3%; 
     width:100%;
+}
+
+#button_new_message{
+    display:flex;
+    width: 50%;
+    justify-content: space-evenly;
+}
+
+#button_new_message input{
+    width: 30%;
 }
 
 section{

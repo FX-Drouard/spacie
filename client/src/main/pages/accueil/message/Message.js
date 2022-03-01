@@ -46,15 +46,15 @@ class Message extends Component {
             <div className="message_buttons">
                 <div className="reaction_message">
                     <Star token={this.props.token} serveur={this.props.serveur} setPage={this.props.setBody} message={this.props.message} />
-                    <span>{this.getNombreStars()} <img src="/home/hamid/Téléchargements/stars-color.svg" alt="star" /></span>
+                    <span>{this.getNombreStars()} star</span>
                 </div>
                 <div className="reaction_message">
                     <CommenteButton token={this.props.token} serveur={this.props.serveur} setBody={this.props.setBody} message={this.props.message} setReaction={this.setReaction} />
-                    <span>{this.getNombreStars()} <img src="/home/hamid/Téléchargements/stars-color.svg" alt="commantaire" /></span>
+                    <span>{this.getNombreStars()} commantaire</span>
                 </div>
                 <div className="reaction_message">
                     <PartagerButton token={this.props.token} serveur={this.props.serveur} setBody={this.props.setBody} message={this.props.message} setReaction={this.setReaction} />
-                    <span>{this.getNombreStars()} <img src="/home/hamid/Téléchargements/stars-color.svg" alt="partage" /></span>
+                    <span>{this.getNombreStars()} partage</span>
                 </div>
             </div>
 
