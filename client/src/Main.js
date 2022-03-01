@@ -18,7 +18,7 @@ class Main extends Component {
         this.state = {
             page: "0"
         }
-        this.pages = <Accueil token={this.props.token} serveur={this.props.serveur} setPage={this.setPage} />
+        this.pages = <Accueil setBody={this.props.setBody} token={this.props.token} serveur={this.props.serveur} setPage={this.setPage} />
     }
 
     setPage(cl) {

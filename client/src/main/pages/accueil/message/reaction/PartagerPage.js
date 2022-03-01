@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Commente extends Component {
+class PartagerPage extends Component {
     constructor(props) {
         super(props);
     }
@@ -10,4 +10,4 @@ class Commente extends Component {
     }
 }
 
-export default Commente;
+export default PartagerPage

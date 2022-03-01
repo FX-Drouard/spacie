@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import PublierPhoto from '../../../boutons/PublierPhoto.js';
-import PublierVideo from '../../../boutons/PublierPhoto.js';
+import PublierPhoto from './action nouveau message/PublierPhoto.js';
+import PublierVideo from './action nouveau message/PublierPhoto.js';
 import Accueil from '../Accueil.js'
 class NewMessage extends Component {
     constructor(props) {
@@ -11,8 +11,8 @@ class NewMessage extends Component {
 
     sendMessage(event) {
         if (!(this.publication === null || this.publication === "")) {
-            this.erreur = this.props.serveur.setMessage(this.publication, this.props.token)
-            this.props.setPage(<Accueil token={this.state.token} serveur={this.serveur} setPage={this.setPage} erreur={error} />)
+            this.erreur = this.props.serveur.sendMessage(this.publication, this.props.token, this.props.message)
+            this.props.setPage(<Accueil token={this.state.token} serveur={this.serveur} setPage={this.setPage} erreur={this.erreur} />)
         }
     }
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Jaime extends Component {
+class Star extends Component {
     constructor(props) {
         super(props);
         // this.isLiked = this.props.serveur.isLiked(this.props.idMessage, this.props.token)
@@ -14,9 +14,9 @@ class Jaime extends Component {
     }
 
     render() {
-        return <input type="button" onClick={event => { this.aimerPublication() }} id="aimer" name="Star" value="Star" style={{ color: this.isLiked ? "green" : "" }} />
+        return <div className="message_button" onClick={event => { this.aimerPublication() }} style={{ color: this.isLiked ? "green" : "" }} >Star</div>
 
     }
 }
 
-export default Jaime
+export default Star

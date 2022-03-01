@@ -16,7 +16,7 @@ class Accueil extends Component {
     render() {
         return <div className="millieu">
             {this.getNewMessageComponent()}
-            <MessageList token={this.props.token} serveur={this.props.serveur} setPage={this.setPage} />
+            <MessageList setBody={this.props.setBody} token={this.props.token} serveur={this.props.serveur} setPage={this.setPage} />
         </div>
     }
 }

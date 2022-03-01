@@ -7,11 +7,11 @@ class SignIn extends Component {
         super(props);
     }
     gotoConnection() {
-        this.props.setBody("login", <LoginPage setToken={this.props.setToken} serveur={this.props.serveur} setBody={this.props.setBody} token={this.props.token} />)
+        this.props.setBody(<LoginPage setToken={this.props.setToken} serveur={this.props.serveur} setBody={this.props.setBody} token={this.props.token} />)
     }
 
     gotoAccueil() {
-        this.props.setBody("main", <Main setToken={this.props.setToken} serveur={this.props.serveur} setBody={this.props.setBody} token="" />)
+        this.props.setBody(<Main setToken={this.props.setToken} serveur={this.props.serveur} setBody={this.props.setBody} token="" />)
     }
 
     render() {

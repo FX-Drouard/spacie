@@ -10,7 +10,7 @@ class App extends Component {
         // this.serveur = new Serveur()
         this.serveur = null
         this.state = {
-            token: "",
+            token: "l",
             page: "0",
         }
         this.pages = <Main token={this.state.token} serveur={this.serveur} setBody={this.setBody} setToken={this.setToken} />
@@ -32,12 +32,6 @@ class App extends Component {
     }
 
     render() {
-
-        // if (this.state.css == "main")
-        //     // import('./assets/css/index.css')
-        // else
-        //     // import('./assets/css/login.css')
-
 
         return this.getBody()
 

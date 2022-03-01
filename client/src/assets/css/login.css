@@ -8,6 +8,19 @@
     src: url(../polices/comfortaa/Comfortaa-Light.ttf);
 }
 
+body,html{
+    width: 100%;
+    height: 100%;
+    overflow-x:hidden;
+    margin: 0;
+    padding: 0;  
+}
+
+#root{
+    width: 100%;
+    height: 100vh;
+}
+
 #login{
     background-image: url("https://media.spacie.fr/default/pages/back.jpg");
     background-color: black;
@@ -15,7 +28,7 @@
     background-size: cover;
     background-attachment: fixed;
     font-family:"Comfortaa-Bold" ;
-    height: 100%;
+    height: 100vh;
 }
 
 #login header{

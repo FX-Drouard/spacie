@@ -52,7 +52,8 @@ body,html{
     padding-left: 2%;
     height: 10%;
     position: sticky;
-    top:0
+    top:0;
+    z-index: 2;
     
 }
 
@@ -199,8 +200,8 @@ section{
     justify-content: center;
 }
 
-.commentaire{
-    background-color: rgb(48, 52, 65,0.6);
+.message{
+    background-color: rgb(48, 52, 65,0.4);
     border-radius: 10px;
     margin-bottom: 3%;
     width:100%
@@ -221,7 +222,7 @@ nav{
 
 
 
-#liste_commentaire article,#new_message{
+#messages article,#new_message{
     padding : 3%;
     width :94%;
 }
@@ -233,7 +234,7 @@ nav{
 aside{
     width: 20%;
     position: sticky;
-    right: 0;
+    z-index: 0;
 }
 .message_user_info{
     display: flex;
@@ -359,6 +360,7 @@ a{
     to {
         color: #fdbeab;
         text-decoration: underline;
+        fill: #fdbeab
     }
 }
 
@@ -407,6 +409,57 @@ a{
 
 #profil{
     width:100%;
+}
+
+.message_textuel{
+    /* background-color:red; */
+    padding-top: 2%;
+    padding-bottom: 2%;
+    width:100%;
+    
+}
+.message_buttons{
+    display: flex;
+    width: 360px;
+    height: 60px;
+    align-items: center;
+    justify-content: space-between;
+}
+.message_button{
+    border-style: solid;
+    border-color:#b0c9da ;
+    padding: 6px;
+    border-radius: 40px;
+    text-align: center;
+}
+
+.message_button:hover{
+    animation : hoverButton 1s both
+}
+
+
+.reaction_message{
+    display:flex;
+    flex-direction: column;
+}
+
+@keyframes hoverButton {
+    to {
+        border-color:#fdbeab
+    }
+}
+
+.reaction_message span{
+    margin-top: 6px
+}
+
+.commentaires{
+    margin-top: 2%;
+    border-color: rgb(48, 52, 65,0.6);
+    border-style: dashed;
+    border-radius: 10px;
+    padding: 2%
+    
 }
 
 /* ---- stats.js ---- */
