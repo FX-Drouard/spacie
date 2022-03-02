@@ -16,7 +16,13 @@ class Profil extends Component {
     modify() {
         this.setPage(<Modifier user={this.props.user} serveur={this.props.serveur} getPage={this.props.getPage} />);
     }
+    getMessages() {
 
+        //     return this.props.serveur.getMessageUser(this.props.token);
+
+
+        return [{ idMessage: 1, text: "haha", sender: { nickName: "Fristorm", photoProfil: "https://media.spacie.fr/Profil/Fristorm/pdp.png" } }, { idMessage: 1, text: "hoha", sender: { nickName: "Fristorm", photoProfil: "https://media.spacie.fr/Profil/Fristorm/pdp.png" } }, { idMessage: 1, text: "hahi", sender: { nickName: "Fristorm", photoProfil: "https://media.spacie.fr/Profil/Fristorm/pdp.png" } }, { idMessage: 1, text: "haha", sender: { nickName: "Fristorm", photoProfil: "https://media.spacie.fr/Profil/Fristorm/pdp.png" } }]
+    }
     render() {
         return <div className="millieu">
             <section id="info_user">
@@ -48,7 +54,7 @@ class Profil extends Component {
 
             </section >
 
-            <MessageList token={this.props.token} profil={true} serveur={this.props.serveur} setPage={this.setPage} />
+            <MessageList token={this.props.token} profil={true} serveur={this.props.serveur} setPage={this.setPage} resultat={this.getMessages()} />
 
 
         </div >

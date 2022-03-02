@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Accueil from './main/pages/accueil/Accueil.js';
-import Recherche from './main/pages/Recherche.js';
+import Recherche from './main/pages/recherche/Recherche.js';
 import Notification from './main/pages/Notification.js';
 import LoginButton from './main/pages/login/LoginButton.js';
 import Profilbutton from './main/pages/profil/ProfilButton.js'

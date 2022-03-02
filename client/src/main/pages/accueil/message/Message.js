@@ -37,7 +37,7 @@ class Message extends Component {
     render() {
         return <article className="message">
             <div className="message_user_info">
-                <MessageUserInfo token={this.props.token} serveur={this.props.serveur} message={this.props.message} setPage={this.setPage} />
+                <MessageUserInfo token={this.props.token} serveur={this.props.serveur} user={this.props.message.sender} setPage={this.props.setPage} />
                 {/* <p className="message_date">{this.props.message.getDate()}</p> */}
                 <p className="message_date">Le 02/02/2022 à 22:22</p>
             </div>

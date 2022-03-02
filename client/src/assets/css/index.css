@@ -475,6 +475,62 @@ a{
     
 }
 
+#recherche{
+    height: auto;
+}
+
+
+#barre_recherche{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: rgb(48, 52, 65,0.6);
+    padding: 2%;
+    border-radius: 10px;
+    align-items: center;
+}
+
+#barre_recherche textarea{
+    max-width: 70%;
+    min-width: 70%;
+    max-height: 40px;
+    min-height: 40px;
+    font-size: 16px;
+    padding: 1%;
+}
+
+.button_recherche{
+    text-align: center;
+    border: groove #b0c9da;
+    padding: 2%;
+    border-radius: 30px;
+    font-size: 16px;
+}
+
+.button_recherche:hover{
+    animation : hoverButton 1s both
+}
+
+#resultat_recherche{
+    margin-top: 3%;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: rgb(48, 52, 65,0.6);
+    padding: 2%;
+    border-radius: 10px;
+    align-items: center;
+}
+
+.profil_info{
+    background-color: rgb(48, 52, 65,0.6);
+    padding: 2%;
+    margin-top: 3%;
+    width: 100%;
+    border-radius: 10px;
+    align-items: center;
+}
+
 /* ---- stats.js ---- */
 /* 
 .count-particles{
