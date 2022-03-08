@@ -195,7 +195,7 @@ input[type="submit"]:hover,input[type="button"]:hover{
 .button_new_message{
     display:flex;
     width: 50%;
-   justify-content: flex-end;
+    justify-content: flex-end;
     align-items: center;
 }
 
@@ -207,14 +207,12 @@ input[type="submit"]:hover,input[type="button"]:hover{
 }
 
 #check{
-    width: 3%;
-    margin-left: 1%;
+    margin-left: 3%;
 }
-
-
 
 .new_message_button{
     width: 20%;
+    min-width: 50px;
     display: flex;
     justify-content:center;
 }
@@ -577,9 +575,9 @@ a{
         align-items:center;
         padding-top: 3%
     }
-     #button_new_message{
-         width : 70%
-     }
+    
+     
+    
 }
 
 /* ---- stats.js ---- */
