@@ -194,7 +194,7 @@ input[type="submit"]:hover,input[type="button"]:hover{
 
 .button_new_message{
     display:flex;
-    width: 50%;
+    width: 30%;
     justify-content: flex-end;
     align-items: center;
 }
@@ -202,6 +202,7 @@ input[type="submit"]:hover,input[type="button"]:hover{
 #message_prive{
     margin-left: 1%;
     display: flex;
+    width : 60%;
     align-items: center;
     
 }
@@ -216,6 +217,11 @@ input[type="submit"]:hover,input[type="button"]:hover{
     display: flex;
     justify-content:center;
 }
+
+.new_message_button:hover{
+    animation: hoverButton 2s both
+}
+
 .new_message_button img{
     width: 40%;
     border-radius: 0;
@@ -395,8 +401,10 @@ a{
     /* background-color:red; */
     padding-top: 2%;
     padding-bottom: 2%;
-    width:100%;
-    
+    width:96%;
+    background-color: rgb(48, 52, 65,0.6);
+    padding : 2%;
+    border-radius: 5px;
 }
 .message_buttons{
     display: flex;

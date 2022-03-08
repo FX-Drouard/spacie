@@ -15,13 +15,13 @@ class NewMessage extends Component {
 
     sendMessage(event) {
         if (!(this.publication === null || this.publication === "")) {
-            this.erreur = this.props.serveur.sendMessage(this.publication, this.props.token, this.props.message)
+            this.erreur = this.props.serveur.sendMessage(this.publication, this.props.token, this.props.message, this.state.check)
             this.props.setPage(<Accueil token={this.state.token} serveur={this.serveur} setPage={this.setPage} erreur={this.erreur} />)
         }
     }
 
     sendMedia(event) {
-        this.props.setPage(<Media token={this.state.token} serveur={this.serveur} setPage={this.setPage} />)
+        this.props.setPage(<Media token={this.state.token} serveur={this.serveur} setPage={this.setPage} prive={this.state.check} />)
     }
 
     checkPubPrivee() {
