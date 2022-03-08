@@ -29,6 +29,7 @@ class Accueil extends Component {
             {this.getNewMessageComponent()}
 
             <MessageList setBody={this.props.setBody} token={this.props.token} serveur={this.props.serveur} setPage={this.props.setPage} resultat={this.getMessages()} />
+            <footer>hamid</footer>
         </div>
     }
 }

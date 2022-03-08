@@ -234,9 +234,11 @@ nav{
 }
 aside{
     width: 20%;
-    position: sticky;
+    /* position: sticky; */
     z-index: 0;
 }
+
+
 .message_user_info{
     display: flex;
     position: relative;
@@ -338,12 +340,6 @@ a{
     align-items: center;
 }
 
-@media screen and (max-width: 500px)  {
-    .name{
-        display: none;
-    }
-}
-
 .userName span{
     align-items: center;
 }
@@ -365,48 +361,8 @@ a{
     }
 }
 
-@media  screen and (max-width:950px ){
-    nav{
-        display: none;
-        width:0%;
-    }
-    aside{
-        width: 29%;
-    }
-    .millieu{
-        width: 69%;
-    }
-    #logo #header_main p{
-        font-size: 30px;
-    }
-
-    #lien_profil img {
-        width: 40px;
-        height: 40px;
-    }
-    #onglet img {
-        width: 100%;
-    }
-
-    #creationProfil{
-        display: none;
-        width:0%;
-    }
-    #emailProfil{
-        display: none;
-        width: 0%;
-    }
 
 
-    #loginProfil{
-        width: 50%;
-    }
-
-    #info_ligne{
-        justify-content: space-evenly;
-    }
-
-}
 
 #profil{
     width:100%;
@@ -517,6 +473,69 @@ a{
     width: 100%;
     border-radius: 10px;
     align-items: center;
+}
+
+@media  screen and (max-width:950px ){
+    nav{
+        display: none;
+        width:0%;
+    }
+    aside{
+        width: 29%;
+    }
+    .millieu{
+        width: 69%;
+    }
+    #logo #header_main p{
+        font-size: 30px;
+    }
+
+    #lien_profil img {
+        width: 40px;
+        height: 40px;
+    }
+    #onglet img {
+        width: 100%;
+    }
+
+    #creationProfil{
+        display: none;
+        width:0%;
+    }
+    #emailProfil{
+        display: none;
+        width: 0%;
+    }
+
+
+    #loginProfil{
+        width: 50%;
+    }
+
+    #info_ligne{
+        justify-content: space-evenly;
+    }
+
+}
+
+
+@media screen and (max-width: 500px)  {
+    .name{
+        display: none;
+    }
+    aside{
+        display:none;
+        width: 0%;
+    }
+    .millieu{
+        width: 100%;
+    }
+    .message_buttons{
+        width: 100%;
+
+    }
+ 
+  
 }
 
 /* ---- stats.js ---- */
