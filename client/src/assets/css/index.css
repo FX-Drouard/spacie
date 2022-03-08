@@ -188,7 +188,7 @@ input[type="submit"]:hover,input[type="button"]:hover{
 
 .button_new_message{
     display:flex;
-    width: 30%;
+    width: 40%;
     justify-content: space-between;
     margin-left: 2%;
 }
