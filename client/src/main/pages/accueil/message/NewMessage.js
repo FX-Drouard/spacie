@@ -7,6 +7,7 @@ class NewMessage extends Component {
         super(props);
         this.publication = null
         this.erreur = ""
+        this.check = false
     }
 
     sendMessage(event) {
@@ -20,15 +21,20 @@ class NewMessage extends Component {
         this.props.setPage(<Media token={this.state.token} serveur={this.serveur} setPage={this.setPage} />)
     }
 
+    checkPubPrivee() {
+        this.check = !this.check
+    }
 
     render() {
         return (
             <section id="new_message">
                 <textarea ref={this.publication} name="commentaire" placeholder="votre vie" />
-                <div className="button_new_message">
-
-                    <input type="button" onClick={event => { this.sendMedia(event) }} id="new_video" name="Media" value="Media" />
-                    <input type="button" onClick={event => { this.sendMessage(event) }} id="add_new_message" name="Publier" value="Publier" />
+                <div id="footer_new_message">
+                    <span id="message_prive" onClick={(event) => this.checkPubPrivee()}>Publication privée <img id="check" src={"https://media.spacie.fr/default/pages/svg/" + (this.check ? "check" : "notcheck") + ".svg"} alt="Media" /></span>
+                    <div className="button_new_message">
+                        <div className="new_message_button" onClick={event => { this.sendMedia(event) }}><img src="https://media.spacie.fr/default/pages/svg/upload.svg" alt="Media" /></div>
+                        <div className="new_message_button" onClick={event => { this.sendMedia(event) }}><img src="https://media.spacie.fr/default/pages/svg/send.svg" alt="Publier" /></div>
+                    </div>
                 </div>
                 <div className="erreur">{this.props.erreur}</div>
             </section>

@@ -186,15 +186,41 @@ input[type="submit"]:hover,input[type="button"]:hover{
     width:100%;
 }
 
-.button_new_message{
+#footer_new_message{
     display:flex;
-    width: 40%;
-    justify-content: space-between;
-    margin-left: 2%;
+    justify-content:space-between;
+
 }
 
-.button_new_message input{
-    width: 49%;
+.button_new_message{
+    display:flex;
+    width: 50%;
+   justify-content: flex-end;
+    align-items: center;
+}
+
+#message_prive{
+    margin-left: 1%;
+    display: flex;
+    align-items: center;
+    
+}
+
+#check{
+    width: 3%;
+    margin-left: 1%;
+}
+
+
+
+.new_message_button{
+    width: 20%;
+    display: flex;
+    justify-content:center;
+}
+.new_message_button img{
+    width: 40%;
+    border-radius: 0;
 }
 
 section{
