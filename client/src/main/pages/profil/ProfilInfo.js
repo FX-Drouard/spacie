@@ -1,4 +1,4 @@
-import react, { Component } from 'react'
+import React, { Component } from 'react'
 import MessageUserInfo from '../accueil/message/MessageUserInfo';
 import LoginPage from '../login/LoginPage'
 class ProfilInfo extends Component {

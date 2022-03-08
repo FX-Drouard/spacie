@@ -10,7 +10,7 @@ class App extends Component {
         // this.serveur = new Serveur()
         this.serveur = null
         this.state = {
-            token: "l",
+            token: "m",
             page: "0",
         }
         this.pages = <Main token={this.state.token} serveur={this.serveur} setBody={this.setBody} setToken={this.setToken} />
