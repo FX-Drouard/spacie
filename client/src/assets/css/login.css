@@ -170,3 +170,14 @@ footer{
     bottom: 0px;
 }
 
+
+
+@media screen and (max-width: 500px)  {
+    #block_con{
+        width: 97%;
+    }
+    #login #title{
+        display: flex;
+        margin-left: 4%;
+    }
+}

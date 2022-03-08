@@ -69,7 +69,9 @@ img{
     border-style: inset;    
     font-size: 16px;
 }
-
+#logo_image{
+    width: 30%;
+}
 input:hover{
     border-style: inset;
     border-color: rgb(175, 111, 111);
@@ -534,8 +536,20 @@ a{
         width: 100%;
 
     }
- 
-  
+    #title{
+        display:none;
+        width: 0;
+    }
+    #logo {
+        width: 25%;
+    }
+    #logo_image{
+        width: 100%;
+    }
+    #onglet{
+        align-items:center;
+        padding-top: 3%
+    } 
 }
 
 /* ---- stats.js ---- */

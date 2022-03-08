@@ -35,8 +35,10 @@ class Main extends Component {
             <div id="mainPage">
                 <header>
                     <div id="logo">
-                        <div id="header_main"><div id="logo" >
-                            <img src="https://media.spacie.fr/default/pages/icon.png" alt="logo" width="128" height="128" /></div >
+                        <div id="header_main">
+                            <div id="logo_image" >
+                                <img src="https://media.spacie.fr/default/pages/icon.png" alt="logo" width="128" height="128" />
+                            </div >
                             <div id="title">
                                 <p>Spacie</p>
                             </div>
