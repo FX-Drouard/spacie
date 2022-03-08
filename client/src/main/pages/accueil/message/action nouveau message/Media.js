@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class PublierPhoto extends Component {
+class Media extends Component {
     constructor(props) {
         super(props);
     }
@@ -10,4 +10,4 @@ class PublierPhoto extends Component {
     }
 }
 
-export default PublierPhoto
+export default Media

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import PublierPhoto from './action nouveau message/PublierPhoto.js';
-import PublierVideo from './action nouveau message/PublierPhoto.js';
+import Media from './action nouveau message/Media.js';
+
 import Accueil from '../Accueil.js'
 class NewMessage extends Component {
     constructor(props) {
@@ -16,21 +16,18 @@ class NewMessage extends Component {
         }
     }
 
-    sendPhoto(event) {
-        this.props.setPage(<PublierPhoto token={this.state.token} serveur={this.serveur} setPage={this.setPage} />)
+    sendMedia(event) {
+        this.props.setPage(<Media token={this.state.token} serveur={this.serveur} setPage={this.setPage} />)
     }
 
-    sendVideo(event) {
-        this.props.setPage(<PublierVideo token={this.state.token} serveur={this.serveur} setPage={this.setPage} />)
-    }
 
     render() {
         return (
             <section id="new_message">
                 <textarea ref={this.publication} name="commentaire" placeholder="votre vie" />
-                <div id="button_new_message">
-                    <input type="button" onClick={event => { this.sendPhoto(event) }} id="new_image" name="image" value="Photo" />
-                    <input type="button" onClick={event => { this.sendVideo(event) }} id="new_video" name="video" value="Video" />
+                <div className="button_new_message">
+
+                    <input type="button" onClick={event => { this.sendMedia(event) }} id="new_video" name="Media" value="Media" />
                     <input type="button" onClick={event => { this.sendMessage(event) }} id="add_new_message" name="Publier" value="Publier" />
                 </div>
                 <div className="erreur">{this.props.erreur}</div>

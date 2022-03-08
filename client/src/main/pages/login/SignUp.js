@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../../../assets/css/login.css'
 import Main from '../../../Main.js'
 import LoginPage from './LoginPage'
-class SignIn extends Component {
+class SignUp extends Component {
     constructor(props) {
         super(props);
     }
@@ -27,7 +27,7 @@ class SignIn extends Component {
             </header>
             <section id="block_con">
 
-                <h2 id="titre_con">SignIn</h2>
+                <h2 id="titre_con">SignUp</h2>
                 <div className="text">
                     <input type="text" name="login" placeholder="login: Fristorm" maxLength="30"
                         alt="le login doit avoir que des lettres et des chiffres" />
@@ -68,11 +68,9 @@ class SignIn extends Component {
                     </div>
                 </div>
             </section >
-            <footer>
-                <p>Copyright © 2022 Spacie - Tous droits réservés.</p>
-            </footer>
+
         </div >
     }
 }
 
-export default SignIn
+export default SignUp

@@ -127,7 +127,6 @@ input[type="submit"]:hover,input[type="button"]:hover{
 
 #onglet span{
     display: flex;
-    /* margin-bottom: 5%; */
     width: 12%;
     justify-content: center;
     padding-bottom: 1%;
@@ -138,7 +137,6 @@ input[type="submit"]:hover,input[type="button"]:hover{
 
 #onglet span:hover{
     animation: hover 0.5s both;
-    fill: #fdbeab
 }
 
 @keyframes hover {
@@ -188,14 +186,15 @@ input[type="submit"]:hover,input[type="button"]:hover{
     width:100%;
 }
 
-#button_new_message{
+.button_new_message{
     display:flex;
-    width: 50%;
-    justify-content: space-evenly;
+    width: 30%;
+    justify-content: space-between;
+    margin-left: 2%;
 }
 
-#button_new_message input{
-    width: 30%;
+.button_new_message input{
+    width: 49%;
 }
 
 section{
@@ -364,8 +363,6 @@ a{
 }
 
 
-
-
 #profil{
     width:100%;
 }
@@ -385,26 +382,30 @@ a{
     justify-content: space-between;
 }
 .message_button{
-    border-style: solid;
     border-color:#b0c9da ;
     padding: 6px;
-    border-radius: 40px;
+    width: 20%;
     text-align: center;
 }
 
+.message_button img{
+    width: 100%;
+    color : #b0c9da;
+    border-radius: 0px;
+}
 .message_button:hover{
     animation : hoverButton 1s both
 }
 
-
 .reaction_message{
     display:flex;
     flex-direction: column;
+    width: 100%;
 }
 
 @keyframes hoverButton {
     to {
-        border-color:#fdbeab
+        width : 25% 
     }
 }
 
@@ -549,7 +550,10 @@ a{
     #onglet{
         align-items:center;
         padding-top: 3%
-    } 
+    }
+     #button_new_message{
+         width : 70%
+     }
 }
 
 /* ---- stats.js ---- */

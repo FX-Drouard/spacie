@@ -14,7 +14,7 @@ class Star extends Component {
     }
 
     render() {
-        return <div className="message_button" onClick={event => { this.aimerPublication() }} style={{ color: this.isLiked ? "green" : "" }} >Star</div>
+        return <div className="message_button" onClick={event => { this.aimerPublication() }} style={{ color: this.isLiked ? "green" : "" }} ><img src="https://media.spacie.fr/default/pages/svg/star.svg" alt="Star" /></div>
 
     }
 }

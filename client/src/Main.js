@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import Accueil from './main/pages/accueil/Accueil.js';
 import Recherche from './main/pages/recherche/Recherche.js';
-import Notification from './main/pages/Notification.js';
+import Notification from './main/pages/notification/Notification.js';
 import LoginButton from './main/pages/login/LoginButton.js';
 import Profilbutton from './main/pages/profil/ProfilButton.js'
 import Nav from './main/pages/Nav.js';
 import ListeAmis from './main/amis/ListeAmis.js'
 import ListeAmisConnecte from './main/amis/ListeAmisConnecte.js';
-import ListeMessagePrive from './main/pages/ListeMessagePrive.js'
+import ListeMessagePrive from './main/pages/messagePrive/ListeMessagePrive.js'
 import './assets/css/index.css'
 
 class Main extends Component {

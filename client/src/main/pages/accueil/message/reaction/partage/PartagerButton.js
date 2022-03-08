@@ -6,7 +6,7 @@ class PartagerButton extends Component {
     }
 
     render() {
-        return <div className="message_button" onClick={event => { this.partgerPublication(event) }}>Partager</div>
+        return <div className="message_button" onClick={event => { this.partgerPublication(event) }}><img src="https://media.spacie.fr/default/pages/svg/share.svg" alt="Partager" /></div>
 
     }
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import Main from '../../../Main.js'
-import SignIn from './SignIn.js'
+import SignUp from './SignUp.js'
 import '../../../assets/css/login.css'
 
 
@@ -20,7 +20,7 @@ class LoginPage extends Component {
     }
 
     gotoSignIn() {
-        this.props.setBody(<SignIn setToken={this.props.setToken} serveur={this.props.serveur} setBody={this.props.setBody} />)
+        this.props.setBody(<SignUp setToken={this.props.setToken} serveur={this.props.serveur} setBody={this.props.setBody} />)
     }
 
     gotoAccueil() {

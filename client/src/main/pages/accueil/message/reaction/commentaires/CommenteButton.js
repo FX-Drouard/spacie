@@ -15,7 +15,7 @@ class CommenteButton extends Component {
 
     }
     render() {
-        return <div className="message_button" onClick={event => { this.commentairePublication() }}>Commenter</div>
+        return <div className="message_button" onClick={event => { this.commentairePublication() }}><img src="https://media.spacie.fr/default/pages/svg/comment.svg" alt="Commenter" /></div>
     }
 }
 

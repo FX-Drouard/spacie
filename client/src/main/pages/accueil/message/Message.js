@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import CommenteButton from './reaction/commentaires/CommenteButton'
 import Star from './reaction/StarPage.js'
-import PartagerButton from './reaction/PartagerButton.js'
+import PartagerButton from './reaction/partage/PartagerButton'
 import MessageUserInfo from "./MessageUserInfo.js"
-import MessageDate from "./MessageDate.js"
+
 
 class Message extends Component {
     constructor(props) {
@@ -46,15 +46,15 @@ class Message extends Component {
             <div className="message_buttons">
                 <div className="reaction_message">
                     <Star token={this.props.token} serveur={this.props.serveur} setPage={this.props.setBody} message={this.props.message} />
-                    <span>{this.getNombreStars()} star</span>
+                    <span>{this.getNombreStars()} </span>
                 </div>
                 <div className="reaction_message">
                     <CommenteButton token={this.props.token} serveur={this.props.serveur} setBody={this.props.setBody} message={this.props.message} setReaction={this.setReaction} />
-                    <span>{this.getNombreStars()} commantaire</span>
+                    <span>{this.getNombreStars()} </span>
                 </div>
                 <div className="reaction_message">
                     <PartagerButton token={this.props.token} serveur={this.props.serveur} setBody={this.props.setBody} message={this.props.message} setReaction={this.setReaction} />
-                    <span>{this.getNombreStars()} partage</span>
+                    <span>{this.getNombreStars()} </span>
                 </div>
             </div>
 
