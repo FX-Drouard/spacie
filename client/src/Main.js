@@ -60,9 +60,7 @@ class Main extends Component {
                     {this.getPage()}
                     <ListeAmisConnecte token={this.props.token} serveur={this.props.serveur} />
                 </div>
-                <footer>
-                    <p>Copyright © 2022 Spacie - Tous droits réservés.</p>
-                </footer>
+
             </div>
         )
     }
