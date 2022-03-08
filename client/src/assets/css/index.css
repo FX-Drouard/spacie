@@ -21,7 +21,6 @@ body{
 #mainPage {
     background-size: cover;
     color : #b0c9da;
-	
     background-repeat: repeat;
     background-attachment: fixed;
     font-family:"Comfortaa-Bold";
@@ -126,7 +125,7 @@ input[type="submit"]:hover,input[type="button"]:hover{
 
 #onglet span{
     display: flex;
-    margin-bottom: 5%;
+    /* margin-bottom: 5%; */
     width: 12%;
     justify-content: center;
     padding-bottom: 1%;

@@ -7,7 +7,7 @@ class ResultatReacherche extends Component {
     }
     render() {
         // (type, resultat) = this.props.serveur.recherche(this.props.recherche)
-        let type = "Profil"
+        let type = "Message"
         if (type === "")
             return <div id="resultat_recherche">Aucun resultat</div>
         if (type === "Message") {
