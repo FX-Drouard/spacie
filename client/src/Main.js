@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Accueil from './main/pages/accueil/Accueil.js';
 import Recherche from './main/pages/recherche/Recherche.js';
-import Notification from './main/pages/notification/Notification.js';
+import NotificationPage from './main/pages/notification/NotificationPage.js';
 import LoginButton from './main/pages/login/LoginButton.js';
 import Profilbutton from './main/pages/profil/ProfilButton.js'
 import Nav from './main/pages/Nav.js';
@@ -45,11 +45,11 @@ class Main extends Component {
                         </div >
                     </div>
                     <div id="onglet">
-                        <span id="onglet_recherche" onClick={() => this.setPage(<Accueil token={this.props.token} serveur={this.props.serveur} setPage={this.setPage} />)}><img src="https://media.spacie.fr/default/pages/svg/home.svg" alt="Acceuil" /></span>
-                        <span id="onglet_publication" onClick={() => this.setPage(<Recherche token={this.props.token} serveur={this.props.serveur} setPage={this.setPage} />)}><img src="https://media.spacie.fr/default/pages/svg/search.svg" alt="Recherche" /></span>
-                        <span id="onglet_notification" onClick={() => this.setPage(<Notification token={this.props.token} serveur={this.props.serveur} setPage={this.setPage} />)}><img src="https://media.spacie.fr/default/pages/svg/bell.svg" alt="Notification" /></span>
-                        <span id="onglet_amis" onClick={() => this.setPage(<ListeAmis token={this.props.token} serveur={this.props.serveur} setPage={this.setPage} />)}><img src="https://media.spacie.fr/default/pages/svg/friendlist.svg" alt="Ami" /></span>
-                        <span id="onglet_amis" onClick={() => this.setPage(<ListeMessagePrive token={this.props.token} serveur={this.props.serveur} setPage={this.setPage} />)}><img src="https://media.spacie.fr/default/pages/svg/dm.svg" alt="Message" /></span>
+                        <span onClick={() => this.setPage(<Accueil token={this.props.token} serveur={this.props.serveur} setPage={this.setPage} />)}><img src="https://media.spacie.fr/default/pages/svg/home.svg" alt="Acceuil" /></span>
+                        <span onClick={() => this.setPage(<Recherche token={this.props.token} serveur={this.props.serveur} setPage={this.setPage} />)}><img src="https://media.spacie.fr/default/pages/svg/search.svg" alt="Recherche" /></span>
+                        <span onClick={() => this.setPage(<NotificationPage token={this.props.token} serveur={this.props.serveur} setPage={this.setPage} />)}><img src="https://media.spacie.fr/default/pages/svg/bell.svg" alt="Notification" /></span>
+                        <span onClick={() => this.setPage(<ListeAmis token={this.props.token} serveur={this.props.serveur} setPage={this.setPage} />)}><img src="https://media.spacie.fr/default/pages/svg/friendlist.svg" alt="Ami" /></span>
+                        <span onClick={() => this.setPage(<ListeMessagePrive token={this.props.token} serveur={this.props.serveur} setPage={this.setPage} />)}><img src="https://media.spacie.fr/default/pages/svg/dm.svg" alt="Message" /></span>
                     </div>
                     <div id="lien_profil">
                         {this.props.token === "" ?
@@ -58,7 +58,7 @@ class Main extends Component {
                     </div>
                 </header>
                 <div id="corps">
-                    <Nav serveur={this.props.serveur} />
+                    <Nav token={this.props.token} serveur={this.props.serveur} setPage={this.setPage} setBody={this.props.setBody} />
                     {this.getPage()}
                     <ListeAmisConnecte token={this.props.token} serveur={this.props.serveur} />
                 </div>

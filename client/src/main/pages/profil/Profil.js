@@ -47,8 +47,8 @@ class Profil extends Component {
                         </div>
                     </div>
                     <div id="button_profil">
-                        <input type="button" name="Déconnection" value="Déconnection" onClick={() => this.disconnect()} />
-                        <input type="button" name="Modifier" value="Modifier" onClick={() => this.modify()} />
+                        <div className='buttons' onClick={() => this.disconnect()} >Déconnection</div>
+                        <div className='buttons' onClick={() => this.modify()}  > Modifier</div>
                     </div>
                 </div>
 

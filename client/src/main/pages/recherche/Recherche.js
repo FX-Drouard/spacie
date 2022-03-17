@@ -19,7 +19,7 @@ class Recherche extends Component {
             <div id="recherche">
                 <div id="barre_recherche">
                     <textarea ref={this.recherche} placeholder="Rechercher: @nick_name | #actualite" maxLength="150" />
-                    <div className="button_recherche" onClick={() => this.rechercher()}>Rechercher</div>
+                    <div className="buttons" onClick={() => this.rechercher()}>Rechercher</div>
                 </div>
                 {this.getPageComponent()}
             </div>

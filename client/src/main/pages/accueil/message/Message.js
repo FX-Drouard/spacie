@@ -38,8 +38,8 @@ class Message extends Component {
         return <article className="message">
             <div className="message_user_info">
                 <MessageUserInfo token={this.props.token} serveur={this.props.serveur} user={this.props.message.sender} setPage={this.props.setPage} />
-                {/* <p className="message_date">{this.props.message.getDate()}</p> */}
-                <p className="message_date">Le 02/02/2022 à 22:22</p>
+                <p className="message_date">{this.props.message.date} {this.props.message.heure}</p>
+
             </div>
             <div className="message_textuel">{this.props.message.text}</div>
 

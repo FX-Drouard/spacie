@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Media from './action nouveau message/Media.js';
+import { ImagePicker } from 'react-file-picker'
 
 import Accueil from '../Accueil.js'
 class NewMessage extends Component {
@@ -9,7 +9,8 @@ class NewMessage extends Component {
         this.erreur = ""
 
         this.state = {
-            check: false
+            check: false,
+            image: "",
         }
     }
 
@@ -20,27 +21,49 @@ class NewMessage extends Component {
         }
     }
 
-    sendMedia(event) {
-        this.props.setPage(<Media token={this.state.token} serveur={this.serveur} setPage={this.setPage} prive={this.state.check} />)
-    }
-
     checkPubPrivee() {
         this.setState({ check: !this.state.check })
     }
 
     render() {
         return (
-            <section id="new_message">
+            <section className="new_message">
                 <textarea ref={this.publication} name="commentaire" placeholder="votre vie" />
+                {this.state.image && <img src={this.state.image} alt=""></img>}
                 <div id="footer_new_message">
-                    <div id="message_prive" onClick={(event) => this.checkPubPrivee()}>Publication privée <img id="check" src={"https://media.spacie.fr/default/pages/svg/" + (this.state.check ? "check" : "notcheck") + ".svg"} style={{ width: this.state.check ? "10%" : "5%", maxWidth: this.state.check ? "9%" : "20px" }} alt="Media" /></div>
+                    <div id="message_prive" onClick={(event) => this.checkPubPrivee()}><span className={"fa-solid fa-square" + (this.state.check ? "-check" : "")} id="check" alt="Media"></span><span>Publication privée</span></div>
                     <div className="button_new_message">
-                        <div className="new_message_button" onClick={event => { this.sendMedia(event) }}><img src="https://media.spacie.fr/default/pages/svg/upload.svg" alt="Media" /></div>
-                        <div className="new_message_button" onClick={event => { this.sendMedia(event) }}><img src="https://media.spacie.fr/default/pages/svg/send.svg" alt="Publier" /></div>
+                        <span className="fa-solid fa-xmark fa-xl"> </span>
+                        <span className="fa-solid fa-user-astronaut fa-xl"> </span>
+
+                        <ImagePicker
+                            extensions={["jpg", "jpeg", "png"]}
+                            onChange={(base64) => {
+                                this.setState({ image: base64 });
+                            }}
+                            dims={{
+                                minWidth: 100,
+                                maxWidth: 10000,
+                                minHeight: 100,
+                                maxHeight: 10000,
+                            }}
+                            onError={(errMsg) => {
+                                console.log(errMsg);
+                            }}
+                        >
+                            <button
+                                className="fa-solid fa-panorama fa-xl"
+                            >
+                            </button>
+                        </ImagePicker>
+
+
+
+                        <div onClick={event => { this.sendMessage(event) }} className="buttons">Publier</div>
                     </div>
                 </div>
                 <div className="erreur">{this.props.erreur}</div>
-            </section>
+            </section >
         )
     }
 }

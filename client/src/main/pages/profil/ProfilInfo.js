@@ -15,9 +15,9 @@ class ProfilInfo extends Component {
 
     render() {
         return <div className="profil_info">
-            <div className="message_user_info">
+            <div className="user_info">
                 <MessageUserInfo token={this.props.token} serveur={this.props.serveur} user={this.props.user} setPage={this.props.setPage} />
-                <div className="button_recherche" onClick={() => this.ajouter()}>Ajouter</div>
+                <div className="buttons" onClick={() => this.ajouter()}>Ajouter</div>
             </div>
         </div>
     }
