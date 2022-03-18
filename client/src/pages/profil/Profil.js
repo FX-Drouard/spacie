@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import MessageList from '../accueil/message/MessagesList';
 import Modifier from './Modifier.js'
-import Main from '../../../Main.js'
+import Main from '../main/Main.js'
 
 class Profil extends Component {
     constructor(props) {

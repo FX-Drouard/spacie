@@ -22,7 +22,7 @@ class Accueil extends Component {
     }
     getNewMessageComponent() {
         if (this.props.token != "") {
-            return <NewMessage token={this.props.token} serveur={this.props.serveur} setPage={this.setPage} erreur={this.props.erreur} />
+            return <NewMessage token={this.props.token} serveur={this.props.serveur} setPage={this.setPage} erreur={this.props.erreur} setBody={this.props.setBody} />
 
         }
     }

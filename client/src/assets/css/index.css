@@ -188,12 +188,14 @@ input:hover{
 }
 
 .new_message textarea{
-    width: 96%;
+    width: 98%;
     height: 60px;
-
     font-size: 16px;
     padding: 1%;
-    max-width: 96%;
+    max-width: 96.5%;
+    max-height: 100px;
+    min-height: 100px;
+    min-width: 96%;
 }
 
 .new_message{
@@ -208,7 +210,7 @@ input:hover{
 
 #footer_new_message{
     display:flex;
-    justify-content:space-between;
+    width:99%
 
 }
 
@@ -221,7 +223,6 @@ input:hover{
 }
 
 #message_prive{
-    margin-left: 1%;
     width : 60%;
 }
 
@@ -647,7 +648,11 @@ a{
     justify-content: flex-end;
 }
 
-.notification{
+.ami{
+    display: flex;
+}
+
+.notification,.ami{
     background-color: rgb(48, 52, 65,0.4);
     border-radius: 10px;
     margin-bottom: 3%;

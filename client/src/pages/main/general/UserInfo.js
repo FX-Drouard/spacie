@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Profil from '../../profil/Profil.js'
-class MessageUserInfo extends Component {
+import Profil from '../profil/Profil';
+class UserInfo extends Component {
     constructor(props) {
         super(props);
 
@@ -22,4 +22,4 @@ class MessageUserInfo extends Component {
     }
 }
 
-export default MessageUserInfo
+export default UserInfo

@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import CommenteButton from './reaction/commentaires/CommenteButton'
 import Star from './reaction/StarPage.js'
 import PartagerButton from './reaction/partage/PartagerButton'
-import MessageUserInfo from "./MessageUserInfo.js"
+import UserInfo from '../../general/UserInfo';
+import MessageDate from './MessageDate';
+import UserInfoDate from '../../general/UserInfoDate';
 
 
 class Message extends Component {
@@ -36,11 +38,12 @@ class Message extends Component {
 
     render() {
         return <article className="message">
-            <div className="message_user_info">
-                <MessageUserInfo token={this.props.token} serveur={this.props.serveur} user={this.props.message.sender} setPage={this.props.setPage} />
-                <p className="message_date">{this.props.message.date} {this.props.message.heure}</p>
+            {/* <div className="message_user_info">
+                 <UserInfo token={this.props.token} serveur={this.props.serveur} user={this.props.message.sender} setPage={this.props.setPage} />
+               <MessageDate date={this.props.message.date} heure={this.props.message.heure} />
+            </div> */}
 
-            </div>
+            <UserInfoDate token={this.props.token} serveur={this.props.serveur} user={this.props.message.sender} setPage={this.props.setPage} date={this.props.message.date} heure={this.props.message.heure} />
             <div className="message_textuel">{this.props.message.text}</div>
 
             <div className="message_buttons">
@@ -59,7 +62,7 @@ class Message extends Component {
             </div>
 
             {this.getReaction()}
-        </article>
+        </article >
     }
 }
 

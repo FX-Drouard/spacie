@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import MessageUserInfo from '../accueil/message/MessageUserInfo';
-import LoginPage from '../login/LoginPage'
+import UserInfo from '../general/UserInfo';
+import LoginPage from '../../login/LoginPage'
 class ProfilInfo extends Component {
     constructor(props) {
         super(props)
@@ -16,7 +16,7 @@ class ProfilInfo extends Component {
     render() {
         return <div className="profil_info">
             <div className="user_info">
-                <MessageUserInfo token={this.props.token} serveur={this.props.serveur} user={this.props.user} setPage={this.props.setPage} />
+                <UserInfo token={this.props.token} serveur={this.props.serveur} user={this.props.user} setPage={this.props.setPage} />
                 <div className="buttons" onClick={() => this.ajouter()}>Ajouter</div>
             </div>
         </div>

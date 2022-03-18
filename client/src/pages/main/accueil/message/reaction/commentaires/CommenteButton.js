@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import LoginPage from '../../../../login/LoginPage.js';
+import LoginPage from '../../../../../login/LoginPage.js';
 import CommentePage from './CommentePage.js'
 class CommenteButton extends Component {
     constructor(props) {

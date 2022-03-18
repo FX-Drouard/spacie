@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { ImagePicker } from 'react-file-picker'
+import Picker from 'emoji-picker-react'
 
 import Accueil from '../Accueil.js'
 class NewMessage extends Component {
@@ -11,6 +12,7 @@ class NewMessage extends Component {
         this.state = {
             check: false,
             image: "",
+            erreur: ""
         }
     }
 
@@ -24,6 +26,32 @@ class NewMessage extends Component {
     checkPubPrivee() {
         this.setState({ check: !this.state.check })
     }
+    imagePicker() {
+        return <ImagePicker
+            extensions={["jpg", "jpeg", "png"]}
+            onChange={(base64) => {
+                this.setState({ image: base64 });
+            }}
+            dims={{
+                minWidth: 100,
+                maxWidth: 10000,
+                minHeight: 100,
+                maxHeight: 10000,
+            }}
+            onError={(errMsg) => {
+                this.setState({ erreur: errMsg });
+            }}
+        >
+            <button
+                className="fa-solid fa-panorama fa-xl"
+            >
+            </button>
+        </ImagePicker>
+
+    }
+
+
+
 
     render() {
         return (
@@ -33,36 +61,19 @@ class NewMessage extends Component {
                 <div id="footer_new_message">
                     <div id="message_prive" onClick={(event) => this.checkPubPrivee()}><span className={"fa-solid fa-square" + (this.state.check ? "-check" : "")} id="check" alt="Media"></span><span>Publication privée</span></div>
                     <div className="button_new_message">
-                        <span className="fa-solid fa-xmark fa-xl"> </span>
-                        <span className="fa-solid fa-user-astronaut fa-xl"> </span>
+                        {this.state.image != "" ?
+                            <span className="fa-solid fa-xmark fa-xl" onClick={(event) => this.setState({ image: "" })}> </span>
+                            : <span></span>
+                        }
 
-                        <ImagePicker
-                            extensions={["jpg", "jpeg", "png"]}
-                            onChange={(base64) => {
-                                this.setState({ image: base64 });
-                            }}
-                            dims={{
-                                minWidth: 100,
-                                maxWidth: 10000,
-                                minHeight: 100,
-                                maxHeight: 10000,
-                            }}
-                            onError={(errMsg) => {
-                                console.log(errMsg);
-                            }}
-                        >
-                            <button
-                                className="fa-solid fa-panorama fa-xl"
-                            >
-                            </button>
-                        </ImagePicker>
-
-
+                        {this.imagePicker()}
 
                         <div onClick={event => { this.sendMessage(event) }} className="buttons">Publier</div>
                     </div>
                 </div>
-                <div className="erreur">{this.props.erreur}</div>
+
+
+                <div className="erreur">{this.state.erreur}</div>
             </section >
         )
     }

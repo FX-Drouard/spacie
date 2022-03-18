@@ -1,13 +1,11 @@
 import React from 'react';
-import MessageUserInfo from '../accueil/message/MessageUserInfo';
+import UserInfo from '../general/UserInfo';
+import UserInfoDate from '../general/UserInfoDate';
 
 const Notification = (props) => {
     return (
         <div className="notification">
-            <div className="message_user_info">
-                <MessageUserInfo token={props.token} serveur={props.serveur} user={props.message.sender} setPage={props.setPage} />
-                <p className="message_date">{props.message.date} {props.message.heure}</p>
-            </div>
+            <UserInfoDate token={props.token} serveur={props.serveur} user={props.message.sender} setPage={props.setPage} date={props.message.date} heure={props.message.heure} />
             <div className="message_textuel">{props.message.text}</div>
             <div className="notification_button">
                 <div className="buttons" onClick={

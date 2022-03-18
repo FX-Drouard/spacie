@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import Main from '../../../Main.js'
+import Main from '../main/Main.js'
 import SignUp from './SignUp.js'
-import '../../../assets/css/login.css'
+import '../../assets/css/login.css'
 
 
 class LoginPage extends Component {
