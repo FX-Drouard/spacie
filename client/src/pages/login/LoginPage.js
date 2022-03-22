@@ -10,13 +10,17 @@ class LoginPage extends Component {
         super(props);
         this.login = ""
         this.password = ""
+        this.state = { messageErreur: "login et mot de passe sont incorrects" }
     }
 
     connecte() {
-        let token = this.props.serveur.getConnection(this.login, this.password)
-        if (token === "") return
-        this.props.setToken(token);
-        this.props.setBody(<Main setToken={this.props.setToken} serveur={this.props.serveur} setBody={this.props.setBody} token={token} />)
+        let result = this.props.serveur.post("/auth/login/", { login: this.login, password: this.password })
+        if (result.etat == "200") {
+            this.props.setBody(<Main serveur={this.props.serveur} setBody={this.props.setBody} />)
+            return
+        }
+        this.setState({ messageErreur: result.message })
+
     }
 
     gotoSignIn() {
@@ -27,6 +31,9 @@ class LoginPage extends Component {
         this.props.setBody(<Main setToken={this.props.setToken} serveur={this.props.serveur} setBody={this.props.setBody} token="" />)
     }
 
+    getErreur() {
+        return <div className="erreur" style={{ color: "#b0c9da", backgroundColor: "red", maxLength: "30px" }}><span>{this.state.messageErreur}</span></div>
+    }
     render() {
         return <div id="login">
             <header>
@@ -40,6 +47,9 @@ class LoginPage extends Component {
             <section id="block_con">
 
                 <h2 id="titre_con">Log in</h2>
+
+                {this.getErreur()}
+
                 <div className="text">
                     <input type="text" name="Login" placeholder="Login" maxLength="30" ref={this.login} />
                 </div>

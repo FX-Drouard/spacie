@@ -59,34 +59,29 @@ class Message extends Component {
 
             <UserInfoDate token={this.props.token} serveur={this.props.serveur} user={this.props.message.sender} setPage={this.props.setPage} date={this.props.message.date} heure={this.props.message.heure} />
             <div className="message_textuel">{this.props.message.text}</div>
-
+            {this.props.message.image && <img src={this.state.image} alt=""></img>}
             <div className="message_buttons">
                 <div className="reaction_message">
                     <Star token={this.props.token} serveur={this.props.serveur} setPage={this.props.setBody} message={this.props.message} />
                     <span>{this.getNombreStars()} </span>
                 </div>
-                <Popup
 
-                    trigger={<div className="reaction_message">
+                {!this.props.comment ?
+                    <div className="reaction_message">
                         <CommenteButton token={this.props.token} serveur={this.props.serveur} setBody={this.props.setBody} message={this.props.message} setReaction={this.setReaction} />
                         <span>{this.getNombreStars()} </span>
-                    </div>}
-
-                    closeOnDocumentClick={false}
-                    closeOnEscape
-
+                    </div>
+                    : ""
+                }
 
 
-                >
-                    <CommentePage setBody={this.props.setBody} serveur={this.props.serveur} setToken={this.props.setToken} message={this.props.message} />
-                </Popup>
                 <div className="reaction_message">
                     {this.userName == this.props.message.sender.nickName ?
                         <SupprimerButton serveur={this.props.serveur} />
-                        : <PartagerButton token={this.props.token} serveur={this.props.serveur} setBody={this.props.setBody} message={this.props.message} setReaction={this.setReaction} />
-
+                        : !this.props.comment ? <PartagerButton token={this.props.token} serveur={this.props.serveur} setBody={this.props.setBody} message={this.props.message} setReaction={this.setReaction} />
+                            : ""
                     }
-                    {this.userName != this.props.message.sender.nickName && <span>{this.getNombreStars()} </span>}
+                    {this.userName != this.props.message.sender.nickName && !this.props.comment && <span>{this.getNombreStars()} </span>}
 
                 </div>
             </div>

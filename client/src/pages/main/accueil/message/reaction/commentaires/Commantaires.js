@@ -10,7 +10,7 @@ class Commentaires extends Component {
     render() {
         return (
             <section id="messages">
-                {this.props.resultat.map(e => <Message setBody={this.props.setBody} token={this.props.token} serveur={this.props.serveur} setPage={this.setPage} message={{ idMessage: 1, text: "hoho", sender: { nickName: "Fristorm", photoProfil: "https://media.spacie.fr/Profil/Fristorm/pdp.png" } }} />)}
+                {this.props.resultat.map((e, key) => <Message comment={true} setBody={this.props.setBody} token={this.props.token} serveur={this.props.serveur} setPage={this.setPage} message={e} />)}
             </section>)
     }
 

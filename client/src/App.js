@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Main from './pages/main/Main.js'
+import Main from './pages/main/Main.js';
+import axios from 'axios';
 // import Serveur from '../../../serveur/Serveur.js';
 
 class App extends Component {
@@ -8,9 +9,9 @@ class App extends Component {
         this.setToken = this.setToken.bind(this)
         this.setBody = this.setBody.bind(this)
         // this.serveur = new Serveur()
-        this.serveur = null
+        this.serveur = axios.create({ baseURL: "", timeout: 1000, header: { customHeader: "" } })
         this.state = {
-            token: "l",
+            token: "",
             page: null,
         }
 
@@ -33,9 +34,7 @@ class App extends Component {
     }
 
     render() {
-
         return this.getBody()
-
     }
 }
 
