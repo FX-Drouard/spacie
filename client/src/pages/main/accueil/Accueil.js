@@ -16,7 +16,7 @@ class Accueil extends Component {
 
         // return this.props.serveur.getMessages(this.props.token);
         let resultat = [{ idMessage: 1, text: "haha", sender: { nickName: "Fristorm", photoProfil: "https://media.spacie.fr/Profil/Fristorm/pdp.png" }, date: "22/02/2022", heure: "22:22" }, { idMessage: 1, text: "hoha", sender: { nickName: "Fristorm", photoProfil: "https://media.spacie.fr/Profil/Fristorm/pdp.png" }, date: "22/02/2022", heure: "22:22" },
-        { idMessage: 1, text: "hahi", sender: { nickName: "Fristorm", photoProfil: "https://media.spacie.fr/Profil/Fristorm/pdp.png" }, date: "22/02/2022", heure: "22:22" },
+        { idMessage: 1, text: "hahi", sender: { nickName: "stom", photoProfil: "https://media.spacie.fr/Profil/Fristorm/pdp.png" }, date: "22/02/2022", heure: "22:22" },
         { idMessage: 1, text: "haha", sender: { nickName: "Fristorm", photoProfil: "https://media.spacie.fr/Profil/Fristorm/pdp.png" }, date: "22/02/2022", heure: "22:22" }]
         return resultat
     }

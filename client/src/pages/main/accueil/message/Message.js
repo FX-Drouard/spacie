@@ -4,7 +4,19 @@ import Star from './reaction/StarPage.js'
 import PartagerButton from './reaction/partage/PartagerButton'
 import UserInfo from '../../general/UserInfo';
 import MessageDate from './MessageDate';
-import UserInfoDate from '../../general/UserInfoDate';
+import UserInfoDate from '../../general/UserInfoDate'
+import Popup from 'reactjs-popup';
+import CommentePage from './reaction/commentaires/CommentePage';
+
+
+
+const SupprimerButton = () => {
+    return (
+        <div className="message_button fa-solid fa-trash-can fa-xl">
+        </div>
+    );
+};
+
 
 
 class Message extends Component {
@@ -16,6 +28,7 @@ class Message extends Component {
         this.reaction = null
 
         this.setReaction = this.setReaction.bind(this)
+        this.userName = "Fristorm"
 
     }
 
@@ -34,9 +47,10 @@ class Message extends Component {
     setReaction(reaction) {
         this.reaction = reaction
         this.setState({ reaction: "" })
-    }
 
+    }
     render() {
+
         return <article className="message">
             {/* <div className="message_user_info">
                  <UserInfo token={this.props.token} serveur={this.props.serveur} user={this.props.message.sender} setPage={this.props.setPage} />
@@ -51,13 +65,29 @@ class Message extends Component {
                     <Star token={this.props.token} serveur={this.props.serveur} setPage={this.props.setBody} message={this.props.message} />
                     <span>{this.getNombreStars()} </span>
                 </div>
+                <Popup
+
+                    trigger={<div className="reaction_message">
+                        <CommenteButton token={this.props.token} serveur={this.props.serveur} setBody={this.props.setBody} message={this.props.message} setReaction={this.setReaction} />
+                        <span>{this.getNombreStars()} </span>
+                    </div>}
+
+                    closeOnDocumentClick={false}
+                    closeOnEscape
+
+
+
+                >
+                    <CommentePage setBody={this.props.setBody} serveur={this.props.serveur} setToken={this.props.setToken} message={this.props.message} />
+                </Popup>
                 <div className="reaction_message">
-                    <CommenteButton token={this.props.token} serveur={this.props.serveur} setBody={this.props.setBody} message={this.props.message} setReaction={this.setReaction} />
-                    <span>{this.getNombreStars()} </span>
-                </div>
-                <div className="reaction_message">
-                    <PartagerButton token={this.props.token} serveur={this.props.serveur} setBody={this.props.setBody} message={this.props.message} setReaction={this.setReaction} />
-                    <span>{this.getNombreStars()} </span>
+                    {this.userName == this.props.message.sender.nickName ?
+                        <SupprimerButton serveur={this.props.serveur} />
+                        : <PartagerButton token={this.props.token} serveur={this.props.serveur} setBody={this.props.setBody} message={this.props.message} setReaction={this.setReaction} />
+
+                    }
+                    {this.userName != this.props.message.sender.nickName && <span>{this.getNombreStars()} </span>}
+
                 </div>
             </div>
 

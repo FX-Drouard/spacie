@@ -11,11 +11,11 @@ class CommenteButton extends Component {
             this.props.setBody(<LoginPage setBody={this.props.setBody} serveur={this.props.serveur} setToken={this.props.setToken} />)
             return
         }
-        this.props.setReaction(<CommentePage setBody={this.props.setBody} serveur={this.props.serveur} setToken={this.props.setToken} message={this.props.message} />)
+
 
     }
     render() {
-        return <div className="message_button" onClick={event => { this.commentairePublication() }}><img src="https://media.spacie.fr/default/pages/svg/comment.svg" alt="Commenter" /></div>
+        return <div className="message_button fa-solid fa-comment-dots fa-xl" onClick={event => { this.commentairePublication() }}></div>
     }
 }
 

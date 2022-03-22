@@ -4,7 +4,7 @@ class Star extends Component {
     constructor(props) {
         super(props);
         // this.isLiked = this.props.serveur.isLiked(this.props.idMessage, this.props.token)
-        this.isLiked = true;
+        this.isLiked = false;
     }
 
     aimerPublication() {
@@ -14,7 +14,7 @@ class Star extends Component {
     }
 
     render() {
-        return <div className="message_button" onClick={event => { this.aimerPublication() }} style={{ color: this.isLiked ? "green" : "" }} ><img src="https://media.spacie.fr/default/pages/svg/star.svg" alt="Star" /></div>
+        return <div className="message_button fa-solid fa-star fa-xl" onClick={event => { this.aimerPublication() }} style={{ color: this.isLiked ? "green" : "" }} ></div>
 
     }
 }
