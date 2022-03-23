@@ -7,9 +7,7 @@ class SignUp extends Component {
         super(props);
         this.state = { messageErreur: "login et mot de passe sont incorrects" }
         this.login = ""
-        this.jour = 0
-        this.mois = 0
-        this.annee = 0
+        this.date = ""
         this.email = ""
         this.motDePasse = ""
         this.confPassword = ""
@@ -23,29 +21,25 @@ class SignUp extends Component {
     }
 
     getErreur() {
-        return <div className="erreur" style={{ color: "white", backgroundColor: "red", maxLength: "30px", fontWeight: "bold" }}><span>{this.state.messageErreur}</span></div>
+        return <div className="breaker" style={{ color: "white", backgroundColor: "red", maxLength: "30px", fontWeight: "bold" }}><span>{this.state.messageErreur}</span></div>
     }
 
     signUp() {
 
         const regEmail = new RegExp("^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$")
-        const regNum = new RegExp("[0-9]+")
-        if (this.motDePasse == "" || this.confPassword == "" || this.login == "" || this.annee == "" || this.jour == "" || this.mois == "" || this.email == "") {
+
+        if (this.motDePasse == "" || this.confPassword == "" || this.login == "" || this.date == "" || this.email == "") {
             this.setState({ messageErreur: "un des champs est vide, veuillez remplir tout les champs" })
-            return;
-        }
-        if (!(regNum.test(this.annee) && regNum.test(this.jour) && regNum.test(this.mois))) {
-            this.setState({ messageErreur: "date de date naissence invalide" })
-            return;
+            return
         }
 
         if (!regEmail.test(this.email)) {
             this.setState({ messageErreur: "date de date naissence invalide" })
-            return;
+            return
         }
         if (this.motDePasse != this.confPassword) {
             this.setState({ messageErreur: "le mot de passe de confirmation est different du mot de passe" })
-            return;
+            return
         }
 
 
@@ -85,8 +79,8 @@ class SignUp extends Component {
                     <input type="text" name="login" placeholder="login: Fristorm" maxLength="30"
                         alt="le login doit avoir que des lettres et des chiffres" onChange={event => this.login = event.target.value} />
                 </div>
-                <div className="date_naissence">
-                    <div className="date">
+                <div className="text">
+                    {/* <div className="date">
                         <input type="number" name="prenom" placeholder="Jour" maxLength="2" onChange={event => this.jour = event.target.value} ref={this.jour} />
                     </div>
                     <div className="date">
@@ -94,7 +88,8 @@ class SignUp extends Component {
                     </div>
                     <div className="date">
                         <input type="number" name="nom" placeholder="annee" maxLength="2" onChange={event => this.annee = event.target.value} />
-                    </div>
+                    </div> */}
+                    <input type={this.state.dateRef} style={{ textAlign: "center" }} placeholder="Date de naissence" onFocus={event => this.setState({ dateRef: "date" })} onBlur={() => this.setState({ dateRef: "text" })} onChange={event => this.date = event.target.value} />
                 </div>
 
                 <div className="text">

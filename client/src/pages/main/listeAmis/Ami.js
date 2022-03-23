@@ -4,7 +4,7 @@ import UserInfo from '../general/UserInfo';
 const Ami = (props) => {
     return (
         <div className="ami">
-            <UserInfo token={props.token} serveur={props.serveur} user={props.user} setPage={props.setPage} />
+            <UserInfo serveur={props.serveur} user={props.user} setPage={props.setPage} />
             <div className="ami_button">
                 <div className="buttons" onClick={
                     console.log("")

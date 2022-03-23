@@ -12,8 +12,8 @@ class CommentePage extends Component {
     }
     render() {
         return <div className="commentaires">
-            <NewMessage token={this.props.token} serveur={this.props.serveur} setPage={this.setPage} erreur={this.props.erreur} message={this.props.message} />
-            <Commentaires setBody={this.props.setBody} token={this.props.token} serveur={this.props.serveur} setPage={this.setPage} resultat={this.getCommentsOfMessage()} />
+            <NewMessage serveur={this.props.serveur} setPage={this.setPage} erreur={this.props.erreur} message={this.props.message} />
+            <Commentaires setBody={this.props.setBody} serveur={this.props.serveur} setPage={this.setPage} resultat={this.getCommentsOfMessage()} />
         </div>
 
     }

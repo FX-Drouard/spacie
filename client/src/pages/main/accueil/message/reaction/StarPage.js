@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
+import LoginPage from '../../../../login/LoginPage';
 
 class Star extends Component {
     constructor(props) {
         super(props);
-        // this.isLiked = this.props.serveur.isLiked(this.props.idMessage, this.props.token)
+
         this.isLiked = false;
+        this.token = document.cookie.split(";").find(it => it.includes("token=")).split("=")[1]
+
     }
 
     aimerPublication() {
-        if (this.props.token === "")
+        if (this.token === "") {
+            this.props.setBody(<LoginPage setBody={this.props.setBody} serveur={this.props.serveur} />)
             return
-        this.isLiked = this.props.serveur.likeMessage(this.props.idMessage, this.props.token)
+        }
+        //TODO
     }
 
     render() {

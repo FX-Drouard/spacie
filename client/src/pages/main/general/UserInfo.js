@@ -7,7 +7,7 @@ class UserInfo extends Component {
     }
 
     gotoProfil() {
-        this.props.setPage(<Profil user={this.props.user} />)
+        this.props.setPage(<Profil setBody={this.props.setBody} serveur={this.props.serveur} setPage={this.setPage} user={this.props.user} />)
     }
 
     render() {

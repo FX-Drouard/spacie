@@ -10,7 +10,7 @@ class Commentaires extends Component {
     render() {
         return (
             <section id="messages">
-                {this.props.resultat.map((e, key) => <Message comment={true} setBody={this.props.setBody} token={this.props.token} serveur={this.props.serveur} setPage={this.setPage} message={e} />)}
+                {this.props.resultat.map((e, key) => <Message key={key} comment={true} setBody={this.props.setBody} serveur={this.props.serveur} setPage={this.setPage} message={e} />)}
             </section>)
     }
 

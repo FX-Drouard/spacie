@@ -23,7 +23,7 @@ export default class EditProfil extends Component {
     }
 
     getErreur() {
-        return <div className="erreur" ><span>{this.state.messageErreur}</span></div>
+        return <div className="erreur" style={{ color: "white", backgroundColor: "red", width: "100%" }} ><span>{this.state.messageErreur}</span></div>
     }
 
     sauvgarder() {
@@ -31,11 +31,6 @@ export default class EditProfil extends Component {
         const regEmail = new RegExp("^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$")
         const regNum = new RegExp("^[0-9]+")
 
-
-        if ((this.state.date.annee != "" && this.state.date.jour != "" && this.state.date.mois != "") && !(regNum.test(this.state.date.annee) && regNum.test(this.state.date.jour) && regNum.test(this.state.date.mois))) {
-            this.setState({ messageErreur: "date de date naissence invalide" })
-            return;
-        }
 
         if (!regEmail.test(this.state.email)) {
             this.setState({ messageErreur: "date de date naissence invalide" })
@@ -95,6 +90,7 @@ export default class EditProfil extends Component {
                         </button>
                     </ImagePicker>
                 </div>
+                {this.getErreur()}
 
                 <div className="edit_content">
                     <div>Nick name</div>
@@ -113,7 +109,7 @@ export default class EditProfil extends Component {
                 </div>
                 <div className="edit_content">
 
-                    <div>Mot de passe acctuel</div>
+                    <div>Mot de passe actuel</div>
                     <div className="text">
                         <input type="password" name="Mot de Passe" placeholder="Votre mot de passe" maxLength="30" onChange={event => this.motDePasse = event.target.value} />
                     </div>
@@ -134,7 +130,6 @@ export default class EditProfil extends Component {
                     </div>
                 </div>
 
-                {this.getErreur()}
                 <div style={{ display: 'flex', gap: "10px" }}>
                     <div className="buttons" onClick={(event) => { this.sauvgarder() }}>Sauvgarder</div>
                     <div className="buttons" onClick={(event) => { this.props.close() }}>Close</div>

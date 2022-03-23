@@ -8,7 +8,7 @@ class Recherche extends Component {
 
     }
     rechercher() {
-        this.pageComponent = <ResultatReacherche serveur={this.props.serveur} recherche={this.recherche} setPage={this.props.setPage} setBody={this.props.setBody} token={this.props.token} />
+        this.pageComponent = <ResultatReacherche serveur={this.props.serveur} recherche={this.recherche} setPage={this.props.setPage} setBody={this.props.setBody} />
         this.setState({ refreche: "" })
     }
     getPageComponent() {

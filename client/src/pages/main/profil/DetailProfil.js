@@ -19,41 +19,41 @@ class DetailProfil extends Component {
                 <div className="info_ligne">
                     <div className="info">
                         <h3>Date de Création</h3>
-                        <p>{this.props.user.creationDate}</p>
+                        <p className="breaker">{this.props.user.creationDate}</p>
                     </div>
                     <div className="info">
                         <h3>Date de naissance</h3>
-                        <p>{this.props.user.date.jour}/{this.props.user.date.mois}/{this.props.user.date.annee}</p>
+                        <p className="breaker">{this.props.user.date.jour}/{this.props.user.date.mois}/{this.props.user.date.annee}</p>
                     </div>
                 </div>
                 <div className="info_ligne">
                     <div className="info">
                         <h3>email</h3>
-                        <p>{this.props.user.mail}</p>
+                        <p className="breaker">{this.props.user.mail}</p>
                     </div>
                     <div className="info">
                         <h3>Biographie</h3>
-                        <p>{this.props.user.biographie}</p>
+                        <p className="breaker">{this.props.user.biographie}</p>
                     </div>
                 </div>
                 <div className="info_ligne">
                     <div className="info">
                         <h3>Followers</h3>
-                        <p>{this.props.user.followers}</p>
+                        <p className="breaker">{this.props.user.followers}</p>
                     </div>
                     <div className="info">
                         <h3>Followings</h3>
-                        <p>{this.props.user.followings}</p>
+                        <p className="breaker">{this.props.user.followings}</p>
                     </div>
                 </div>
                 <div className="info_ligne">
                     <div className="info">
                         <h3>Messages</h3>
-                        <p>{this.props.user.messages}</p>
+                        <p className="breaker">{this.props.user.messages}</p>
                     </div>
                     <div className="info">
                         <h3>Stars</h3>
-                        <p>{this.props.user.stars}</p>
+                        <p className="breaker">{this.props.user.stars}</p>
                     </div>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'center' }}>

@@ -18,6 +18,10 @@ body{
     height: 100%;
 }
 
+ .breaker {
+    word-break: break-all;
+ }
+
 #mainPage {
     background-size: cover;
     color : #b0c9da;
@@ -552,7 +556,7 @@ a{
 
 #resultat_recherche{
     margin-top: 3%;
-    width: 100%;
+    width: 96%;
     display: flex;
     justify-content: space-evenly;
     background-color: rgb(48, 52, 65,0.6);

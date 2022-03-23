@@ -5,6 +5,8 @@ class Accueil extends Component {
     constructor(props) {
         super(props);
         this.getMessages = this.getMessages.bind(this)
+        this.token = document.cookie.split(";").find(it => it.includes("token=")).split("=")[1]
+
     }
 
     getMessages() {
@@ -22,7 +24,7 @@ class Accueil extends Component {
     }
     getNewMessageComponent() {
         if (this.props.token != "") {
-            return <NewMessage token={this.props.token} serveur={this.props.serveur} setPage={this.setPage} erreur={this.props.erreur} setBody={this.props.setBody} />
+            return <NewMessage serveur={this.props.serveur} setPage={this.setPage} erreur={this.props.erreur} setBody={this.props.setBody} />
 
         }
     }
@@ -31,7 +33,7 @@ class Accueil extends Component {
         return <div className="millieu">
             {this.getNewMessageComponent()}
 
-            <MessageList setBody={this.props.setBody} token={this.props.token} serveur={this.props.serveur} setPage={this.props.setPage} resultat={this.getMessages()} />
+            <MessageList setBody={this.props.setBody} serveur={this.props.serveur} setPage={this.props.setPage} resultat={this.getMessages()} />
 
         </div>
     }

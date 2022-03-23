@@ -5,7 +5,7 @@ import UserInfoDate from '../general/UserInfoDate';
 const Notification = (props) => {
     return (
         <div className="notification">
-            <UserInfoDate token={props.token} serveur={props.serveur} user={props.message.sender} setPage={props.setPage} date={props.message.date} heure={props.message.heure} />
+            <UserInfoDate serveur={props.serveur} user={props.message.sender} setPage={props.setPage} date={props.message.date} heure={props.message.heure} />
             <div className="message_textuel">{props.message.text}</div>
             <div className="notification_button">
                 <div className="buttons" onClick={

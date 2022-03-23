@@ -9,8 +9,8 @@ class Profil extends Component {
     }
 
     disconnect() {
-        // this.props.server.disconnect(this.props.token);
-        this.props.setBody(<Main serveur={this.props.serveur} setBody={this.props.setBody} token="" />)
+        // TODO
+        this.props.setBody(<Main serveur={this.props.serveur} setBody={this.props.setBody} />)
     }
 
     modify() {
@@ -18,7 +18,7 @@ class Profil extends Component {
     }
     getMessages() {
 
-        //     return this.props.serveur.getMessageUser(this.props.token);
+        // TODO
 
 
         return [{ idMessage: 1, text: "haha", sender: { nickName: "Fristorm", photoProfil: "https://media.spacie.fr/Profil/Fristorm/pdp.png" } }, { idMessage: 1, text: "hoha", sender: { nickName: "Fristorm", photoProfil: "https://media.spacie.fr/Profil/Fristorm/pdp.png" } }, { idMessage: 1, text: "hahi", sender: { nickName: "Fristorm", photoProfil: "https://media.spacie.fr/Profil/Fristorm/pdp.png" } }, { idMessage: 1, text: "haha", sender: { nickName: "Fristorm", photoProfil: "https://media.spacie.fr/Profil/Fristorm/pdp.png" } }]
@@ -54,7 +54,7 @@ class Profil extends Component {
 
             </section >
 
-            <MessageList token={this.props.token} profil={true} serveur={this.props.serveur} setPage={this.setPage} resultat={this.getMessages()} />
+            <MessageList profil={true} serveur={this.props.serveur} setPage={this.setPage} resultat={this.getMessages()} />
 
 
         </div >

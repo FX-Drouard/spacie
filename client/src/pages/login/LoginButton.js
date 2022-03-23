@@ -8,7 +8,7 @@ class LoginButton extends Component {
     }
 
     connecte() {
-        this.props.setBody(<LoginPage setBody={this.props.setBody} serveur={this.props.serveur} setToken={this.props.setToken} />);
+        this.props.setBody(<LoginPage setBody={this.props.setBody} serveur={this.props.serveur} />);
     }
 
     render() {

@@ -6,7 +6,7 @@ class ProfilList extends Component {
     }
     render() {
         return <div id="modificationProfil">
-            {this.props.resultat.map((e, index) => <ProfilInfo key={index} token={this.props.token} serveur={this.props.serveur} setPage={this.props.setPage} setBody={this.props.setBody} user={e} />)}
+            {this.props.resultat.map((e, index) => <ProfilInfo key={index} serveur={this.props.serveur} setPage={this.props.setPage} setBody={this.props.setBody} user={e} />)}
         </div>
     }
 }

@@ -13,7 +13,7 @@ class AmiPage extends Component {
 
         return (
             <div className="millieu">
-                <ListeAmis token={this.props.token} serveur={this.props.serveur} user={resultat} setPage={this.props.setPage} />
+                <ListeAmis serveur={this.props.serveur} user={resultat} setPage={this.props.setPage} />
             </div>
         );
     }

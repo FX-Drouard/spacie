@@ -4,6 +4,7 @@ import ProfilList from './profil/ProfilList';
 class Nav extends Component {
     constructor(props) {
         super(props);
+        this.token = document.cookie.split(";").find(it => it.includes("token=")).split("=")[1]
     }
 
     render() {
@@ -13,8 +14,8 @@ class Nav extends Component {
 
 
         return <nav>
-            {this.props.token ?
-                <ProfilList token={this.props.token} serveur={this.props.serveur} setPage={this.props.setPage} setBody={this.props.setBody} resultat={resultat} />
+            {this.token ?
+                <ProfilList serveur={this.props.serveur} setPage={this.props.setPage} setBody={this.props.setBody} resultat={resultat} />
                 : ""
             }
         </nav>

@@ -10,7 +10,7 @@ class LoginPage extends Component {
         super(props);
         this.login = ""
         this.password = ""
-        this.state = { messageErreur: "login et mot de passe sont incorrects" }
+        this.state = { messageErreur: "login et mot de passe sont incorrects login et mot de passe sont incorrects login et mot de passe sont incorrects login et mot de passe sont incorrects" }
     }
 
     connecte() {
@@ -24,15 +24,15 @@ class LoginPage extends Component {
     }
 
     gotoSignIn() {
-        this.props.setBody(<SignUp setToken={this.props.setToken} serveur={this.props.serveur} setBody={this.props.setBody} />)
+        this.props.setBody(<SignUp serveur={this.props.serveur} setBody={this.props.setBody} />)
     }
 
     gotoAccueil() {
-        this.props.setBody(<Main setToken={this.props.setToken} serveur={this.props.serveur} setBody={this.props.setBody} token="" />)
+        this.props.setBody(<Main serveur={this.props.serveur} setBody={this.props.setBody} />)
     }
 
     getErreur() {
-        return <div className="erreur" ><span>{this.state.messageErreur}</span></div>
+        return <div className="erreur" style={{ color: "white", backgroundColor: "red" }}><span>{this.state.messageErreur}</span></div>
     }
     render() {
         return <div id="login">

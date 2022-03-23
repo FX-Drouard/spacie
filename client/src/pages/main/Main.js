@@ -9,6 +9,7 @@ import '../../assets/css/index.css'
 import LoginPage from '../login/LoginPage.js';
 import ListeAmis from './listeAmis/ListeAmis.js';
 import AmiPage from './listeAmis/AmiPage.js';
+import Header from './header/Header.js';
 
 class Main extends Component {
     constructor(props) {
@@ -21,7 +22,7 @@ class Main extends Component {
     }
 
     componentWillMount() {
-        this.setPage(<Accueil setBody={this.props.setBody} token={this.props.token} serveur={this.props.serveur} setPage={this.setPage} />)
+        this.setPage(<Accueil setBody={this.props.setBody} serveur={this.props.serveur} setPage={this.setPage} />)
     }
     setPage(cl) {
 
@@ -35,44 +36,9 @@ class Main extends Component {
     render() {
         return (
             <div id="mainPage">
-                <header>
-                    <div id="logo">
-                        <div id="header_main">
-                            <div id="logo_image" >
-                                <img src="https://media.spacie.fr/default/pages/icon.png" alt="logo" width="128" height="128" />
-                            </div >
-                            <div id="title">
-                                <p>Spacie</p>
-                            </div>
-                        </div >
-                    </div>
-                    <div id="onglet">
-                        <span onClick={() => this.setPage(<Accueil setBody={this.props.setBody} token={this.props.token} serveur={this.props.serveur} setPage={this.setPage} />)}><img src="https://media.spacie.fr/default/pages/svg/home.svg" alt="Acceuil" /></span>
-                        <span onClick={() => this.setPage(<Recherche token={this.props.token} serveur={this.props.serveur} setPage={this.setPage} />)}><img src="https://media.spacie.fr/default/pages/svg/search.svg" alt="Recherche" /></span>
-                        <span onClick={() => {
-                            this.props.token != "" ?
-                                this.setPage(<NotificationPage token={this.props.token} serveur={this.props.serveur} setPage={this.setPage} />) :
-                                this.props.setBody(<LoginPage setBody={this.props.setBody} serveur={this.props.serveur} setToken={this.props.setToken} />)
-                        }}>
-                            <img src="https://media.spacie.fr/default/pages/svg/bell.svg" alt="Notification" />
-                        </span>
-                        <span onClick={() => {
-                            this.props.token != "" ?
-                                this.setPage(<AmiPage token={this.props.token} serveur={this.props.serveur} setPage={this.setPage} />) :
-                                this.props.setBody(<LoginPage setBody={this.props.setBody} serveur={this.props.serveur} setToken={this.props.setToken} />)
-                        }}>
-                            <img src="https://media.spacie.fr/default/pages/svg/friendlist.svg" alt="Ami" />
-                        </span>
-                        {/* <span onClick={() => this.setPage(<ListeMessagePrive token={this.props.token} serveur={this.props.serveur} setPage={this.setPage} />)}><img src="https://media.spacie.fr/default/pages/svg/dm.svg" alt="Message" /></span> */}
-                    </div>
-                    <div id="lien_profil">
-                        {this.props.token === "" ?
-                            <LoginButton setToken={this.props.setToken} serveur={this.props.serveur} setBody={this.props.setBody} />
-                            : <Profilbutton token={this.props.token} serveur={this.props.serveur} setPage={this.setPage} />}
-                    </div>
-                </header>
+                <Header serveur={this.props.serveur} setPage={this.setPage} setBody={this.props.setBody} />
                 <div id="corps">
-                    <Nav token={this.props.token} serveur={this.props.serveur} setPage={this.setPage} setBody={this.props.setBody} />
+                    <Nav serveur={this.props.serveur} setPage={this.setPage} setBody={this.props.setBody} />
                     {this.getPage()}
                     <aside></aside>
                 </div>

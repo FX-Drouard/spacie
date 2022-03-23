@@ -6,20 +6,19 @@ import axios from 'axios';
 class App extends Component {
     constructor(props) {
         super(props)
-        this.setToken = this.setToken.bind(this)
         this.setBody = this.setBody.bind(this)
         // this.serveur = new Serveur()
         this.serveur = axios.create({ baseURL: "", timeout: 1000, header: { customHeader: "" } })
         this.state = {
-            token: "m",
             page: null,
         }
+        document.cookie = 'token=3';
 
 
     }
 
     componentWillMount() {
-        this.setBody(<Main token={this.state.token} serveur={this.serveur} setBody={this.setBody} setToken={this.setToken} />)
+        this.setBody(<Main serveur={this.serveur} setBody={this.setBody} />)
     }
     setBody(cl) {
         this.pages = cl
@@ -28,11 +27,6 @@ class App extends Component {
     getBody() {
         return this.state.page
     }
-
-    setToken(tkn) {
-        this.setState({ token: tkn })
-    }
-
     render() {
         return this.getBody()
     }

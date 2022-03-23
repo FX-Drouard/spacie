@@ -3,6 +3,7 @@ import { ImagePicker } from 'react-file-picker'
 import Picker from 'emoji-picker-react'
 
 import Accueil from '../Accueil.js'
+import Popup from 'reactjs-popup';
 class NewMessage extends Component {
     constructor(props) {
         super(props);
@@ -14,12 +15,14 @@ class NewMessage extends Component {
             image: "",
             erreur: ""
         }
+        this.token = document.cookie.split(";").find(it => it.includes("token=")).split("=")[1]
+
     }
 
     sendMessage(event) {
         if (!(this.publication === null || this.publication === "")) {
-            this.erreur = this.props.serveur.sendMessage(this.publication, this.props.token, this.props.message, this.state.check)
-            this.props.setPage(<Accueil token={this.state.token} serveur={this.serveur} setPage={this.setPage} erreur={this.erreur} />)
+            this.erreur = this.props.serveur.sendMessage(this.publication, this.token, this.props.message, this.state.check)
+            this.props.setPage(<Accueil serveur={this.serveur} setPage={this.setPage} erreur={this.erreur} />)
         }
     }
 
@@ -65,9 +68,12 @@ class NewMessage extends Component {
                             <span className="fa-solid fa-xmark fa-xl" onClick={(event) => this.setState({ image: "" })}> </span>
                             : <span></span>
                         }
-
+                        <Popup
+                            trigger={<span className="fa-solid fa-xmark fa-xl" > </span>}
+                        >
+                            <Picker></Picker>
+                        </Popup>
                         {this.imagePicker()}
-
                         <div onClick={event => { this.sendMessage(event) }} className="buttons">Publier</div>
                     </div>
                 </div>
