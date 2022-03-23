@@ -64,9 +64,9 @@ class NewMessage extends Component {
                 <div id="footer_new_message">
                     <div id="message_prive" onClick={(event) => this.checkPubPrivee()}><span className={"fa-solid fa-square" + (this.state.check ? "-check" : "")} id="check" alt="Media"></span><span>Publication privée</span></div>
                     <div className="button_new_message">
-                        {this.state.image != "" ?
+                        {this.state.image != "" &&
                             <span className="fa-solid fa-xmark fa-xl" onClick={(event) => this.setState({ image: "" })}> </span>
-                            : <span></span>
+
                         }
                         <Popup
                             trigger={<span className="fa-solid fa-xmark fa-xl" > </span>}
