@@ -27,29 +27,46 @@ class SignUp extends Component {
     }
 
     signUp() {
-        console.log(this.motDePasse)
+
+        const regEmail = new RegExp("^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$")
+        const regNum = new RegExp("[0-9]+")
         if (this.motDePasse == "" || this.confPassword == "" || this.login == "" || this.annee == "" || this.jour == "" || this.mois == "" || this.email == "") {
             this.setState({ messageErreur: "un des champs est vide, veuillez remplir tout les champs" })
             return;
         }
+        if (!(regNum.test(this.annee) && regNum.test(this.jour) && regNum.test(this.mois))) {
+            this.setState({ messageErreur: "date de date naissence invalide" })
+            return;
+        }
 
+        if (!regEmail.test(this.email)) {
+            this.setState({ messageErreur: "date de date naissence invalide" })
+            return;
+        }
         if (this.motDePasse != this.confPassword) {
             this.setState({ messageErreur: "le mot de passe de confirmation est different du mot de passe" })
             return;
         }
 
-        let result = this.props.serveur.post("/api/auth/signup", {
-            login: this.login,
-            date: { jour: this.jour, mois: this.mois, annee: this.annee },
-            email: this.email,
-            motDePasse: this.motDePasse
-        })
-        if (result.etat == "200") {
+
+
+        this.props.serveur.post("/api/auth/signup",
+            {
+                login: this.login,
+                date: { jour: this.jour, mois: this.mois, annee: this.annee },
+                email: this.email,
+                motDePasse: this.motDePasse
+            }
+        ).then((res) => {
             this.props.setBody(<Main serveur={this.props.serveur} setBody={this.props.setBody} />)
-            return;
         }
-        this.setState({ messageErreur: result.message })
+        ).catch((err) => {
+            this.setState({ messageErreur: err.message })
+        })
+
     }
+
+
     render() {
         return <div id="login">
 
@@ -70,7 +87,7 @@ class SignUp extends Component {
                 </div>
                 <div className="date_naissence">
                     <div className="date">
-                        <input type="number" name="prenom" placeholder="Jour" maxlength="2" onChange={event => this.jour = event.target.value} ref={this.jour} />
+                        <input type="number" name="prenom" placeholder="Jour" maxLength="2" onChange={event => this.jour = event.target.value} ref={this.jour} />
                     </div>
                     <div className="date">
                         <input type="number" name="nom" placeholder="mois" maxLength="2" onChange={event => this.mois = event.target.value} />
@@ -88,7 +105,7 @@ class SignUp extends Component {
                 </div>
                 <div className="text">
                     <input type="password" name="Confirmez le mot de passe" placeholder="Confirmez votre mot de passe"
-                        maxlength="30" onChange={event => this.confPassword = event.target.value} />
+                        maxLength="30" onChange={event => this.confPassword = event.target.value} />
                 </div>
                 <br />
                 <div className="h-captcha" data-sitekey="5ecff875-84d2-42d0-939c-32fe8d536fb0"></div>

@@ -8,7 +8,7 @@ class ProfilButton extends Component {
 
     gotoProfil() {
         // this.props.setPage(<Profil user={this.props.serveur.getUser(this.props.token)}/>)
-        this.props.setPage(<Profil user={{ login: "Palifen", mail: "fristorm@mail.spacie.fr", nickName: "fristorm", creationDate: "2022-02-24", photoProfil: "https://media.spacie.fr/Profil/Fristorm/pdp.png" }} />)
+        this.props.setPage(<Profil user={{ login: "Palifen", mail: "fristorm@spacie.fr", nickName: "fristorm", creationDate: "2022-02-24", photoProfil: "https://media.spacie.fr/Profil/Fristorm/pdp.png", date: { jour: "01", mois: "04", annee: "2000" }, biographie: "etudiant a la sorbonne universite", followers: "100", followings: "500", messages: "5", stars: "70" }} />)
     }
 
     render() {

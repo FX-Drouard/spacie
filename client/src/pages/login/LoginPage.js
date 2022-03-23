@@ -32,7 +32,7 @@ class LoginPage extends Component {
     }
 
     getErreur() {
-        return <div className="erreur" style={{ color: "#b0c9da", backgroundColor: "red", maxLength: "30px" }}><span>{this.state.messageErreur}</span></div>
+        return <div className="erreur" ><span>{this.state.messageErreur}</span></div>
     }
     render() {
         return <div id="login">
@@ -51,10 +51,10 @@ class LoginPage extends Component {
                 {this.getErreur()}
 
                 <div className="text">
-                    <input type="text" name="Login" placeholder="Login" maxLength="30" ref={this.login} />
+                    <input type="text" name="Login" placeholder="Login" maxLength="30" onChange={event => this.login = event.target.value} />
                 </div>
                 <div className="text">
-                    <input type="password" name="password" placeholder="password" maxLength="30" ref={this.password} />
+                    <input type="password" name="password" placeholder="password" maxLength="30" onChange={event => this.password = event.target.value} />
                 </div>
                 <div className="button">
                     <input type="button" onClick={() => this.connecte()} name="Connexion" value="Connexion" />

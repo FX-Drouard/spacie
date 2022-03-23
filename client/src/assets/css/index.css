@@ -358,7 +358,7 @@ a{
     border-radius: 10px;
 }
 
-#info_ligne{
+.info_ligne{
     display: flex;  
     justify-content:space-evenly
 }
@@ -388,14 +388,14 @@ a{
     width:25%
 }
 
-#info_ligne *{
+.info_ligne *{
     background-color: rgb(48, 52, 65,0.6);
     border-radius: 10px;
     padding: 2%;
     margin:1%
 }
 
-#info_ligne div h3{
+.info_ligne div h3{
     text-decoration: underline;
 }
 
@@ -411,7 +411,10 @@ a{
 #button_profil{
     display: flex;
     width: 60%;
+    gap:10px;
+    justify-content: flex-end
 }
+
 
 #button_profil{
     width: 100%;
@@ -604,57 +607,13 @@ a{
         width: 50%;
     }
 
-    #info_ligne{
+    .info_ligne{
         justify-content: space-evenly;
     }
 
 }
 
 
-@media screen and (max-width: 500px)  {
-   
-    aside{
-        display:none;
-        width: 0%;
-    }
-    .millieu{
-        width: 100%;
-    }
-    .message_buttons{
-        width: 100%;
-
-    }
-    #title{
-        display:none;
-        width: 0;
-    }
-    #logo {
-        width: 25%;
-    }
-    #logo_image{
-        width: 100%;
-    }
-    #onglet{
-        align-items:center;
-        padding-top: 3%
-    }
-    #mainPage header{
-        height: 10%;
-    }
-    #onglet span{
-        width: 14%;
-    }
-    #onglet span:hover{
-        animation: hovermobile 2s both
-    }
-    @keyframes hovermobile {
-        to{
-            width:17%
-        }
-    }
-     
-    
-}
 
 
 
@@ -686,6 +645,79 @@ a{
     position: relative;
     /* overflow-y: scroll; */
 }
+
+.erreur{
+    color: "#b0c9da";
+    background-color: "red";
+    max-width: "30px";
+}
+
+#edit_profil{
+    background-color:rgb(48, 52, 65,0.8);
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+   
+    width : 95%;
+    padding: 2%;
+    text-align: center;
+    color:#b0c9da;
+    gap: 10px;
+    border: 5px solid #b0c9da;
+    border-radius: 10px;
+
+    
+}
+
+
+
+#edit_profil input{
+    color: #293136;
+    font-family: "Comfortaa-Bold";  
+    border-radius: 3px 3px 3px 3px;
+    border-style: groove;    
+    font-size: 16px;
+    width: 96%;
+    padding: 2% 0%;
+    text-align: center;
+    border-radius: 0px 5px 0px 10px;    
+}
+.edit_content{
+    border-radius: 10px;
+    border-style: groove;
+    border-color: #b0c9da;
+    padding : 2%;
+    width: 85%;
+}
+
+#edit_profil .photoProfil img{
+    width: 100px ;
+    height: 100px;
+}
+
+#detail_profil{
+    background-color:rgb(48, 52, 65,0.5);
+    display:flex;
+    flex-direction: column;
+
+    width : 95%;
+    padding: 2%;
+    text-align: center;
+    color:#b0c9da;
+    gap: 10px;
+    border: 5px solid #b0c9da;
+    border-radius: 10px;
+}
+
+#detail_profil .info{
+    width: 100%;
+    background-color: #b0c9da;
+}
+
+#detail_profil .buttons{
+    width: 45px;
+}
+
 /* ---- stats.js ---- */
 /* 
 .count-particles{
@@ -736,3 +768,61 @@ a{
     background-position: 50% 50%;
     background-repeat: no-repeat;
   } */
+
+
+@media screen and (max-width: 700px)  {
+   
+    aside{
+        display:none;
+        width: 0%;
+    }
+    .millieu{
+        width: 100%;
+    }
+    .message_buttons{
+        width: 100%;
+
+    }
+    #title{
+        display:none;
+        width: 0;
+    }
+    #logo {
+        width: 25%;
+    }
+    #logo_image{
+        width: 100%;
+    }
+    #onglet{
+        align-items:center;
+        padding-top: 3%
+    }
+    #mainPage header{
+        height: 10%;
+    }
+    #onglet span{
+        width: 10%;
+    }
+    #onglet span:hover{
+        animation: hovermobile 2s both
+    }
+    @keyframes hovermobile {
+        to{
+            width:17%
+        }
+    }
+}
+
+
+@media screen and (max-width: 550px)  {
+    .display{
+        display:none;
+        width: 0;
+    }
+}
+
+@media screen and (max-width: 500px)  {
+    #onglet span{
+        width: 10%;
+    }
+}

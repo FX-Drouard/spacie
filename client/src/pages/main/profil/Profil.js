@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import MessageList from '../accueil/message/MessagesList';
 import Modifier from './Modifier.js'
 import Main from '../Main.js'
+import Popup from 'reactjs-popup';
+import EditProfil from './EditProfil';
+import DetailProfil from './DetailProfil';
 
 class Profil extends Component {
     constructor(props) {
@@ -28,7 +31,7 @@ class Profil extends Component {
             <section id="info_user">
                 <span className="photoProfil"><img id="pdp" src={this.props.user.photoProfil} alt="Photo de Profil" /></span>
                 <div id="info_profil">
-                    <div id="info_ligne">
+                    <div className="info_ligne">
                         <div id="loginProfil" className="info">
                             <h3>Login</h3>
                             <p>{this.props.user.login}</p>
@@ -47,8 +50,33 @@ class Profil extends Component {
                         </div>
                     </div>
                     <div id="button_profil">
+                        <Popup
+                            trigger={<div className='buttons display'>Details</div>}
+                            modal
+                            closeOnDocumentClick
+                            closeOnEscape
+                            contentStyle={{ padding: '10px', width: '500px' }}
+
+                        >
+                            {(close) =>
+                                <DetailProfil user={this.props.user} close={close} />
+                            }
+                        </Popup>
+
                         <div className='buttons' onClick={() => this.disconnect()} >Déconnection</div>
-                        <div className='buttons' onClick={() => this.modify()}  > Modifier</div>
+                        <Popup
+                            trigger={<div className='buttons'  > Modifier</div>}
+                            modal
+                            closeOnDocumentClick
+                            closeOnEscape
+                            contentStyle={{ padding: '10px', width: '500px' }}
+
+                        >
+                            {(close) =>
+                                <EditProfil serveur={this.props.serveur} user={this.props.user} close={close} />
+
+                            }
+                        </Popup>
                     </div>
                 </div>
 

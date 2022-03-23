@@ -8,7 +8,7 @@ class MessageList extends Component {
     render() {
         return (
             <section id="messages">
-                {this.props.resultat.map((e, index) => <Message setBody={this.props.setBody} token={this.props.token} serveur={this.props.serveur} setPage={this.props.setPage} message={e} />)}
+                {this.props.resultat.map((e, index) => <Message key={index} setBody={this.props.setBody} token={this.props.token} serveur={this.props.serveur} setPage={this.props.setPage} message={e} />)}
 
             </section>)
     }

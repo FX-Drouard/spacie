@@ -11,7 +11,7 @@ class App extends Component {
         // this.serveur = new Serveur()
         this.serveur = axios.create({ baseURL: "", timeout: 1000, header: { customHeader: "" } })
         this.state = {
-            token: "",
+            token: "m",
             page: null,
         }
 

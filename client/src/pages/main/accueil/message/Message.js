@@ -2,13 +2,7 @@ import React, { Component } from 'react';
 import CommenteButton from './reaction/commentaires/CommenteButton'
 import Star from './reaction/StarPage.js'
 import PartagerButton from './reaction/partage/PartagerButton'
-import UserInfo from '../../general/UserInfo';
-import MessageDate from './MessageDate';
 import UserInfoDate from '../../general/UserInfoDate'
-import Popup from 'reactjs-popup';
-import CommentePage from './reaction/commentaires/CommentePage';
-
-
 
 const SupprimerButton = () => {
     return (
@@ -59,7 +53,7 @@ class Message extends Component {
 
             <UserInfoDate token={this.props.token} serveur={this.props.serveur} user={this.props.message.sender} setPage={this.props.setPage} date={this.props.message.date} heure={this.props.message.heure} />
             <div className="message_textuel">{this.props.message.text}</div>
-            {this.props.message.image && <img src={this.state.image} alt=""></img>}
+            {this.props.message.image && <img src={this.props.message.image} alt=""></img>}
             <div className="message_buttons">
                 <div className="reaction_message">
                     <Star token={this.props.token} serveur={this.props.serveur} setPage={this.props.setBody} message={this.props.message} />
