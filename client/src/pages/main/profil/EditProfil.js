@@ -22,6 +22,24 @@ export default class EditProfil extends Component {
 
     }
 
+    componentWillReceiveProps(props) {
+        this.props = props
+        this.setState({
+            image: this.props.user.photoProfil,
+            nickName: this.props.user.nickName,
+            bibliographie: this.props.user.biographie,
+            date: {
+                jour: this.props.user.date.jour,
+                mois: this.props.user.date.mois,
+                annee: this.props.user.date.annee
+            },
+            email: this.props.user.mail,
+            messageErreur: ""
+        })
+        this.confPassword = ""
+        this.newPassword = ""
+    }
+
     getErreur() {
         return <div className="erreur" style={{ color: "white", backgroundColor: "red", width: "100%" }} ><span>{this.state.messageErreur}</span></div>
     }

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import MessageList from '../accueil/message/MessagesList';
-import Main from '../Main.js'
+
 import Popup from 'reactjs-popup';
 import EditProfil from './EditProfil';
 import DetailProfil from './DetailProfil';
 import LoginPage from '../../login/LoginPage';
+const data = require('../general/Data.js')
 
 class Profil extends Component {
     constructor(props) {
@@ -12,6 +13,9 @@ class Profil extends Component {
         this.token = ""
     }
 
+    componentWillReceiveProps(props) {
+        this.props = props;
+    }
 
     disconnect() {
         // TODO
@@ -22,8 +26,10 @@ class Profil extends Component {
 
         //    TODO
 
-        let message = { idMessage: 1, text: "haha", sender: this.props.user }
-        return [message, message, message, message, message, message, message, message, message]
+        // let message = { idMessage: 1, text: "haha", sender: this.props.user }
+        // return [message, message, message, message, message, message, message, message, message]
+
+        return data.getMessagesProfil(this.props.user.login)
     }
     render() {
         return <div className="millieu">
@@ -49,8 +55,11 @@ class Profil extends Component {
                         </div>
                     </div>
                     <div id="button_profil">
+                        {this.props.user.nickName == "Fristorm" &&
+                            <div className='buttons' onClick={() => this.disconnect()} >Déconnection</div>
+                        }
                         <Popup
-                            trigger={<div className='buttons display'>Details</div>}
+                            trigger={<div className='buttons'>Details</div>}
                             modal
                             closeOnDocumentClick
                             closeOnEscape
@@ -61,28 +70,23 @@ class Profil extends Component {
                                 <DetailProfil user={this.props.user} close={close} />
                             }
                         </Popup>
+                        {this.props.user.nickName == "Fristorm" &&
+                            <Popup
+                                trigger={<div className='buttons display'  > Modifier</div>}
+                                modal
+                                closeOnDocumentClick
+                                closeOnEscape
+                                contentStyle={{ padding: '10px', width: '500px' }}
 
-                        <div className='buttons' onClick={() => this.disconnect()} >Déconnection</div>
-                        <Popup
-                            trigger={<div className='buttons'  > Modifier</div>}
-                            modal
-                            closeOnDocumentClick
-                            closeOnEscape
-                            contentStyle={{ padding: '10px', width: '500px' }}
-
-                        >
-                            {(close) =>
-                                <EditProfil serveur={this.props.serveur} user={this.props.user} close={close} />
-                            }
-                        </Popup>
+                            >
+                                {(close) =>
+                                    <EditProfil serveur={this.props.serveur} user={this.props.user} close={close} />
+                                }
+                            </Popup>}
                     </div>
                 </div>
-
             </section >
-
-            <MessageList profil={true} serveur={this.props.serveur} setPage={this.setPage} resultat={this.getMessages()} />
-
-
+            <MessageList profil={true} serveur={this.props.serveur} setPage={this.props.setPage} resultat={this.getMessages()} />
         </div >
 
 

@@ -32,7 +32,7 @@ class LoginPage extends Component {
     }
 
     getErreur() {
-        return <div className="erreur" style={{ color: "white", backgroundColor: "red" }}><span>{this.state.messageErreur}</span></div>
+        return <div className="breaker" style={{ color: "white", backgroundColor: "red" }}><span>{this.state.messageErreur}</span></div>
     }
     render() {
         return <div id="login">

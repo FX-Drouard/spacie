@@ -43,9 +43,10 @@ body{
     padding-top: 2%;
     padding-left: 2%;
     height: 4%;
-    position: sticky;
+    position: fixed;
     top:0;
     z-index: 2;
+    width:97%
     
 }
 
@@ -91,6 +92,10 @@ input:hover{
     height: 18px;
     align-items: center;
     
+}
+
+#mainPage #title{
+    font-size: 40px
 }
 
 .ami_button{
@@ -232,9 +237,9 @@ input:hover{
 .button_new_message{
     display:flex;
     width: 40%;
-    justify-content: flex-end;
+    justify-content: space-evenly;
     align-items: center;
-    gap:9px
+    
 }
 
 #message_prive{
@@ -277,10 +282,10 @@ section{
 #corps{
     display: flex;
     justify-content: space-between;
-    margin-top: 2%;
+    margin-top: 8%;
 }
 
-nav{
+#suggestion_profil{
     /* margin: auto 0cm; */
     width: 20%;
     height :80vh;
@@ -290,14 +295,14 @@ nav{
     top: 20vh;
     
 }
-nav #modificationProfil{
+#suggestion_profil #modificationProfil{
     width: 100%;
 }
 
-nav .user_info{
+#suggestion_profil .user_info{
     width: 100%;
 }
-nav .profil_info{
+#suggestion_profil .profil_info{
     display :flex;
     height: 80px;
     align-items: center;
@@ -319,7 +324,7 @@ nav .profil_info{
 .millieu{    
     width: 58%
 }
-aside{
+#pubs{
     width: 20%;
     /* position: sticky; */
     z-index: 0;
@@ -341,9 +346,7 @@ justify-content: space-around
     right: 2px;
 }
 
-.millieu p{
-    margin-left: 0.2cm;
-}
+
 
 a{
     color: #b0c9da
@@ -368,15 +371,15 @@ a{
     justify-content:space-evenly
 }
 #info_profil{
-    width: 70%;
+    width: 80%;
     background-color: rgb(48, 52, 65,0.6);
-    padding: 2%;
-    margin:2%;
+    padding: 1%;
+    margin:1%;
     border-radius: 10px;
 }
 
 #creationProfil{
-    width:30%;
+    width:20%;
 }
 
 #emailProfil{
@@ -576,11 +579,11 @@ a{
 }
 
 @media  screen and (max-width:950px ){
-    nav{
+    #suggestion_profil{
         display: none;
         width:0%;
     }
-    aside{
+    #pubs{
         width: 29%;
     }
     .millieu{
@@ -607,7 +610,9 @@ a{
         width: 0%;
     }
 
-
+    #corps{
+        margin-top: 10%
+    }
     #loginProfil{
         width: 50%;
     }
@@ -773,11 +778,23 @@ a{
     background-position: 50% 50%;
     background-repeat: no-repeat;
   } */
+ 
+  @media screen and (max-width: 900px)  {
+    #mainPage #title {
+        font-size: 20px;
+        color: #b0c9da;
+    }
+    
 
-
+  }
 @media screen and (max-width: 700px)  {
-   
-    aside{
+    #corps{
+        margin-top: 15%
+    }
+    #mainPage header{
+      height : 2%
+    }
+    #pubs{
         display:none;
         width: 0%;
     }
@@ -788,12 +805,12 @@ a{
         width: 100%;
 
     }
-    #title{
+    #mainPage #title{
         display:none;
         width: 0;
     }
     #logo {
-        width: 25%;
+        width: 20%;
     }
     #logo_image{
         width: 100%;
@@ -803,7 +820,7 @@ a{
         padding-top: 3%
     }
     #mainPage header{
-        height: 10%;
+        height: 6%;
     }
     #onglet span{
         width: 10%;
@@ -824,10 +841,14 @@ a{
         display:none;
         width: 0;
     }
+   
 }
 
 @media screen and (max-width: 500px)  {
     #onglet span{
         width: 10%;
+    }
+    #corps{
+        margin-top: 20%
     }
 }

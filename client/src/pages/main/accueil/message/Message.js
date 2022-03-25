@@ -9,11 +9,15 @@ class Message extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            reaction: ""
+            reaction: null
         }
-        this.reaction = null
+
         this.setReaction = this.setReaction.bind(this)
         this.userName = "fristorm"
+    }
+
+    componentWillReceiveProps(props) {
+        this.props = props;
     }
 
     commentairePublication(event) {
@@ -24,23 +28,21 @@ class Message extends Component {
         this.props.setPage()
     }
 
-    getNombreStars() { return 200 }
-    getNombreCommentaires() { return 200 }
-    getNombrePartages() { return 200 }
-    getReaction() { return this.reaction }
+    getNombreStars() { return this.props.message.stars }
+    getNombreCommentaires() { return this.props.message.commentaires }
+    getNombrePartages() { return this.props.message.shars }
+    getReaction() { return this.state.reaction }
     setReaction(reaction) {
-        this.reaction = reaction
-        this.setState({ reaction: "" })
+
+        this.setState({ reaction: reaction })
 
     }
     render() {
 
         return <article className="message">
-
-
             <UserInfoDate serveur={this.props.serveur} user={this.props.message.sender} setPage={this.props.setPage} date={this.props.message.date} heure={this.props.message.heure} />
             <div className="message_textuel">{this.props.message.text}</div>
-            {this.props.message.image && <img src={this.props.message.image} alt=""></img>}
+            {this.props.message.image && <img style={{ width: '100%' }} src={this.props.message.image} alt=""></img>}
             <div className="message_buttons">
                 <div className="reaction_message">
                     <Star serveur={this.props.serveur} setPage={this.props.setBody} message={this.props.message} setBody={this.props.setBody} />
@@ -50,7 +52,7 @@ class Message extends Component {
                 {!this.props.comment ?
                     <div className="reaction_message">
                         <CommenteButton serveur={this.props.serveur} setBody={this.props.setBody} message={this.props.message} setReaction={this.setReaction} />
-                        <span>{this.getNombreStars()} </span>
+                        <span>{this.getNombreCommentaires()} </span>
                     </div>
                     : ""
                 }
@@ -62,7 +64,7 @@ class Message extends Component {
                         : !this.props.comment ? <PartagerButton serveur={this.props.serveur} setBody={this.props.setBody} message={this.props.message} setReaction={this.setReaction} />
                             : ""
                     }
-                    {this.userName != this.props.message.sender.nickName && !this.props.comment && <span>{this.getNombreStars()} </span>}
+                    {this.userName != this.props.message.sender.nickName && !this.props.comment && <span>{this.getNombrePartages()} </span>}
                 </div>
             </div>
 

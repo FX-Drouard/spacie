@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 
 class DetailProfil extends Component {
+    componentWillReceiveProps(props) {
+        this.props = props
+    }
     render() {
         return (
             <div id="detail_profil">
@@ -23,7 +26,7 @@ class DetailProfil extends Component {
                     </div>
                     <div className="info">
                         <h3>Date de naissance</h3>
-                        <p className="breaker">{this.props.user.date.jour}/{this.props.user.date.mois}/{this.props.user.date.annee}</p>
+                        <p className="breaker">{this.props.user.date}</p>
                     </div>
                 </div>
                 <div className="info_ligne">

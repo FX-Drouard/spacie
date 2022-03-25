@@ -4,6 +4,9 @@ class MessageList extends Component {
     constructor(props) {
         super(props);
     }
+    componentWillReceiveProps(props) {
+        this.props = props;
+    }
 
     render() {
         return (

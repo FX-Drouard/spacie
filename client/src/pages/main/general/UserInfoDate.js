@@ -1,14 +1,21 @@
 import React from 'react';
-import MessageDate from '../accueil/message/MessageDate';
 import UserInfo from './UserInfo';
 
-const UserInfoDate = (props) => {
-    return (
-        <div className="message_user_info">
-            <UserInfo serveur={props.serveur} user={props.user} setPage={props.setPage} />
-            <MessageDate date={props.date} heure={props.heure} />
-        </div>
-    );
-};
+class UserInfoDate extends React.Component {
+
+    componentWillReceiveProps(props) {
+        this.props = props
+    }
+    render() {
+        return (
+            <div className="message_user_info">
+                <UserInfo serveur={this.props.serveur} user={this.props.user} setPage={this.props.setPage} />
+                <p className="message_date"> {this.props.date} {this.props.heure}</p>
+            </div>
+        );
+    }
+}
+
+
 
 export default UserInfoDate;

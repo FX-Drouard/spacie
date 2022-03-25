@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import ProfilList from './profil/ProfilList';
+const data = require('./general/Data.js')
 
-class Nav extends Component {
+
+class Suggestion extends Component {
     constructor(props) {
         super(props);
         this.token = document.cookie.split(";").find(it => it.includes("token=")).split("=")[1]
@@ -9,17 +11,16 @@ class Nav extends Component {
 
     render() {
 
-        let user = { login: "Palifen", mail: "fristorm@mail.spacie.fr", nickName: "fristorm", creationDate: "2022-02-24", photoProfil: "https://media.spacie.fr/Profil/Fristorm/pdp.png" }
-        let resultat = [user, user, user, user, user, user]
+        let resultat = data.getUsers().slice(0, 5)
 
 
-        return <nav>
+        return <div id="suggestion_profil">
             {this.token ?
                 <ProfilList serveur={this.props.serveur} setPage={this.props.setPage} setBody={this.props.setBody} resultat={resultat} />
                 : ""
             }
-        </nav>
+        </div>
     }
 }
 
-export default Nav
+export default Suggestion

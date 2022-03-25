@@ -49,11 +49,10 @@ body,html{
 
 }
 
-#title {
+#login #title {
     font-size: 50px;
     color: #b0c9da;
 }
-
 
 
 #login input{

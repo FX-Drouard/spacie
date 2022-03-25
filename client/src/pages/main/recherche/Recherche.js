@@ -4,21 +4,24 @@ class Recherche extends Component {
     constructor(props) {
         super(props);
         this.recherche = ""
-        this.pageComponent = <div></div>
+        this.state = {
+            refreche: null
+        }
+
 
     }
     rechercher() {
-        this.pageComponent = <ResultatReacherche serveur={this.props.serveur} recherche={this.recherche} setPage={this.props.setPage} setBody={this.props.setBody} />
-        this.setState({ refreche: "" })
+
+        this.setState({ refreche: <ResultatReacherche serveur={this.props.serveur} recherche={this.recherche} setPage={this.props.setPage} setBody={this.props.setBody} /> })
     }
     getPageComponent() {
-        return this.pageComponent
+        return this.state.refreche
     }
     render() {
         return <div className="millieu">
             <div id="recherche">
                 <div id="barre_recherche">
-                    <textarea ref={this.recherche} placeholder="Rechercher: @nick_name | #actualite" maxLength="150" />
+                    <textarea onChange={(event) => this.recherche = event.target.value} placeholder="Rechercher: @nick_name | #actualite" maxLength="150" />
                     <div className="buttons" onClick={() => this.rechercher()}>Rechercher</div>
                 </div>
                 {this.getPageComponent()}

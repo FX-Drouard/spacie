@@ -3,7 +3,10 @@ import Profil from '../profil/Profil';
 class UserInfo extends Component {
     constructor(props) {
         super(props);
+    }
 
+    componentWillReceiveProps(props) {
+        this.props = props;
     }
 
     gotoProfil() {
