@@ -7,11 +7,6 @@ export default class EditProfil extends Component {
             image: this.props.user.photoProfil,
             nickName: this.props.user.nickName,
             bibliographie: this.props.user.biographie,
-            date: {
-                jour: this.props.user.date.jour,
-                mois: this.props.user.date.mois,
-                annee: this.props.user.date.annee
-            },
             email: this.props.user.mail,
             messageErreur: ""
         }
@@ -47,7 +42,7 @@ export default class EditProfil extends Component {
     sauvgarder() {
 
         const regEmail = new RegExp("^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$")
-        const regNum = new RegExp("^[0-9]+")
+    
 
 
         if (!regEmail.test(this.state.email)) {
@@ -55,12 +50,12 @@ export default class EditProfil extends Component {
             return;
         }
 
-        if (this.newPassword != "" && this.confPassword != "" && this.newPassword != this.confPassword) {
+        if (this.newPassword !== "" && this.confPassword !== "" && this.newPassword !== this.confPassword) {
             this.setState({ messageErreur: "le mot de passe de confirmation est different du mot de passe" })
             return;
         }
         let password = this.motDePasse
-        if (this.newPassword != "")
+        if (this.newPassword !== "")
             password = this.newPassword
 
 
@@ -84,7 +79,7 @@ export default class EditProfil extends Component {
     render() {
         return (
             <div id="edit_profil">
-                <div className="photoProfil"><img id="pdp" src={this.state.image} alt="Photo de Profil" /></div>
+                <div className="photoProfil"><img id="pdp" src={this.state.image} alt="Profil" /></div>
                 <div>
                     <ImagePicker
                         extensions={["jpg", "jpeg", "png"]}

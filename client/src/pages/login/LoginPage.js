@@ -10,12 +10,12 @@ class LoginPage extends Component {
         super(props);
         this.login = ""
         this.password = ""
-        this.state = { messageErreur: "login et mot de passe sont incorrects login et mot de passe sont incorrects login et mot de passe sont incorrects login et mot de passe sont incorrects" }
+        this.state = { messageErreur: "" }
     }
 
     connecte() {
         let result = this.props.serveur.post("/auth/login/", { login: this.login, password: this.password })
-        if (result.etat == "200") {
+        if (result.etat === "200") {
             this.props.setBody(<Main serveur={this.props.serveur} setBody={this.props.setBody} />)
             return
         }

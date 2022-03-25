@@ -1,5 +1,4 @@
 import React from 'react';
-import UserInfo from '../general/UserInfo';
 import UserInfoDate from '../general/UserInfoDate';
 
 const Notification = (props) => {

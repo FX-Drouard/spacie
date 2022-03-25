@@ -21,7 +21,6 @@ class App extends Component {
         this.setBody(<Main serveur={this.serveur} setBody={this.setBody} />)
     }
     setBody(cl) {
-        this.pages = cl
         this.setState({ page: cl })
     }
     getBody() {

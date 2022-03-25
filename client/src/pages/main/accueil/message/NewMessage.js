@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
 import { ImagePicker } from 'react-file-picker'
 import Picker from 'emoji-picker-react'
-
-import Accueil from '../Accueil.js'
 import Popup from 'reactjs-popup';
 class NewMessage extends Component {
     constructor(props) {
         super(props);
-
-        this.erreur = ""
-
         this.state = {
             check: false,
             image: "",
@@ -21,10 +16,7 @@ class NewMessage extends Component {
     }
 
     sendMessage(event) {
-        if (!(this.publication === null || this.publication === "")) {
-            this.erreur = this.props.serveur.sendMessage(this.publication, this.token, this.props.message, this.state.check)
-            this.props.setPage(<Accueil serveur={this.serveur} setPage={this.setPage} erreur={this.erreur} />)
-        }
+       //TODO
     }
 
     checkPubPrivee() {
@@ -68,7 +60,7 @@ class NewMessage extends Component {
                 <div id="footer_new_message">
                     <div id="message_prive" onClick={(event) => this.checkPubPrivee()}><span className={"fa-solid fa-square" + (this.state.check ? "-check" : "")} id="check" alt="Media"></span><span>Publication privée</span></div>
                     <div className="button_new_message">
-                        {this.state.image != "" &&
+                        {this.state.image !== "" &&
                             <span title="Enlever l'image " className="fa-solid fa-xmark fa-xl" onClick={(event) => this.setState({ image: "" })}> </span>
 
                         }

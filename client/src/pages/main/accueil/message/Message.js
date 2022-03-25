@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import CommenteButton from './reaction/commentaires/CommenteButton'
-import Star from './reaction/StarPage.js'
+import Star from './reaction/Star.js'
 import PartagerButton from './reaction/partage/PartagerButton'
 import UserInfoDate from '../../general/UserInfoDate'
 import SupprimerButton from './reaction/SupprimerButton';
@@ -20,22 +20,14 @@ class Message extends Component {
         this.props = props;
     }
 
-    commentairePublication(event) {
-        this.props.setPage()
-    }
-
-    partgerPublication(event) {
-        this.props.setPage()
-    }
+    
 
     getNombreStars() { return this.props.message.stars }
     getNombreCommentaires() { return this.props.message.commentaires }
     getNombrePartages() { return this.props.message.shars }
     getReaction() { return this.state.reaction }
     setReaction(reaction) {
-
         this.setState({ reaction: reaction })
-
     }
     render() {
 
@@ -59,17 +51,17 @@ class Message extends Component {
 
 
                 <div className="reaction_message">
-                    {this.userName == this.props.message.sender.nickName ?
+                    {this.userName === this.props.message.sender.nickName ?
                         <SupprimerButton serveur={this.props.serveur} />
-                        : !this.props.comment ? <PartagerButton serveur={this.props.serveur} setBody={this.props.setBody} message={this.props.message} setReaction={this.setReaction} />
+                        : !this.props.comment ? <PartagerButton serveur={this.props.serveur} setBody={this.props.setBody} message={this.props.message}  />
                             : ""
                     }
-                    {this.userName != this.props.message.sender.nickName && !this.props.comment && <span>{this.getNombrePartages()} </span>}
+                    {this.userName !== this.props.message.sender.nickName && !this.props.comment && <span>{this.getNombrePartages()} </span>}
                 </div>
             </div>
 
             {this.getReaction()}
-            {console.log(document.cookie)}
+
         </article >
     }
 }

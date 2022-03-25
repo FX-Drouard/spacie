@@ -5,7 +5,7 @@ class Star extends Component {
     constructor(props) {
         super(props);
 
-        this.isLiked = false;
+        this.state = {isLiked : false};
         this.token = document.cookie.split(";").find(it => it.includes("token=")).split("=")[1]
 
     }
@@ -15,11 +15,11 @@ class Star extends Component {
             this.props.setBody(<LoginPage setBody={this.props.setBody} serveur={this.props.serveur} />)
             return
         }
-        //TODO
+        this.setState({isLiked : !this.state.isLiked})
     }
 
     render() {
-        return <div className="message_button fa-solid fa-star fa-xl" onClick={event => { this.aimerPublication() }} style={{ color: this.isLiked ? "green" : "" }} ></div>
+        return <div className="message_button fa-solid fa-star fa-xl" onClick={event => { this.aimerPublication() }} style={{ color: this.state.isLiked ? "green" : "#b0c9da" }} ></div>
 
     }
 }

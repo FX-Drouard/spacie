@@ -5,17 +5,17 @@ class Recherche extends Component {
         super(props);
         this.recherche = ""
         this.state = {
-            refreche: null
+            refraiche: null
         }
 
 
     }
     rechercher() {
 
-        this.setState({ refreche: <ResultatReacherche serveur={this.props.serveur} recherche={this.recherche} setPage={this.props.setPage} setBody={this.props.setBody} /> })
+        this.setState({ refraiche: <ResultatReacherche serveur={this.props.serveur} recherche={this.recherche} setPage={this.props.setPage} setBody={this.props.setBody} /> })
     }
     getPageComponent() {
-        return this.state.refreche
+        return this.state.refraiche
     }
     render() {
         return <div className="millieu">

@@ -81,7 +81,11 @@ function getMessagesProfil(login) {
                 image: "https://media.spacie.fr/Profil/Fristorm/pdp.png",
                 sender: getProfile(login),
                 date: "22/02/2022",
-                heure: "22:22"
+                heure: "22:22",
+                stars: Math.floor(Math.random() * 1000),
+                commentaires: Math.floor(Math.random() * 1000),
+                shars: Math.floor(Math.random() * 1000)
+           
             }
         )
     }
