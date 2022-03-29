@@ -1,6 +1,6 @@
 const express = require("express");
 const Users = require("./entities/users.js");
-
+const Message = require("./entities/message.js");
 function init(db) {
     const router = express.Router();
     // On utilise JSON
@@ -96,6 +96,31 @@ function init(db) {
                 .catch((err) => res.status(500).send(err));
         }
     });
+
+    const message = new Message(db)
+    router.get("/message/all", async (req, res) => {
+        const messages = await message.getAll();
+        if(!messages)
+            res.sendStatus(404)
+        else
+            res.send(messages);
+        
+    })
+    router.get("/message/all/:login", async (req, res) => {
+        
+        const messages = await message.getAll(req.params.login);
+        if(!messages)
+            res.sendStatus(404)
+        else
+            res.send(messages);
+        
+    })
+    router.delete("/message/:login", async (req, res) => {
+        const {idMessage} = req.body
+        message.delete(idMessage,req.params.login).then((res) => {res.send(true)}).catch((err)=> res.sendStatus(403))
+    })
+    router.put("/message/")
+    
 
     return router;
 }
