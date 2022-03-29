@@ -51,7 +51,7 @@ export default class EditProfil extends Component {
         }
 
         if (this.newPassword !== "" && this.confPassword !== "" && this.newPassword !== this.confPassword) {
-            this.setState({ messageErreur: "le mot de passe de confirmation est different du mot de passe" })
+            this.setState({ messageErreur: "le mot de passe de confirmation est différent du mot de passe" })
             return;
         }
         let password = this.motDePasse
@@ -109,7 +109,7 @@ export default class EditProfil extends Component {
                     <div>Nick name</div>
                     <div className="text">
                         <input type="text" name="nickName" placeholder={this.props.user.nickName} maxLength="30"
-                            alt="le nick name doit avoir que des lettres et des chiffres" onChange={event => this.setState({ nickName: event.target.value })} />
+                            alt="le nickname doit avoir que des lettres et des chiffres" onChange={event => this.setState({ nickName: event.target.value })} />
                     </div>
                 </div>
                 <div className="edit_content">
@@ -136,7 +136,7 @@ export default class EditProfil extends Component {
                 </div>
                 <div className="edit_content">
 
-                    <div>Confirmation du nouveau mot de passe</div>
+                    <div>Confirmation du mot de passe</div>
                     <div className="text">
                         <input type="password" name="Confirmez le mot de passe" placeholder="Confirmez votre mot de passe"
                             maxLength="30" onChange={event => this.confPassword = event.target.value} />
@@ -144,8 +144,8 @@ export default class EditProfil extends Component {
                 </div>
 
                 <div style={{ display: 'flex', gap: "10px" }}>
-                    <div className="buttons" onClick={(event) => { this.sauvgarder() }}>Sauvgarder</div>
-                    <div className="buttons" onClick={(event) => { this.props.close() }}>Close</div>
+                    <div className="buttons" onClick={(event) => { this.sauvgarder() }}>Sauvegarder</div>
+                    <div className="buttons" onClick={(event) => { this.props.close() }}>Fermer</div>
                 </div>
             </div >
         )
