@@ -146,6 +146,7 @@ export default class EditProfil extends Component {
                 <div style={{ display: 'flex', gap: "10px" }}>
                     <div className="buttons" onClick={(event) => { this.sauvgarder() }}>Sauvegarder</div>
                     <div className="buttons" onClick={(event) => { this.props.close() }}>Fermer</div>
+                    
                 </div>
             </div >
         )
