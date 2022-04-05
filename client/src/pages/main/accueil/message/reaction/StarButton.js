@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import LoginPage from '../../../../login/LoginPage';
 
-class Star extends Component {
+class StarButton extends Component {
     constructor(props) {
         super(props);
 
@@ -24,4 +24,5 @@ class Star extends Component {
     }
 }
 
-export default Star
+export default StarButton
+

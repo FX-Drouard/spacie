@@ -14,7 +14,6 @@ class App extends Component {
         }
         document.cookie = 'token=3';
 
-
     }
 
     componentWillMount() {

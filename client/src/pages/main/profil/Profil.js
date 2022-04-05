@@ -19,7 +19,7 @@ class Profil extends Component {
 
     disconnect() {
         // TODO
-        this.props.setBody(<LoginPage serveur={this.props.serveur} setBody={this.props.setBody} />)
+        this.props.setBody(<LoginPage  setBody={this.props.setBody} />)
     }
 
     getMessages() {
@@ -28,7 +28,7 @@ class Profil extends Component {
 
         // let message = { idMessage: 1, text: "haha", sender: this.props.user }
         // return [message, message, message, message, message, message, message, message, message]
-
+        
         return data.getMessagesProfil(this.props.user.login)
     }
     render() {
@@ -72,7 +72,7 @@ class Profil extends Component {
                         </Popup>
                         {this.props.user.nickName == "Fristorm" &&
                             <Popup
-                                trigger={<div className='buttons display'  > Modifier</div>}
+                                trigger={<div className='buttons display'> Modifier</div>}
                                 modal
                                 closeOnDocumentClick
                                 closeOnEscape
@@ -80,7 +80,7 @@ class Profil extends Component {
 
                             >
                                 {(close) =>
-                                    <EditProfil serveur={this.props.serveur} user={this.props.user} close={close} />
+                                    <EditProfil user={this.props.user} close={close} setBody={this.props.setBody}/>
                                 }
                             </Popup>}
                     </div>

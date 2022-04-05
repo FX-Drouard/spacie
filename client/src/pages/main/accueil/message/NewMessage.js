@@ -7,9 +7,23 @@ class NewMessage extends Component {
         super(props);
         this.state = {
             check: false,
-            image: "",
+            image: this.props.message?this.props.message.image : "" ,
+
             erreur: "",
-            newMessage: ""
+            newMessage: this.props.message?this.props.message.text : "" 
+
+        }
+        this.token = document.cookie.split(";").find(it => it.includes("token=")).split("=")[1]
+        this.onEmojiClick = this.onEmojiClick.bind(this)
+    }
+
+    componentWillReceiveProps(props) {
+        this.props = props
+        this.state = {
+            check: false,
+            image: this.props.message?this.props.message.image : "" ,
+            erreur: "",
+            newMessage: this.props.message?this.props.message.text : "" 
         }
         this.token = document.cookie.split(";").find(it => it.includes("token=")).split("=")[1]
         this.onEmojiClick = this.onEmojiClick.bind(this)

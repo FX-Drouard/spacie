@@ -469,6 +469,7 @@ a{
     background-color: rgb(48, 52, 65,0.6);
     padding : 2%;
     border-radius: 5px;
+    
 }
 .message_buttons{
     display: flex;
@@ -726,6 +727,17 @@ a{
 
 #detail_profil .buttons{
     width: 45px;
+}
+
+
+#modifier-page{
+    background-color:rgb(48, 52, 65,0.4);
+    width : 95%;
+    padding: 2%;
+    color: #b0c9da;
+    gap: 10px;
+    border: 5px solid #b0c9da;
+    border-radius: 10px;
 }
 
 /* ---- stats.js ---- */

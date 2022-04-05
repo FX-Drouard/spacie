@@ -1,5 +1,7 @@
+import axios from 'axios'
 import React, { Component } from 'react'
 import { ImagePicker } from 'react-file-picker'
+import LoginPage from '../../login/LoginPage'
 export default class EditProfil extends Component {
     constructor(props) {
         super(props)
@@ -60,7 +62,7 @@ export default class EditProfil extends Component {
 
 
 
-        this.props.serveur.post("/api/user/edit",
+        axios.post("/api/user/edit",
             {
                 login: this.props.login,
                 nickName: this.state.nickName,
@@ -74,6 +76,11 @@ export default class EditProfil extends Component {
             this.setState({ messageErreur: err.message })
         })
 
+    }
+
+
+    supprimerCompte(){
+        this.props.setBody(<LoginPage serveur={this.props.serveur} setBody={this.props.setBody} />)
     }
 
     render() {
@@ -146,6 +153,8 @@ export default class EditProfil extends Component {
                 <div style={{ display: 'flex', gap: "10px" }}>
                     <div className="buttons" onClick={(event) => { this.sauvgarder() }}>Sauvegarder</div>
                     <div className="buttons" onClick={(event) => { this.props.close() }}>Fermer</div>
+                    <div className="buttons" onClick={(event) => { this.supprimerCompte()}}>Supprimer</div>
+
                     
                 </div>
             </div >
