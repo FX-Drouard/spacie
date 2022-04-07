@@ -1,8 +1,14 @@
 import React, { Component } from "react";
 
 class DetailProfil extends Component {
+  constructor(props) {
+    super(props);
+    this.date = new Date(this.props.user.creationDate);
+  }
   componentWillReceiveProps(props) {
     this.props = props;
+    this.date = new Date(this.props.user.creationDate);
+    this.dateNaissance = new Date(this.props.user.dateNaissance);
   }
   render() {
     return (
@@ -22,11 +28,23 @@ class DetailProfil extends Component {
         <div className="info_ligne">
           <div className="info">
             <h3>Date de Création</h3>
-            <p className="breaker">{this.props.user.creationDate}</p>
+            <p className="breaker">
+              {this.date.getFullYear() +
+                "/" +
+                (this.date.getMonth() + 1) +
+                "/" +
+                this.date.getDate()}
+            </p>
           </div>
           <div className="info">
             <h3>Date de naissance</h3>
-            <p className="breaker">{this.props.user.date}</p>
+            <p className="breaker">
+              {this.dateNaissance.getFullYear() +
+                "/" +
+                (this.dateNaissance.getMonth() + 1) +
+                "/" +
+                this.dateNaissance.getDate()}
+            </p>
           </div>
         </div>
         <div className="info_ligne">

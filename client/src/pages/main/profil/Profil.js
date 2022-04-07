@@ -19,11 +19,13 @@ class Profil extends Component {
     this.state = {
       container: null,
       buttonName: "Amis",
+      user: null,
     };
-    this.user = null;
+
     axios.get("/api/user/token" + this.token).then((res) => {
-      this.user = res;
+      this.setState({ user: res });
     });
+    this.date = new Date(this.props.user.creationDate);
   }
 
   componentWillReceiveProps(props) {
@@ -31,16 +33,21 @@ class Profil extends Component {
   }
 
   componentWillMount() {
-    this.setState({
-      container: (
-        <MessageList
-          profil={true}
-          serveur={this.props.serveur}
-          setPage={this.props.setPage}
-          resultat={this.messages}
-        />
-      ),
-    });
+    axios
+      .get("/api/message/" + this.props.user.login)
+      .then((res) => {
+        this.setState({
+          container: (
+            <MessageList
+              serveur={this.props.serveur}
+              user={res}
+              setPage={this.props.setPage}
+            />
+          ),
+          buttonName: "Message",
+        });
+      })
+      .catch((err) => alert(err));
   }
 
   disconnect() {
@@ -118,11 +125,17 @@ class Profil extends Component {
               </div>
               <div id="creationProfil" className="info">
                 <h3>Date de Création</h3>
-                <p className="breaker">{this.props.user.creationDate}</p>
+                <p className="breaker">
+                  {this.date.getFullYear() +
+                    "/" +
+                    (this.date.getMonth() + 1) +
+                    "/" +
+                    this.date.getDate()}
+                </p>
               </div>
             </div>
             <div id="button_profil">
-              {this.props.user.nickName == this.user ? (
+              {this.props.user.nickName == this.state.user ? (
                 <div className="buttons" onClick={() => this.disconnect()}>
                   Déconnection
                 </div>
@@ -135,7 +148,7 @@ class Profil extends Component {
                 ))
               )}
 
-              {this.props.user.nickName != this.user && (
+              {this.props.user.nickName != this.state.user && (
                 <div
                   className="buttons"
                   onClick={() => {
