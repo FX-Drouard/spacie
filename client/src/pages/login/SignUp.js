@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { Component } from 'react';
 import '../../assets/css/login.css'
 import Main from '../main/Main.js'
@@ -5,7 +6,7 @@ import LoginPage from './LoginPage'
 class SignUp extends Component {
     constructor(props) {
         super(props);
-        this.state = { messageErreur: "login et mot de passe sont incorrects" }
+        this.state = { messageErreur: "" }
         this.login = ""
         this.date = ""
         this.email = ""
@@ -44,15 +45,16 @@ class SignUp extends Component {
 
 
 
-        this.props.serveur.post("/api/auth/signup",
-            {
-                login: this.login,
-                date: { jour: this.jour, mois: this.mois, annee: this.annee },
-                email: this.email,
-                motDePasse: this.motDePasse
-            }
+        axios.post("/api/user/signup",
+        {
+            login: this.login,
+            date: { jour: this.jour, mois: this.mois, annee: this.annee },
+            email: this.email,
+            motDePasse: this.motDePasse
+        }
         ).then((res) => {
-            this.props.setBody(<Main serveur={this.props.serveur} setBody={this.props.setBody} />)
+            this.props.setBody(<Main setBody={this.props.setBody} />)
+            document.cookie = "token="+res.token
         }
         ).catch((err) => {
             this.setState({ messageErreur: err.message })

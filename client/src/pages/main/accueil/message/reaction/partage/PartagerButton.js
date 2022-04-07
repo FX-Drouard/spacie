@@ -1,23 +1,28 @@
-import React, { Component } from 'react';
-import LoginPage from '../../../../../login/LoginPage';
+import axios from "axios";
+import LoginPage from "../../../../../login/LoginPage";
 
-class PartagerButton extends Component {
-    constructor(props) {
-        super(props);
-    }
+import React from "react";
 
-    partgerPublication() {
-        if (this.token === "") {
-            this.props.setBody(<LoginPage setBody={this.props.setBody} serveur={this.props.serveur} />)
-            return
+const PartagerButton = (props) => {
+  let token = document.cookie
+    .split(";")
+    .find((it) => it.includes("token="))
+    .split("=")[1];
+  return (
+    <div
+      className="message_button fa-solid fa-rocket fa-xl"
+      onClick={(event) => {
+        if (token === "") {
+          this.props.setBody(<LoginPage setBody={props.setBody} />);
+          return;
         }
-        //TODO
-    }
-
-    render() {
-        return <div className="message_button fa-solid fa-rocket fa-xl" onClick={event => { this.partgerPublication() }}></div>
-
-    }
-}
+        axios
+          .post("/api/message/" + token, { message: props.message })
+          .then((res) => props.setMessageResult(res, { color: "green" }))
+          .catch((err) => props.setMessageResult(err, { color: "red" }));
+      }}
+    ></div>
+  );
+};
 
 export default PartagerButton;

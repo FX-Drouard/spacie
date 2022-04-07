@@ -13,9 +13,11 @@ export default class EditProfil extends Component {
             messageErreur: ""
         }
 
+        this.token = document.cookie.split(";").find(it => it.includes("token=")).split("=")[1]
 
         this.confPassword = ""
         this.newPassword = ""
+
 
     }
 
@@ -62,7 +64,7 @@ export default class EditProfil extends Component {
 
 
 
-        axios.post("/api/user/edit",
+        axios.post("/api/user/edit/"+this.token,
             {
                 login: this.props.login,
                 nickName: this.state.nickName,
@@ -80,7 +82,12 @@ export default class EditProfil extends Component {
 
 
     supprimerCompte(){
-        this.props.setBody(<LoginPage serveur={this.props.serveur} setBody={this.props.setBody} />)
+
+        axios.delete("/api/user/"+this.login).then(res=>{
+            this.props.setBody(<LoginPage serveur={this.props.serveur} setBody={this.props.setBody} />)
+        }).catch(err => {
+            this.setState({ messageErreur: err.message })
+        })
     }
 
     render() {

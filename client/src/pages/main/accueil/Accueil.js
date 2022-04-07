@@ -1,26 +1,61 @@
-import React, { Component } from 'react';
-import NewMessage from './message/NewMessage.js';
-import MessageList from './message/MessagesList.js';
-const data = require('../general/Data.js')
+import React, { Component } from "react";
+import NewMessage from "./message/NewMessage.js";
+import MessageList from "./message/MessagesList.js";
+import axios from "axios";
 class Accueil extends Component {
-    constructor(props) {
-        super(props);
-        this.token = document.cookie.split(";").find(it => it.includes("token=")).split("=")[1]
-    }
+  constructor(props) {
+    super(props);
+    this.token = document.cookie
+      .split(";")
+      .find((it) => it.includes("token="))
+      .split("=")[1];
+    this.state = {
+      resultat: null,
+    };
 
-    getNewMessageComponent() {
-        if (this.props.token !== "") {
-            return <NewMessage serveur={this.props.serveur} setPage={this.setPage} erreur={this.props.erreur} setBody={this.props.setBody} />
-        }
-    }
+    axios
+      .get("/api/message")
+      .then((res) => this.setState({ resultat: res }))
+      .catch((err) => alert(err));
+    this.refresh = this.refresh.bind(this);
+  }
 
-    render() {
-        return <div className="millieu">
-            {this.getNewMessageComponent()}
-            <MessageList setBody={this.props.setBody} serveur={this.props.serveur} setPage={this.props.setPage} resultat={data.getMessages()} />
+  refresh() {
+    this.state = {
+      resultat: null,
+    };
 
-        </div>
+    axios
+      .get("/api/message")
+      .then((res) => this.setState({ resultat: res }))
+      .catch((err) => alert(err));
+  }
+
+  getNewMessageComponent() {
+    if (this.props.token !== "") {
+      return (
+        <NewMessage
+          setPage={this.setPage}
+          erreur={this.props.erreur}
+          setBody={this.props.setBody}
+          refrech={this.refresh}
+        />
+      );
     }
+  }
+
+  render() {
+    return (
+      <div className="millieu">
+        {this.getNewMessageComponent()}
+        <MessageList
+          setBody={this.props.setBody}
+          setPage={this.props.setPage}
+          resultat={this.resultat}
+        />
+      </div>
+    );
+  }
 }
 
-export default Accueil
+export default Accueil;

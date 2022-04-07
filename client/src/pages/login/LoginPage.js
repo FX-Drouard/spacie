@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Main from '../main/Main.js'
 import SignUp from './SignUp.js'
 import '../../assets/css/login.css'
+import axios from 'axios';
 
 
 class LoginPage extends Component {
@@ -14,7 +15,23 @@ class LoginPage extends Component {
     }
 
     connecte() {
-        let result = this.props.serveur.post("/auth/login/", { login: this.login, password: this.password })
+        if(this.login == "" || this.password == ""){ 
+            this.setState({messageErreur: "veuillez remplir tous les champs"})
+            return
+        }
+        let result = 
+        axios.post("/api/user/login", 
+        { login: this.login, password: this.password }
+        ).then((res) => {
+            this.props.setBody(<Main setBody={this.props.setBody} />)
+            document.cookie = "token="+res.token
+        }
+        ).catch((err) => {
+            this.setState({ messageErreur: err.message })
+        })
+        
+        
+        
         if (result.etat === "200") {
             this.props.setBody(<Main serveur={this.props.serveur} setBody={this.props.setBody} />)
             return

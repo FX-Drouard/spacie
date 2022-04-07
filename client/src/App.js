@@ -8,16 +8,14 @@ class App extends Component {
         super(props)
         this.setBody = this.setBody.bind(this)
         // this.serveur = new Serveur()
-        this.serveur = axios.create({ baseURL: "", timeout: 1000, header: { customHeader: "" } })
         this.state = {
             page: null,
         }
-        document.cookie = 'token=3';
-
+        this.token = document.cookie.split(";").find(it => it.includes("token=")).split("=")[1]
     }
 
     componentWillMount() {
-        this.setBody(<Main serveur={this.serveur} setBody={this.setBody} />)
+        this.setBody(<Main setBody={this.setBody} />)
     }
     setBody(cl) {
         this.setState({ page: cl })

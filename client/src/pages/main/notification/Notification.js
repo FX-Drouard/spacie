@@ -1,20 +1,28 @@
-import React from 'react';
-import UserInfoDate from '../general/UserInfoDate';
+import React from "react";
+import UserInfoDate from "../general/UserInfoDate";
 
 const Notification = (props) => {
-    return (
-        <div className="notification">
-            <UserInfoDate serveur={props.serveur} user={props.message.sender} setPage={props.setPage} date={props.message.date} heure={props.message.heure} />
-            <div className="message_textuel">{props.message.text}</div>
-            <div className="notification_button">
-                <div className="buttons" onClick={
-                    console.log("")
-                }>Consulter</div>
-            </div>
+  return (
+    <div className="notification">
+      <UserInfoDate
+        user={props.notification.sender}
+        setPage={props.setPage}
+        date={props.notification.date}
+        heure={props.notification.heure}
+      />
+      <div className="message_textuel">{props.notification.text}</div>
+      {props.notification.isFriendDemande && (
+        <div className="notification_button">
+          <div className="buttons" onClick={console.log("")}>
+            Annuler
+          </div>
+          <div className="buttons" onClick={console.log("")}>
+            Accepter
+          </div>
         </div>
-
-
-    );
+      )}
+    </div>
+  );
 };
 
 export default Notification;

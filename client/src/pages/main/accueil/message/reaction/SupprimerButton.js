@@ -1,18 +1,27 @@
-import React, { Component } from 'react';
+import axios from "axios";
+import React from "react";
+import Accueil from "../../Accueil";
 
-class SupprimerButton extends Component {
+const SupprimerButton = (props) => {
+  return (
+    <div
+      className="message_button fa-solid fa-trash-can fa-xl"
+      onClick={(event) => {
+        axios
+          .delete("/api/message/" + props.messageID)
+          .then((res) => {
+            props.setPage(
+              <Accueil
+                setPage={this.props.setPage}
+                setBody={this.props.setBody}
+              />
+            );
+            props.setMessageResult(res, { color: "green" });
+          })
+          .catch((err) => props.setMessageResult(err, { color: "red" }));
+      }}
+    ></div>
+  );
+};
 
-
-    supprimer() {
-        //TODO
-    }
-
-    render() {
-        return (
-            <div className="message_button fa-solid fa-trash-can fa-xl" onClick={() => this.supprimer()}>
-            </div>
-        );
-    }
-}
-
-export default SupprimerButton
+export default SupprimerButton;

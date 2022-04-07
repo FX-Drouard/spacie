@@ -1,24 +1,40 @@
-import React, { Component } from 'react';
-import NewMessage from '../../NewMessage';
-import Commentaires from './Commantaires';
+import axios from "axios";
+import React, { Component } from "react";
+import NewMessage from "../../NewMessage";
+import Commentaires from "./Commantaires";
 class CommentePage extends Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-    }
-    getCommentsOfMessage() {
-        // return this.props.serveur.getCommentsOfMessage(this.props.message);
-        return [{ idMessage: 1, text: "haha", sender: { nickName: "stom", photoProfil: "https://media.spacie.fr/Profil/Fristorm/pdp.png" } }, { idMessage: 1, text: "hoha", sender: { nickName: "Fristorm", photoProfil: "https://media.spacie.fr/Profil/Fristorm/pdp.png" } }, { idMessage: 1, text: "hahi", sender: { nickName: "Fristorm", photoProfil: "https://media.spacie.fr/Profil/Fristorm/pdp.png" } }, { idMessage: 1, text: "haha", sender: { nickName: "Fristorm", photoProfil: "https://media.spacie.fr/Profil/Fristorm/pdp.png" } }]
-    }
-    render() {
-        return <div className="commentaires">
-            <NewMessage serveur={this.props.serveur} setPage={this.setPage} erreur={this.props.erreur} message={this.props.message} />
-            <Commentaires setBody={this.props.setBody} serveur={this.props.serveur} setPage={this.setPage} resultat={this.getCommentsOfMessage()} />
-        </div>
-
-    }
-
-
+    axios
+      .get("/api/message/commentaire/" + this.props.message.id)
+      .then((res) => this.setState({ resultat: res }))
+      .catch((err) => alert(err));
+    this.refresh = this.refresh.bind(this);
+  }
+  refresh() {
+    axios
+      .get("/api/message/commentaire/" + this.props.message.id)
+      .then((res) => this.setState({ resultat: res }))
+      .catch((err) => alert(err));
+  }
+  render() {
+    return (
+      <div className="commentaires">
+        <NewMessage
+          setPage={this.setPage}
+          erreur={this.props.erreur}
+          messageID={this.props.message.id}
+          refresh={this.refresh}
+        />
+        <Commentaires
+          setBody={this.props.setBody}
+          setPage={this.setPage}
+          resultat={this.state.resultat}
+        />
+      </div>
+    );
+  }
 }
 
 export default CommentePage;

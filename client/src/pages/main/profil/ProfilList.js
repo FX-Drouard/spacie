@@ -1,14 +1,25 @@
-import React, { Component } from 'react';
-import ProfilInfo from './ProfilInfo'
+import React, { Component } from "react";
+import ProfilInfo from "./ProfilInfo";
 class ProfilList extends Component {
-    constructor(props) {
-        super(props)
-    }
-    render() {
-        return <div id="modificationProfil">
-            {this.props.resultat.map((e, index) => <ProfilInfo key={index} serveur={this.props.serveur} setPage={this.props.setPage} setBody={this.props.setBody} user={e} />)}
-        </div>
-    }
+  constructor(props) {
+    super(props);
+    
+  }
+  render() {
+    return (
+      <div id="modificationProfil">
+        {this.props.resultat.map((e, index) => (
+          <ProfilInfo
+            key={index}
+            serveur={this.props.serveur}
+            setPage={this.props.setPage}
+            setBody={this.props.setBody}
+            user={e}
+          />
+        ))}
+      </div>
+    );
+  }
 }
 
 export default ProfilList;
