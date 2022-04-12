@@ -12,9 +12,11 @@
   "dependencies": {
     "chai": "^4.3.0",
     "chai-http": "^4.3.0",
+    "crypto": "^1.0.1",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "mocha": "^8.3.0",
+    "mongodb": "^4.5.0",
     "nedb": "^1.8.0",
     "path": "^0.12.7"
   }
