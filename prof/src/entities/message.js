@@ -6,9 +6,7 @@ class Message {
   create(login, message, pathImage, hashtag, mentions) {
     return new Promise((resolve, reject) => {
       try {
-        let id = this.db.message.genererId();
         this.db.message.insert({
-          id: id,
           login: login,
           message: message,
           pathImage: pathImage,

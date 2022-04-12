@@ -10,10 +10,12 @@ class StarButton extends Component {
       .split(";")
       .find((it) => it.includes("token="))
       .split("=")[1];
+  }
 
+  componentWillMount() {
     if (this.token) {
       axios.get("/api/user/token/" + this.token).then((res) => {
-        for (let i in message.stars) {
+        for (let i in this.props.message.stars) {
           if ((i.login = res)) {
             this.setState({ isLiked: true });
             break;

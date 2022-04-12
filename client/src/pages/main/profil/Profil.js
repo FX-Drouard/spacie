@@ -22,9 +22,6 @@ class Profil extends Component {
       user: null,
     };
 
-    axios.get("/api/user/token" + this.token).then((res) => {
-      this.setState({ user: res });
-    });
     this.date = new Date(this.props.user.creationDate);
   }
 
@@ -33,17 +30,14 @@ class Profil extends Component {
   }
 
   componentWillMount() {
+    axios.get("/api/user/token" + this.token).then((res) => {
+      this.setState({ user: res });
+    });
     axios
-      .get("/api/message/" + this.props.user.login)
+      .get("/api/message/" + this.state.user.login)
       .then((res) => {
         this.setState({
-          container: (
-            <MessageList
-              serveur={this.props.serveur}
-              user={res}
-              setPage={this.props.setPage}
-            />
-          ),
+          container: <MessageList user={res} setPage={this.props.setPage} />,
           buttonName: "Message",
         });
       })
@@ -152,7 +146,7 @@ class Profil extends Component {
                 <div
                   className="buttons"
                   onClick={() => {
-                    setContainer();
+                    this.setContainer();
                   }}
                 >
                   {this.state.buttonName}

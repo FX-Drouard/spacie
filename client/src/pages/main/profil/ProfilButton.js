@@ -1,16 +1,21 @@
 import axios from "axios";
 import React, { Component } from "react";
 import Profil from "./Profil.js";
-const data = require("../general/Data.js");
 
 class ProfilButton extends Component {
   constructor(props) {
     super(props);
-    this.user = data.getProfile("Fristorm");
+
     this.token = document.cookie
       .split(";")
       .find((it) => it.includes("token="))
       .split("=")[1];
+    this.state = { login: null };
+  }
+  componentWillMount() {
+    axios
+      .get("/api/user/token/" + this.token)
+      .then((res) => this.setState({ login: res }));
   }
 
   gotoProfil() {
@@ -34,7 +39,7 @@ class ProfilButton extends Component {
     return (
       <div id="lien_profil">
         <span onClick={() => this.gotoProfil()}>
-          <img src={this.user.photoProfil} alt="photo de profil" />
+          <img src={this.state.login.photoProfil} alt="photo de profil" />
         </span>
       </div>
     );

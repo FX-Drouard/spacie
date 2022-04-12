@@ -16,7 +16,7 @@ export default class AjouterButton extends Component {
         style={{ backgroundColor: this.state.color }}
         onClick={() => {
           axios
-            .post("/api/friend/ajouter/" + props.login)
+            .post("/api/friend/ajouter/" + this.props.login)
             .then(() => this.setState({ color: "green" }))
             .catch((err) => alert(err));
         }}

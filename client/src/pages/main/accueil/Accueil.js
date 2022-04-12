@@ -16,15 +16,24 @@ class Accueil extends Component {
     axios
       .get("/api/message")
       .then((res) => this.setState({ resultat: res }))
-      .catch((err) => alert(err));
+      .catch((err) => {
+        this.setState({ resultat: [] });
+        alert(err);
+      });
     this.refresh = this.refresh.bind(this);
   }
 
-  refresh() {
-    this.state = {
-      resultat: null,
-    };
+  componentWillReceiveProps(props) {
+    axios
+      .get("/api/message")
+      .then((res) => this.setState({ resultat: res }))
+      .catch((err) => {
+        this.setState({ resultat: [] });
+        alert(err);
+      });
+  }
 
+  refresh() {
     axios
       .get("/api/message")
       .then((res) => this.setState({ resultat: res }))

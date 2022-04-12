@@ -17,10 +17,15 @@ class Header extends Component {
       .split(";")
       .find((it) => it.includes("token="))
       .split("=")[1];
-    this.login = null;
+
+    this.state = {
+      login: null,
+    };
+  }
+  componentWillMount() {
     axios
       .get("/api/user/token/" + this.token)
-      .then((res) => (this.login = res));
+      .then((res) => this.setState({ login: res }));
   }
   render() {
     return (

@@ -6,6 +6,7 @@ import UserInfoDate from "../../general/UserInfoDate";
 import SupprimerButton from "./reaction/SupprimerButton";
 import ModifierButton from "./reaction/modifier/ModifierButton";
 import StarPage from "./reaction/star/StarPage";
+import axios from "axios";
 
 class Message extends Component {
   constructor(props) {
@@ -19,11 +20,13 @@ class Message extends Component {
 
     this.setReaction = this.setReaction.bind(this);
 
-    axios
-      .get("/api/user/token/" + this.token)
-      .then((res) => this.setState({ userName: res }));
     this.clickedStar = false;
     this.setMessageResult = this.setMessageResult.bind(this);
+  }
+  componentWillMount() {
+    axios
+      .get("/api/user/token/" + this.token)
+      .then((res) => this.setState({ userName: res.login }));
   }
 
   componentWillReceiveProps(props) {
