@@ -5,16 +5,18 @@ import ListeAmis from "./ListeAmis";
 class AmiPage extends Component {
   constructor(props) {
     super(props);
-    this.resultat = null;
+    this.state = {
+      resultat: [],
+    };
   }
 
   componentWillMount() {
     axios
       .get("/api/friend/" + this.props.login)
       .then((res) => {
-        this.resultat = res;
+        this.setState({ resultat: res });
       })
-      .catch((err) => alert(err));
+      .catch(() => this.setState({ resultat: [] }));
   }
 
   render() {
@@ -22,7 +24,7 @@ class AmiPage extends Component {
       <div className="millieu">
         <ListeAmis
           serveur={this.props.serveur}
-          user={this.resultat}
+          users={this.state.resultat}
           setPage={this.props.setPage}
         />
       </div>

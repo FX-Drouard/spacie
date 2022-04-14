@@ -3,7 +3,7 @@ import LoginPage from "../../../../../login/LoginPage";
 
 import React from "react";
 
-const PartagerButton = (props) => {
+const RepostButton = (props) => {
   let token = document.cookie
     .split(";")
     .find((it) => it.includes("token="))
@@ -25,4 +25,4 @@ const PartagerButton = (props) => {
   );
 };
 
-export default PartagerButton;
+export default RepostButton;

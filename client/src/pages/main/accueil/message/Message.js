@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import CommenteButton from "./reaction/commentaires/CommenteButton";
 import StarButton from "./reaction/star/StarButton.js";
-import PartagerButton from "./reaction/partage/PartagerButton";
+import RepostButton from "./reaction/partage/RepostButton";
 import UserInfoDate from "../../general/UserInfoDate";
 import SupprimerButton from "./reaction/SupprimerButton";
 import ModifierButton from "./reaction/modifier/ModifierButton";
@@ -123,7 +123,7 @@ class Message extends Component {
                 setMessageResult={this.setMessageResult}
               />
             ) : !this.props.comment ? (
-              <PartagerButton
+              <RepostButton
                 setBody={this.props.setBody}
                 message={this.props.message}
                 setPage={this.props.setPage}

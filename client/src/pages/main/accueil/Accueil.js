@@ -10,17 +10,18 @@ class Accueil extends Component {
       .find((it) => it.includes("token="))
       .split("=")[1];
     this.state = {
-      resultat: null,
+      resultat: [],
     };
+    this.refresh = this.refresh.bind(this);
+  }
 
+  componentWillMount() {
     axios
       .get("/api/message")
       .then((res) => this.setState({ resultat: res }))
       .catch((err) => {
         this.setState({ resultat: [] });
-        alert(err);
       });
-    this.refresh = this.refresh.bind(this);
   }
 
   componentWillReceiveProps(props) {
@@ -60,7 +61,7 @@ class Accueil extends Component {
         <MessageList
           setBody={this.props.setBody}
           setPage={this.props.setPage}
-          resultat={this.resultat}
+          resultat={this.state.resultat}
         />
       </div>
     );

@@ -31,7 +31,10 @@ class StarButton extends Component {
       return;
     }
     axios
-      .post("/api/message/star", { messageID: this.props.message.id })
+      .post("/api/message/star", {
+        messageID: this.props.message.id,
+        liked: this.state.isLiked,
+      })
       .then((res) => this.setState({ isLiked: res }))
       .catch((err) => alert(err));
   }

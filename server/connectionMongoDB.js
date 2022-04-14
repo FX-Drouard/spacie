@@ -1,4 +1,6 @@
 const { MongoClient } = require("mongodb");
+const crypto = require("crypto");
+const { use } = require("chai");
 
 async function connection() {
   const url = "mongodb://spacie.fr/";
@@ -13,7 +15,11 @@ connection()
   .then((db) => {
     console.log(2);
     const user = db.collection("Users");
-    user.insertOne({ _id: "spacie", motDePasse: "Spacie2022", email: "" });
+    // user.deleteOne({ _id: "hamid" });
+    // user.insertOne({ _id: "hamid", email: "stom@spacie.fr", age: 21 });
+    user
+      .findOne({ _id: "hamid" }, { email: 1, age: 0 })
+      .then((res) => console.log(res));
   })
   .catch((err) => {
     console.log(err);

@@ -10,49 +10,50 @@ class Suggestion extends Component {
       .find((it) => it.includes("token="))
       .split("=")[1];
     this.state = {
-      resultat: null,
+      resultat: [],
     };
   }
   componentWillMount() {
     axios
-      .get("/api/user")
+      .get("/api/user/info")
       .then((res) => {
         this.setState({ resultat: res.data.slice(0, 5) });
       })
       .catch((err) => {
         this.setState({ resultat: [] });
-        alert(err);
       });
   }
   render() {
-    return (
-      <div id="suggestion_profil">
-        {this.token && (
+    if (this.token != "0")
+      return (
+        <div id="suggestion_profil">
           <ProfilList
             serveur={this.props.serveur}
             setPage={this.props.setPage}
             setBody={this.props.setBody}
             resultat={this.state.resultat}
           />
-        )}
-        <div
-          className="buttons"
-          onClick={() => {
-            axios
-              .get("/api/user")
-              .then((res) => {
-                this.setState({ resultat: res.data.slice(0, 5) });
-              })
-              .catch((err) => {
-                this.setState({ resultat: [] });
-                alert(err);
-              });
-          }}
-        >
-          Suggerer
+
+          <div
+            className="buttons"
+            onClick={() => {
+              axios
+                .get("/api/user")
+                .then((res) => {
+                  this.setState({ resultat: res.data.slice(0, 5) });
+                })
+                .catch((err) => {
+                  this.setState({ resultat: [] });
+                  alert(err);
+                });
+            }}
+          >
+            Suggerer
+          </div>
         </div>
-      </div>
-    );
+      );
+
+    return <div id="suggestion_profil"></div>;
   }
 }
 

@@ -19,13 +19,15 @@ class Header extends Component {
       .split("=")[1];
 
     this.state = {
-      login: null,
+      login: "",
     };
   }
   componentWillMount() {
-    axios
-      .get("/api/user/token/" + this.token)
-      .then((res) => this.setState({ login: res }));
+    if (this.token != "0")
+      axios
+        .get("/api/user/token/" + this.token)
+        .then((res) => this.setState({ login: res }))
+        .catch((err) => alert(err + "djafar"));
   }
   render() {
     return (
@@ -72,7 +74,7 @@ class Header extends Component {
           />
           <HeaderItem
             onClick={() => {
-              this.token != ""
+              this.token != "0"
                 ? this.setPage(
                     <NotificationPage
                       serveur={this.props.serveur}
@@ -92,7 +94,7 @@ class Header extends Component {
 
           <HeaderItem
             onClick={() => {
-              this.token != ""
+              this.token != "0"
                 ? this.setPage(
                     <AmiPage
                       setBody={this.props.setBody}
@@ -113,8 +115,7 @@ class Header extends Component {
           />
         </div>
         <div id="lien_profil">
-          {console.log("haha", this.token)}
-          {this.token == "" ? (
+          {this.token == "0" ? (
             <LoginButton
               serveur={this.props.serveur}
               setBody={this.props.setBody}

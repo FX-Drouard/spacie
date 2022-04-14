@@ -12,21 +12,22 @@ export default class NotificationPage extends Component {
       .split(";")
       .find((it) => it.includes("token="))
       .split("=")[1];
+  }
+  componentWillMount() {
     axios
       .get("/api/notification/" + this.token)
       .then((res) => {
         this.setState({ resultat: res });
       })
-      .catch((err) => alert(err));
+      .catch((err) => this.setState({ resultat: [] }));
   }
-
   componentWillReceiveProps(props) {
     axios
       .get("/api/notification/" + this.token)
       .then((res) => {
         this.setState({ resultat: res });
       })
-      .catch((err) => alert(err));
+      .catch((err) => this.setState({ resultat: [] }));
   }
 
   render() {
@@ -36,7 +37,7 @@ export default class NotificationPage extends Component {
           setBody={this.props.setBody}
           serveur={this.props.serveur}
           setPage={this.props.setPage}
-          resultat={this.resultat}
+          resultat={this.state.resultat}
         />
       </div>
     );

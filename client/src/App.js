@@ -11,7 +11,7 @@ class App extends Component {
     this.state = {
       page: null,
     };
-    document.cookie = "token=23";
+    document.cookie = "token=0";
 
     this.token = document.cookie
       .split(";")
