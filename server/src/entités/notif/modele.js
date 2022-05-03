@@ -1,6 +1,6 @@
 const crypto = require("crypto");
-import UserBase from "./baseBDD";
-export default class Friend {
+import NotificationsBase from "./baseBDD";
+export default class Notifications {
   constructor(db) {
     this.friend = FriendBase(db);
   }
