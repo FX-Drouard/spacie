@@ -16,7 +16,7 @@ class App extends Component {
     this.token = document.cookie
       .split(";")
       .find((it) => it.includes("token="))
-      .split("=")[1];
+      .split("=")[1]
   }
 
   componentWillMount() {
