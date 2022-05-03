@@ -1,30 +1,11 @@
-import FriendBase from "./baseBDD";
-export default class Friend {
+import FriendsBase from "./baseBDD";
+export default class Friends {
   constructor(db) {
-    this.friend = FriendBase(db);
+    this.friend = FriendsBase(db);
   }
-
-  create(login1) {
-    
-  }
-
-  find(login) {
-    
-  }
-
-  delete(login) {
-    
-  }
-
-  update(login, nickName, motDePasse, biographie, photo) {
-    
-  }
-
-  getAll() {
-    
-  }
-
-  getInfo(login) {
-    
+  addFriend(login1, login2) {
+    return new Promise((resolve, reject) => {
+      this.friend.create(login1, login2).then((res) => resolve(res)).catch((err) => reject(err));
+    })
   }
 }

@@ -71,4 +71,16 @@ export default class User {
         .catch((err) => reject(err));
     });
   }
+
+  addFriend(login1, login2) {
+    return new Promise((resolve, reject) => {
+      this.user.addFriend(login1, login2).then((res) => resolve(res)).catch((err) => reject(err));
+  });
+}
+
+  removeFriend(login1, login2) {
+    return new Promise((resolve, reject) => {
+      this.user.removeFriend(login1, login2).then((res) => resolve(res)).catch((err) => reject(err));
+  }
+    );}
 }

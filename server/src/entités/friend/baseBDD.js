@@ -1,17 +1,15 @@
-export default class FriendBase {
+export default class FriendsBase {
     constructor(db) {
       this.db = db;
     }
   
     create(login1, login2) {
       return new Promise((resolve, reject) => {
+        this.db.findOne({ emeteur: login1, recepteur: login2 }).then((res) => {reject("Cette demande est deja presente")})
         this.db
           .insertOne({
-            _id: login,
-            motDePasse: motDePasse,
-            email: email,
-            dateNaissance: dateNaissance,
-            dateCreation: dateCreation,
+            emeteur: login1,
+            recepteur: login2,
           })
           .then((res) => resolve(res))
           .catch((err) => reject(err));
@@ -19,54 +17,23 @@ export default class FriendBase {
     }
   
     find(login) {
-      return new Promise((resolve, reject) => {
-        this.db
-          .findOne({ _id: login })
-          .then((res) => resolve(res))
-          .catch((err) => reject(err));
-      });
+      
     }
   
     delete(login) {
-      return new Promise((resolve, reject) => {
-        this.db
-          .deleteOne({ _id: login })
-          .then((res) => resolve(res))
-          .catch((err) => reject(err));
-      });
+      
     }
   
     update(login, doc) {
-      return new Promise((resolve, reject) => {
-        this.db
-          .updateOne(
-            { _id: login },
-            {
-              $set: doc,
-            }
-          )
-          .then((res) => resolve(res))
-          .catch((err) => reject(err));
-      });
+      
     }
   
     getAll() {
-      return new Promise((resolve, reject) => {
-        this.db
-          .find({}, { _id: 1, nickName: 1, photo: 1 })
-          .toArray()
-          .then((res) => resolve(res))
-          .catch((err) => reject(err));
-      });
+      
     }
   
     getInfo(login) {
-      return Promise(resolve, (reject) => {
-        this.db
-          .findOne({ _id: login }, { _id: 1, nickName: 1, photo: 1 })
-          .then((res) => resolve(res))
-          .catch((err) => reject(err));
-      });
+      
     }
   }
   

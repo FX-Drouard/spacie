@@ -68,4 +68,12 @@ export default class UserBase {
         .catch((err) => reject(err));
     });
   }
+
+  addFriend(login1, login2) {
+    this.update(login1, { friends: [...this.getInfo(login1).friends, login2] });}
+  
+  removeFriend(login1, login2) {
+    this.update(login1, { friends: this.getInfo(login1).friends.filter((friend) => friend !== login2) });
+  }
 }
+
