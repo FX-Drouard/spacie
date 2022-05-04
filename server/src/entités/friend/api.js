@@ -26,7 +26,7 @@ export class Api {
     const login_emeteur = decodedToken.userId;
     this.friends.create(login_emeteur, login_recepteur).then((resp) => {
       res.sendStatus(200).send({ message: "Validé" })
-      //this.notif.addnotif(login_recepteur,login_emeteur+" vous as ajouté en amis",resp._id)
+      this.notif.addNotif(login_recepteur,login_emeteur+" vous as ajouté en amis",resp._id)
 
     }).catch(err => res.sendStatus(402).send({ message: err }))
   }
@@ -39,6 +39,7 @@ export class Api {
     const login_recepteur = resp.login_recepteur;
     this.user.addFriends(login_emeteur, login_recepteur).then(() => {
       this.user.addFriends(login_recepteur, login_emeteur).then(() => {resp.sendStatus(200).send({ message: "Validé" })}).catch((err) => {this.user.removeFriends(login_emeteur, login_recepteur).catch((err) => {sendStatus(503).send({message: err})}); resp.sendStatus(402).send({ message: err })})
+      this.notif.addNotif(login_recepteur,login_emeteur+" vous as ajouté en amis",resp._id)
     }).catch((err) => {sendStatus(503).send({message: err})})
   }).catch((err) => {
     res.sendStatus(402).send({ message: err })})

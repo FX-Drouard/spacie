@@ -3,15 +3,14 @@ export default class NotificationsBase {
       this.db = db;
     }
   
-    create(login1, login2) {
+    create(login1, message) {
       return new Promise((resolve, reject) => {
+        this.db.findOne({ notifier: login1, messages: message }).then((res) => {reject("Cette demande est deja presente")})
         this.db
           .insertOne({
-            _id: login,
-            motDePasse: motDePasse,
-            email: email,
-            dateNaissance: dateNaissance,
-            dateCreation: dateCreation,
+            notifier: login1,
+            messages: message,
+            Date: new Date()
           })
           .then((res) => resolve(res))
           .catch((err) => reject(err));
@@ -19,54 +18,33 @@ export default class NotificationsBase {
     }
   
     find(login) {
-      return new Promise((resolve, reject) => {
-        this.db
-          .findOne({ _id: login })
-          .then((res) => resolve(res))
-          .catch((err) => reject(err));
-      });
+      
     }
   
     delete(login) {
       return new Promise((resolve, reject) => {
         this.db
-          .deleteOne({ _id: login })
+          .deleteMany({ notifier: login })
           .then((res) => resolve(res))
           .catch((err) => reject(err));
       });
     }
   
     update(login, doc) {
-      return new Promise((resolve, reject) => {
-        this.db
-          .updateOne(
-            { _id: login },
-            {
-              $set: doc,
-            }
-          )
-          .then((res) => resolve(res))
-          .catch((err) => reject(err));
-      });
+      
     }
   
-    getAll() {
+    getAll(login) {
       return new Promise((resolve, reject) => {
-        this.db
-          .find({}, { _id: 1, nickName: 1, photo: 1 })
-          .toArray()
+        this.friend
+          .getAll({ notifier: login })
           .then((res) => resolve(res))
           .catch((err) => reject(err));
       });
     }
   
     getInfo(login) {
-      return Promise(resolve, (reject) => {
-        this.db
-          .findOne({ _id: login }, { _id: 1, nickName: 1, photo: 1 })
-          .then((res) => resolve(res))
-          .catch((err) => reject(err));
-      });
+      
     }
   }
   

@@ -70,11 +70,13 @@ export default class UserBase {
   }
 
   addFriend(login1, login2) {
-    this.update(login1, { friends: [...this.getInfo(login1).friends, login2] });}
+    this.update(login1, { friends: [...this.getInfo(login1).friends, login2] });
+  }
   
   removeFriend(login1, login2) {
     this.update(login1, { friends: this.getInfo(login1).friends.filter((friend) => friend !== login2) });
   }
+  
   getFriend(login) {
     return new Promise((resolve, reject) => {
       this.db

@@ -10,7 +10,15 @@ export default class Friends {
   }
   removeFriend(login1, login2) {
     return new Promise((resolve, reject) => {
-      this.friend.delete(login1).then(this.friend.delete(login2)).then((res) => resolve(res)).catch((err) => reject(err));
+      this.friend.delete(login1, login2).then(this.friend.delete(login2, login1)).then((res) => resolve(res)).catch((err) => reject(err));
     })
   }
+  getFriends(login) {
+    return Promise((resolve, reject) => {
+      this.friends
+        .getInfo(login)
+        .then((res) => resolve(res))
+
+        .catch((err) => reject(err));
+    });}
 }

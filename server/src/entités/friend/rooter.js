@@ -7,10 +7,7 @@ rooter.use(express.json());
 const db = await connection()
 const api = Api(db)
 rooter
-  .get("/:login", async function (req, res) {
-
-
-  })
-  .post("/:id",auth, api.addFriend)
-  .delete("/:id",auth, api.delFriend)
-  .post("/accept/:id",auth, api.acceptFriend);
+  .get("/:login", api.getFriends) // get friends
+  .post("/:id",auth, api.addFriend) // add Friend
+  .delete("/:id",auth, api.delFriend) //del friend
+  .post("/accept/:id",auth, api.acceptFriend); // accept friend

@@ -7,7 +7,6 @@ rooter.use(express.json());
 const db = await connection()
 const api = Api(db)
 rooter
-  .get("/:login", async function (req, res) {
-
-
-  })
+  .get("/",auth, api.getNotif) // get notif
+  .post("/",auth, api.addNotif) // add notif
+  .delete("/",auth, api.clearNotif) // clear notif

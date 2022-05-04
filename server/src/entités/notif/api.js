@@ -1,21 +1,26 @@
-import friend from "./modele";
-const jwt = require('jsonwebtoken')
+import Notif from "./modele";
+const jwt = require("jsonwebtoken");
 export class Api {
+  constructor(db) {
+    this.notif = Notif(db);
+  }
 
-    constructor(db) {
-         this.friend = Friend(db)
-    }
+  async addNotif(req, res) {
+    const { message } = req.body;
+    const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
+    const login = decodedToken.userId;
+    this.notif.addNotif(login, message).then((res) => res.send(res));
+  }
 
-    async delFriend(req,res) {
-        const {login ,date,email,motDePasse} = req.body
-        
-    }
+  async getAllNotif(req, res) {
+    const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
+    const login = decodedToken.userId;
+    this.notif.getAllNotif(login).then((res) => res.send(res));
+  }
 
-    async addFriend (req, res) {
-      const {id} = req.body
-      
-  
-    }
-
-
+  async clearNotif(req, res) {
+    const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
+    const login = decodedToken.userId;
+    this.notif.clearNotif(login).then((res) => res.send(res));
+  }
 }
