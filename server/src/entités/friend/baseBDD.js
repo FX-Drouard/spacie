@@ -20,10 +20,10 @@ export default class FriendsBase {
 
   find(login) {}
 
-  delete(login) {
+  delete(login1, login2) {
     return new Promise((resolve, reject) => {
       this.db
-        .deleteOne({ _id: login })
+        .deleteOne({ emeteur: login1 , recepteur: login2})
         .then((res) => resolve(res))
         .catch((err) => reject(err));
     });
