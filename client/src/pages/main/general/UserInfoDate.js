@@ -7,9 +7,9 @@ class UserInfoDate extends React.Component {
   }
   render() {
     
-    let date = dateGater.getDate(props.date)
+    let date = dateGater.getDate(this.props.date)
 
-    let heure = timestamp.getHours() + ":" + timestamp.getMinutes();
+    let heure = date.getHours() + ":" + date.getMinutes();
     return (
       <div className="message_user_info">
         <UserInfo user={this.props.user} setPage={this.props.setPage} />

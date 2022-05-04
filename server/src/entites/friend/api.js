@@ -55,4 +55,3 @@ export class Api {
   }
 }
 
-exports.default = router
