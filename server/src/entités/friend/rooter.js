@@ -12,4 +12,5 @@ rooter
 
   })
   .post("/:id",auth, api.addFriend)
-  .delete("/:id",auth, api.delFriend);
+  .delete("/:id",auth, api.delFriend)
+  .post("/accept/:id",auth, api.acceptFriend);

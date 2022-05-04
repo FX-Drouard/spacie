@@ -14,6 +14,10 @@ export class Api {
     const { login_recepteur } = req.body
     const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
     const login_emeteur = decodedToken.userId;
+    this.friends.delete(login_emeteur, login_recepteur).then((resp) => {
+      res.sendStatus(200).send({ message: "Validé" })}).catch((err) => {
+        res.status(500).send({ message: "Erreur suppression amis" })
+      })
   }
 
   async addFriends(req, res) {
@@ -38,5 +42,14 @@ export class Api {
     }).catch((err) => {sendStatus(503).send({message: err})})
   }).catch((err) => {
     res.sendStatus(402).send({ message: err })})
+  }
+
+  async getFriends(req, res) {
+    const { login_emeteur } = req.params;
+    this.user.getFriends(login_emeteur).then((resp) => {
+      res.sendStatus(200).send({ friends: resp })
+    }).catch((err) => {
+      res.sendStatus(402).send({ message: err })
+    })
   }
 }
