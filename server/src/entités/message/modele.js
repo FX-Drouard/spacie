@@ -1,86 +1,59 @@
 const crypto = require("crypto");
-import UserBase from "./baseBDD";
-export default class User {
+import MessageBase from "./baseBDD";
+import UserBase  from "../user/baseBDD"
+export default class Message {
   constructor(db) {
-    this.user = UserBase(db);
-  }
-
-  create(login, motDePasse, email, date) {
-    return new Promise((resolve, reject) => {
-      this.user
-        .create(
-          login,
-          crypto.createHash("sha256").update(motDePasse).digest("hex"),
-          email,
-          date,
-          new Date()
-        )
-        .then((res) => resolve(res))
-        .catch((err) => reject("Ce login existe deja choisissez un autre"));
-    });
-  }
-
-  find(login) {
-    return new Promise((resolve, reject) => {
-      this.user
-        .find(login)
-        .then((res) => resolve(res))
-        .catch(() => reject(login+" n'existe pas"));
-    });
-  }
-
-  delete(login) {
-    return new Promise((resolve, reject) => {
-      this.user
-        .delete(login)
-        .then((res) => resolve(res))
-        .catch((err) =>
-          reject("impossible de supprimer" +login+" n'existe pas")
-        );
-    });
-  }
-
-  update(login, nickName, motDePasse, biographie, photo) {
-    return new Promise((resolve, reject) => {
-      const doc = { _id: login };
-      if (nickName) doc[nickName] = nickName;
-      if (motDePasse) doc[motDePasse] = motDePasse;
-      if (biographie) doc[biographie] = biographie;
-      if (photo) doc[photo] = photo;
-      this.user
-        .update(login, doc)
-        .then((res) => resolve(res))
-        .catch((err) => reject(err));
-    });
+    this.dbMessage = MessageBase(db.Message);
+    this.dbUser = UserBase(db.User)
   }
 
   getAll() {
     return new Promise((resolve, reject) => {
-      this.user
-        .getAll()
+      this.dbMessage.getAll().then(res => resolve(res)).catch(err => reject(err));
+    })
+  }
+
+  newMessage(login,message,private,image) {
+    return new Promise((resolve, reject) => {
+
+      this.dbUser.find(login)
+        .then((resUser) => {
+          resUser.messages.push(resMessage._id)
+          this.dbMessage.create(message,private,image,resUser._id)
+              .then((resMessage) => {
+                this.dbUser.update(login,{messages :resUser.messages }).
+                then(() => {
+                  resolve("l'ajout est bien effectue")
+                })  
+                .catch((err) =>{
+                  this.dbMessage.delete(resMessage._id)
+                  reject(err)
+                })
+              })
+              .catch(err => reject(err))
+         
+        }).catch(err => {
+          reject(err)
+        })
+
+      
+    })
+
+  }
+
+  update(message_id, message, image, private){
+    return new Promise((resolve, reject) => {
+      const doc = { _id: message_id };
+      if (message) doc[message] = message;
+      if (image) doc[image] = image;
+      if (private) doc[private] = private;
+      this.dbMessage
+        .update(message_id, doc)
         .then((res) => resolve(res))
         .catch((err) => reject(err));
     });
   }
 
-  getInfo(login) {
-    return Promise((resolve, reject) => {
-      this.user
-        .getInfo(login)
-        .then((res) => resolve(res))
-        .catch((err) => reject(err));
-    });
-  }
 
-  addFriend(login1, login2) {
-    return new Promise((resolve, reject) => {
-      this.user.addFriend(login1, login2).then((res) => resolve(res)).catch((err) => reject(err));
-  });
 }
 
-  removeFriend(login1, login2) {
-    return new Promise((resolve, reject) => {
-      this.user.removeFriend(login1, login2).then((res) => resolve(res)).catch((err) => reject(err));
-  }
-    );}
-}

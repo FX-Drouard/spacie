@@ -2,7 +2,7 @@ const crypto = require("crypto");
 import UserBase from "./baseBDD";
 export default class User {
   constructor(db) {
-    this.user = UserBase(db);
+    this.user = UserBase(db.User);
   }
 
   create(login, motDePasse, email, date) {

@@ -9,7 +9,6 @@ import ProfilButton from "../profil/ProfilButton";
 import Recherche from "../recherche/Recherche";
 import HeaderItem from "./HeaderItem";
 const token = require("../general/token.js");
-const jwt = require('jsonwebtoken');
 
 
 class Header extends Component {
@@ -24,8 +23,7 @@ class Header extends Component {
   }
   componentWillMount() {
     if (this.token != ""){
-      const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
-      this.setState({login: decodedToken.login})
+      this.setState({login: token.getLoginFromToken(this.token)});
     }
   }
   render() {

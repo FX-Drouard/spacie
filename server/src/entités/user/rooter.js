@@ -7,9 +7,9 @@ rooter.use(express.json());
 const db = await connection()
 const api = Api(db)
 rooter
-  .get("/:login", api.get) // Profil , ResultatRecherche
+  .get("/:login", api.get) // Profil , ResultatRecherche, Message
   .get("/info",auth,api.getInfos) //Suggestion
-  .get("/info/:login", api.getInfo) // ProfilButton
+  .get("/info/:login", api.getInfo) // ProfilButton, StarPage
   .post("/signup", api.signup) // SignUp
   .post("/signin", api.signin) // LoginPage
   .delete("/signout",auth,api.signout) //Profil

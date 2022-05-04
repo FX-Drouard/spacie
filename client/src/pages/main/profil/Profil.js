@@ -9,7 +9,6 @@ import AjouterButton from "../general/AjouterButton";
 import ListeAmis from "../listeAmis/ListeAmis";
 import SupprimerAmiButton from "../general/SupprimerAmiButton";
 const token = require("../general/token.js");
-const jwt = require("jsonwebtoken");
 const date = require("../general/data.js");
 
 class Profil extends Component {
@@ -22,6 +21,7 @@ class Profil extends Component {
       userConnect: null,
       user : null,
       isFriend : false,
+      messages : [],
     };
 
   }
@@ -33,8 +33,8 @@ class Profil extends Component {
   componentWillMount() {
     
     if (this.token != ""){
-      const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
-      this.setState({userConnect: decodedToken.login})
+     
+      this.setState({userConnect: token.getLoginFromToken(this.token)});
     }
 
     axios
@@ -81,20 +81,29 @@ class Profil extends Component {
         .catch((err) => alert(err));
     }
     if (this.buttonName == "Messages") {
-      axios
-        .get("/api/message/" + this.state.user.login)
-        .then((res) => {
+        for (let idMessage in this.state.user.messages) { 
+          axios
+          .get("/api/message/" + idMessage)
+          .then((res) => {
+            this.state.messages.push(res)
+            this.setState({
+              messages : this.state.messages
+            });
+          })
+          .catch((err) => alert(err));
+        }
+      
           this.setState({
             container: (
               <MessageList
-                user={res}
                 setPage={this.props.setPage}
+                setBody={this.props.setBody}
+                resultat={this.state.messages}
               />
             ),
             buttonName: "Message",
           });
-        })
-        .catch((err) => alert(err));
+       
     }
   }
 

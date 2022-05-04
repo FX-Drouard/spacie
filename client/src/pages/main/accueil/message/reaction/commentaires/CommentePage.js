@@ -6,11 +6,8 @@ class CommentePage extends Component {
   constructor(props) {
     super(props);
 
-    axios
-      .get("/api/message/commentaire/" + this.props.message.id)
-      .then((res) => this.setState({ resultat: res }))
-      .catch((err) => alert(err));
     this.refresh = this.refresh.bind(this);
+    this.refresh()
   }
   refresh() {
     axios

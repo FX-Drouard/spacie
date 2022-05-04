@@ -1,27 +1,25 @@
 import axios from "axios";
 import React, { Component } from "react";
 import LoginPage from "../../../../../login/LoginPage";
-
+const token = require("../../../../general/token.js");
 class StarButton extends Component {
   constructor(props) {
     super(props);
 
-    this.token = document.cookie
-      .split(";")
-      .find((it) => it.includes("token="))
-      .split("=")[1];
+    this.token = token.getToken();
   }
 
   componentWillMount() {
     if (this.token) {
-      axios.get("/api/user/token/" + this.token).then((res) => {
-        for (let i in this.props.message.stars) {
-          if ((i.login = res)) {
-            this.setState({ isLiked: true });
-            break;
-          }
+      const login  =  token.getLoginFromToken(this.token);
+     
+      for (let starsLogin in this.props.message.stars) {
+        if ((starsLogin = login)) {
+          this.setState({ isLiked: true });
+          break;
         }
-      });
+      }
+      
     }
   }
 

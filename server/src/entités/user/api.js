@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken')
 export default class Api {
 
     constructor(db) {
-         this.user = User(db)
+      this.user = User(db)
     }
     
     async signin(req,res) {

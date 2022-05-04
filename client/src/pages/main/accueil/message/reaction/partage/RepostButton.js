@@ -1,13 +1,9 @@
 import axios from "axios";
 import LoginPage from "../../../../../login/LoginPage";
-
 import React from "react";
-
+const token = require("../../../../general/token.js");
 const RepostButton = (props) => {
-  let token = document.cookie
-    .split(";")
-    .find((it) => it.includes("token="))
-    .split("=")[1];
+  let token = token.getToken();
   return (
     <div
       className="message_button fa-solid fa-rocket fa-xl"
@@ -17,7 +13,7 @@ const RepostButton = (props) => {
           return;
         }
         axios
-          .post("/api/message/" + token, { message: props.message })
+          .post("/api/message/repost/"+ props.message.id)
           .then((res) => props.setMessageResult(res, { color: "green" }))
           .catch((err) => props.setMessageResult(err, { color: "red" }));
       }}

@@ -16,9 +16,9 @@ class ProfilInfo extends Component {
           <UserInfo user={this.props.user} setPage={this.props.setPage} />
           {this.token != "" &&
             (this.props.user.ami ? (
-              <SupprimerAmiButton user={this.props.user} />
+              <SupprimerAmiButton login={this.props.user.login} />
             ) : (
-              <AjouterButton user={this.props.user} />
+              <AjouterButton login={this.props.user.login} />
             ))}
         </div>
       </div>

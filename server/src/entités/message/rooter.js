@@ -7,11 +7,13 @@ rooter.use(express.json());
 const db = await connection()
 const api = Api(db)
 rooter
-  .get("/:login", api.get) // Profil , ResultatRecherche
-  .get("/info",auth,api.getInfos) //Suggestion
-  .get("/info/:login", api.getInfo) // ProfilButton
-  .post("/signup", api.signup) // SignUp
-  .post("/signin", api.signin) // LoginPage
-  .delete("/signout",auth,api.signout) //Profil
-  .post("/edit",auth, api.edit) //EditProfil
-  .delete("/:login",auth, api.delete)//EditProfil
+ .get("/", api.getAll)//Accueil
+ .post('/commentaire/:messqge_id', auth, api.newCommentaire)//NewMessage
+ .post('/update/:messqge_id', auth, api.update)//NewMessage
+ .post('/create', auth, api.newMessage)//NewMessage
+ .get("/commentaire/:message_id", api.getCommentaire)//CommentePage
+ .post("/repost/:messqge_id", auth, api.repost)//RepostButton
+ .post("/star", auth, api.star)//StarButton
+ .delete("/:message_id", auth,api.delete)// SupprimerButton
+ .get("/:message", api.get)//ResultatReacherche
+ .get("/hashtags/:message", api.getHashtags)//ResultatReacherche

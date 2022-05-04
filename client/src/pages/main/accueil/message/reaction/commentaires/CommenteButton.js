@@ -1,13 +1,11 @@
 import React, { Component } from "react";
 import LoginPage from "../../../../../login/LoginPage.js";
 import CommentePage from "./CommentePage.js";
+const token = require("../../../../general/token.js");
 class CommenteButton extends Component {
   constructor(props) {
     super(props);
-    this.token = document.cookie
-      .split(";")
-      .find((it) => it.includes("token="))
-      .split("=")[1];
+    this.token = token.getToken();
     this.visible = false;
   }
 

@@ -12,6 +12,8 @@ export default class UserBase {
           email: email,
           dateNaissance: dateNaissance,
           dateCreation: dateCreation,
+          amis : [],
+          messages : []
         })
         .then((res) => resolve(res))
         .catch((err) => reject(err));

@@ -12,8 +12,8 @@ class ProfilButton extends Component {
     this.state = { login: null };
   }
   componentWillMount() {
-    const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
-    this.setState({login: decodedToken.login})
+    
+    this.setState({login: token.getLoginFromToken(this.token)})
     axios
     .get("/api/user/info/" + this.state.login)
     .then((res) => {

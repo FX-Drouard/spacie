@@ -7,6 +7,7 @@ import SupprimerButton from "./reaction/SupprimerButton";
 import ModifierButton from "./reaction/modifier/ModifierButton";
 import StarPage from "./reaction/star/StarPage";
 import axios from "axios";
+const token = require("../../general/token.js");
 
 class Message extends Component {
   constructor(props) {
@@ -15,18 +16,20 @@ class Message extends Component {
       reaction: null,
       messageResult: null,
       styleMessage: null,
-      userName: null,
+      userConnect: null,
+      sender: null,
     };
 
     this.setReaction = this.setReaction.bind(this);
-
+    this.token =  token.getToken();
     this.clickedStar = false;
     this.setMessageResult = this.setMessageResult.bind(this);
   }
   componentWillMount() {
-    axios
-      .get("/api/user/token/" + this.token)
-      .then((res) => this.setState({ userName: res.login }));
+    this.setstate({userConnect : token.getLoginFromToken(this.token)});
+    axios.get("/api/user/"+ this.props.message.user)
+    .then(res => this.setState({sender: res}))
+    .catch(err => alert(err))
   }
 
   componentWillReceiveProps(props) {
@@ -34,10 +37,10 @@ class Message extends Component {
   }
 
   getNombreStars() {
-    return this.props.message.stars;
+    return this.props.message.stars.length;
   }
   getNombreCommentaires() {
-    return this.props.message.commentaires;
+    return this.props.message.commentaires.length;
   }
   getNombrePartages() {
     return this.props.message.shars;
@@ -62,7 +65,7 @@ class Message extends Component {
     return (
       <article className="message">
         <UserInfoDate
-          user={this.props.message.sender}
+          user={this.state.sender}
           setPage={this.props.setPage}
           date={this.props.message.date}
           heure={this.props.message.heure}
@@ -115,7 +118,7 @@ class Message extends Component {
           )}
 
           <div className="reaction_message">
-            {this.userName === this.props.message.sender.nickName ? (
+            {this.userConnect === this.props.message.sender.nickName ? (
               <SupprimerButton
                 setBody={this.props.setBody}
                 setPage={this.props.setPage}
@@ -132,12 +135,12 @@ class Message extends Component {
             ) : (
               ""
             )}
-            {this.userName !== this.props.message.sender.nickName &&
+            {this.userConnect !== this.props.message.sender.nickName &&
               !this.props.comment && <span>{this.getNombrePartages()} </span>}
           </div>
 
           <div className="reaction_message">
-            {this.userName === this.props.message.sender.nickName && (
+            {this.userConnect === this.state.sender.login && (
               <ModifierButton
                 setBody={this.props.setBody}
                 message={this.props.message}
