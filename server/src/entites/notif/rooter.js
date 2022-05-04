@@ -10,3 +10,5 @@ rooter
   .get("/",auth, api.getNotif) // get notif
   .post("/",auth, api.addNotif) // add notif
   .delete("/",auth, api.clearNotif) // clear notif
+
+  exports.default = router

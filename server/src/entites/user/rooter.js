@@ -15,3 +15,5 @@ rooter
   .delete("/signout",auth,api.signout) //Profil
   .post("/edit",auth, api.edit) //EditProfil
   .delete("/:login",auth, api.delete)//EditProfil
+
+  exports.default = router

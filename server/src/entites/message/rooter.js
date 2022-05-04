@@ -7,7 +7,7 @@ rooter.use(express.json());
 const db = await connection()
 const api = Api(db)
 rooter
- .get("/", api.getAll)//Accueil
+ .get("/:login", api.getAll)//Accueil
  .post('/commentaire/:messqge_id', auth, api.newCommentaire)//NewMessage
  .post('/update/:messqge_id', auth, api.update)//NewMessage
  .post('/create', auth, api.newMessage)//NewMessage
@@ -15,5 +15,7 @@ rooter
  .post("/repost/:messqge_id", auth, api.repost)//RepostButton
  .post("/star", auth, api.star)//StarButton
  .delete("/:message_id", auth,api.delete)// SupprimerButton
- .get("/:message", api.get)//ResultatReacherche
- .get("/hashtags/:message", api.getHashtags)//ResultatReacherche
+ .get("/recherche/:login", api.get)//ResultatReacherche
+ .get("/recherche/hashtags/:login", api.getHashtags)//ResultatReacherche
+
+ exports.default = router

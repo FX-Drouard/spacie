@@ -11,3 +11,5 @@ rooter
   .post("/:id",auth, api.addFriend) // add Friend
   .delete("/:id",auth, api.delFriend) //del friend
   .post("/accept/:id",auth, api.acceptFriend); // accept friend
+
+  exports.default = router

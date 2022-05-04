@@ -64,21 +64,29 @@ class Profil extends Component {
   }
 
   setContainer() {
+
     if (this.buttonName == "Amis") {
-      axios
-        .get("/api/freind/" + this.state.user.login)
+      for (let idAmis in this.state.user.amis) { 
+        axios
+        .get("/api/freind/" + idAmis)
         .then((res) => {
+          this.state.amis.push(res)
           this.setState({
-            container: (
-              <ListeAmis
-                user={res}
-                setPage={this.props.setPage}
-              />
-            ),
-            buttonName: "Messages",
+            amis : this.state.amis
           });
         })
         .catch((err) => alert(err));
+      }
+    
+      this.setState({
+        container: (
+          <ListeAmis
+            user={res}
+            setPage={this.props.setPage}
+          />
+        ),
+        buttonName: "Messages",
+      });
     }
     if (this.buttonName == "Messages") {
         for (let idMessage in this.state.user.messages) { 
