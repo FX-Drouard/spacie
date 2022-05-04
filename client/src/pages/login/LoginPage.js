@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+const token = require("../general/token.js");
 import Main from "../main/Main.js";
 import SignUp from "./SignUp.js";
 import "../../assets/css/login.css";
@@ -18,23 +18,17 @@ class LoginPage extends Component {
       this.setState({ messageErreur: "veuillez remplir tous les champs" });
       return;
     }
-    let result = axios
+   axios
       .post("/api/user/signin", { login: this.login, password: this.password })
       .then((res) => {
         this.props.setBody(<Main setBody={this.props.setBody} />);
-        document.cookie = "token=" + res.token;
+        token.setToken(res.data.token);
       })
       .catch((err) => {
         this.setState({ messageErreur: err.message });
       });
 
-    if (result.etat === "200") {
-      this.props.setBody(
-        <Main serveur={this.props.serveur} setBody={this.props.setBody} />
-      );
-      return;
-    }
-    this.setState({ messageErreur: result.message });
+    
   }
 
   gotoSignIn() {

@@ -8,21 +8,22 @@ import axios from "axios";
 import AjouterButton from "../general/AjouterButton";
 import ListeAmis from "../listeAmis/ListeAmis";
 import SupprimerAmiButton from "../general/SupprimerAmiButton";
+const token = require("../general/token.js");
+const jwt = require("jsonwebtoken");
+const date = require("../general/data.js");
 
 class Profil extends Component {
   constructor(props) {
     super(props);
-    this.token = document.cookie
-      .split(";")
-      .find((it) => it.includes("token="))
-      .split("=")[1];
+    this.token =token.getToken()
     this.state = {
       container: null,
       buttonName: "Amis",
-      user: null,
+      userConnect: null,
+      user : null,
+      isFriend : false,
     };
 
-    this.date = new Date(this.props.user.creationDate);
   }
 
   componentWillReceiveProps(props) {
@@ -30,24 +31,31 @@ class Profil extends Component {
   }
 
   componentWillMount() {
-    axios.get("/api/user/token" + this.token).then((res) => {
-      this.setState({ user: res });
-    });
+    
+    if (this.token != ""){
+      const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
+      this.setState({userConnect: decodedToken.login})
+    }
+
     axios
-      .get("/api/message/" + this.state.user.login)
-      .then((res) => {
-        this.setState({
-          container: <MessageList user={res} setPage={this.props.setPage} />,
-          buttonName: "Message",
-        });
-      })
-      .catch((err) => alert(err));
+    .get("/api/user/" + this.props.login)
+    .then((res) => {
+      this.setState({user : res.data})
+    })
+    .catch((err) => {
+      alert(err);
+    });
+    if (this.token != "")
+      this.setState({isFriend : this.state.user.amis.filter((ami) => { ami == this.state.userConnect }).length > 0 })
+    this.date = date.getDate(this.state.user.creationDate);
+    this.setContainer();  
   }
 
   disconnect() {
     axios
-      .delete("/api/user/signout/" + this.token)
+      .delete("/api/user/signout")
       .then((res) => {
+        token.setToken("");
         this.props.setBody(<LoginPage setBody={this.props.setBody} />);
       })
       .catch((err) => {
@@ -58,12 +66,11 @@ class Profil extends Component {
   setContainer() {
     if (this.buttonName == "Amis") {
       axios
-        .get("/api/freind/" + this.props.user.login)
+        .get("/api/freind/" + this.state.user.login)
         .then((res) => {
           this.setState({
             container: (
               <ListeAmis
-                serveur={this.props.serveur}
                 user={res}
                 setPage={this.props.setPage}
               />
@@ -75,12 +82,11 @@ class Profil extends Component {
     }
     if (this.buttonName == "Messages") {
       axios
-        .get("/api/message/" + this.props.user.login)
+        .get("/api/message/" + this.state.user.login)
         .then((res) => {
           this.setState({
             container: (
               <MessageList
-                serveur={this.props.serveur}
                 user={res}
                 setPage={this.props.setPage}
               />
@@ -99,7 +105,7 @@ class Profil extends Component {
           <span className="photoProfil">
             <img
               id="pdp"
-              src={this.props.user.photoProfil}
+              src={this.state.user.photoProfil}
               alt="Photo de Profil"
             />
           </span>
@@ -107,42 +113,38 @@ class Profil extends Component {
             <div className="info_ligne">
               <div id="loginProfil" className="info">
                 <h3>Login</h3>
-                <p className="breaker">{this.props.user.login}</p>
+                <p className="breaker">{this.state.user.login}</p>
               </div>
               <div id="emailProfil" className="info">
                 <h3>email</h3>
-                <p className="breaker">{this.props.user.mail}</p>
+                <p className="breaker">{this.state.user.mail}</p>
               </div>
               <div id="loginProfil" className="info">
                 <h3>Nick name</h3>
-                <p className="breaker">{this.props.user.nickName}</p>
+                <p className="breaker">{this.state.user.nickName}</p>
               </div>
               <div id="creationProfil" className="info">
                 <h3>Date de Création</h3>
                 <p className="breaker">
-                  {this.date.getFullYear() +
-                    "/" +
-                    (this.date.getMonth() + 1) +
-                    "/" +
-                    this.date.getDate()}
+                  {this.date}
                 </p>
               </div>
             </div>
             <div id="button_profil">
-              {this.props.user.nickName == this.state.user ? (
+              {this.state.user.login == this.state.userConnect ? (
                 <div className="buttons" onClick={() => this.disconnect()}>
                   Déconnection
                 </div>
               ) : (
                 this.token != "" &&
-                (this.props.user.ami ? (
+                (this.state.isFriend? (
                   <SupprimerAmiButton user={this.props.user} />
                 ) : (
                   <AjouterButton user={this.props.user} />
                 ))
               )}
 
-              {this.props.user.nickName != this.state.user && (
+              {this.state.user.login != this.state.userConnect && (
                 <div
                   className="buttons"
                   onClick={() => {
@@ -164,7 +166,7 @@ class Profil extends Component {
                   <DetailProfil user={this.props.user} close={close} />
                 )}
               </Popup>
-              {this.props.user.nickName == "Fristorm" && (
+              {this.state.user.nickName == this.state.userConnect && (
                 <Popup
                   trigger={<div className="buttons display"> Modifier</div>}
                   modal

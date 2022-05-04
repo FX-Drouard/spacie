@@ -1,14 +1,11 @@
 import axios from "axios";
 import React, { Component } from "react";
 import ProfilList from "./profil/ProfilList";
-
+const token = require("../general/token.js");
 class Suggestion extends Component {
   constructor(props) {
     super(props);
-    this.token = document.cookie
-      .split(";")
-      .find((it) => it.includes("token="))
-      .split("=")[1];
+    this.token = token.getToken()
     this.state = {
       resultat: [],
     };

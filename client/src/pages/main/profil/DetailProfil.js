@@ -1,14 +1,15 @@
 import React, { Component } from "react";
+const date = require("../general/data.js");
 
 class DetailProfil extends Component {
   constructor(props) {
     super(props);
-    this.date = new Date(this.props.user.creationDate);
+    this.date = date.getDate(this.props.user.creationDate);
   }
   componentWillReceiveProps(props) {
     this.props = props;
-    this.date = new Date(this.props.user.creationDate);
-    this.dateNaissance = new Date(this.props.user.dateNaissance);
+    this.date = date.getDate(this.props.user.creationDate);
+    this.dateNaissance = date.getDate(this.props.user.dateNaissance);
   }
   render() {
     return (
@@ -29,21 +30,13 @@ class DetailProfil extends Component {
           <div className="info">
             <h3>Date de Création</h3>
             <p className="breaker">
-              {this.date.getFullYear() +
-                "/" +
-                (this.date.getMonth() + 1) +
-                "/" +
-                this.date.getDate()}
+              {this.date}
             </p>
           </div>
           <div className="info">
             <h3>Date de naissance</h3>
             <p className="breaker">
-              {this.dateNaissance.getFullYear() +
-                "/" +
-                (this.dateNaissance.getMonth() + 1) +
-                "/" +
-                this.dateNaissance.getDate()}
+              {this.dateNaissance}
             </p>
           </div>
         </div>

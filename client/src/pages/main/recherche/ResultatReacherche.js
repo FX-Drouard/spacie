@@ -14,7 +14,7 @@ class ResultatReacherche extends Component {
     if (!this.props.recherche) return;
     if (this.props.recherche[0] == "@") {
       axios
-        .get("/api/user", { profil: this.props.recherche })
+        .get("/api/user/"+this.props.recherche.substring(1))
         .then((res) => {
           this.setState({
             container: (
@@ -30,28 +30,14 @@ class ResultatReacherche extends Component {
 
       return;
     }
-
+    let root  = "/api/message/"
     if (this.props.recherche[0] == "#") {
-      axios
-        .get("/api/message/hashtags", { hashtag: this.props.recherche })
-        .then((res) => {
-          this.setState({
-            container: (
-              <MessageList
-                setPage={this.props.setPage}
-                resultat={res}
-                setBody={this.props.setBody}
-              />
-            ),
-          });
-        })
-        .catch((err) => this.setState({ container: <div>{err}</div> }));
-
-      return;
+      root += "hashtags/"
+      this.props.recherche = this.props.recherche.substring(1); 
     }
-
+     
     axios
-      .get("/api/message", { recherche: this.props.recherche })
+      .get(root + this.props.recherche )
       .then((res) => {
         this.setState({
           container: (

@@ -1,18 +1,13 @@
 import React from "react";
 import UserInfo from "./UserInfo";
-
+const dateGater = require("./date.js")
 class UserInfoDate extends React.Component {
   componentWillReceiveProps(props) {
     this.props = props;
   }
   render() {
-    let timestamp = new Date(this.props.date);
-    let date =
-      +timestamp.getFullYear() +
-      "/" +
-      (timestamp.getMonth() + 1) +
-      "/" +
-      timestamp.getDate();
+    
+    let date = dateGater.getDate(props.date)
 
     let heure = timestamp.getHours() + ":" + timestamp.getMinutes();
     return (

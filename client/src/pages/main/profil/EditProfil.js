@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { Component } from "react";
 import { ImagePicker } from "react-file-picker";
 import LoginPage from "../../login/LoginPage";
+const token = require("../general/token.js");
 export default class EditProfil extends Component {
   constructor(props) {
     super(props);
@@ -9,14 +10,11 @@ export default class EditProfil extends Component {
       image: this.props.user.photoProfil,
       nickName: this.props.user.nickName,
       bibliographie: this.props.user.biographie,
-      email: this.props.user.mail,
+     
       messageErreur: "",
     };
 
-    this.token = document.cookie
-      .split(";")
-      .find((it) => it.includes("token="))
-      .split("=")[1];
+    this.token = token.getToken();
 
     this.confPassword = "";
     this.newPassword = "";
@@ -28,12 +26,6 @@ export default class EditProfil extends Component {
       image: this.props.user.photoProfil,
       nickName: this.props.user.nickName,
       bibliographie: this.props.user.biographie,
-      date: {
-        jour: this.props.user.date.jour,
-        mois: this.props.user.date.mois,
-        annee: this.props.user.date.annee,
-      },
-      email: this.props.user.mail,
       messageErreur: "",
     });
     this.confPassword = "";
@@ -52,14 +44,7 @@ export default class EditProfil extends Component {
   }
 
   sauvgarder() {
-    const regEmail = new RegExp(
-      "^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$"
-    );
-
-    if (!regEmail.test(this.state.email)) {
-      this.setState({ messageErreur: "date de date naissence invalide" });
-      return;
-    }
+   
 
     if (
       this.newPassword !== "" &&
@@ -76,17 +61,11 @@ export default class EditProfil extends Component {
     if (this.newPassword !== "") password = this.newPassword;
 
     axios
-      .post("/api/user/edit/" + this.token, {
+      .post("/api/user/edit", {
         login: this.props.login,
         nickName: this.state.nickName,
         bibliographie: this.state.bibliographie,
-        image: this.state.image,
-        date: {
-          jour: this.state.date.jour,
-          mois: this.state.date.mois,
-          annee: this.state.date.annee,
-        },
-        email: this.state.email,
+        photo: this.state.image,
         motDePasse: password,
       })
       .then(() => {
@@ -101,6 +80,7 @@ export default class EditProfil extends Component {
     axios
       .delete("/api/user/" + this.login)
       .then((res) => {
+        token.setToken("");
         this.props.setBody(
           <LoginPage
             serveur={this.props.serveur}

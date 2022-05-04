@@ -2,13 +2,11 @@ import React, { Component } from "react";
 import NewMessage from "./message/NewMessage.js";
 import MessageList from "./message/MessagesList.js";
 import axios from "axios";
+const token = require("../general/token.js");
 class Accueil extends Component {
   constructor(props) {
     super(props);
-    this.token = document.cookie
-      .split(";")
-      .find((it) => it.includes("token="))
-      .split("=")[1];
+    this.token = token.getToken()
     this.state = {
       resultat: [],
     };
@@ -16,33 +14,26 @@ class Accueil extends Component {
   }
 
   componentWillMount() {
-    axios
-      .get("/api/message")
-      .then((res) => this.setState({ resultat: res }))
-      .catch((err) => {
-        this.setState({ resultat: [] });
-      });
+    this.refresh();
   }
 
   componentWillReceiveProps(props) {
-    axios
-      .get("/api/message")
-      .then((res) => this.setState({ resultat: res }))
-      .catch((err) => {
-        this.setState({ resultat: [] });
-        alert(err);
-      });
+    this.props = props;
+    this.refresh();
   }
 
   refresh() {
     axios
       .get("/api/message")
       .then((res) => this.setState({ resultat: res }))
-      .catch((err) => alert(err));
+      .catch((err) =>{ 
+        this.setState({ resultat: [] });
+        alert(err);
+      });
   }
 
   getNewMessageComponent() {
-    if (this.props.token !== "") {
+    if (this.token !== "") {
       return (
         <NewMessage
           setPage={this.setPage}

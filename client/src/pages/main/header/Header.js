@@ -8,26 +8,25 @@ import NotificationPage from "../notification/NotificationPage";
 import ProfilButton from "../profil/ProfilButton";
 import Recherche from "../recherche/Recherche";
 import HeaderItem from "./HeaderItem";
+const token = require("../general/token.js");
+const jwt = require('jsonwebtoken');
+
 
 class Header extends Component {
   constructor(props) {
     super(props);
     this.setPage = this.props.setPage;
-    this.token = document.cookie
-      .split(";")
-      .find((it) => it.includes("token="))
-      .split("=")[1];
+    this.token = token.getToken();
 
     this.state = {
       login: "",
     };
   }
   componentWillMount() {
-    if (this.token != "0")
-      axios
-        .get("/api/user/token/" + this.token)
-        .then((res) => this.setState({ login: res }))
-        .catch((err) => alert(err + "djafar"));
+    if (this.token != ""){
+      const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
+      this.setState({login: decodedToken.login})
+    }
   }
   render() {
     return (
@@ -115,7 +114,7 @@ class Header extends Component {
           />
         </div>
         <div id="lien_profil">
-          {this.token == "0" ? (
+          {this.token == "" ? (
             <LoginButton
               serveur={this.props.serveur}
               setBody={this.props.setBody}

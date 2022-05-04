@@ -2,13 +2,11 @@ import React, { Component } from "react";
 import UserInfo from "../general/UserInfo";
 import AjouterButton from "../general/AjouterButton";
 import SupprimerAmiButton from "../general/SupprimerAmiButton";
+const token = require("../general/token.js");
 class ProfilInfo extends Component {
   constructor(props) {
     super(props);
-    this.token = document.cookie
-      .split(";")
-      .find((it) => it.includes("token="))
-      .split("=")[1];
+    this.token = token.getToken();
   }
 
   render() {
