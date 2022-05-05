@@ -1,6 +1,5 @@
 const path = require('path')
 const api = require('./api.js')
-
 const { default: router } = require('./route.js')
 
 const basedir = path.normalize(path.dirname(__dirname))
@@ -12,10 +11,15 @@ api_1 = require('./api.js')
 
 
 app.use('/api', api.default())
-router(app)
+router(app).then(() => {
 
-app.on('close', () => {
+    app.on('close', () => {
+    })
 
+    console.log('serveur lancé')
 })
+
+
+
 
 exports.default = app

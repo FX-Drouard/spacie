@@ -23,7 +23,7 @@ class LoginPage extends Component {
       .post("/api/user/signin", { login: this.login, password: this.password })
       .then((res) => {
         this.props.setBody(<Main setBody={this.props.setBody} />);
-        setToken(res.data.token);
+        setToken(res.data);
       })
       .catch((err) => {
         this.setState({ messageErreur: err.message });

@@ -12,7 +12,7 @@ class ProfilButton extends Component {
   }
   componentWillMount() {
     
-    this.setState({login: getLoginFromToken(this.token)})
+    this.setState({login: getLoginFromToken()})
     axios
     .get("/api/user/info/" + this.state.login)
     .then((res) => {

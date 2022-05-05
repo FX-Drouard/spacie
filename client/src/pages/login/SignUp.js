@@ -55,7 +55,7 @@ class SignUp extends Component {
         }
         ).then((res) => {
             this.props.setBody(<Main setBody={this.props.setBody} />)
-            setToken(res.data.token)
+            setToken(res.data)
         }
         ).catch((err) => {
             this.setState({ messageErreur: err.message })

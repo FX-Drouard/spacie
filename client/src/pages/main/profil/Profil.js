@@ -34,7 +34,7 @@ class Profil extends Component {
     
     if (testToken(this.token)){
      
-      this.setState({userConnect: getLoginFromToken(this.token)});
+      this.setState({userConnect: getLoginFromToken()});
     }
 
     axios
@@ -63,7 +63,7 @@ class Profil extends Component {
     axios
       .delete("/api/user/signout")
       .then((res) => {
-        setToken("");
+        setToken(res.data);
         this.props.setBody(<LoginPage setBody={this.props.setBody} />);
       })
       .catch((err) => {

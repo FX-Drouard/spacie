@@ -2,6 +2,7 @@ const  messageBase = require("./baseBDD");
 const userBase = require("../user/baseBDD")
 class Message {
   constructor(db) {
+    
     this.dbMessage = new messageBase.MessageBase(db.Message);
     this.dbUser = new userBase.UserBase(db.User)
   }
@@ -10,8 +11,8 @@ class Message {
     return new Promise((resolve, reject) => {
       this.dbMessage.getAll(login).then(messages => {
         this.dbUser.find(login).then(res => {
-          messages = res.filter(message => res.amis.
-            filter(ami => ami == message.sender)>length > 0 || !message.private)
+          messages = res.filter(message => 
+            res.amis.filter(ami => ami == message.sender)>length > 0 || !message.private)
           resolve(messages)
         })
       }).catch(err => reject(err));

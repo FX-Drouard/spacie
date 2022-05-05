@@ -12,7 +12,7 @@ class StarButton extends Component {
 
   componentWillMount() {
     if (this.token) {
-      const login  =  getLoginFromToken(this.token);
+      const login  =  getLoginFromToken();
      
       for (let starsLogin in this.props.message.stars) {
         if ((starsLogin = login)) {

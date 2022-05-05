@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { Component } from "react";
 import MessageList from "../accueil/message/MessagesList";
 import ProfilList from "../profil/ProfilList";
-import {getToken,getLoginFromToken}  from "../general/token.js";
+import {getLoginFromToken}  from "../general/token.js";
 
 class ResultatReacherche extends Component {
   constructor(props) {
@@ -39,10 +39,8 @@ class ResultatReacherche extends Component {
     }
      
 
-    const tokenVerif = getToken()
-    let login = ""
-    if (tokenVerif != "") 
-      login = getLoginFromToken(tokenVerif);
+    
+    let login = getLoginFromToken();
     axios
       .get(root + login ,  {message :this.props.recherche} )
       .then((res) => {

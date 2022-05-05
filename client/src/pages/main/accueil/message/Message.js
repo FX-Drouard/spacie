@@ -26,7 +26,7 @@ class Message extends Component {
     this.setMessageResult = this.setMessageResult.bind(this);
   }
   componentWillMount() {
-    this.setstate({userConnect : getLoginFromToken(this.token)});
+    this.setstate({userConnect : getLoginFromToken()});
     axios.get("/api/user/"+ this.props.message.user)
     .then(res => this.setState({sender: res}))
     .catch(err => alert(err))

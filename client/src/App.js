@@ -9,7 +9,7 @@ class App extends Component {
     this.state = {
       page: null,
     };
-    setToken("");
+    setToken({token : "",login : ""});
   }
 
   componentWillMount() {

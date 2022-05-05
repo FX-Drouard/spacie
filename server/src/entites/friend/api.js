@@ -5,12 +5,12 @@ const jwt = require('jsonwebtoken')
 class Api {
 
   constructor(db) {
-    this.friends = new friends.Friends(db.Friend);
-    this.user = new user.User(db.User);
-    this.notif = new notif.Notifications(db.Notif);
+    this.friends = new friends.Friends(db);
+    this.user = new user.User(db);
+    this.notif = new notif.Notifications(db);
   }
 
-  async delFriends(req, res) {
+  async delFriend(req, res) {
     const { login_recepteur } = req.body
     const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
     const login_emeteur = decodedToken.userId;
@@ -20,7 +20,7 @@ class Api {
       })
   }
 
-  async addFriends(req, res) {
+  async addFriend(req, res) {
     const { login_recepteur } = req.body
     const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
     const login_emeteur = decodedToken.userId;
@@ -30,7 +30,7 @@ class Api {
 
     }).catch(err => res.sendStatus(402).send({ message: err }))
   }
-  async acceptFriends(req, res) {
+  async acceptFriend(req, res) {
     const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
     const login_emeteur = decodedToken.userId;
     const { id_demande } = req.params;

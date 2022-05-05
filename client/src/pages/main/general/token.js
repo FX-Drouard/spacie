@@ -1,4 +1,3 @@
-// import { verify } from "jsonwebtoken";
 
 export function getToken () {
     return document.cookie
@@ -7,14 +6,16 @@ export function getToken () {
     .split("=")[1];
 }
 
-export function setToken (token) {
-     document.cookie = "token=" + token;
+export function setToken (doc) {
+     document.cookie = "token=" + doc.token;
+     document.cookie = "login=" + doc.login;
 }
 
-export function getLoginFromToken (token) {
-    // const decodedToken = verify(token, 'RANDOM_TOKEN_SECRET');
-    // return decodedToken.login;
-    return token
+export function getLoginFromToken () {
+    return document.cookie
+    .split(";")
+    .find((it) => it.includes("login="))
+    .split("=")[1];
 }
 
 export function testToken (token) {

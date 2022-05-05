@@ -1,7 +1,7 @@
 const friendsBase = require("./baseBDD");
  class Friends {
   constructor(db) {
-    this.friend = new friendsBase.FriendsBase(db);
+    this.friend = new friendsBase.FriendsBase(db.Friend);
   }
   addFriend(login1, login2) {
     return new Promise((resolve, reject) => {

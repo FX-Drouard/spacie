@@ -1,15 +1,25 @@
-const userRoute  = require("./entites/user/rooter")
-const messageRoute  = require('./entites/message/rooter')
-const notificationRoute  = require('./entites/notif/rooter')
-const friendRoute  = require('./entites/friend/rooter')
+const {userRoute}  = require("./entites/user/rooter")
+const {messageRoute}  = require('./entites/message/rooter')
+const {notificationRoute}  = require('./entites/notif/rooter')
+const {friendRoute}  = require('./entites/friend/rooter')
 
 
 function router(app) {
-  
-  app.use('/api/message', messageRoute)
-  app.use('/api/friend', friendRoute)
-  app.use('/api/notification', notificationRoute)
-  app.use('/api/user', userRoute)
+  return new Promise((resolve, reject) => {
+    messageRoute().then(message => {
+      app.use('/api/message', message)
+      friendRoute().then(friend => {
+        app.use('/api/friend',friend )
+        notificationRoute().then(notif => {
+          app.use('/api/notif', notif)
+          userRoute().then(user => {
+            app.use('/api/user', user)
+            resolve()
+          })
+        })
+      })
+    })
+  })    
 }
 
 exports.default = router

@@ -16,7 +16,8 @@
             return
           }
           user.create(login,motDePasse,email,date).then(() =>{     
-              res.sendStatus(401).send({message : "Mot de passe incorrect"})
+              res.sendStatus(200).send(
+                res.send({token : jwt.sign({login : login},"RANDOM_TOKEN_SECRET",{expiresIn: '24h'}), login : login}))
             }).catch(err => 
               res.sendStatus(404).send({message : err})
             )
@@ -35,7 +36,7 @@
               update(password).
               digest("hex") == res.motDePasse
             )
-            res.send({token : jwt.sign({login : login},"RANDOM_TOKEN_SECRET",{expiresIn: '24h'})})
+            res.send({token : jwt.sign({login : login},"RANDOM_TOKEN_SECRET",{expiresIn: '24h'}), login : login})
           else
           res.sendStatus(401).send({message : "Mot de passe incorrect"})
           }
@@ -46,7 +47,7 @@
       }
 
       async signout(req, res) {
-        res.sendStatus(200).send({token : ""})
+        res.sendStatus(200).send({token : "",login : ""})
       }
 
       async edit(req, res) {

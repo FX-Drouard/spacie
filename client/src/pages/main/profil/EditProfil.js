@@ -80,7 +80,7 @@ export default class EditProfil extends Component {
     axios
       .delete("/api/user/" + this.login)
       .then((res) => {
-        setToken("");
+        setToken({token : "",login : ""});
         this.props.setBody(
           <LoginPage
             serveur={this.props.serveur}

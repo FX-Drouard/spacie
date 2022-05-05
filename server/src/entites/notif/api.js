@@ -5,23 +5,23 @@ class Api {
     this.notif = new notif.Notifications(db);
   }
 
-  async addNotif(req, res) {
+  async getNotif(req, res) {
     const { message } = req.body;
     const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
     const login = decodedToken.userId;
     this.notif.addNotif(login, message).then((res) => res.send(res));
   }
 
-  async getAllNotif(req, res) {
+  async addNotif(req, res) {
     const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
     const login = decodedToken.userId;
-    this.notif.getAllNotif(login).then((res) => res.send(res));
+    this.notif.getAllNotif(login).then((resp) => res.send(resp));
   }
 
   async clearNotif(req, res) {
     const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
     const login = decodedToken.userId;
-    this.notif.clearNotif(login).then((res) => res.send(res));
+    this.notif.clearNotif(login).then((resp) => res.send(resp));
   }
 }
 

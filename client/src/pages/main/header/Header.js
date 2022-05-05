@@ -21,7 +21,7 @@ class Header extends Component {
   }
   componentWillMount() {
     if (testToken(this.token)){
-      this.setState({login: getLoginFromToken(this.token)});
+      this.setState({login: getLoginFromToken()});
     }
   }
   render() {
