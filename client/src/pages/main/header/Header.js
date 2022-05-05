@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { Component } from "react";
 import LoginButton from "../../login/LoginButton";
 import LoginPage from "../../login/LoginPage";
@@ -8,22 +7,21 @@ import NotificationPage from "../notification/NotificationPage";
 import ProfilButton from "../profil/ProfilButton";
 import Recherche from "../recherche/Recherche";
 import HeaderItem from "./HeaderItem";
-const token = require("../general/token.js");
-
+import {getToken, getLoginFromToken,testToken} from "../general/token.js"
 
 class Header extends Component {
   constructor(props) {
     super(props);
     this.setPage = this.props.setPage;
-    this.token = token.getToken();
+    this.token = getToken()
 
     this.state = {
       login: "",
     };
   }
   componentWillMount() {
-    if (this.token != ""){
-      this.setState({login: token.getLoginFromToken(this.token)});
+    if (testToken(this.token)){
+      this.setState({login: getLoginFromToken(this.token)});
     }
   }
   render() {
@@ -71,7 +69,7 @@ class Header extends Component {
           />
           <HeaderItem
             onClick={() => {
-              this.token != "0"
+              testToken(this.token)
                 ? this.setPage(
                     <NotificationPage
                       serveur={this.props.serveur}
@@ -91,7 +89,7 @@ class Header extends Component {
 
           <HeaderItem
             onClick={() => {
-              this.token != "0"
+              testToken(this.token)
                 ? this.setPage(
                     <AmiPage
                       setBody={this.props.setBody}
@@ -112,7 +110,7 @@ class Header extends Component {
           />
         </div>
         <div id="lien_profil">
-          {this.token == "" ? (
+          {!testToken(this.token) ? (
             <LoginButton
               serveur={this.props.serveur}
               setBody={this.props.setBody}

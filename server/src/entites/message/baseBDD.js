@@ -1,13 +1,13 @@
-export default class UserBase {
+class MessageBase {
   constructor(db) {
     this.db = db;
   }
 
-  create(message,private,image,sender,message_id) {
+  create(message,priv,image,sender,message_id) {
     return new Promise((resolve, reject) => {
       let doc = {
          message,
-        private,
+         priv,
         image,
         sender
       }
@@ -85,3 +85,4 @@ export default class UserBase {
   }
 }
 
+module.exports = {MessageBase}

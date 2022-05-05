@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-const token = require("../general/token.js");
+
 import Main from "../main/Main.js";
 import SignUp from "./SignUp.js";
 import "../../assets/css/login.css";
 import axios from "axios";
+import {setToken} from "../main/general/token.js";
 
 class LoginPage extends Component {
   constructor(props) {
@@ -22,7 +23,7 @@ class LoginPage extends Component {
       .post("/api/user/signin", { login: this.login, password: this.password })
       .then((res) => {
         this.props.setBody(<Main setBody={this.props.setBody} />);
-        token.setToken(res.data.token);
+        setToken(res.data.token);
       })
       .catch((err) => {
         this.setState({ messageErreur: err.message });

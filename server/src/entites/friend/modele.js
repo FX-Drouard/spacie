@@ -1,7 +1,7 @@
-import FriendsBase from "./baseBDD";
-export default class Friends {
+const friendsBase = require("./baseBDD");
+ class Friends {
   constructor(db) {
-    this.friend = FriendsBase(db);
+    this.friend = new friendsBase.FriendsBase(db);
   }
   addFriend(login1, login2) {
     return new Promise((resolve, reject) => {
@@ -22,3 +22,5 @@ export default class Friends {
         .catch((err) => reject(err));
     });}
 }
+
+module.exports = {Friends}

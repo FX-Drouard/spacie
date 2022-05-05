@@ -3,7 +3,7 @@ import { ImagePicker } from "react-file-picker";
 import Picker from "emoji-picker-react";
 import Popup from "reactjs-popup";
 import axios from "axios";
-const token = require("../../general/token.js");
+import { getToken } from "../../general/token.js";
 class NewMessage extends Component {
   constructor(props) {
     super(props);
@@ -13,7 +13,7 @@ class NewMessage extends Component {
       erreur: "",
       newMessage: this.props.message ? this.props.message.text : "",
     };
-    this.token = token.getToken()
+    this.token = getToken()
     this.onEmojiClick = this.onEmojiClick.bind(this);
   }
 
@@ -25,7 +25,7 @@ class NewMessage extends Component {
       erreur: "",
       newMessage: this.props.message ? this.props.message.text : "",
     };
-    this.token = token.getToken()
+    this.token = getToken()
     this.onEmojiClick = this.onEmojiClick.bind(this);
   }
 

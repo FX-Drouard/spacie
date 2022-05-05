@@ -8,13 +8,13 @@ import axios from "axios";
 import AjouterButton from "../general/AjouterButton";
 import ListeAmis from "../listeAmis/ListeAmis";
 import SupprimerAmiButton from "../general/SupprimerAmiButton";
-const token = require("../general/token.js");
-const date = require("../general/data.js");
+import {getToken,testToken,getLoginFromToken,setToken}  from "../general/token.js";
+const date = require("../general/date.js");
 
 class Profil extends Component {
   constructor(props) {
     super(props);
-    this.token =token.getToken()
+    this.token = getToken()
     this.state = {
       container: null,
       buttonName: "Amis",
@@ -32,9 +32,9 @@ class Profil extends Component {
 
   componentWillMount() {
     
-    if (this.token != ""){
+    if (testToken(this.token)){
      
-      this.setState({userConnect: token.getLoginFromToken(this.token)});
+      this.setState({userConnect: getLoginFromToken(this.token)});
     }
 
     axios
@@ -45,8 +45,16 @@ class Profil extends Component {
     .catch((err) => {
       alert(err);
     });
-    if (this.token != "")
-      this.setState({isFriend : this.state.user.amis.filter((ami) => { ami == this.state.userConnect }).length > 0 })
+    if (testToken(this.token)){
+      
+      let isFriend = false
+      for (let ami in this.state.user.amis) {
+        if (ami == this.state.userConnect) {
+          isFriend = true
+        }
+      }
+      this.setState({isFriend : isFriend})
+      }
     this.date = date.getDate(this.state.user.creationDate);
     this.setContainer();  
   }
@@ -55,7 +63,7 @@ class Profil extends Component {
     axios
       .delete("/api/user/signout")
       .then((res) => {
-        token.setToken("");
+        setToken("");
         this.props.setBody(<LoginPage setBody={this.props.setBody} />);
       })
       .catch((err) => {
@@ -81,7 +89,7 @@ class Profil extends Component {
       this.setState({
         container: (
           <ListeAmis
-            user={res}
+            user={this.state.user}
             setPage={this.props.setPage}
           />
         ),
@@ -153,7 +161,7 @@ class Profil extends Component {
                   Déconnection
                 </div>
               ) : (
-                this.token != "" &&
+                testToken(this.token) &&
                 (this.state.isFriend? (
                   <SupprimerAmiButton user={this.props.user} />
                 ) : (

@@ -1,8 +1,8 @@
-import Notif from "./modele";
+const notif =  require("./modele");
 const jwt = require("jsonwebtoken");
-export class Api {
+class Api {
   constructor(db) {
-    this.notif = Notif(db);
+    this.notif = new notif.Notifications(db);
   }
 
   async addNotif(req, res) {
@@ -24,3 +24,5 @@ export class Api {
     this.notif.clearNotif(login).then((res) => res.send(res));
   }
 }
+
+module.exports = {Api}

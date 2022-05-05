@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-const date = require("../general/data.js");
+const date = require("../general/date.js");
 
 class DetailProfil extends Component {
   constructor(props) {

@@ -1,16 +1,22 @@
-const jwt = require("jsonwebtoken");
-exports.getToken = function () {
+// import { verify } from "jsonwebtoken";
+
+export function getToken () {
     return document.cookie
     .split(";")
     .find((it) => it.includes("token="))
     .split("=")[1];
 }
 
-exports.setToken = function (token) {
+export function setToken (token) {
      document.cookie = "token=" + token;
 }
 
-exports.getLoginFromToken = function (token) {
-    const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
-    return decodedToken.login
+export function getLoginFromToken (token) {
+    // const decodedToken = verify(token, 'RANDOM_TOKEN_SECRET');
+    // return decodedToken.login;
+    return token
+}
+
+export function testToken (token) {
+    return token !== "";
 }

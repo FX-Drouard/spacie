@@ -1,17 +1,18 @@
 import axios from "axios";
 import React, { Component } from "react";
 import LoginPage from "../../../../../login/LoginPage";
-const token = require("../../../../general/token.js");
+import {getToken, testToken, getLoginFromToken} from "../../../../general/token.js"
+
 class StarButton extends Component {
   constructor(props) {
     super(props);
 
-    this.token = token.getToken();
+    this.token = getToken()
   }
 
   componentWillMount() {
     if (this.token) {
-      const login  =  token.getLoginFromToken(this.token);
+      const login  =  getLoginFromToken(this.token);
      
       for (let starsLogin in this.props.message.stars) {
         if ((starsLogin = login)) {
@@ -24,7 +25,7 @@ class StarButton extends Component {
   }
 
   aimerPublication() {
-    if (this.token === "") {
+    if (!testToken(this.token)) {
       this.props.setBody(<LoginPage setBody={this.props.setBody} />);
       return;
     }

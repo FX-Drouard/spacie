@@ -1,11 +1,11 @@
 import axios from "axios";
 import React, { Component } from "react";
 import ProfilList from "./profil/ProfilList";
-const token = require("../general/token.js");
+import {getToken,testToken} from "./general/token.js";
 class Suggestion extends Component {
   constructor(props) {
     super(props);
-    this.token = token.getToken()
+    this.token = getToken()
     this.state = {
       resultat: [],
     };
@@ -21,7 +21,7 @@ class Suggestion extends Component {
       });
   }
   render() {
-    if (this.token != "0")
+    if (testToken(this.token))
       return (
         <div id="suggestion_profil">
           <ProfilList
@@ -41,7 +41,7 @@ class Suggestion extends Component {
                 })
                 .catch((err) => {
                   this.setState({ resultat: [] });
-                  alert(err);
+                
                 });
             }}
           >

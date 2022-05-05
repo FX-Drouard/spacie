@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { Component } from "react";
 import { ImagePicker } from "react-file-picker";
 import LoginPage from "../../login/LoginPage";
-const token = require("../general/token.js");
+import {getToken,setToken} from "../general/token.js"
 export default class EditProfil extends Component {
   constructor(props) {
     super(props);
@@ -14,7 +14,7 @@ export default class EditProfil extends Component {
       messageErreur: "",
     };
 
-    this.token = token.getToken();
+    this.token = getToken()
 
     this.confPassword = "";
     this.newPassword = "";
@@ -80,7 +80,7 @@ export default class EditProfil extends Component {
     axios
       .delete("/api/user/" + this.login)
       .then((res) => {
-        token.setToken("");
+        setToken("");
         this.props.setBody(
           <LoginPage
             serveur={this.props.serveur}

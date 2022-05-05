@@ -1,4 +1,4 @@
-export default class NotificationsBase {
+class NotificationsBase {
     constructor(db) {
       this.db = db;
     }
@@ -48,3 +48,4 @@ export default class NotificationsBase {
     }
   }
   
+module.exports = {NotificationsBase}

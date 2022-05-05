@@ -1,17 +1,17 @@
 import React, { Component } from "react";
 import LoginPage from "../../../../../login/LoginPage.js";
 import CommentePage from "./CommentePage.js";
-const token = require("../../../../general/token.js");
+import {getToken,testToken } from "../../../../general/token.js";
 class CommenteButton extends Component {
   constructor(props) {
     super(props);
-    this.token = token.getToken();
+    this.token = getToken()
     this.visible = false;
   }
 
   commentairePublication() {
     this.visible = !this.visible;
-    if (this.token === "") {
+    if (!testToken(this.token)) {
       this.props.setBody(
         <LoginPage setBody={this.props.setBody} serveur={this.props.serveur} />
       );

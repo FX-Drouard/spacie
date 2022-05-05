@@ -1,4 +1,4 @@
-export default class FriendsBase {
+class FriendsBase {
   constructor(db) {
     this.db = db;
   }
@@ -42,3 +42,5 @@ export default class FriendsBase {
 
   getInfo(login) {}
 }
+
+module.exports = { FriendsBase };

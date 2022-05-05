@@ -1,14 +1,15 @@
 import axios from "axios";
 import React, { Component } from "react";
 import NotificationList from "./NotificationList";
-const token = require("../general/token.js");
+import {getToken} from "../general/token.js"
+
 export default class NotificationPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       resultat: [],
     };
-    this.token = token.getToken();
+    this.token = getToken()
   }
   componentWillMount() {
     axios

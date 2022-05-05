@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import NewMessage from "./message/NewMessage.js";
 import MessageList from "./message/MessagesList.js";
 import axios from "axios";
-const token = require("../general/token.js");
+import {getToken,testToken} from "../general/token.js";
 class Accueil extends Component {
   constructor(props) {
     super(props);
-    this.token = token.getToken()
+    this.token = getToken()
     this.state = {
       resultat: [],
     };
@@ -28,12 +28,12 @@ class Accueil extends Component {
       .then((res) => this.setState({ resultat: res }))
       .catch((err) =>{ 
         this.setState({ resultat: [] });
-        alert(err);
+       
       });
   }
 
   getNewMessageComponent() {
-    if (this.token !== "") {
+    if (testToken(this.token)) {
       return (
         <NewMessage
           setPage={this.setPage}

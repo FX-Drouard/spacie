@@ -1,13 +1,13 @@
-import Friends from "./modele";
-import Notif from "../notif/modele";
-import User from "../user/modele";
+const friends =  require("./modele");
+const notif = require("../notif/modele");
+const user = require("../user/modele");
 const jwt = require('jsonwebtoken')
-export class Api {
+class Api {
 
-  constructor(user, notif, friend) {
-    this.friends = Friends(friend);
-    this.user = User(user);
-    this.notif = Notif(notif);
+  constructor(db) {
+    this.friends = new friends.Friends(db.Friend);
+    this.user = new user.User(db.User);
+    this.notif = new notif.Notifications(db.Notif);
   }
 
   async delFriends(req, res) {
@@ -54,4 +54,6 @@ export class Api {
     })
   }
 }
+
+module.exports = {Api}
 

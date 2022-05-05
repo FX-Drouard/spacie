@@ -1,14 +1,14 @@
 import axios from "axios";
 import LoginPage from "../../../../../login/LoginPage";
 import React from "react";
-const token = require("../../../../general/token.js");
+import {getToken,testToken} from "../../../../general/token.js"
 const RepostButton = (props) => {
-  let token = token.getToken();
+  let token = getToken()
   return (
     <div
       className="message_button fa-solid fa-rocket fa-xl"
-      onClick={(event) => {
-        if (token === "") {
+      onClick={() => {
+        if (!testToken(token)) {
           this.props.setBody(<LoginPage setBody={props.setBody} />);
           return;
         }

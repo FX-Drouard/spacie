@@ -13,7 +13,7 @@ class CommentePage extends Component {
     axios
       .get("/api/message/commentaire/" + this.props.message.id)
       .then((res) => this.setState({ resultat: res }))
-      .catch((err) => alert(err));
+      .catch((err) => this.setState({ resultat: [] }));
   }
   render() {
     return (

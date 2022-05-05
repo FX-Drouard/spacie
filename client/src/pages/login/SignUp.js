@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import '../../assets/css/login.css'
 import Main from '../main/Main.js'
 import LoginPage from './LoginPage'
+import {setToken} from "../main/general/token.js";
 class SignUp extends Component {
     constructor(props) {
         super(props);
@@ -14,11 +15,11 @@ class SignUp extends Component {
         this.confPassword = ""
     }
     gotoConnection() {
-        this.props.setBody(<LoginPage setToken={this.props.setToken} serveur={this.props.serveur} setBody={this.props.setBody} token={this.props.token} />)
+        this.props.setBody(<LoginPage setBody={this.props.setBody}  />)
     }
 
     gotoAccueil() {
-        this.props.setBody(<Main setToken={this.props.setToken} serveur={this.props.serveur} setBody={this.props.setBody} token="" />)
+        this.props.setBody(<Main  setBody={this.props.setBody}  />)
     }
 
     getErreur() {
@@ -54,7 +55,7 @@ class SignUp extends Component {
         }
         ).then((res) => {
             this.props.setBody(<Main setBody={this.props.setBody} />)
-            document.cookie = "token="+res.token
+            setToken(res.data.token)
         }
         ).catch((err) => {
             this.setState({ messageErreur: err.message })

@@ -1,11 +1,11 @@
 const express = require("express");
 const auth = require("../../../middleware/auth");
-import Api from "./api.js"
-import { connection } from "../../../connectionMongoDB";
+const apiFile = require("./api.js")
+const  {connection}  = require("../../../connectionMongoDB");
 const rooter = express.Router();
 rooter.use(express.json());
-const db = await connection()
-const api = Api(db)
+const db = connection()
+const api = new apiFile.Api(db)
 rooter
  .get("/:login", api.getAll)//Accueil
  .post('/commentaire/:messqge_id', auth, api.newCommentaire)//NewMessage
@@ -18,4 +18,4 @@ rooter
  .get("/recherche/:login", api.get)//ResultatReacherche
  .get("/recherche/hashtags/:login", api.getHashtags)//ResultatReacherche
 
- exports.default = router
+ exports.default = rooter

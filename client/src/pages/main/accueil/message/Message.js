@@ -7,7 +7,7 @@ import SupprimerButton from "./reaction/SupprimerButton";
 import ModifierButton from "./reaction/modifier/ModifierButton";
 import StarPage from "./reaction/star/StarPage";
 import axios from "axios";
-const token = require("../../general/token.js");
+import {getToken, getLoginFromToken} from "../../general/token.js";
 
 class Message extends Component {
   constructor(props) {
@@ -21,12 +21,12 @@ class Message extends Component {
     };
 
     this.setReaction = this.setReaction.bind(this);
-    this.token =  token.getToken();
+    this.token =  getToken()
     this.clickedStar = false;
     this.setMessageResult = this.setMessageResult.bind(this);
   }
   componentWillMount() {
-    this.setstate({userConnect : token.getLoginFromToken(this.token)});
+    this.setstate({userConnect : getLoginFromToken(this.token)});
     axios.get("/api/user/"+ this.props.message.user)
     .then(res => this.setState({sender: res}))
     .catch(err => alert(err))

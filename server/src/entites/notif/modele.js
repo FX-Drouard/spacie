@@ -1,7 +1,7 @@
-import NotificationsBase from "./baseBDD";
-export default class Notifications {
+const notificationsBase = require("./baseBDD");
+ class Notifications {
   constructor(db) {
-    this.notif = NotificationsBase(db);
+    this.notif = new  notificationsBase.NotificationsBase(db);
   }
 
   addNotif(login1, message) {
@@ -29,3 +29,5 @@ export default class Notifications {
   }
 
 }
+
+module.exports = {Notifications}

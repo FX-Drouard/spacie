@@ -1,19 +1,18 @@
 import axios from "axios";
 import React, { Component } from "react";
 import Profil from "./Profil.js";
-const token = require("../general/token.js");
-const jwt = require("jsonwebtoken");
+import {getToken,getLoginFromToken} from "../general/token.js"
 
 class ProfilButton extends Component {
   constructor(props) {
     super(props);
 
-    this.token = token.getToken();
+    this.token = getToken()
     this.state = { login: null };
   }
   componentWillMount() {
     
-    this.setState({login: token.getLoginFromToken(this.token)})
+    this.setState({login: getLoginFromToken(this.token)})
     axios
     .get("/api/user/info/" + this.state.login)
     .then((res) => {
@@ -29,7 +28,7 @@ class ProfilButton extends Component {
           <Profil
             setBody={this.props.setBody}
             setPage={this.props.setPage}
-            user={login}
+            user={this.state.login}
           />
         );
   }

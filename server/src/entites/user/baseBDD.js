@@ -1,4 +1,4 @@
-export default class UserBase {
+ class UserBase {
   constructor(db) {
     this.db = db;
   }
@@ -89,3 +89,4 @@ export default class UserBase {
   }
 }
 
+module.exports = {UserBase}
