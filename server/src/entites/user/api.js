@@ -101,7 +101,7 @@
           console.log("then getInfos")
           res.sendStatus(200).send({message : resp})
           console.log("fin getInfos")
-
+          return
         }).catch(err => res.sendStatus(500).send({message : err}))
       }
 
@@ -111,6 +111,7 @@
           console.log("then getInfo")
           res.sendStatus(200).send({message : resp})
           console.log("fin getInfo")
+          return
         }
         ).catch(err => res.sendStatus(500).send({message : err}))
       }

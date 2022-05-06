@@ -19,12 +19,12 @@ class NewMessage extends Component {
 
   componentWillReceiveProps(props) {
     this.props = props;
-    this.state = {
+    this.stState ({
       check: false,
       image: this.props.message ? this.props.message.image : "",
       erreur: "",
       newMessage: this.props.message ? this.props.message.text : "",
-    };
+    });
     this.token = getToken()
     this.onEmojiClick = this.onEmojiClick.bind(this);
   }
