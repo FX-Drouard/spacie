@@ -23,21 +23,21 @@ class Api {
 
     
     async newMessage(req, res) {
-      const message = req.body.message
+      const mesg = req.body.message
       const image = req.body.image
       const priv = req.body.priv
       const login = token.getLoginFromToken()
-      message.newMessage(login, message,priv, image).then(resp => 
+      message.newMessage(login, mesg,priv, image).then(resp => 
           res.sendStatus(200).send(resp)
       ).catch(err => res.sendStatus(404).send(err))
     }
 
     async update(req, res) {
-      const message = req.body.message
+      const mesg = req.body.message
       const image = req.body.image
       const priv = req.body.priv
       const {message_id} = req.params
-      message.update(message_id, message, image, priv).then(resp => 
+      message.update(message_id, mesg, image, priv).then(resp => 
           res.sendStatus(200).send(resp)
       ).catch(err => res.sendStatus(404).send(err))
     }
@@ -50,9 +50,9 @@ class Api {
     }
 
     async get(req, res) {
-      const message = req.body.message
+      const mesg = req.body.message
       const login = req.params.login
-      message.getMessageByMotif(message,login)
+      message.getMessageByMotif(mesg,login)
       .then((resp) => res.sendStatus(200).send(resp))
       .catch((err) => res.sendStatus(500).send(err))
     }
@@ -60,8 +60,8 @@ class Api {
     async getHashtags(req, res) {
      
       const login = req.params.login
-      const message = req.params.message_id
-      message.getMessageByMotif('#'+message,login)
+      const mesg = req.params.message_id
+      message.getMessageByMotif('#'+mesg,login)
       .then((resp) => {res.sendStatus(200).send(resp)})
       .catch((err) => {res.sendStatus(500).send(err)})
     }
@@ -79,7 +79,7 @@ class Api {
     }
 
     async newCommentaire(req, res) {
-      const { message , image, priv } = req.body
+      const { msg , image, priv } = req.body
       const {message_id} = req.params
       const login = token.getLoginFromToken()
 
@@ -87,7 +87,7 @@ class Api {
         notif.addNotif(message.sender, login + ' a commente votre message'  )
         .catch((err) => {sendStatus(503).send({message: err})})
       })     
-      this.message.newMessage(login, message, image,priv, message_id).
+      this.message.newMessage(login, msg, image,priv, message_id).
       then(resp => 
         res.sendStatus(200).send(resp)
       ).catch(err => res.sendStatus(404).send(err))
@@ -108,7 +108,7 @@ class Api {
    
     async delete(req, res) {
       const message_id = req.params.message_id
-      this.message.delete(message_id)
+      message.delete(message_id)
       .then((resp) => res.sendStatus(200).send(resp))
       .catch((err) => res.sendStatus(500).send(err))
     }
