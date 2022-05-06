@@ -8,6 +8,7 @@
       this.db
         .insertOne({
           _id: login,
+          photo : "https://media.spacie.fr/default/imgutils/default_profil.jpg",
           motDePasse: motDePasse,
           email: email,
           dateNaissance: dateNaissance,

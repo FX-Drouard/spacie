@@ -39,7 +39,7 @@ class ProfilButton extends Component {
     return (
       <div id="lien_profil">
         <span onClick={() => this.gotoProfil()}>
-          <img src={this.state.user.photoProfil} alt="photo de profil" />
+          <img src={this.state.user.image} alt="photo de profil" />
         </span>
       </div>
     );
