@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import NewMessage from "./message/NewMessage.js";
 import MessageList from "./message/MessagesList.js";
 import axios from "axios";
-import {getToken,testToken} from "../general/token.js";
+import {getToken,testToken,getLoginFromToken} from "../general/token.js";
 class Accueil extends Component {
   constructor(props) {
     super(props);
@@ -24,11 +24,10 @@ class Accueil extends Component {
 
   refresh() {
     axios
-      .get("/api/message")
+      .get("/api/message/",{login : getLoginFromToken()})
       .then((res) => this.setState({ resultat: res }))
       .catch((err) =>{ 
         this.setState({ resultat: [] });
-       
       });
   }
 

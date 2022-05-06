@@ -36,7 +36,7 @@ class SignUp extends Component {
         }
 
         if (!regEmail.test(this.email)) {
-            this.setState({ messageErreur: "date de date naissence invalide" })
+            this.setState({ messageErreur: "mail invalide" })
             return
         }
         if (this.motDePasse != this.confPassword) {

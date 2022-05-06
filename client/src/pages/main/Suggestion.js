@@ -11,14 +11,15 @@ class Suggestion extends Component {
     };
   }
   componentWillMount() {
-    axios
-      .get("/api/user/info")
-      .then((res) => {
-        this.setState({ resultat: res.data.slice(0, 5) });
-      })
-      .catch((err) => {
-        this.setState({ resultat: [] });
-      });
+    if (testToken(this.token))
+      axios
+        .get("/api/user/info")
+        .then((res) => {
+          this.setState({ resultat: res.data.slice(0, 5) });
+        })
+        .catch((err) => {
+          this.setState({ resultat: [] });
+        });
   }
   render() {
     if (testToken(this.token))

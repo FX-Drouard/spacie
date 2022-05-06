@@ -1,7 +1,7 @@
 const path = require('path')
 const api = require('./api.js')
 const { default: router } = require('./route.js')
-
+const cors = require('cors')
 const basedir = path.normalize(path.dirname(__dirname))
 console.debug(`Base directory: ${basedir}`)
 
@@ -10,9 +10,9 @@ const app = express()
 api_1 = require('./api.js')
 
 
-app.use('/api', api.default())
-router(app).then(() => {
 
+app.use(cors())
+router(app).then(() => {
     app.on('close', () => {
     })
 

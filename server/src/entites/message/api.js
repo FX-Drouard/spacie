@@ -1,30 +1,32 @@
-const message =  require("./modele");
-const notifications = require("../notif/modele");
+const messageFile =  require("./modele");
+const notificationsFile = require("../notif/modele");
 const token = require('../../../tools/token.js');
+const message = new messageFile.Message()
+const  notif  = new notificationsFile.Notifications()
 class Api {
-
+   
     constructor(db) {
-      this.message = new message.Message(db)
-      this.notif = new notifications.Notifications(db)
+      message.setDataBase(db)
     }
     
     async getAll(req, res) {
-        const {login} = req.params
-
-        this.message.getAll(login).then(resp => 
+        console.log("hqhq")
+        const {login} = req.body
+        
+        message.getAll(login).then(resp => {
+          console.log("hoho");
           res.sendStatus(200).send(resp)
-        ).catch(err => res.sendStatus(404).send(err))
+        }
+        ).catch(err => res.sendStatus(403).send(err))
     }
 
     
     async newMessage(req, res) {
-      // const {message , image , private} = req.body
-
       const message = req.body.message
       const image = req.body.image
       const priv = req.body.priv
       const login = token.getLoginFromToken()
-      this.message.newMessage(login, message,priv, image).then(resp => 
+      message.newMessage(login, message,priv, image).then(resp => 
           res.sendStatus(200).send(resp)
       ).catch(err => res.sendStatus(404).send(err))
     }
@@ -34,14 +36,14 @@ class Api {
       const image = req.body.image
       const priv = req.body.priv
       const {message_id} = req.params
-      this.message.update(message_id, message, image, priv).then(resp => 
+      message.update(message_id, message, image, priv).then(resp => 
           res.sendStatus(200).send(resp)
       ).catch(err => res.sendStatus(404).send(err))
     }
 
     async getCommentaire(req, res) {
       const {message_id} = req.params
-      this.message.getMessageById(message_id)
+      message.getMessageById(message_id)
       .then(resp=> res.sendStatus(200).send(resp))
       .catch((err) => res.sendStatus(500).send(err))
     }
@@ -49,7 +51,7 @@ class Api {
     async get(req, res) {
       const message = req.body.message
       const login = req.params.login
-      this.message.getMessageByMotif(message,login)
+      message.getMessageByMotif(message,login)
       .then((resp) => res.sendStatus(200).send(resp))
       .catch((err) => res.sendStatus(500).send(err))
     }
@@ -58,7 +60,7 @@ class Api {
      
       const login = req.params.login
       const message = req.params.message_id
-      this.message.getMessageByMotif('#'+message,login)
+      message.getMessageByMotif('#'+message,login)
       .then((resp) => {res.sendStatus(200).send(resp)})
       .catch((err) => {res.sendStatus(500).send(err)})
     }
@@ -66,11 +68,11 @@ class Api {
     async star(req, res) {
       const login = token.getLoginFromToken()
       const {message_id,isLiked} = req.body
-      this.message.getMessageById(message_id).then((message) => {
-        this.notif.addNotif(message.sender,token.getLoginFromToken() + ' a star votre message'  )
+      message.getMessageById(message_id).then((message) => {
+        notif.addNotif(message.sender,token.getLoginFromToken() + ' a star votre message'  )
         .catch((err) => {sendStatus(503).send({message: err})})
       })     
-      this.message.star(login, messageID,isLiked)
+      message.star(login, messageID,isLiked)
       .then((resp) => res.sendStatus(200).send(resp))
       .catch((err) => res.sendStatus(500).send(err))
     }
@@ -80,8 +82,8 @@ class Api {
       const {message_id} = req.params
       const login = token.getLoginFromToken()
 
-      this.message.getMessageById(message_id).then((message) => {
-        this.notif.addNotif(message.sender, login + ' a commente votre message'  )
+      message.getMessageById(message_id).then((message) => {
+        notif.addNotif(message.sender, login + ' a commente votre message'  )
         .catch((err) => {sendStatus(503).send({message: err})})
       })     
       this.message.newMessage(login, message, image,priv, message_id).
@@ -93,11 +95,11 @@ class Api {
     async repost(req, res) {
       const {message_id} = req.params
       const login = token.getLoginFromToken()
-      this.message.getMessageById(message_id).then((message) => {
-        this.notif.addNotif(message.sender,login+ ' a reposte votre message'  )
+      message.getMessageById(message_id).then((message) => {
+        notif.addNotif(message.sender,login+ ' a reposte votre message'  )
         .catch((err) => {sendStatus(503).send({message: err})})
       })
-      this.message.repost(login,message_id)
+      message.repost(login,message_id)
       .then((resp) => res.sendStatus(200).send(resp))
       .catch((err) => res.sendStatus(500).send(err))
     }

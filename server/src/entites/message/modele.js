@@ -1,8 +1,10 @@
 const  messageBase = require("./baseBDD");
 const userBase = require("../user/baseBDD")
 class Message {
-  constructor(db) {
-    
+  constructor() {
+  }
+
+  setDataBase(db) {
     this.dbMessage = new messageBase.MessageBase(db.Message);
     this.dbUser = new userBase.UserBase(db.User)
   }
@@ -14,8 +16,8 @@ class Message {
           messages = res.filter(message => 
             res.amis.filter(ami => ami == message.sender)>length > 0 || !message.private)
           resolve(messages)
-        })
-      }).catch(err => reject(err));
+        }).catch(err => reject(err))
+      }).catch(err => {reject(err); console.log(err)});
     })
   }
 

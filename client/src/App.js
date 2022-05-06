@@ -1,11 +1,15 @@
 import React, { Component } from "react";
 import Main from "./pages/main/Main.js";
 import {setToken} from "./pages/main/general/token.js";
+import axios from "axios";
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.setBody = this.setBody.bind(this);
-    // this.serveur = new Serveur()
+    // const host = location.hostname;
+    axios.defaults.baseURL = 'http://localhost:8777';
+  
     this.state = {
       page: null,
     };
