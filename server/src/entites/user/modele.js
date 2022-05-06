@@ -21,8 +21,8 @@ const {getCollection} = require("../../../connectionMongoDB")
           new Date(date),
           new Date()
         )
-        .then((res) => resolve(res))
-        .catch((err) => reject("Ce login existe deja choisissez un autre"));
+        .then((res) => {console.log("BLOP");resolve(res)})
+        .catch((err) => {console.log("KA");reject("Ce login existe deja choisissez un autre")});
     });
   }
 

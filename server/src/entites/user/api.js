@@ -9,7 +9,7 @@
         user.setDataBase(db)
       }
       
-      async signup(req,res) {
+      async signup(req,res,next) {
           const {login ,date,email,motDePasse} = req.body
           if(!login || !motDePasse || !date || !email)
           {
@@ -17,10 +17,11 @@
             return
           }
           user.create(login,motDePasse,email,date).then(() =>{     
-              res.sendStatus(200).send(
-                res.send({token : jwt.sign({login : login},"RANDOM_TOKEN_SECRET",{expiresIn: '24h'}), login : login}))
+              console.log("then signup");res.sendStatus(200).send(
+                {token : jwt.sign({login : login},"RANDOM_TOKEN_SECRET",{expiresIn: '24h'}), login : login})
+                next()
             }).catch(err => 
-              res.sendStatus(404).send({message : err})
+              {console.log("catch err ")}
             )
       }
 

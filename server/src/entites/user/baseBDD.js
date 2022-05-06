@@ -15,8 +15,8 @@
           amis : [],
           messages : []
         })
-        .then((res) => resolve(res))
-        .catch((err) => reject(err));
+        .then((res) => {console.log("BLU");resolve(res)})
+        .catch((err) => {console.log("BLI");reject(err)});
     });
   }
 

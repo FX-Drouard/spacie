@@ -10,7 +10,7 @@ function messageRoute(){
         getConnection().then(db => {
             const api = new apiFile.Api(db)
             rooter
-                .get("/", async function (req, res,next){ console.log("haha"); next()},api.getAll)//Accueil
+                .get("/", api.getAll)//Accueil
                 .post('/commentaire/:message_id', auth, api.newCommentaire)//NewMessage
                 .post('/update/:message_id', auth, api.update)//NewMessage
                 .post('/create', auth, api.newMessage)//NewMessage
