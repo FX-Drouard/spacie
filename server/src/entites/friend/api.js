@@ -3,9 +3,9 @@ const notifFile = require("../notif/modele");
 const userFile = require("../user/modele");
 const jwt = require('jsonwebtoken')
 
-const friends = new friendsFile.Friends(db);
-const user = new userFile.User(db);
-const notif = new notifFile.Notifications(db);
+const friends = new friendsFile.Friends();
+const user = new userFile.User();
+const notif = new notifFile.Notifications();
 class Api {
 
   constructor(db) {

@@ -9,8 +9,6 @@ express = require('express')
 const app = express()
 api_1 = require('./api.js')
 
-
-
 app.use(cors())
 router(app).then(() => {
     app.on('close', () => {
