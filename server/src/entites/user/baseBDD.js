@@ -22,9 +22,10 @@
 
   find(login) {
     return new Promise((resolve, reject) => {
+      console.log(login)
       this.db
         .findOne({ _id: login })
-        .then((res) => resolve(res))
+        .then((res) => {resolve(res); console.log(res)})
         .catch((err) => reject(err));
     });
   }
