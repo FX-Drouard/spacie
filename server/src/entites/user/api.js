@@ -37,7 +37,6 @@
           return
         }
         user.find(login).then(resp => {
-            console.log(resp)
             if(crypto.
               createHash("sha256").
               update(password).
@@ -92,7 +91,7 @@
         user.find(login).then((resp) => {
           console.log("then get")
           res.status(200).send({message : resp})
-          console.log("then get")
+          console.log("fin get")
           return
         }
         ).catch(err => res.status(500).send({message :  "erreur get"}))

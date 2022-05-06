@@ -19,7 +19,7 @@ class NewMessage extends Component {
 
   componentWillReceiveProps(props) {
     this.props = props;
-    this.stState ({
+    this.setState ({
       check: false,
       image: this.props.message ? this.props.message.image : "",
       erreur: "",
