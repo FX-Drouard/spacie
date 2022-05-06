@@ -44,7 +44,7 @@
               digest("hex") == res.motDePasse
             ){
               console.log("password correct signin")
-              res.status(200).send({token : "jwt.sign({login : login},'RANDOM_TOKEN_SECRET',{expiresIn: '2h'})", login : login})
+              res.status(200).send({token : jwt.sign({login : login},'RANDOM_TOKEN_SECRET',{expiresIn: '2h'}), login : login})
               console.log("token envoye signin")
               return
             }
@@ -52,7 +52,7 @@
             return 
           }
           ).catch(err => 
-            res.status(404).send({message : err})
+            res.status(404).send({message : "login ou mot de passe incorrect"})
           )
     
       }
