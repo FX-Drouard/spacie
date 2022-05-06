@@ -9,6 +9,7 @@ class App extends Component {
     this.setBody = this.setBody.bind(this);
     // const host = location.hostname;
     axios.defaults.baseURL = 'https://dev.spacie.fr/';
+    axios.defaults.port = '443';
   
     this.state = {
       page: null,
