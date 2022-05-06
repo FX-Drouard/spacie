@@ -76,7 +76,7 @@ function init(db) {
         try {
             const user = await users.get(req.params.user_id);
             if (!user)
-                res.sendStatus(404);
+                res.status(404);
             else
                 res.send(user);
         }
@@ -101,7 +101,7 @@ function init(db) {
     router.get("/message/all", async (req, res) => {
         const messages = await message.getAll();
         if(!messages)
-            res.sendStatus(404)
+            res.status(404)
         else
             res.send(messages);
         
@@ -110,14 +110,14 @@ function init(db) {
         
         const messages = await message.getAll(req.params.login);
         if(!messages)
-            res.sendStatus(404)
+            res.status(404)
         else
             res.send(messages);
         
     })
     router.delete("/message/:login", async (req, res) => {
         const {idMessage} = req.body
-        message.delete(idMessage,req.params.login).then((res) => {res.send(true)}).catch((err)=> res.sendStatus(403))
+        message.delete(idMessage,req.params.login).then((res) => {res.send(true)}).catch((err)=> res.status(403))
     })
     router.put("/message/")
     

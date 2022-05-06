@@ -15,7 +15,7 @@ class Api {
         
         message.getAll(login).then(resp => {
          
-          res.sendStatus(200).send(resp)
+          res.status(200).send(resp)
         }
         ).catch(err =>
           res.send([]))
@@ -28,8 +28,8 @@ class Api {
       const priv = req.body.priv
       const login = token.getLoginFromToken()
       message.newMessage(login, mesg,priv, image).then(resp => 
-          res.sendStatus(200).send(resp)
-      ).catch(err => res.sendStatus(404).send(err))
+          res.status(200).send(resp)
+      ).catch(err => res.status(404).send(err))
     }
 
     async update(req, res) {
@@ -38,23 +38,23 @@ class Api {
       const priv = req.body.priv
       const {message_id} = req.params
       message.update(message_id, mesg, image, priv).then(resp => 
-          res.sendStatus(200).send(resp)
-      ).catch(err => res.sendStatus(404).send(err))
+          res.status(200).send(resp)
+      ).catch(err => res.status(404).send(err))
     }
 
     async getCommentaire(req, res) {
       const {message_id} = req.params
       message.getMessageById(message_id)
-      .then(resp=> res.sendStatus(200).send(resp))
-      .catch((err) => res.sendStatus(500).send(err))
+      .then(resp=> res.status(200).send(resp))
+      .catch((err) => res.status(500).send(err))
     }
 
     async get(req, res) {
       const mesg = req.body.message
       const login = req.params.login
       message.getMessageByMotif(mesg,login)
-      .then((resp) => res.sendStatus(200).send(resp))
-      .catch((err) => res.sendStatus(500).send(err))
+      .then((resp) => res.status(200).send(resp))
+      .catch((err) => res.status(500).send(err))
     }
 
     async getHashtags(req, res) {
@@ -62,8 +62,8 @@ class Api {
       const login = req.params.login
       const mesg = req.params.message_id
       message.getMessageByMotif('#'+mesg,login)
-      .then((resp) => {res.sendStatus(200).send(resp)})
-      .catch((err) => {res.sendStatus(500).send(err)})
+      .then((resp) => {res.status(200).send(resp)})
+      .catch((err) => {res.status(500).send(err)})
     }
 
     async star(req, res) {
@@ -71,11 +71,11 @@ class Api {
       const {message_id,isLiked} = req.body
       message.getMessageById(message_id).then((message) => {
         notif.addNotif(message.sender,token.getLoginFromToken() + ' a star votre message'  )
-        .catch((err) => {sendStatus(503).send({message: err})})
+        .catch((err) => {status(503).send({message: err})})
       })     
       message.star(login, messageID,isLiked)
-      .then((resp) => res.sendStatus(200).send(resp))
-      .catch((err) => res.sendStatus(500).send(err))
+      .then((resp) => res.status(200).send(resp))
+      .catch((err) => res.status(500).send(err))
     }
 
     async newCommentaire(req, res) {
@@ -85,12 +85,12 @@ class Api {
 
       message.getMessageById(message_id).then((message) => {
         notif.addNotif(message.sender, login + ' a commente votre message'  )
-        .catch((err) => {sendStatus(503).send({message: err})})
+        .catch((err) => {status(503).send({message: err})})
       })     
       this.message.newMessage(login, msg, image,priv, message_id).
       then(resp => 
-        res.sendStatus(200).send(resp)
-      ).catch(err => res.sendStatus(404).send(err))
+        res.status(200).send(resp)
+      ).catch(err => res.status(404).send(err))
   }
 
     async repost(req, res) {
@@ -98,19 +98,19 @@ class Api {
       const login = token.getLoginFromToken()
       message.getMessageById(message_id).then((message) => {
         notif.addNotif(message.sender,login+ ' a reposte votre message'  )
-        .catch((err) => {sendStatus(503).send({message: err})})
+        .catch((err) => {status(503).send({message: err})})
       })
       message.repost(login,message_id)
-      .then((resp) => res.sendStatus(200).send(resp))
-      .catch((err) => res.sendStatus(500).send(err))
+      .then((resp) => res.status(200).send(resp))
+      .catch((err) => res.status(500).send(err))
     }
 
    
     async delete(req, res) {
       const message_id = req.params.message_id
       message.delete(message_id)
-      .then((resp) => res.sendStatus(200).send(resp))
-      .catch((err) => res.sendStatus(500).send(err))
+      .then((resp) => res.status(200).send(resp))
+      .catch((err) => res.status(500).send(err))
     }
 
 
