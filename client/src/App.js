@@ -8,7 +8,7 @@ class App extends Component {
     super(props);
     this.setBody = this.setBody.bind(this);
     // const host = location.hostname;
-    axios.defaults.baseURL = 'https://dev.spacie.fr/';
+    axios.defaults.baseURL = 'https://spacie.fr/';
     axios.defaults.port = '443';
   
     this.state = {
