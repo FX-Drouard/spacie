@@ -107,8 +107,9 @@
       }
 
       async getInfo(req, res) {
-        console.log("getInfo")
         const {login} = req.params
+        console.log("getInfo",login)
+
         user.getInfo(login).then((resp) => {
           console.log("then getInfo")
           res.status(200).send({message : resp})
