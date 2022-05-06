@@ -5,7 +5,9 @@ class Message {
   }
 
   setDataBase(db) {
+    console.log(db)
     this.dbMessage = new messageBase.MessageBase(db.Messages);
+
     this.dbUser = new userBase.UserBase(db.Users)
   }
 
