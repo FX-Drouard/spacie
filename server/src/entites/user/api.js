@@ -107,6 +107,7 @@
       }
 
       async getInfo(req, res) {
+        console.log("getInfo")
         const {login} = req.params
         user.getInfo(login).then((resp) => {
           console.log("then getInfo")
