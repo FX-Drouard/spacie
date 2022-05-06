@@ -44,7 +44,7 @@
               digest("hex") == res.motDePasse
             ){
               console.log("password correct signin",login)
-              res.status(200).send({token : 'hqhq', login : login})
+              res.send({token : 'hqhq', login : login})
               console.log("token envoye signin")
               return
             }
