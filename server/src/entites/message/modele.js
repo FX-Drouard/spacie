@@ -1,14 +1,14 @@
 const  messageBase = require("./baseBDD");
 const userBase = require("../user/baseBDD")
+const {getCollection} = require("../../../connectionMongoDB")
 class Message {
   constructor() {
   }
 
   setDataBase(db) {
     console.log(db)
-    this.dbMessage = new messageBase.MessageBase(db.Messages);
-
-    this.dbUser = new userBase.UserBase(db.Users)
+    this.dbMessage = new messageBase.MessageBase(getCollection("Messages",db));
+    this.dbUser = new userBase.UserBase(getCollection("Users",db))
   }
 
   getAll(login) {

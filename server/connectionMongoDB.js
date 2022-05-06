@@ -18,7 +18,11 @@ function  getConnection() {
     resolve(dataBase)
   }
 });
-  
 }
-
-module.exports = {getConnection}
+function getCollection(collection,db) {
+  return new Promise((resolve, reject) => {
+    
+    db.collection(collection).then(res => resolve(res)).catch(err => { reject(err)})
+  });
+}
+module.exports = {getConnection, getCollection}
