@@ -51,8 +51,10 @@
             res.status(401).send({message : "Mot de passe incorrect"})
             return 
           }
-          ).catch(err => 
+          ).catch(err => {
+            console.log("err ")
             res.status(401).send({message : "login ou mot de passe incorrect"})
+            }
           )
     
       }
