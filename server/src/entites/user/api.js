@@ -18,10 +18,13 @@
           }
           user.create(login,motDePasse,email,date).then(() =>{     
               console.log("then signup");
-              res.send({token : "hamid", login : login})
+              res.send({token : jwt.sign({login : login},"RANDOM_TOKEN_SECRET",{expiresIn: '24h'}), login : login})
                 next()
             }).catch(err => 
-              {console.log("catch err ")}
+              {
+                console.log("catch err ")
+                res.sendStatus(404).send({message : err})
+              }
             )
       }
 
@@ -33,6 +36,7 @@
         }
         user.find(login).then(res => 
           {
+            console.log(res)
             if(crypto.
               createHash("sha256").
               update(password).
@@ -40,7 +44,7 @@
             )
             res.send({token : jwt.sign({login : login},"RANDOM_TOKEN_SECRET",{expiresIn: '24h'}), login : login})
           else
-          res.sendStatus(401).send({message : "Mot de passe incorrect"})
+            res.sendStatus(401).send({message : "Mot de passe incorrect"})
           }
           ).catch(err => 
           res.sendStatus(404).send({message : err})
