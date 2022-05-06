@@ -8,7 +8,7 @@ class App extends Component {
     super(props);
     this.setBody = this.setBody.bind(this);
     // const host = location.hostname;
-    axios.defaults.baseURL = 'http://spacie.fr/api/';
+    axios.defaults.baseURL = 'http://spacie.fr/';
   
     this.state = {
       page: null,

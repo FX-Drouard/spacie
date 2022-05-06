@@ -7,13 +7,13 @@ const {friendRoute}  = require('./entites/friend/rooter')
 function router(app) {
   return new Promise((resolve, reject) => {
     messageRoute().then(message => {
-      app.use('/message', message)
+      app.use('/api/message', message)
       friendRoute().then(friend => {
-        app.use('/friend',friend )
+        app.use('/api/friend',friend )
         notificationRoute().then(notif => {
-          app.use('/notif', notif)
+          app.use('/api/notif', notif)
           userRoute().then(user => {
-            app.use('/user', user)
+            app.use('/api/user', user)
             resolve()
           })
         })
