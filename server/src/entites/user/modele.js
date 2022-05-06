@@ -30,7 +30,7 @@ const {getCollection} = require("../../../connectionMongoDB")
     return new Promise((resolve, reject) => {
       this.user
         .find(login)
-        .then((res) => resolve(res))
+        .then((res) => {resolve(res); console.log(res)})
         .catch(() => reject(login+" n'existe pas"));
     });
   }
