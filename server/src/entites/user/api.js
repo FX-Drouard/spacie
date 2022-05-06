@@ -25,7 +25,7 @@
             }).catch(err => 
               {
                 console.log("catch signup ")
-                res.sendStatus(404).send({message : err})
+                res.status(404).send({message : err})
               }
             )
       }
@@ -44,22 +44,22 @@
               digest("hex") == res.motDePasse
             ){
               console.log("password correct signin")
-              res.send({token : jwt.sign({login : login},"RANDOM_TOKEN_SECRET",{expiresIn: '1H'}), login : login})
+              res.status(200).send({token : "jwt.sign({login : login},'RANDOM_TOKEN_SECRET',{expiresIn: '1H'})", login : login})
               console.log("token envoye signin")
               return
             }
-            res.sendStatus(401).send({message : "Mot de passe incorrect"})
+            res.status(401).send({message : "Mot de passe incorrect"})
             return 
           }
           ).catch(err => 
-            res.sendStatus(404).send({message : err})
+            res.status(404).send({message : err})
           )
     
       }
 
       async signout(req, res) {
         console.log("signout")
-        res.sendStatus(200).send({token : "",login : ""})
+        res.status(200).send({token : "",login : ""})
         console.log("signout out")
 
       }
@@ -68,20 +68,20 @@
         const {login , nickName, password, biographie, photo} = req.body
         user.update(login , nickName, password, biographie, photo).then((resp) => {
           console.log("then edit")
-          res.sendStatus(200).send({message : resp})
+          res.status(200).send({message : resp})
           console.log("fin edit")
           return
-        }).catch(err => res.sendStatus(500).send({message : err}))
+        }).catch(err => res.status(500).send({message : err}))
       }
 
       async delete(req, res) {
         const {login} = req.params
         user.delete(login).then((resp) => {
           console.log("then delete")
-          res.sendStatus(200).send({message : resp})
+          res.status(200).send({message : resp})
           console.log("fin delete")
           return
-        }).catch(err => res.sendStatus(500).send({message : err}))
+        }).catch(err => res.status(500).send({message : err}))
       }
 
 
@@ -89,31 +89,31 @@
         const {login} = req.params
         user.find(login).then((resp) => {
           console.log("then get")
-          res.sendStatus(200).send({message : resp})
+          res.status(200).send({message : resp})
           console.log("then get")
           return
         }
-        ).catch(err => res.sendStatus(500).send({message : err}))
+        ).catch(err => res.status(500).send({message : err}))
       }
 
       async getInfos(req, res) {
         user.getAll().then((resp) => {
           console.log("then getInfos")
-          res.sendStatus(200).send({message : resp})
+          res.status(200).send({message : resp})
           console.log("fin getInfos")
           return
-        }).catch(err => res.sendStatus(500).send({message : err}))
+        }).catch(err => res.status(500).send({message : err}))
       }
 
       async getInfo(req, res) {
         const {login} = req.params
         user.getInfo(login).then((resp) => {
           console.log("then getInfo")
-          res.sendStatus(200).send({message : resp})
+          res.status(200).send({message : resp})
           console.log("fin getInfo")
           return
         }
-        ).catch(err => res.sendStatus(500).send({message : err}))
+        ).catch(err => res.status(500).send({message : err}))
       }
   }
 
