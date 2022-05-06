@@ -11,9 +11,9 @@ function userRoute(){
     const api = new apiFile.Api(db)
     rooter
       .get("/:login", api.get) // Profil , ResultatRecherche, Message
-      .get("/info",auth,api.getInfos) //Suggestion
+      .get("/info/all",auth,api.getInfos) //Suggestion
       .get("/info/:login", api.getInfo) // ProfilButton, StarPage
-      .post("/signup",async function(req,res,next){console.log("bla");next()}, api.signup) // SignUp
+      .post("/signup", api.signup) // SignUp
       .post("/signin", api.signin) // LoginPage
       .delete("/signout",auth,api.signout) //Profil
       .post("/edit",auth, api.edit) //EditProfil

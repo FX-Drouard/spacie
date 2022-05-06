@@ -55,6 +55,7 @@
   }
 
   getAll() {
+    console.log("getAllBdd")
     return new Promise((resolve, reject) => {
       this.db
         .find({}, { _id: 1, nickName: 1, photo: 1 })
@@ -65,7 +66,8 @@
   }
 
   getInfo(login) {
-    return Promise((resolve, reject) => {
+    console.log("getInfoBdd",login)
+    return new Promise((resolve, reject) => {
       console.log("getInfoBdd",login)
       this.db
         .findOne({ _id: login }, { _id: 1, nickName: 1, photo: 1 })

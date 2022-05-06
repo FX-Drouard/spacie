@@ -49,10 +49,11 @@ const {getCollection} = require("../../../connectionMongoDB")
   update(login, nickName, motDePasse, biographie, photo) {
     return new Promise((resolve, reject) => {
       const doc = { _id: login };
-      if (nickName) doc[nickName] = nickName;
-      if (motDePasse) doc[motDePasse] = motDePasse;
-      if (biographie) doc[biographie] = biographie;
-      if (photo) doc[photo] = photo;
+      if (nickName) doc['nickName'] = nickName;
+      if (motDePasse) doc['motDePasse'] = motDePasse;
+      if (biographie) doc['biographie'] = biographie;
+      if (photo) doc['photo'] = photo;
+      console.log(doc)
       this.user
         .update(login, doc)
         .then((res) => resolve(res))
@@ -61,6 +62,7 @@ const {getCollection} = require("../../../connectionMongoDB")
   }
 
   getAll() {
+    console.log("getAllModele")
     return new Promise((resolve, reject) => {
       this.user
         .getAll()

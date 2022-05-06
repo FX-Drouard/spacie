@@ -31,19 +31,19 @@
       }
 
       async signin (req, res) {
-        const {login , password} = req.body
-        if(login == "" || password == ""){
+        const {login , motDePasse} = req.body
+        if(login == "" || motDePasse == ""){
           res.status(401).send({message : "mot de passe ou le login est incorrect"})
           return
         }
         user.find(login).then(resp => {
             if(crypto.
               createHash("sha256").
-              update(password).
+              update(motDePasse).
               digest("hex") == resp.motDePasse
             ){
               console.log("password correct signin",login)
-              res.send({token : 'hqhq', login : login})
+              res.send({token : jwt.sign({login : login},"RANDOM_TOKEN_SECRET",{expiresIn: '2h'}), login : login})
               console.log("token envoye signin")
               return
             }
@@ -66,6 +66,7 @@
       }
 
       async edit(req, res) {
+        console.log("editApi")
         const {login , nickName, password, biographie, photo} = req.body
         user.update(login , nickName, password, biographie, photo).then((resp) => {
           console.log("then edit")
@@ -98,9 +99,10 @@
       }
 
       async getInfos(req, res) {
+        console.log("getInfosApi")
         user.getAll().then((resp) => {
           console.log("then getInfos")
-          res.status(200).send({message : resp})
+          res.status(200).send({users : resp})
           console.log("fin getInfos")
           return
         }).catch(err => res.status(500).send({message : err}))
