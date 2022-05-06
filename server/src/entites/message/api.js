@@ -18,7 +18,7 @@ class Api {
           res.sendStatus(200).send(resp)
         }
         ).catch(err =>
-          res.sendStatus(403).send(err))
+          res.send([]))
     }
 
     

@@ -11,13 +11,14 @@ const {getCollection} = require("../../../connectionMongoDB")
   }
 
   create(login, motDePasse, email, date) {
+    console.log(date)
     return new Promise((resolve, reject) => {
       this.user
         .create(
           login,
           crypto.createHash("sha256").update(motDePasse).digest("hex"),
           email,
-          date,
+          new Date(date),
           new Date()
         )
         .then((res) => resolve(res))

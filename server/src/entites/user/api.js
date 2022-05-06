@@ -9,7 +9,7 @@
         user.setDataBase(db)
       }
       
-      async signin(req,res) {
+      async signup(req,res) {
           const {login ,date,email,motDePasse} = req.body
           if(!login || !motDePasse || !date || !email)
           {
@@ -24,7 +24,7 @@
             )
       }
 
-      async signup (req, res) {
+      async signin (req, res) {
         const {login , password} = req.body
         if(login == "" || password == ""){
           res.status(401).send({message : "mot de passe ou le login est incorrect"})
