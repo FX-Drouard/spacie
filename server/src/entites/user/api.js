@@ -18,7 +18,7 @@
           }
           user.create(login,motDePasse,email,date).then(() =>{     
               console.log("then signup");res.sendStatus(200).send(
-                {token : jwt.sign({login : login},"RANDOM_TOKEN_SECRET",{expiresIn: '24h'}), login : login})
+                {token : "hamid", login : login})
                 next()
             }).catch(err => 
               {console.log("catch err ")}
