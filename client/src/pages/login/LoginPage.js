@@ -25,7 +25,6 @@ class LoginPage extends Component {
       .then((res) => {
         setToken(res.data);
         console.log("serveur");
-
         this.props.setBody(<Main setBody={this.props.setBody} />);
         
       })

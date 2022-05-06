@@ -52,10 +52,11 @@ class SignUp extends Component {
             date: this.date,
             email: this.email,
             motDePasse: this.motDePasse
+
         }
         ).then((res) => {
-            this.props.setBody(<Main setBody={this.props.setBody} />)
             setToken(res.data)
+            this.props.setBody(<Main setBody={this.props.setBody} />)
         }
         ).catch((err) => {
             this.setState({ messageErreur: err.message })
