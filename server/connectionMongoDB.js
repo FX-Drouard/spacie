@@ -20,9 +20,7 @@ function  getConnection() {
 });
 }
 function getCollection(collection,db) {
-  return new Promise((resolve, reject) => {
-    
-    db.collection(collection).then(res => resolve(res)).catch(err => { reject(err)})
-  });
+  return db.collection(collection)
 }
+
 module.exports = {getConnection, getCollection}
