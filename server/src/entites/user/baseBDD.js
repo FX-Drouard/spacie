@@ -66,6 +66,7 @@
 
   getInfo(login) {
     return Promise(resolve, (reject) => {
+      console.log("getInfo",login)
       this.db
         .findOne({ _id: login }, { _id: 1, nickName: 1, photo: 1 })
         .then((res) => resolve(res))

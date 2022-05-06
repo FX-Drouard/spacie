@@ -71,6 +71,7 @@ const {getCollection} = require("../../../connectionMongoDB")
 
   getInfo(login) {
     return new Promise((resolve, reject) => {
+      console.log("getInfo",login)
       this.user
         .getInfo(login)
         .then((res) => resolve(res))
