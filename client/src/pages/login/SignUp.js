@@ -49,7 +49,7 @@ class SignUp extends Component {
         axios.post("/api/user/signup",
         {
             login: this.login,
-            date: { jour: this.jour, mois: this.mois, annee: this.annee },
+            date: this.date,
             email: this.email,
             motDePasse: this.motDePasse
         }
@@ -83,15 +83,6 @@ class SignUp extends Component {
                         alt="le login doit avoir que des lettres et des chiffres" onChange={event => this.login = event.target.value} />
                 </div>
                 <div className="text">
-                    {/* <div className="date">
-                        <input type="number" name="prenom" placeholder="Jour" maxLength="2" onChange={event => this.jour = event.target.value} ref={this.jour} />
-                    </div>
-                    <div className="date">
-                        <input type="number" name="nom" placeholder="mois" maxLength="2" onChange={event => this.mois = event.target.value} />
-                    </div>
-                    <div className="date">
-                        <input type="number" name="nom" placeholder="annee" maxLength="2" onChange={event => this.annee = event.target.value} />
-                    </div> */}
                     <input type={this.state.dateRef} style={{ textAlign: "center" }} placeholder="Date de naissence" onFocus={event => this.setState({ dateRef: "date" })} onBlur={() => this.setState({ dateRef: "text" })} onChange={event => this.date = event.target.value} />
                 </div>
 
