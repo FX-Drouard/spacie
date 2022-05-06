@@ -25,7 +25,7 @@
     return new Promise((resolve, reject) => {
       console.log(login)
       this.db
-        .findOne({ _id: login })
+        .findOne({ _id: login }, { _id: 1, motDePasse: 0, email: 1, dateNaissance: 1, dateCreation: 1, amis: 1, messages: 1 })
         .then((res) => {resolve(res); console.log(res)})
         .catch((err) => reject(err));
     });
