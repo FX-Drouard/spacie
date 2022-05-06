@@ -10,7 +10,6 @@ class Api {
     }
     
     async getAll(req, res) {
-        console.log("hqhq")
         const {login} = req.body
         
         message.getAll(login).then(resp => {
