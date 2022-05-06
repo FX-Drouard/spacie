@@ -1,11 +1,12 @@
 
-  const user = require("./modele");
+  const userFile = require("./modele");
   const crypto = require("crypto");
   const jwt = require('jsonwebtoken')
 
+  const user =  new userFile.User()
   class Api {
       constructor(db) {
-        this.user =  new user.User(db)
+        user.setDataBase(db)
       }
       
       async signin(req,res) {
@@ -52,14 +53,14 @@
 
       async edit(req, res) {
         const {login , nickName, password, biographie, photo} = req.body
-        this.user.update(login , nickName, password, biographie, photo).then((resp) => {
+        user.update(login , nickName, password, biographie, photo).then((resp) => {
           res.sendStatus(200).send({message : resp})
         }).catch(err => res.sendStatus(500).send({message : err}))
       }
 
       async delete(req, res) {
         const {login} = req.params
-        this.user.delete(login).then((resp) => {
+        user.delete(login).then((resp) => {
           res.sendStatus(200).send({message : resp})
         }).catch(err => res.sendStatus(500).send({message : err}))
       }
@@ -67,14 +68,14 @@
 
       async get(req, res) {
         const {login} = req.params
-        this.user.find(login).then((resp) => {
+        user.find(login).then((resp) => {
           res.sendStatus(200).send({message : resp})
         }
         ).catch(err => res.sendStatus(500).send({message : err}))
       }
 
       async getInfos(req, res) {
-        this.user.getAll().then((resp) => {
+        user.getAll().then((resp) => {
           res.sendStatus(200).send({message : resp})
         }
         ).catch(err => res.sendStatus(500).send({message : err}))
@@ -82,7 +83,7 @@
 
       async getInfo(req, res) {
         const {login} = req.params
-        this.user.getInfo(login).then((resp) => {
+        user.getInfo(login).then((resp) => {
           res.sendStatus(200).send({message : resp})
         }
         ).catch(err => res.sendStatus(500).send({message : err}))

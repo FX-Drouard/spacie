@@ -14,7 +14,7 @@ class Api {
         const {login} = req.body
         
         message.getAll(login).then(resp => {
-          console.log("hoho");
+         
           res.sendStatus(200).send(resp)
         }
         ).catch(err => res.sendStatus(403).send(err))

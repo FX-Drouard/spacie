@@ -1,6 +1,9 @@
 const friendsBase = require("./baseBDD");
  class Friends {
-  constructor(db) {
+  constructor() {
+  }
+
+  setDataBase(db) {
     this.friend = new friendsBase.FriendsBase(db.Friends);
   }
   addFriend(login1, login2) {
@@ -18,7 +21,6 @@ const friendsBase = require("./baseBDD");
       this.friends
         .getInfo(login)
         .then((res) => resolve(res))
-
         .catch((err) => reject(err));
     });}
 }

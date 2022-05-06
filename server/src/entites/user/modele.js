@@ -1,7 +1,10 @@
 const crypto = require("crypto");
 const userBase  = require("./baseBDD");
  class User {
-  constructor(db) {
+  constructor() {
+  }
+
+  setDataBase(db) {
     this.user = new userBase.UserBase(db.Users);
   }
 

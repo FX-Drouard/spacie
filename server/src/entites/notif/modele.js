@@ -1,6 +1,9 @@
 const notificationsBase = require("./baseBDD");
- class Notifications {
-  constructor(db) {
+class Notifications {
+  constructor() {
+  }
+
+  setDataBase(db) {
     this.notif = new  notificationsBase.NotificationsBase(db.Notifications);
   }
 
