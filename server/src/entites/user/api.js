@@ -41,8 +41,10 @@
               createHash("sha256").
               update(password).
               digest("hex") == res.motDePasse
-            )
-            res.send({token : jwt.sign({login : login},"RANDOM_TOKEN_SECRET",{expiresIn: '24h'}), login : login})
+            ){
+              console.log("password correct signin")
+              res.send({token : jwt.sign({login : login},"RANDOM_TOKEN_SECRET",{expiresIn: '24h'}), login : login})
+            }
           else
             res.sendStatus(401).send({message : "Mot de passe incorrect"})
           }
