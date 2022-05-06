@@ -5,8 +5,8 @@ class Message {
   }
 
   setDataBase(db) {
-    this.dbMessage = new messageBase.MessageBase(db.Message);
-    this.dbUser = new userBase.UserBase(db.User)
+    this.dbMessage = new messageBase.MessageBase(db.Messages);
+    this.dbUser = new userBase.UserBase(db.Users)
   }
 
   getAll(login) {

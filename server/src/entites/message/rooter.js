@@ -11,8 +11,8 @@ function messageRoute(){
             const api = new apiFile.Api(db)
             rooter
                 .get("/", async function (req, res,next){ console.log("haha"); next()},api.getAll)//Accueil
-                .post('/commentaire/:messqge_id', auth, api.newCommentaire)//NewMessage
-                .post('/update/:messqge_id', auth, api.update)//NewMessage
+                .post('/commentaire/:message_id', auth, api.newCommentaire)//NewMessage
+                .post('/update/:message_id', auth, api.update)//NewMessage
                 .post('/create', auth, api.newMessage)//NewMessage
                 .get("/commentaire/:message_id", api.getCommentaire)//CommentePage
                 .post("/repost/:messqge_id", auth, api.repost)//RepostButton
