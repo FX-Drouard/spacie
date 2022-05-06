@@ -17,8 +17,8 @@
             return
           }
           user.create(login,motDePasse,email,date).then(() =>{     
-              console.log("then signup");res.sendStatus(200).send(
-                {token : "hamid", login : login})
+              console.log("then signup");
+              res.send({token : "hamid", login : login})
                 next()
             }).catch(err => 
               {console.log("catch err ")}
