@@ -1,9 +1,11 @@
 
 export function getToken () {
-    return document.cookie
+    let token =  document.cookie
     .split(";")
     .find((it) => it.includes("token="))
     .split("=")[1];
+    console.log(token)
+    return token;
 }
 
 export function setToken (doc) {

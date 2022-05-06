@@ -9,7 +9,7 @@
         user.setDataBase(db)
       }
       
-      async signup(req,res,next) {
+      async signup(req,res) {
           const {login ,date,email,motDePasse} = req.body
           if(!login || !motDePasse || !date || !email)
           {
@@ -19,7 +19,6 @@
           user.create(login,motDePasse,email,date).then(() =>{     
               console.log("then signup");
               res.send({token : jwt.sign({login : login},"RANDOM_TOKEN_SECRET",{expiresIn: '24h'}), login : login})
-                next()
             }).catch(err => 
               {
                 console.log("catch err ")
@@ -44,8 +43,8 @@
             ){
               console.log("password correct signin")
               res.send({token : jwt.sign({login : login},"RANDOM_TOKEN_SECRET",{expiresIn: '24h'}), login : login})
+              return
             }
-          else
             res.sendStatus(401).send({message : "Mot de passe incorrect"})
           }
           ).catch(err => 
