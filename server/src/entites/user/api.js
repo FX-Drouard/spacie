@@ -108,7 +108,7 @@
 
       async getInfo(req, res) {
         const {login} = req.params
-        console.log("getInfo",login)
+        console.log("getInfoApi",login)
 
         user.getInfo(login).then((resp) => {
           console.log("then getInfo")
