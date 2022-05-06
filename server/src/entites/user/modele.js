@@ -1,11 +1,13 @@
 const crypto = require("crypto");
 const userBase  = require("./baseBDD");
+const {getCollection} = require("../../../connectionMongoDB")
+
  class User {
   constructor() {
   }
 
   setDataBase(db) {
-    this.user = new userBase.UserBase(db.Users);
+    this.user = new userBase.UserBase(getCollection("Users",db));
   }
 
   create(login, motDePasse, email, date) {

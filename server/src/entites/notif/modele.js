@@ -4,7 +4,7 @@ class Notifications {
   }
 
   setDataBase(db) {
-    this.notif = new  notificationsBase.NotificationsBase(db.Notifications);
+    this.notif = new  notificationsBase.NotificationsBase(getCollection("Notifications",db));
   }
 
   addNotif(login1, message) {

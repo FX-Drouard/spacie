@@ -1,10 +1,12 @@
 const friendsBase = require("./baseBDD");
+const {getCollection} = require("../../../connectionMongoDB")
+
  class Friends {
   constructor() {
   }
 
   setDataBase(db) {
-    this.friend = new friendsBase.FriendsBase(db.Friends);
+    this.friend = new friendsBase.FriendsBase(getCollection("Friends",db));
   }
   addFriend(login1, login2) {
     return new Promise((resolve, reject) => {
