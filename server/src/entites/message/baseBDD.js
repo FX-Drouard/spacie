@@ -57,6 +57,7 @@ class MessageBase {
 
   getAll() {
     return new Promise((resolve, reject) => {
+        console.log(this.db)
         this.db
         .find({})
         .toArray()
