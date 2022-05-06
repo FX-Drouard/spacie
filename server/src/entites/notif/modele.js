@@ -1,4 +1,5 @@
 const notificationsBase = require("./baseBDD");
+const {getCollection} = require("../../../connectionMongoDB.js")
 class Notifications {
   constructor() {
   }
