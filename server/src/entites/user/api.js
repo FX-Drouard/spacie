@@ -36,12 +36,12 @@
           res.status(401).send({message : "mot de passe ou le login est incorrect"})
           return
         }
-        user.find(login).then(res => {
-            console.log(res)
+        user.find(login).then(resp => {
+            console.log(resp)
             if(crypto.
               createHash("sha256").
               update(password).
-              digest("hex") == res.motDePasse
+              digest("hex") == resp.motDePasse
             ){
               console.log("password correct signin",login)
               res.send({token : 'hqhq', login : login})
