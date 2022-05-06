@@ -90,7 +90,7 @@
         const {login} = req.params
         user.find(login).then((resp) => {
           console.log("then get")
-          res.status(200).send({message : resp})
+          res.status(200).send({user : resp})
           console.log("fin get")
           return
         }
