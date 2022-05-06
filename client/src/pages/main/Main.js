@@ -17,7 +17,6 @@ class Main extends Component {
     this.setPage(
       <Accueil
         setBody={this.props.setBody}
-        serveur={this.props.serveur}
         setPage={this.setPage}
       />
     );

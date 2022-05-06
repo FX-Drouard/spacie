@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import Main from "../main/Main.js";
 import SignUp from "./SignUp.js";
 import "../../assets/css/login.css";
@@ -15,7 +14,6 @@ class LoginPage extends Component {
   }
 
   connecte() {
-    console.log("je rentre");
     if (this.login == "" || this.password == "") {
       this.setState({ messageErreur: "veuillez remplir tous les champs" });
       return;
@@ -24,17 +22,11 @@ class LoginPage extends Component {
       .post("/api/user/signin", { login: this.login, password: this.password })
       .then((res) => {
         setToken(res.data);
-        console.log("serveur");
         this.props.setBody(<Main setBody={this.props.setBody} />);
-        
       })
       .catch((err) => {
         this.setState({ messageErreur: err.message });
-        console.log("aucun serveur");
-
       });
-
-    
   }
 
   gotoSignIn() {
