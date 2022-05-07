@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { Component } from "react";
 import ProfilList from "./profil/ProfilList";
-import {getToken,testToken} from "./general/token.js";
+import {getToken,testToken,getLoginFromToken} from "./general/token.js";
 class Suggestion extends Component {
   constructor(props) {
     super(props);
@@ -13,7 +13,7 @@ class Suggestion extends Component {
   componentWillMount() {
     if (testToken(this.token))
       axios
-        .get("/api/user//info/all")
+        .get("/api/user/info/all", {login : getLoginFromToken()})
         .then((res) => {
           this.setState({ resultat: res.data.slice(0, 5) });
         })

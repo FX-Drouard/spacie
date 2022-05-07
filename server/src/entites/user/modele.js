@@ -11,7 +11,6 @@ const {getCollection} = require("../../../connectionMongoDB")
   }
 
   create(login, motDePasse, email, date) {
-    console.log(date)
     return new Promise((resolve, reject) => {
       this.user
         .create(
@@ -21,8 +20,8 @@ const {getCollection} = require("../../../connectionMongoDB")
           new Date(date),
           new Date()
         )
-        .then((res) => {console.log("BLOP");resolve(res)})
-        .catch((err) => {console.log("KA");reject("Ce login existe deja choisissez un autre")});
+        .then((res) => {resolve(res)})
+        .catch((err) => {reject("Ce login existe deja choisissez un autre")});
     });
   }
 
@@ -30,7 +29,7 @@ const {getCollection} = require("../../../connectionMongoDB")
     return new Promise((resolve, reject) => {
       this.user
         .find(login)
-        .then((res) => {resolve(res); console.log(res)})
+        .then((res) => {resolve(res)})
         .catch(() => reject(login+" n'existe pas"));
     });
   }
@@ -53,7 +52,6 @@ const {getCollection} = require("../../../connectionMongoDB")
       if (motDePasse) doc['motDePasse'] = motDePasse;
       if (biographie) doc['biographie'] = biographie;
       if (photo) doc['photo'] = photo;
-      console.log(doc)
       this.user
         .update(login, doc)
         .then((res) => resolve(res))
@@ -62,7 +60,6 @@ const {getCollection} = require("../../../connectionMongoDB")
   }
 
   getAll() {
-    console.log("getAllModele")
     return new Promise((resolve, reject) => {
       this.user
         .getAll()
@@ -73,7 +70,6 @@ const {getCollection} = require("../../../connectionMongoDB")
 
   getInfo(login) {
     return new Promise((resolve, reject) => {
-      console.log("getInfoModele",login)
       this.user
         .getInfo(login)
         .then((res) => resolve(res))
@@ -83,15 +79,35 @@ const {getCollection} = require("../../../connectionMongoDB")
 
   addFriend(login1, login2) {
     return new Promise((resolve, reject) => {
-      this.user.addFriend(login1, login2).then((res) => resolve(res)).catch((err) => reject(err));
+      this.user.addFriend(login1, login2)
+      .then(() => {
+        this.user.addFriend(login2, login1)
+          .then((res) => resolve(res))
+          .catch((err) => reject(err));
+      }).catch((err) => reject(err));
   });
 }
 
   removeFriend(login1, login2) {
     return new Promise((resolve, reject) => {
-      this.user.removeFriend(login1, login2).then((res) => resolve(res)).catch((err) => reject(err));
+      this.user.removeFriend(login1, login2)
+      .then(() => {
+        this.user.removeFriend(login2, login1)
+          .then((res) => resolve(res))
+          .catch((err) => reject(err));
+      }).catch((err) => reject(err));
+    });
   }
-    );}
+  getFriends(login){
+      return new Promise((resolve, reject) => {
+        this.find(login).then((res) => {
+          resolve(res.amis)
+        }).catch((err) => {
+          reject(err)
+        })
+
+      })
+    }
 }
 
 module.exports = {User}

@@ -9,11 +9,12 @@ function friendRoute(){
     rooter.use(express.json());
     getConnection().then(db => {
     const api = new apiFile.Api(db)
-    rooter
-      .get("/:login", api.getFriends) // get friends
-      .post("/:id",auth, api.addFriend) // add Friend
-      .delete("/:id",auth, api.delFriend) //del friend
-      .post("/accept/:id",auth, api.acceptFriend); // accept friend
+    rooter.get("/", auth,api.getFriendsConnected) // AmiPage
+      .get("/:login(\\+)", api.getFriends) //Profil
+      .post("/:login",auth, api.addFriend) // AjouterButton
+      .delete("/:login",auth, api.delFriend) // SupprimerAmiButton
+      .post("/accept/:demande",auth, api.acceptFriend) // Notification
+      .delete("/demande/:demande",auth, api.delDemande); // Notification
       console.log("Friend")
       resolve(rooter)
     }).catch(err => {

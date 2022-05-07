@@ -18,7 +18,7 @@
           }
           user.create(login,motDePasse,email,date).then(() =>{     
               console.log("then signup");
-              res.send({token : jwt.sign({login : login},"RANDOM_TOKEN_SECRET",{expiresIn: '2h'}), login : login})
+              res.send({token : jwt.sign({userId : login},"RANDOM_TOKEN_SECRET",{expiresIn: '2h'}), login : login})
               console.log("token envoye signup")
               return
 
@@ -43,7 +43,7 @@
               digest("hex") == resp.motDePasse
             ){
               console.log("password correct signin",login)
-              res.send({token : jwt.sign({login : login},"RANDOM_TOKEN_SECRET",{expiresIn: '2h'}), login : login})
+              res.send({token : jwt.sign({userId : login},"RANDOM_TOKEN_SECRET",{expiresIn: '2h'}), login : login})
               console.log("token envoye signin")
               return
             }

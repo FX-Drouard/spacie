@@ -8,13 +8,12 @@ class ProfilButton extends Component {
     super(props);
 
     this.token = getToken()
-    this.state = { login: null };
+    this.state = { user: null };
   }
   componentWillMount() {
     
-    this.setState({login: getLoginFromToken()})
     axios
-    .get("/api/user/info/" + this.state.login)
+    .get("/api/user/info/" + getLoginFromToken())
     .then((res) => {
       this.setState({user : res.data})
     })
@@ -39,7 +38,7 @@ class ProfilButton extends Component {
     return (
       <div id="lien_profil">
         <span onClick={() => this.gotoProfil()}>
-          <img src={this.state.user.image} alt="photo de profil" />
+          <img src={this.state.user.photo} alt="photo de profil" />
         </span>
       </div>
     );

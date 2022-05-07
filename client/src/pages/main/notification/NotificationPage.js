@@ -1,7 +1,8 @@
 import axios from "axios";
 import React, { Component } from "react";
+import { getLoginFromToken } from "../general/token";
 import NotificationList from "./NotificationList";
-import {getToken} from "../general/token.js"
+
 
 export default class NotificationPage extends Component {
   constructor(props) {
@@ -9,13 +10,13 @@ export default class NotificationPage extends Component {
     this.state = {
       resultat: [],
     };
-    this.token = getToken()
+    
   }
   componentWillMount() {
     axios
-      .get("/api/notification/" + this.token)
+      .get("/api/notification/",{login : getLoginFromToken()})
       .then((res) => {
-        this.setState({ resultat: res });
+        this.setState({ resultat: res.data });
       })
       .catch((err) => this.setState({ resultat: [] }));
   }
@@ -28,7 +29,6 @@ export default class NotificationPage extends Component {
       <div className="millieu">
         <NotificationList
           setBody={this.props.setBody}
-          serveur={this.props.serveur}
           setPage={this.props.setPage}
           resultat={this.state.resultat}
         />

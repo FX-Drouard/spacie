@@ -1,7 +1,7 @@
 import axios from "axios";
 import LoginPage from "../../../../../login/LoginPage";
 import React from "react";
-import {getToken,testToken} from "../../../../general/token.js"
+import {getLoginFromToken, getToken,testToken} from "../../../../general/token.js"
 const RepostButton = (props) => {
   let token = getToken()
   return (
@@ -13,7 +13,10 @@ const RepostButton = (props) => {
           return;
         }
         axios
-          .post("/api/message/repost/"+ props.message.id)
+          .post(
+            "/api/message/repost/"+ props.message.id,
+          {login : getLoginFromToken()}
+          )
           .then((res) => props.setMessageResult(res, { color: "green" }))
           .catch((err) => props.setMessageResult(err, { color: "red" }));
       }}

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import UserInfo from "../general/UserInfo";
 import AjouterButton from "../general/AjouterButton";
 import SupprimerAmiButton from "../general/SupprimerAmiButton";
-import {getToken,testToken}  from "../general/token.js";
+import {getToken,testToken,getLoginFromToken}  from "../general/token.js";
 class ProfilInfo extends Component {
   constructor(props) {
     super(props);
@@ -10,12 +10,13 @@ class ProfilInfo extends Component {
   }
 
   render() {
+    const login = getLoginFromToken()
     return (
       <div className="profil_info">
         <div className="user_info">
           <UserInfo user={this.props.user} setPage={this.props.setPage} />
           {testToken(this.token) &&
-            (this.props.user.ami ? (
+            (this.props.user.amis.filter(loginAmi => loginAmi == login).length > 0 ? (
               <SupprimerAmiButton login={this.props.user.login} />
             ) : (
               <AjouterButton login={this.props.user.login} />

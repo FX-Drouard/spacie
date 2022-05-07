@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { Component } from "react";
+import { getLoginFromToken } from "../general/token";
 import ListeAmis from "./ListeAmis";
 
 class AmiPage extends Component {
@@ -12,7 +13,9 @@ class AmiPage extends Component {
 
   componentWillMount() {
     axios
-      .get("/api/friend/" + this.props.login)
+      .get("/api/friend/",
+      {login : getLoginFromToken()}
+      )
       .then((res) => {
         this.setState({ resultat: res });
       })
@@ -23,7 +26,6 @@ class AmiPage extends Component {
     return (
       <div className="millieu">
         <ListeAmis
-          serveur={this.props.serveur}
           users={this.state.resultat}
           setPage={this.props.setPage}
         />

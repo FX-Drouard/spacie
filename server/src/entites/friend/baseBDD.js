@@ -5,7 +5,8 @@ class FriendsBase {
 
   create(login1, login2) {
     return new Promise((resolve, reject) => {
-      this.db.findOne({ emeteur: login1, recepteur: login2 }).then((res) => {
+      this.db.findOne({ emeteur: login1, recepteur: login2 })
+      .then(() => {
         reject("Cette demande est deja presente");
       });
       this.db
@@ -18,29 +19,27 @@ class FriendsBase {
     });
   }
 
-  find(login) {}
+  find(id) {
+    return new Promise((resolve, reject) => {
+      this.db.findOne({ _id: id })
+      .then((res) => {
+        resolve(res);
+      }).catch((err) => {
+        reject(err);
+      }
+      );
+    })
+  }
 
-  delete(login1, login2) {
+  delete(id) {
     return new Promise((resolve, reject) => {
       this.db
-        .deleteOne({ emeteur: login1 , recepteur: login2})
+        .deleteOne({ _id: id })
         .then((res) => resolve(res))
         .catch((err) => reject(err));
     });
   }
 
-  update(login, doc) {}
-
-  getAll() {
-    return new Promise((resolve, reject) => {
-      this.friend
-        .getAll()
-        .then((res) => resolve(res))
-        .catch((err) => reject(err));
-    });
-  }
-
-  getInfo(login) {}
 }
 
 module.exports = { FriendsBase };

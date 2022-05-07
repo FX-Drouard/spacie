@@ -6,24 +6,12 @@ class Api {
    notif.setDataBase(db);
   }
 
-  async getNotif(req, res) {
-    const { message } = req.body;
+  async getNotifs(req, res) {
     const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
     const login = decodedToken.userId;
-    notif.addNotif(login, message).then((res) => res.send(res));
+    notif.getAllNotif(login).then((resp) => res.send(resp)).catch(err => res.stattus(503).send({ message: err }));
   }
 
-  async addNotif(req, res) {
-    const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
-    const login = decodedToken.userId;
-    notif.getAllNotif(login).then((resp) => res.send(resp));
-  }
-
-  async clearNotif(req, res) {
-    const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
-    const login = decodedToken.userId;
-    notif.clearNotif(login).then((resp) => res.send(resp));
-  }
 }
 
 module.exports = {Api}

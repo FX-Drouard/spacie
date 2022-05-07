@@ -10,9 +10,7 @@ function notificationRoute(){
     getConnection().then(db => {
       const api = new apiFile.Api(db)
       rooter
-        .get("/",auth, api.getNotif) // get notif
-        .post("/",auth, api.addNotif) // add notif
-        .delete("/",auth, api.clearNotif) // clear notif
+        .get("/",auth, api.getNotifs) // NotificationPage
       console.log("notif")
       resolve(rooter)
     }).catch(err => {

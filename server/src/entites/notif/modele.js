@@ -8,30 +8,42 @@ class Notifications {
     this.notif = new  notificationsBase.NotificationsBase(getCollection("Notifications",db));
   }
 
-  addNotif(login1, message) {
+
+  addNotif(login1, message,demande_id) {
     return new Promise((resolve, reject) => {
-      this.notif.create(login1, message).then((res) => resolve(res)).catch((err) => reject(err));
+      const doc = {
+        notifier: login1,
+        message: message,
+      }
+
+      if (demande_id) {
+        doc.demande_id = demande_id;
+      }
+      this.notif.create(doc).then((res) => resolve(res)).catch((err) => reject(err));
     })
   }
 
   getAllNotif(login) {
     return new Promise((resolve, reject) => {
       this.notif
-        .getAll(login)
+        .find({ notifier: login })
         .then((res) => resolve(res))
         .catch((err) => reject(err));
     });
   }
-
-  clearNotif(login) {
+  getNotifications(notifier,demande){
     return new Promise((resolve, reject) => {
-      this.notif
-        .delete(login)
-        .then((res) => resolve(res))
-        .catch((err) => reject(err));
-    });
+      this.notif.find({ notifier: notifier,demande_id : demande  })
+      .then((res) => resolve(res))
+      .catch((err) => reject(err));
+    })
   }
 
+  deleteNotification(id){
+    return new Promise((resolve, reject) => {
+      this.notif.delete(id).then((res) => resolve(res)).catch((err) => reject(err));
+    })
+  }
 }
 
 module.exports = {Notifications}

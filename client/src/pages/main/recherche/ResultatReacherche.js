@@ -22,7 +22,7 @@ class ResultatReacherche extends Component {
             container: (
               <ProfilList
                 setPage={this.props.setPage}
-                resultat={res}
+                resultat={[res]}
                 setBody={this.props.setBody}
               />
             ),
@@ -32,9 +32,9 @@ class ResultatReacherche extends Component {
 
       return;
     }
-    let root  = "/api/message/recherche/"
+    let root  = "/api/message/recherche"
     if (this.props.recherche[0] == "#") {
-      root += "hashtags/"
+      root += "/hashtags"
       this.props.recherche = this.props.recherche.substring(1); 
     }
      
@@ -42,7 +42,7 @@ class ResultatReacherche extends Component {
     
     let login = getLoginFromToken();
     axios
-      .get(root + login ,  {message :this.props.recherche} )
+      .get(root ,  {message :this.props.recherche,login : login} )
       .then((res) => {
         this.setState({
           container: (

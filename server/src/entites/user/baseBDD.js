@@ -77,17 +77,18 @@
   }
 
   addFriend(login1, login2) {
-    this.update(login1, { friends: [...this.getInfo(login1).friends, login2] });
+    this.update(login1, { amis: [...this.getInfo(login1).amis, login2] });
   }
   
   removeFriend(login1, login2) {
-    this.update(login1, { friends: this.getInfo(login1).friends.filter((friend) => friend !== login2) });
+    this.update(login1, { amis: this.getInfo(login1).amis.filter((friend) => friend !== login2) });
   }
   
   getFriend(login) {
     return new Promise((resolve, reject) => {
       this.db
         .find({ _id: login }, { _id: 1, friends: 1 })
+        .toArray()
         .then((res) => resolve(res))
         .catch((err) => reject(err));
     });

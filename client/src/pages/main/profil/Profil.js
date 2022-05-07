@@ -61,7 +61,7 @@ class Profil extends Component {
 
   disconnect() {
     axios
-      .delete("/api/user/signout")
+      .delete("/api/user/signout", {login : this.state.userConnect})
       .then((res) => {
         setToken(res.data);
         this.props.setBody(<LoginPage setBody={this.props.setBody} />);

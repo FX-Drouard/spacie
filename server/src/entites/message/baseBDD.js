@@ -6,13 +6,13 @@ class MessageBase {
   create(message,priv,image,sender,message_id) {
     return new Promise((resolve, reject) => {
       let doc = {
-         message,
-         priv,
-        image,
-        sender
+        message : message,
+        priv : priv,
+        image : image,
+        sender : sender,
       }
       if(message_id)
-        doc[message_id] = message_id
+        doc["message_id"] = message_id
 
       this.db
         .insertOne(doc)
@@ -24,7 +24,7 @@ class MessageBase {
   delete(message_id) {
     return new Promise((resolve, reject) => {
       this.db
-        .deleteOne({ _id: message_id })
+        .deleteOne({ _id: ObjectId(message_id) })
         .then((res) => resolve(res))
         .catch((err) => reject(err));
     });
@@ -43,12 +43,11 @@ class MessageBase {
 
   update(message_id, doc) {
     return new Promise((resolve, reject) => {
+      console.log("bdd " +doc.message + " " + message_id)
       this.db
-        .updateOne(
+        .replaceOne(
           { _id: message_id },
-          {
-            $set: doc,
-          }
+           doc,
         )
         .then((res) => resolve(res))
         .catch((err) => reject(err));
@@ -57,7 +56,7 @@ class MessageBase {
 
   getAll() {
     return new Promise((resolve, reject) => {
-        console.log(this.db)
+        console.log('getAllBdd')
         this.db
         .find({})
         .toArray()
@@ -67,11 +66,11 @@ class MessageBase {
   }
 
   getMessageByMotif(message){
+    
     return new Promise((resolve, reject) => {
-      this.db
-      .find({message : "/"+message+"/"})
-      .toArray()
-      .then((res) => resolve(res))
+      
+      this.getAll()
+      .then((res) => resolve(res.filter(msg => msg.message.includes(message))))
       .catch((err) => reject(err));
      });
   }
@@ -79,7 +78,7 @@ class MessageBase {
   getMessageById(message_id){
     return new Promise((resolve, reject) => {
       this.db
-      .findOne({_id: message_id})
+      .findOne({"_id": message_id})
       .then((res) => resolve(res))
       .catch((err) => reject(err));
      });

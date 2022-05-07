@@ -46,7 +46,6 @@ class Header extends Component {
               this.setPage(
                 <Accueil
                   setBody={this.props.setBody}
-                  serveur={this.props.serveur}
                   setPage={this.setPage}
                 />
               )
@@ -59,7 +58,6 @@ class Header extends Component {
               this.setPage(
                 <Recherche
                   setBody={this.props.setBody}
-                  serveur={this.props.serveur}
                   setPage={this.setPage}
                 />
               )
@@ -72,14 +70,13 @@ class Header extends Component {
               testToken(this.token)
                 ? this.setPage(
                     <NotificationPage
-                      serveur={this.props.serveur}
+                      setBody={this.props.setBody}
                       setPage={this.setPage}
                     />
                   )
                 : this.props.setBody(
                     <LoginPage
                       setBody={this.props.setBody}
-                      serveur={this.props.serveur}
                     />
                   );
             }}
@@ -93,15 +90,12 @@ class Header extends Component {
                 ? this.setPage(
                     <AmiPage
                       setBody={this.props.setBody}
-                      serveur={this.props.serveur}
                       setPage={this.setPage}
-                      login={this.login}
                     />
                   )
                 : this.props.setBody(
                     <LoginPage
                       setBody={this.props.setBody}
-                      serveur={this.props.serveur}
                     />
                   );
             }}
@@ -112,13 +106,11 @@ class Header extends Component {
         <div id="lien_profil">
           {!testToken(this.token) ? (
             <LoginButton
-              serveur={this.props.serveur}
               setBody={this.props.setBody}
             />
           ) : (
             <ProfilButton
               setBody={this.props.setBody}
-              serveur={this.props.serveur}
               setPage={this.setPage}
             />
           )}

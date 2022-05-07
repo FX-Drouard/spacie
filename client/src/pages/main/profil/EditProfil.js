@@ -78,7 +78,7 @@ export default class EditProfil extends Component {
 
   supprimerCompte() {
     axios
-      .delete("/api/user/" + this.login)
+      .delete("/api/user/" + this.props.login, {login: this.props.login})
       .then((res) => {
         setToken({token : "",login : ""});
         this.props.setBody(

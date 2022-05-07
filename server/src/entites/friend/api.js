@@ -14,49 +14,116 @@ class Api {
       notif.setDataBase(db);
   }
 
-  async delFriend(req, res) {
-    const { login_recepteur } = req.body
+  async getFriendsConnected(req, res) {
     const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
-    const login_emeteur = decodedToken.userId;
-    friends.delete(login_emeteur, login_recepteur).then((resp) => {
-      res.status(200).send({ message: "Validé" })}).catch((err) => {
-        res.status(500).send({ message: "Erreur suppression amis" })
-      })
-  }
-
-  async addFriend(req, res) {
-    const { login_recepteur } = req.body
-    const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
-    const login_emeteur = decodedToken.userId;
-    friends.create(login_emeteur, login_recepteur).then((resp) => {
-      res.status(200).send({ message: "Validé" })
-      notif.addNotif(login_recepteur,login_emeteur+" vous as ajouté en amis",resp._id)
-
-    }).catch(err => res.status(402).send({ message: err }))
-  }
-  async acceptFriend(req, res) {
-    const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
-    const login_emeteur = decodedToken.userId;
-    const { id_demande } = req.params;
-    friends.delete(id_demande).then((resp) => { 
-    const login_emeteur = resp.login_emeteur; 
-    const login_recepteur = resp.login_recepteur;
-    user.addFriends(login_emeteur, login_recepteur).then(() => {
-      user.addFriends(login_recepteur, login_emeteur).then(() => {resp.status(200).send({ message: "Validé" })}).catch((err) => {user.removeFriends(login_emeteur, login_recepteur).catch((err) => {status(503).send({message: err})}); resp.status(402).send({ message: err })})
-      notif.addNotif(login_recepteur,login_emeteur+" vous as ajouté en amis",resp._id)
-    }).catch((err) => {status(503).send({message: err})})
-  }).catch((err) => {
-    res.status(402).send({ message: err })})
+    const login = decodedToken.userId;
+    user.getFriends(login).then((resp) => {
+      res.status(200).send({ users: resp })
+    }).catch((err) => {
+      res.status(402).send({ message: err })
+    })
   }
 
   async getFriends(req, res) {
-    const { login_emeteur } = req.params;
-    user.getFriends(login_emeteur).then((resp) => {
+    const { login } = req.params;
+    user.getFriends(login).then((resp) => {
       res.status(200).send({ friends: resp })
     }).catch((err) => {
       res.status(402).send({ message: err })
     })
   }
+
+  async addFriend(req, res) {
+    const { login } = req.params
+    const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
+    const login_emeteur = decodedToken.userId;
+    friends.addFriend(login_emeteur, login).then((resp) => {
+      notif.addNotif(login,login_emeteur+" vous as ajouté en amis",resp)
+      .then(() => {
+          res.status(200).send({ message: "Validé" })
+      }).catch((err) => {
+        res.status(500).send({ message: "probleme dans notifications" })
+      })
+    }).catch(err => res.status(402).send({ message: err }))
+  }
+
+  async delFriend(req, res) {
+    const { login } = req.params;
+    const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
+    const login_emeteur = decodedToken.userId;
+    user.removeFriends(login_emeteur, login).then(() => {
+      res.status(200)
+    })
+    .catch((err) => {res.status(503).send({message: err})}); 
+  }
+
+ 
+  async acceptFriend(req, res) {
+    const { demande } = req.params;
+    friends.find(demande).then((resp) => { 
+      const login_emeteur = resp.login_emeteur; 
+      const login_recepteur = resp.login_recepteur;
+      user.addFriends(login_emeteur, login_recepteur).then(() => {
+        notif.addNotif(
+          login_recepteur,
+          login_emeteur+" vous as ajouté en amis")
+        .then(() => {
+          notif.getNotifications(login_recepteur,demande)
+            .then((resp) => {
+              resp.forEach(element => {
+                notif.deleteNotification(element._id)
+                .catch(() => {
+                  res.status(500).send({ message: "probleme dans notifications" })
+                })
+              });
+            }).catch(() => {
+              res.status(500).send({ message: "probleme dans notifications" })
+            })
+        })
+        .catch((err) => {
+          res.status(503).send({message: err})
+        })
+        friends.removeFriend(demande).then(() => {
+          res.status(200).send({ message: "Validé" })
+        }).catch((err) => {
+          user.removeFriends(login_emeteur, login_recepteur)
+            .catch((err) => {res.status(503).send({message: err})}); 
+          res.status(402).send({ message: err })
+        })
+          
+      }).catch((err) => {
+          user.removeFriends(login_emeteur, login_recepteur)
+            .catch((err) => {res.status(503).send({message: err})}); 
+          res.status(402).send({ message: err })
+      })
+    }).catch((err) => {
+      res.status(402).send({ message: err })
+    })
+  }
+
+  async delDemande(req, res) {
+    const { demande } = req.body
+    friends.find(demande).then((resp) => { 
+        const login_recepteur = resp.login_recepteur;
+        friends.removeFriend(demande).then(() => {
+          notif.getNotifications(login_recepteur,demande)
+            .then((resp) => {
+              resp.forEach(element => {
+                notif.deleteNotification(element._id)
+                .catch((err) => {
+                  res.status(500).send({ message: "probleme dans notifications" })
+                })
+              });
+            }).catch((err) => {
+              res.status(500).send({ message: "probleme dans notifications" })
+            })
+        res.status(200).send({ message: "Validé" })})
+      .catch((err) => {
+        res.status(500).send({ message: "Erreur suppression amis" })
+      })
+    })
+  }
+  
 }
 
 module.exports = {Api}

@@ -1,5 +1,6 @@
 import axios from "axios";
 import React from "react";
+import { getLoginFromToken } from "../../../general/token";
 import Accueil from "../../Accueil";
 
 const SupprimerButton = (props) => {
@@ -8,7 +9,8 @@ const SupprimerButton = (props) => {
       className="message_button fa-solid fa-trash-can fa-xl"
       onClick={(event) => {
         axios
-          .delete("/api/message/" + props.messageID)
+          
+          .delete("/api/message/" + props.messageID,{login : getLoginFromToken()})
           .then((res) => {
             props.setPage(
               <Accueil

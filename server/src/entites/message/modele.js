@@ -17,7 +17,7 @@ class Message {
           messages = res.filter(message => 
             res.amis.filter(ami => ami == message.sender)>length > 0 || !message.private)
           resolve(messages)
-        }).catch(err => reject(err))
+        }).catch(err => resolve(messages))
       }).catch(err => {reject(err); console.log(err)});
     })
   }
@@ -25,10 +25,10 @@ class Message {
   newMessage(login,message,priv,image,message_id) {
     return new Promise((resolve, reject) => {
       this.dbUser.find(login)
-        .then((resUser) => {
-          resUser.messages.push(resMessage._id)
+        .then((resUser) => {          
           this.dbMessage.create(message,priv,image,resUser._id,message_id)
               .then((resMessage) => {
+                resUser.messages.push(resMessage.insertedId)
                 this.dbUser.update(login,{messages : resUser.messages}).
                 then(() => {
                   resolve("l'ajout est bien effectue")
@@ -52,9 +52,12 @@ class Message {
   update(message_id, message, image, priv){
     return new Promise((resolve, reject) => {
       const doc = { _id: message_id };
-      if (message) doc[message] = message;
-      if (image) doc[image] = image;
-      if (priv) doc[priv] = priv;
+      if (message) doc['message'] = message;
+      if (image) doc['image'] = image;
+      if (priv) doc['priv'] = priv;
+      
+      console.log("model " +message)
+
       this.dbMessage
         .update(message_id, doc)
         .then((res) => resolve(res))
@@ -72,14 +75,18 @@ class Message {
   }
 
   getMessageByMotif(message,login){
+
     return new Promise((resolve, reject) => {
       this.dbMessage.getMessageByMotif(message)
       .then(messages => {
+        if(login)
         this.dbUser.find(login).then(res => {
           messages = res.filter(message => res.amis.
             filter(ami => ami == message.sender)>length > 0 || !message.private)
           resolve(messages)
-        })
+        }).catch(err => resolve(messages))
+        else 
+        resolve(messages)
       })
       .catch((err) => reject(err));
     })
@@ -102,7 +109,7 @@ class Message {
   }
 
   repost(login,message_id){
-    new Promise((resolve, reject) =>{
+   return new Promise((resolve, reject) =>{
       this.getMessageById(message_id).then( res =>{
         this.newMessage(login,res.message,res.private,res.image)
         .then(res =>resolve("le message est reposte"))
@@ -113,7 +120,7 @@ class Message {
   }
 
   delete(message_id) {
-    new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       this.dbMessage.delete(message_id)
       .then(res => resolve(res))
       .catch(err => reject(err))

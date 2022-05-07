@@ -3,7 +3,7 @@ import { ImagePicker } from "react-file-picker";
 import Picker from "emoji-picker-react";
 import Popup from "reactjs-popup";
 import axios from "axios";
-import { getToken } from "../../general/token.js";
+import { getLoginFromToken, getToken } from "../../general/token.js";
 class NewMessage extends Component {
   constructor(props) {
     super(props);
@@ -38,7 +38,8 @@ class NewMessage extends Component {
           ? "/api/message/update/" + this.props.message.id
           : "/api/message/create/",
         {
-          message: this.state.newMessage,
+          login: getLoginFromToken(),
+          messageText: this.state.newMessage,
           image: this.state.image,
           private : this.state.check
         }

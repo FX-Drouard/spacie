@@ -33,6 +33,7 @@ class StarButton extends Component {
       .post("/api/message/star", {
         messageID: this.props.message.id,
         liked: this.state.isLiked,
+        login : getLoginFromToken()
       })
       .then((res) => this.setState({ isLiked: res }))
       .catch((err) => alert(err));

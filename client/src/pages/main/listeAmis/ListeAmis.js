@@ -7,7 +7,6 @@ const ListeAmis = (props) => {
       {props.users.map((user, index) => (
         <Ami
           key={index}
-          serveur={props.serveur}
           user={user}
           setPage={props.setPage}
         />

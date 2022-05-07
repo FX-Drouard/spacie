@@ -24,7 +24,7 @@ class UserInfo extends Component {
       <div className="userName">
         <span className="photoProfil" onClick={(event) => this.gotoProfil()}>
           <img
-            src={this.props.user.photoProfil}
+            src={this.props.user.photo}
             alt="pdp"
             width="40"
             height="40"
