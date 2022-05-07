@@ -11,7 +11,7 @@ function router(app) {
       friendRoute().then(friend => {
         app.use('/api/friend',friend )
         notificationRoute().then(notif => {
-          app.use('/api/notif', notif)
+          app.use('/api/notification', notif)
           userRoute().then(user => {
             app.use('/api/user', user)
             resolve()

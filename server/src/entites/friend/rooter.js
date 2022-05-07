@@ -9,7 +9,8 @@ function friendRoute(){
     rooter.use(express.json());
     getConnection().then(db => {
     const api = new apiFile.Api(db)
-    rooter.get("/", auth,api.getFriendsConnected) // AmiPage
+    rooter
+      .get("/", auth,api.getFriendsConnected) // AmiPage
       .get("/:login(\\+)", api.getFriends) //Profil
       .post("/:login",auth, api.addFriend) // AjouterButton
       .delete("/:login",auth, api.delFriend) // SupprimerAmiButton
