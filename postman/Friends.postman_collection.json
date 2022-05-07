@@ -1,0 +1,129 @@
+{
+	"info": {
+		"_postman_id": "10bfcb0d-5f46-4268-a4a3-7cadcbf279d4",
+		"name": "Friends",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get login",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8777/api/friend/Fristorm",
+					"host": [
+						"localhost"
+					],
+					"port": "8777",
+					"path": [
+						"api",
+						"friend",
+						"Fristorm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get friends user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8777/api/friend/",
+					"host": [
+						"localhost"
+					],
+					"port": "8777",
+					"path": [
+						"api",
+						"friend",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addFriend",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8777/api/friend/Fristorm",
+					"host": [
+						"localhost"
+					],
+					"port": "8777",
+					"path": [
+						"api",
+						"friend",
+						"Fristorm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete friend of connected user",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8777/api/friend/Fristorm",
+					"host": [
+						"localhost"
+					],
+					"port": "8777",
+					"path": [
+						"api",
+						"friend",
+						"Fristorm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "accepter en ami",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8777/api/accept/{id_demande}",
+					"host": [
+						"localhost"
+					],
+					"port": "8777",
+					"path": [
+						"api",
+						"accept",
+						"{id_demande}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ne pas accepter la demande",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8777/api/demande/{id_demande}",
+					"host": [
+						"localhost"
+					],
+					"port": "8777",
+					"path": [
+						"api",
+						"demande",
+						"{id_demande}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

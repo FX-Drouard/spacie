@@ -1,0 +1,298 @@
+{
+	"info": {
+		"_postman_id": "651d442b-3daf-4a35-a214-15ca81b09604",
+		"name": "message",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\n{\n    \"messageText\" : \"je suis la\",\n    \"image\" : \"\",\n    \"priv\" : \"0\",\n    \"login\" : \"Fristorm\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8777/api/message/create",
+					"host": [
+						"localhost"
+					],
+					"port": "8777",
+					"path": [
+						"api",
+						"message",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "commenter",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\n{\n    \"messageText\" : \"je suis la\",\n    \"image\" : \"\",\n    \"priv\" : \"0\",\n    \"login\" : \"Fristorm\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8777/api/message/commentaire/627591ff4d9f15ae6f4ab9dc",
+					"host": [
+						"localhost"
+					],
+					"port": "8777",
+					"path": [
+						"api",
+						"message",
+						"commentaire",
+						"627591ff4d9f15ae6f4ab9dc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\n{\n    \"messageText\" : \"haha\",\n    \"image\" : \"\",\n    \"priv\" : \"0\",\n    \"login\" : \"Fristorm\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8777/api/message/update/627591ff4d9f15ae6f4ab9dc",
+					"host": [
+						"localhost"
+					],
+					"port": "8777",
+					"path": [
+						"api",
+						"message",
+						"update",
+						"627591ff4d9f15ae6f4ab9dc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8777/api/message/",
+					"host": [
+						"localhost"
+					],
+					"port": "8777",
+					"path": [
+						"api",
+						"message",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getComment",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8777/api/message/commentaire/627591ff4d9f15ae6f4ab9dc",
+					"host": [
+						"localhost"
+					],
+					"port": "8777",
+					"path": [
+						"api",
+						"message",
+						"commentaire",
+						"627591ff4d9f15ae6f4ab9dc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8777/api/message/627591ff4d9f15ae6f4ab9dc",
+					"host": [
+						"localhost"
+					],
+					"port": "8777",
+					"path": [
+						"api",
+						"message",
+						"627591ff4d9f15ae6f4ab9dc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "recherche",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"message\": \"je\",\n \"login\" : \"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8777/api/message/recherche",
+					"host": [
+						"localhost"
+					],
+					"port": "8777",
+					"path": [
+						"api",
+						"message",
+						"recherche"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "recherche hashtag",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"message\": \"#WEB3.0\",\n \"login\" : \"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8777/api/message/recherche/hashtags",
+					"host": [
+						"localhost"
+					],
+					"port": "8777",
+					"path": [
+						"api",
+						"message",
+						"recherche",
+						"hashtags"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "repost",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"login\" : \"Fristorm\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8777/api/message/repost/627591ff4d9f15ae6f4ab9dc",
+					"host": [
+						"localhost"
+					],
+					"port": "8777",
+					"path": [
+						"api",
+						"message",
+						"repost",
+						"627591ff4d9f15ae6f4ab9dc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "star",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"message_id\": \"627591ff4d9f15ae6f4ab9dc\",\"isLiked\" :\"false\"} ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8777/api/message/star",
+					"host": [
+						"localhost"
+					],
+					"port": "8777",
+					"path": [
+						"api",
+						"message",
+						"star"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

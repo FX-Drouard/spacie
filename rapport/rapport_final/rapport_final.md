@@ -1,0 +1,44 @@
+# Projet web | Spacie | RENDU_FINAL
+
+## Binome
+
+- Hamid KOLLI 28717594
+- Drouard François-Xavier 3800028
+
+### REPARTITION DU TRAVAIL
+
+
+### LES PROBLEMES
+
+> la synchronisation entre le client et le serveur n'est pas bonne
+> la gestion des sessions
+> le packetage (l'architecture du code)
+> quelque probleme concernant l'organisation du binome
+
+### CE QUI RESTE A FAIRE
+
+debeuger la synchronisation entre le client et le serveur, sur postman les requettes de message et user marche, les autres on ne les a pas bien tester (ami et message)
+
+
+### LES FONCTIONNALITES AJOUTE
+
+#### Les notifications
+un utilisateur reçoit une notification lorsque quelqu'un d'autre aime son message, reposte son message, commente son message, l'ajoute comme ami, et il peut accepter l'amitie qu'a travers une notification
+
+#### Les commetaires
+les utilisateurs peuvent commenter un message, ce commetaire est considéré comme un message, donc il sera affiche meme dans son profil
+
+#### Star
+un star est un like, un utilisateur peut star un message
+
+#### Repost
+un utilisateur peut reposter un message, ce message sera affiche dans son profil comme si c'était un message qu'il a posté
+
+### CHOIX DE MODELISATIONS
+
+On a utilise les modélisations suivantes :
+
+ > MongoDB au lieu de nedDB parceaue notre base de données est sur un serveur distant et nedDB est fait pour reste en local. 
+ > On a utilise le jsonwebtoken pour gerer les sessions car c'est plus simple de verifier l'utilisateur connecte et la generation du token.
+ > on a utilise le module crypto pour cacher les mot de passe des utilisateurs dans la base de données.
+ 

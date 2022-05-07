@@ -1,0 +1,216 @@
+{
+	"info": {
+		"_postman_id": "baf26766-10f1-4b4e-b68f-c108241a76c4",
+		"name": "User",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GETINFO",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8777/api/user/info/Fristorm",
+					"host": [
+						"localhost"
+					],
+					"port": "8777",
+					"path": [
+						"api",
+						"user",
+						"info",
+						"Fristorm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GETINFOS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8777/api/user/info/all",
+					"host": [
+						"localhost"
+					],
+					"port": "8777",
+					"path": [
+						"api",
+						"user",
+						"info",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8777/api/user/Fristorm",
+					"host": [
+						"localhost"
+					],
+					"port": "8777",
+					"path": [
+						"api",
+						"user",
+						"Fristorm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "edit",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"login\" : \"hamid\" , \"nickName\" : \"stom\", \"password\" : \"kolli \", \"biographie\" : \"je n'en fou\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8777/api/user/edit",
+					"host": [
+						"localhost"
+					],
+					"port": "8777",
+					"path": [
+						"api",
+						"user",
+						"edit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"login\" : \"hamid\",\"date\": \"2001-04-08\",\"email\":\"stom@spacie.fr\" ,\"motDePasse\": \"hamid\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8777/api/user/signup",
+					"host": [
+						"localhost"
+					],
+					"port": "8777",
+					"path": [
+						"api",
+						"user",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "signin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"login\" : \"hamid\" ,\"motDePasse\": \"hamid\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8777/api/user/signin",
+					"host": [
+						"localhost"
+					],
+					"port": "8777",
+					"path": [
+						"api",
+						"user",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "signout",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"login\" : \"hamid\",\"date\": \"2001-04-08\",\"email\":\"stom@spacie.fr\" ,\"motDePasse\": \"hamid\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8777/api/user/signout",
+					"host": [
+						"localhost"
+					],
+					"port": "8777",
+					"path": [
+						"api",
+						"user",
+						"signout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"login\" : \"hamid\",\"date\": \"2001-04-08\",\"email\":\"stom@spacie.fr\" ,\"motDePasse\": \"hamid\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8777/api/user/hamid",
+					"host": [
+						"localhost"
+					],
+					"port": "8777",
+					"path": [
+						"api",
+						"user",
+						"hamid"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
