@@ -48,7 +48,7 @@ class NewMessage extends Component {
           },
         }
       ).catch((err) => this.setState({ erreur: err }));
-
+      console.log(!this.props.refresh)
       this.props.refresh && this.props.refresh();
   }
 
