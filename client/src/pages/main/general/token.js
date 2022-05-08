@@ -4,7 +4,7 @@ export function getToken () {
     .split(";")
     .find((it) => it.includes("token="))
     .split("=")[1];
-    console.log(token)
+
     return token;
 }
 

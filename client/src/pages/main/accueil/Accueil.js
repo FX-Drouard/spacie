@@ -28,6 +28,7 @@ class Accueil extends Component {
       .get("/api/message/",{login : getLoginFromToken()})
       .then((res) => {this.setState({ resultat: res.data });console.log("res: "+this.state.resultat)})
       .catch((err) =>{ 
+        alert(err);
         this.setState({ resultat: [] });
       });
   }
