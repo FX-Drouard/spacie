@@ -10,6 +10,7 @@ class MessageBase {
         priv : priv,
         image : image,
         sender : sender,
+        stars : [],
       }
       if(message_id)
         doc["message_id"] = message_id

@@ -19,7 +19,7 @@ class LoginPage extends Component {
       return;
     }
    axios
-      .post("/api/user/signin", { login: this.login, password: this.password })
+      .post("/api/user/signin", { login: this.login, motDePasse: this.password })
       .then((res) => {
         setToken(res.data);
         this.props.setBody(<Main setBody={this.props.setBody} />);

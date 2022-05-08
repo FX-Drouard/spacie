@@ -9,6 +9,7 @@ function messageRoute(){
         rooter.use(express.json());
         getConnection().then(db => {
             const api = new apiFile.Api(db)
+            console.log(auth)
             rooter
                 .get("/", api.getAll)//Accueil
                 .post('/commentaire/:message_id',auth ,api.newCommentaire)//NewMessage

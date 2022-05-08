@@ -1,4 +1,3 @@
-import React from "react";
 import UserInfoDate from "../general/UserInfoDate";
 import React, { Component } from 'react'
 import axios from "axios";
