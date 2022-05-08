@@ -34,6 +34,10 @@ class StarButton extends Component {
         messageID: this.props.message.id,
         liked: this.state.isLiked,
         login : getLoginFromToken()
+      },{
+        headers: {
+          authorization: "Bearer " + this.token,
+        },
       })
       .then((res) => this.setState({ isLiked: res }))
       .catch((err) => alert(err));

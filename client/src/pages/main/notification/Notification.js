@@ -37,14 +37,22 @@ export default class Notification extends Component {
             <div className="notification_button">
               <div className="buttons" onClick={()=>{
                 axios.delete("/api/friend/demande/" + this.props.notification.demande,
-                {login : getLoginFromToken()}
+                {login : getLoginFromToken()},{
+                  headers: {
+                    authorization: "Bearer " + this.token,
+                  },
+                }
                 ).catch((err) => alert(err));
               }}>
                 Annuler
               </div>
               <div className="buttons" onClick={()=>{
                 axios.post("/api/friend/accepte/" + this.props.notification.demande,
-                {login : getLoginFromToken()}
+                {login : getLoginFromToken()},{
+                  headers: {
+                    authorization: "Bearer " + this.token,
+                  },
+                }
                 ).catch((err) => alert(err));
               }}>
                 Accepter

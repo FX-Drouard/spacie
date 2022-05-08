@@ -15,7 +15,11 @@ const RepostButton = (props) => {
         axios
           .post(
             "/api/message/repost/"+ props.message.id,
-          {login : getLoginFromToken()}
+          {login : getLoginFromToken()},{
+            headers: {
+              authorization: "Bearer " + this.token,
+            },
+          }
           )
           .then((res) => props.setMessageResult(res, { color: "green" }))
           .catch((err) => props.setMessageResult(err, { color: "red" }));

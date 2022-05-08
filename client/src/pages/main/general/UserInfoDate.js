@@ -11,7 +11,7 @@ class UserInfoDate extends React.Component {
       return <div></div>
     }
     let date = getDate(this.props.date)
-    let heure = getHours() + ":" + getMinutes();
+    let heure = getHours();
     return (
       <div className="message_user_info">
         <UserInfo user={this.props.user} setPage={this.props.setPage} />

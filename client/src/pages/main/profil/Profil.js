@@ -64,7 +64,11 @@ class Profil extends Component {
 
   disconnect() {
     axios
-      .delete("/api/user/signout", {login : this.state.userConnect})
+      .delete("/api/user/signout", {login : this.state.userConnect},{
+        headers: {
+          authorization: "Bearer " + this.token,
+        },
+      })
       .then((res) => {
         setToken(res.data);
         this.props.setBody(<LoginPage setBody={this.props.setBody} />);
@@ -128,6 +132,9 @@ class Profil extends Component {
   }
 
   render() {
+    if (this.state.user == null) {
+      return <div>Loading...</div>;
+    }
     return (
       <div className="millieu">
         <section id="info_user">

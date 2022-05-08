@@ -67,6 +67,10 @@ export default class EditProfil extends Component {
         bibliographie: this.state.bibliographie,
         photo: this.state.image,
         motDePasse: password,
+      },{
+        headers: {
+          authorization: "Bearer " + this.token,
+        },
       })
       .then(() => {
         this.props.refresh();
@@ -78,7 +82,11 @@ export default class EditProfil extends Component {
 
   supprimerCompte() {
     axios
-      .delete("/api/user/" + this.props.login, {login: this.props.login})
+      .delete("/api/user/" + this.props.login, {login: this.props.login},{
+        headers: {
+          authorization: "Bearer " + this.token,
+        },
+      })
       .then((res) => {
         setToken({token : "",login : ""});
         this.props.setBody(

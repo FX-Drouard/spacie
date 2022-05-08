@@ -18,7 +18,11 @@ export default class AjouterButton extends Component {
         onClick={() => {
           axios
             .post("/api/friend/" + this.props.login,
-            {login : getLoginFromToken()}
+            {login : getLoginFromToken()},{
+              headers: {
+                authorization: "Bearer " + this.token,
+              },
+            }
             )
             .then(() => this.setState({ color: "green" }))
             .catch((err) => alert(err));

@@ -10,7 +10,11 @@ const SupprimerButton = (props) => {
       onClick={(event) => {
         axios
           
-          .delete("/api/message/" + props.messageID,{login : getLoginFromToken()})
+          .delete("/api/message/" + props.messageID,{login : getLoginFromToken()},{
+            headers: {
+              authorization: "Bearer " + this.token,
+            },
+          })
           .then((res) => {
             props.setPage(
               <Accueil

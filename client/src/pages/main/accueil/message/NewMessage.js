@@ -47,11 +47,9 @@ class NewMessage extends Component {
             authorization: "Bearer " + this.token,
           },
         }
-      )
-      .then(() => {
-        this.props.refresh && this.props.refresh();
-      })
-      .catch((err) => this.setState({ erreur: err }));
+      ).catch((err) => this.setState({ erreur: err }));
+
+      this.props.refresh && this.props.refresh();
   }
 
   checkPubPrivee() {
