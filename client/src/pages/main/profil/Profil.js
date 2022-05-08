@@ -52,6 +52,7 @@ class Profil extends Component {
     this.setContainer();  
   }
 
+  
   disconnect() {
     axios
       .delete("/api/user/signout", {login : this.state.userConnect},{

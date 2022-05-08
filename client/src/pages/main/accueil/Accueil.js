@@ -39,7 +39,7 @@ class Accueil extends Component {
           setPage={this.setPage}
           erreur={this.props.erreur}
           setBody={this.props.setBody}
-          refrech={this.refresh}
+          refresh={this.refresh}
         />
       );
     }
