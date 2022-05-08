@@ -48,17 +48,7 @@ class Profil extends Component {
     .catch((err) => {
       alert(err);
     });
-    if (testToken(this.token)){
-      console.log(this.state.user)
-      let isFriend = false
-      for (let ami in this.state.user.amis) {
-        if (ami == this.state.userConnect) {
-          isFriend = true
-        }
-      }
-      this.setState({isFriend : isFriend})
-      }
-    this.date = date.getDate(this.state.user.creationDate);
+    
     this.setContainer();  
   }
 
@@ -79,7 +69,9 @@ class Profil extends Component {
   }
 
   setContainer() {
-
+    if (this.state.user == null) {
+      return 
+    }
     if (this.buttonName == "Amis") {
       console.log(this.state.user.amis)
       for (let idAmis in this.state.user.amis) { 
@@ -135,6 +127,17 @@ class Profil extends Component {
     if (this.state.user == null) {
       return <div>Loading...</div>;
     }
+    if (testToken(this.token)){
+      console.log(this.state.user)
+      let isFriend = false
+      for (let ami in this.state.user.amis) {
+        if (ami == this.state.userConnect) {
+          isFriend = true
+        }
+      }
+      this.setState({isFriend : isFriend})
+      }
+    this.date = date.getDate(this.state.user.creationDate);
     return (
       <div className="millieu">
         <section id="info_user">
