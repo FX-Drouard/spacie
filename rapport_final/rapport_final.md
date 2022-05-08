@@ -7,16 +7,36 @@
 
 ### REPARTITION DU TRAVAIL
 
+- Hamid KOLLI 28717594
+  > Toutes la partie front (code js et css en entier)
+  > La partie User et Message du serveur (complete)
+  > Amelioration de la partie Friend et Notification
+  > Requettes Postman pour tout le server
+  > L'architecture (packetage) du client et du serveur
+  > Gestion de sessions
+  > Gestion des erreurs
+  > La synchronisation entre le client et le serveur
+  > L'architecture de la base de données
+  > Gestion de la base de données
+  > Debeugage du client, du serveur et la synchronisation entre ces deux derniers en utilisant Postman et le navigateur
+
+- Drouard François-Xavier 3800028
+  > Design de front (dessins)
+  > Test unitaires Mocha (mocha-test) (non fait)    
+  > La partie  Friend et Notification (moitie fait)
+  > Debeug de authorisation
+  > Hebergement du site et de la base de données sur un serveur distant avec la configuration des ports
+  
 
 ### LES PROBLEMES
 
-- la synchronisation entre le client et le serveur n'est pas bonne
+- La synchronisation entre le client et le serveur n'est pas bonne
 
-- la gestion des sessions
+- La gestion des sessions
 
-- le packetage (l'architecture du code)
+- Contrainte de temps 
 
-- quelque probleme concernant l'organisation du binome
+- Probleme concernant l'organisation du binome
 
 ### CE QUI RESTE A FAIRE
 
