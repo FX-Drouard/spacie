@@ -27,12 +27,13 @@ class ProfilButton extends Component {
           <Profil
             setBody={this.props.setBody}
             setPage={this.props.setPage}
-            user={this.state.login}
+            login={this.state.user._id}
           />
         );
   }
 
   render() {
+    console.log(this.state.user)
     if(!this.state.user)
        return(<div></div>)
     return (

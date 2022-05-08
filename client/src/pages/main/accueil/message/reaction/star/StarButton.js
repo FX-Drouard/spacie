@@ -6,7 +6,7 @@ import {getToken, testToken, getLoginFromToken} from "../../../../general/token.
 class StarButton extends Component {
   constructor(props) {
     super(props);
-
+    this.state = { isLiked: false };
     this.token = getToken()
   }
 

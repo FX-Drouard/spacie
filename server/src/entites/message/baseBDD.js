@@ -10,6 +10,7 @@ class MessageBase {
         priv : priv,
         image : image,
         sender : sender,
+        date:new Date(),
         stars : [],
       }
       if(message_id)

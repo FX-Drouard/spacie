@@ -23,11 +23,12 @@ class Api {
       const messageText = req.body.messageText
       const image = req.body.image
       const priv = req.body.priv
-      const login = token.getLoginFromToken()
+      const login = token.getLoginFromToken(req)
+      console.log("1: "+login)
       // const login  = req.body.login
       message.newMessage(login, messageText,priv, image).then(resp => 
           res.status(200).send(resp)
-      ).catch(err => res.status(404).send(err))
+      ).catch(err => {console.log(err);res.status(400).send(err)})
     }
 
     async update(req, res) {

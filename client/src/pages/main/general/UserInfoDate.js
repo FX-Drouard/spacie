@@ -1,15 +1,17 @@
 import React from "react";
 import UserInfo from "./UserInfo";
-const dateGater = require("./date.js")
+const {getDate,getHours,getMinutes} = require("./date.js")
 class UserInfoDate extends React.Component {
   componentWillReceiveProps(props) {
     this.props = props;
+    
   }
   render() {
-    
-    let date = dateGater.getDate(this.props.date)
-
-    let heure = date.getHours() + ":" + date.getMinutes();
+    if  (!this.props.user) {
+      return <div></div>
+    }
+    let date = getDate(this.props.date)
+    let heure = getHours() + ":" + getMinutes();
     return (
       <div className="message_user_info">
         <UserInfo user={this.props.user} setPage={this.props.setPage} />

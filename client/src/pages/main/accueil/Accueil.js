@@ -25,7 +25,7 @@ class Accueil extends Component {
   refresh() {
     axios
       .get("/api/message/",{login : getLoginFromToken()})
-      .then((res) => this.setState({ resultat: res.data }))
+      .then((res) => {this.setState({ resultat: res.data });console.log("res: "+this.state.resultat)})
       .catch((err) =>{ 
         this.setState({ resultat: [] });
       });

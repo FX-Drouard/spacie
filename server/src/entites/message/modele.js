@@ -25,7 +25,8 @@ class Message {
   newMessage(login,message,priv,image,message_id) {
     return new Promise((resolve, reject) => {
       this.dbUser.find(login)
-        .then((resUser) => {          
+        .then((resUser) => {    
+          console.log("loooogin " + login)      
           this.dbMessage.create(message,priv,image,resUser._id,message_id)
               .then((resMessage) => {
                 resUser.messages.push(resMessage.insertedId)

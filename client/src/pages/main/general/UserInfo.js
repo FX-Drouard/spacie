@@ -20,6 +20,7 @@ class UserInfo extends Component {
   }
 
   render() {
+    console.log("KAAAAAAAAAAA "+this.props.user._id)
     return (
       <div className="userName">
         <span className="photoProfil" onClick={(event) => this.gotoProfil()}>

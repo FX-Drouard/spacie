@@ -36,12 +36,16 @@ class NewMessage extends Component {
           ? "/api/message/commentaire/" + this.props.messageID
           : this.props.message
           ? "/api/message/update/" + this.props.message.id
-          : "/api/message/create/",
+          : "/api/message/create",
         {
           login: getLoginFromToken(),
           messageText: this.state.newMessage,
           image: this.state.image,
-          private : this.state.check
+          private : this.state.check,
+        },{
+          headers: {
+            authorization: "Bearer " + this.token,
+          },
         }
       )
       .then(() => {

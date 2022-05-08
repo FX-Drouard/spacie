@@ -72,7 +72,7 @@
           console.log("then edit")
           res.status(200).send({message : resp})
           console.log("fin edit")
-          return
+          
         }).catch(err => res.status(500).send({message : err}))
       }
 
@@ -82,7 +82,7 @@
           console.log("then delete")
           res.status(200).send({message : resp})
           console.log("fin delete")
-          return
+          
         }).catch(err => res.status(500).send({message : err}))
       }
 
@@ -91,9 +91,9 @@
         const {login} = req.params
         user.find(login).then((resp) => {
           console.log("then get")
-          res.status(200).send({user : resp})
-          console.log("fin get")
-          return
+          res.status(200).send(resp)
+          console.log("fin get "+resp._id)
+          
         }
         ).catch(err => res.status(500).send({message :  "erreur get"}))
       }
@@ -104,8 +104,8 @@
           console.log("then getInfos")
           res.status(200).send({users : resp})
           console.log("fin getInfos")
-          return
-        }).catch(err => res.status(500).send({message : err}))
+          
+        }).catch(err => res.status(500).send(err))
       }
 
       async getInfo(req, res) {
@@ -114,9 +114,9 @@
 
         user.getInfo(login).then((resp) => {
           console.log("then getInfo")
-          res.status(200).send({message : resp})
+          res.status(200).send(resp)
           console.log("fin getInfo")
-          return
+          
         }
         ).catch(err => res.status(500).send({message : "erreur getInfo"}))
       }

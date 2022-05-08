@@ -35,18 +35,21 @@ class Profil extends Component {
     if (testToken(this.token)){
      
       this.setState({userConnect: getLoginFromToken()});
-    }
 
+    }
+    console.log("login profil: "+this.props.login)
     axios
     .get("/api/user/" + this.props.login)
     .then((res) => {
+      console.log("reponse Profil: "+res.data._id)
       this.setState({user : res.data})
+      console.log("un message: "+this.state.user)
     })
     .catch((err) => {
       alert(err);
     });
     if (testToken(this.token)){
-      
+      console.log(this.state.user)
       let isFriend = false
       for (let ami in this.state.user.amis) {
         if (ami == this.state.userConnect) {
@@ -74,9 +77,10 @@ class Profil extends Component {
   setContainer() {
 
     if (this.buttonName == "Amis") {
+      console.log(this.state.user.amis)
       for (let idAmis in this.state.user.amis) { 
         axios
-        .get("/api/freind/" + idAmis)
+        .get("/api/friend/" + idAmis)
         .then((res) => {
           this.state.amis.push(res)
           this.setState({

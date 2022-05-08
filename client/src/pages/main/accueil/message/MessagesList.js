@@ -15,7 +15,6 @@ class MessageList extends Component {
           <Message
             key={index}
             setBody={this.props.setBody}
-            serveur={this.props.serveur}
             setPage={this.props.setPage}
             message={e}
           />
