@@ -70,12 +70,14 @@ class Api {
       const login = token.getLoginFromToken(req)
       const {message_id,isLiked} = req.body
       message.getMessageById(message_id).then((message) => {
-        console.log("mess "+message.sender);
-        notif.addNotif(message.sender,token.getLoginFromToken(req) + ' a star votre message')
+        console.log("sender star message "+message.sender);
+        notif.addNotif(message.sender,token.getLoginFromToken(req) + ' a star votre message').then(() => {
+          message.star(login, message_id,isLiked)
+          .then((resp) => res.status(200).send(resp))
+          .catch((err) => res.status(500).send(err))
+        })
         .catch((err) => {res.status(515).send({message: err})})
-        message.star(login, message_id,isLiked)
-        .then((resp) => res.status(200).send(resp))
-        .catch((err) => res.status(500).send(err))}
+      }
       )    
     }
 
