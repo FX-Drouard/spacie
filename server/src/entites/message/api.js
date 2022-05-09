@@ -7,6 +7,7 @@ class Api {
    
     constructor(db) {
       message.setDataBase(db)
+      notif.setDataBase(db)
     }
     
     async getAll(req, res) {
@@ -98,9 +99,9 @@ class Api {
         message.newMessage(login, messageText, image,priv, message_id).
         then(resp => 
           {
-            notif.addNotif(msg.sender, login + ' a commente votre message'  )
+            notif.addNotif(msg.sender, login + ' a commente votre message', null )
             .then(() => res.status(200).send(resp))
-          .catch((err) => {res.status(503).send({message: err})})}
+          }
         ).catch(err => res.status(404).send(err))
         
       })     

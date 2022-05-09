@@ -10,6 +10,7 @@ class CommentePage extends Component {
     this.refresh()
   }
   refresh() {
+    console.log("refresh")
     axios
       .get("/api/message/commentaire/" + this.props.message._id)
       .then((res) => this.setState({ resultat: res.data }))
