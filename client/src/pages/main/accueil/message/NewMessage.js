@@ -47,7 +47,8 @@ class NewMessage extends Component {
             authorization: "Bearer " + this.token,
           },
         }
-      ).then(()=> this.props.refresh && this.props.refresh() ).catch((err) => this.setState({ erreur: err.data }));
+      ).then(()=> this.props.refresh && this.props.refresh() )
+      .catch((err) => this.setState({ erreur: err.data }));
       
   }
 

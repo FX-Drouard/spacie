@@ -48,7 +48,8 @@ class ResultatReacherche extends Component {
     }
      
 
-    
+    console.log("root: "+root);
+    console.log("Recherche: "+this.props.recherche);
     let login = getLoginFromToken();
     axios
       .get(root ,  {message :this.props.recherche,login : login} )

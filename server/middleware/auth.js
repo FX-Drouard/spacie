@@ -2,9 +2,8 @@ const jwt = require('jsonwebtoken');
 
 module.exports = (req, res, next) => {
   try {
-    console.log("AUUUUUTTTTTTTTTTTTTTHHHHHHHHHHHHHHHHHHH "+req.headers.authorization);
     const token = req.headers.authorization.split(' ')[1];
-    console.log("TOKEN:  "+token)
+    //console.log("TOKEN:  "+token)
     const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
     const userId = decodedToken.userId;
     console.log(userId+" userid| "+req.body.login+" login")
