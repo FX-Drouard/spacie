@@ -44,18 +44,18 @@ export default class Notification extends Component {
                   },
                 }
 
-                ).catch((err) => alert(err));
+                ).then(() => this.props.refresh()).catch((err) => alert(err));
               }}>
                 Annuler
               </div>
               <div className="buttons" onClick={()=>{
-                axios.post("/api/friend/accepte/" + this.props.notification.demande_id,
+                axios.post("/api/friend/accept/" + this.props.notification.demande_id,
                 {login : getLoginFromToken()},{
                   headers: {
                     authorization: "Bearer " + getToken(),
                   },
                 }
-                ).catch((err) => alert(err));
+                ).then(() => this.props.refresh()).catch((err) => alert(err));
               }}>
                 Accepter
               </div>

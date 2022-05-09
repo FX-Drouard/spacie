@@ -1,3 +1,5 @@
+const { ObjectId } = require("mongodb");
+
 class FriendsBase {
   constructor(db) {
     this.db = db;

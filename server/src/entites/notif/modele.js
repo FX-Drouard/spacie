@@ -1,5 +1,6 @@
 const notificationsBase = require("./baseBDD");
 const {getCollection} = require("../../../connectionMongoDB.js")
+const { ObjectId, ObjectID } = require("mongodb");
 class Notifications {
   constructor() {
   }
@@ -17,7 +18,7 @@ class Notifications {
       }
 
       if (demande_id) {
-        doc.demande_id = demande_id;
+        doc.demande_id = new ObjectId(demande_id);
       }
       this.notif.create(doc).then((res) => resolve(res)).catch((err) => reject(err));
     })
@@ -33,7 +34,7 @@ class Notifications {
   }
   getNotifications(notifier,demande){
     return new Promise((resolve, reject) => {
-      this.notif.find({ notifier: notifier,demande_id : demande  })
+      this.notif.find({ notifier: notifier,demande_id : new ObjectId(demande)  })
       .then((res) => resolve(res))
       .catch((err) => reject(err));
     })

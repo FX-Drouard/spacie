@@ -8,8 +8,8 @@ class NotificationList extends Component {
         {this.props.resultat.map((e, index) => (
           <Notification
             setBody={this.props.setBody}
-            serveur={this.props.serveur}
             setPage={this.props.setPage}
+            refresh={this.props.refresh}
             notification={e}
           />
         ))}

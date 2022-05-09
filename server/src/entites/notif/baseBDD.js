@@ -1,3 +1,4 @@
+const { ObjectId } = require("mongodb");
 class NotificationsBase {
     constructor(db) {
       this.db = db;
@@ -16,7 +17,7 @@ class NotificationsBase {
     delete(id) {
       return new Promise((resolve, reject) => {
         this.db
-          .deleteOne({ _id: id })
+          .deleteOne({ _id: new ObjectId(id) })
           .then((res) => resolve(res))
           .catch((err) => reject(err));
       });

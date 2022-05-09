@@ -64,10 +64,13 @@ class Api {
  
   async acceptFriend(req, res) {
     const { demande } = req.params;
+    console.log(" la demande : "+demande)
     friends.find(demande).then((resp) => { 
+      console.log("resp "+resp.recepteur+" "+resp.emeteur)
       const login_emeteur = resp.emeteur; 
       const login_recepteur = resp.recepteur;
-      user.addFriends(login_emeteur, login_recepteur).then(() => {
+      user.addFriend(login_emeteur, login_recepteur).then(() => {
+        console.log("ajouté")
         notif.addNotif(
           login_recepteur,
           login_emeteur+" vous as ajouté en amis")
@@ -90,23 +93,23 @@ class Api {
         friends.removeFriend(demande).then(() => {
           res.status(200).send({ message: "Validé" })
         }).catch((err) => {
-          user.removeFriends(login_emeteur, login_recepteur)
+          user.removeFriend(login_emeteur, login_recepteur)
             .catch((err) => {res.status(503).send({message: err})}); 
           res.status(402).send({ message: err })
         })
           
       }).catch((err) => {
-          user.removeFriends(login_emeteur, login_recepteur)
+          user.removeFriend(login_emeteur, login_recepteur)
             .catch((err) => {res.status(503).send({message: err})}); 
           res.status(402).send({ message: err })
       })
     }).catch((err) => {
-      res.status(402).send({ message: err })
+      res.status(410).send({ message: err })
     })
   }
 
   async delDemande(req, res) {
-    const { demande } = req.body
+    const { demande } = req.params;
     friends.find(demande).then((resp) => { 
         const login_recepteur = resp.recepteur;
         friends.removeFriend(demande).then(() => {

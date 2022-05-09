@@ -7,15 +7,24 @@ import { getToken } from "../general/token";
 export default class NotificationPage extends Component {
   constructor(props) {
     super(props);
+    this.refresh = this.refresh.bind(this);
     this.state = {
       resultat: [],
     };
     
   }
   componentWillMount() {
-    axios
-      .get("/api/notification/",{login : getLoginFromToken(),headers: {
-        authorization: "Bearer " + getToken(),
+    this.refresh();
+  }
+  componentWillReceiveProps(props) {
+    this.componentWillMount(props)
+  }
+
+    refresh() {
+      console.log("refresh notif  ")
+      axios
+        .get("/api/notification/",{login : getLoginFromToken(),headers: {
+          authorization: "Bearer " + getToken(),
       }},
       )
       .then((res) => {
@@ -23,10 +32,6 @@ export default class NotificationPage extends Component {
       })
       .catch((err) => this.setState({ resultat: [] }));
   }
-  componentWillReceiveProps(props) {
-    this.componentWillMount(props)
-  }
-
   render() {
     return (
       <div className="millieu">
@@ -34,6 +39,7 @@ export default class NotificationPage extends Component {
           setBody={this.props.setBody}
           setPage={this.props.setPage}
           resultat={this.state.resultat}
+          refresh={this.refresh}
         />
       </div>
     );
