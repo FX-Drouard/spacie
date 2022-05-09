@@ -66,15 +66,17 @@ class Api {
     }
 
     async star(req, res) {
+      let catchr=false
       const login = token.getLoginFromToken(req)
       const {message_id,isLiked} = req.body
       message.getMessageById(message_id).then((message) => {
-        notif.addNotif(message.sender,token.getLoginFromToken(req) + ' a star votre message'  )
-        .catch((err) => {res.status(503).send({message: err})})
-      })     
-      message.star(login, message_id,isLiked)
-      .then((resp) => res.status(200).send(resp))
-      .catch((err) => res.status(500).send(err))
+        console.log("mess "+message.sender);
+        notif.addNotif(message.sender,token.getLoginFromToken(req) + ' a star votre message')
+        .catch((err) => {res.status(515).send({message: err})})
+        message.star(login, message_id,isLiked)
+        .then((resp) => res.status(200).send(resp))
+        .catch((err) => res.status(500).send(err))}
+      )    
     }
 
     async newCommentaire(req, res) {

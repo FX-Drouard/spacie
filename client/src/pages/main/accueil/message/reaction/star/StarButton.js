@@ -31,7 +31,7 @@ class StarButton extends Component {
     }
     axios
       .post("/api/message/star", {
-        messageID: this.props.message.id,
+        message_id: this.props.message._id,
         liked: this.state.isLiked,
         login : getLoginFromToken()
       },{
