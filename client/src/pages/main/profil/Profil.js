@@ -100,9 +100,9 @@ class Profil extends Component {
           .get("/api/message/recherche/" + idMessage)
           .then((res) => {
             console.log(res.data)
-            
+            this.state.messages.push(res.data)
             this.setState({
-              messages : this.state.messages.push(res.data)
+              messages : this.state.messages
             });
           })
           .catch((err) => alert(err));
