@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { Component } from "react";
 import { getLoginFromToken } from "../general/token";
 import NotificationList from "./NotificationList";
-
+import { getToken } from "../general/token";
 
 export default class NotificationPage extends Component {
   constructor(props) {
@@ -16,7 +16,7 @@ export default class NotificationPage extends Component {
     axios
       .get("/api/notification/",{login : getLoginFromToken()},{
         headers: {
-          authorization: "Bearer " + this.token,
+          authorization: "Bearer " + getToken(),
         },
       })
       .then((res) => {
