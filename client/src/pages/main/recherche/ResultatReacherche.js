@@ -37,7 +37,7 @@ class ResultatReacherche extends Component {
             ),
           });
         })
-        .catch((err) => this.setState({ container: <div>{err}</div> }));
+        .catch((err) => this.setState({ container: <div>{err.data}</div> }));
 
       return;
     }
@@ -68,7 +68,7 @@ class ResultatReacherche extends Component {
         });
         }})
   
-      .catch((err) => this.setState({ container: <div>{err}</div> }));
+      .catch((err) => this.setState({ container: <div>{err.data}</div> }));
   }
 
 
