@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { ImagePicker } from "react-file-picker";
 import LoginPage from "../../login/LoginPage";
 import {getToken,setToken} from "../general/token.js"
+import Profil from "./Profil";
 export default class EditProfil extends Component {
   constructor(props) {
     super(props);
