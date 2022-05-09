@@ -17,9 +17,9 @@ class ProfilInfo extends Component {
           <UserInfo user={this.props.user} setPage={this.props.setPage} />
           {testToken(this.token) &&
             (this.props.user.amis.filter(loginAmi => loginAmi == login).length > 0 ? (
-              <SupprimerAmiButton login={this.props.user.login} />
+              <SupprimerAmiButton login={this.props.user._id} />
             ) : (
-              <AjouterButton login={this.props.user.login} />
+              <AjouterButton login={this.props.user._id} />
             ))}
         </div>
       </div>
