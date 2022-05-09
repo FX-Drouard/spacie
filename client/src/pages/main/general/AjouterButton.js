@@ -1,7 +1,7 @@
 import axios from "axios";
 
 import React, { Component } from "react";
-import { getLoginFromToken } from "./token";
+import { getLoginFromToken, getToken } from "./token";
 
 export default class AjouterButton extends Component {
   constructor(props) {
@@ -20,7 +20,7 @@ export default class AjouterButton extends Component {
             .post("/api/friend/" + this.props.login,
             {login : getLoginFromToken()},{
               headers: {
-                authorization: "Bearer " + this.token,
+                authorization: "Bearer " + getToken(),
               },
             }
             )

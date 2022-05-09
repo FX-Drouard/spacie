@@ -2,7 +2,7 @@ import axios from "axios";
 import React from "react";
 import { getLoginFromToken } from "../../../general/token";
 import Accueil from "../../Accueil";
-
+import { getToken } from "../../../general/token";
 const SupprimerButton = (props) => {
   return (
     <div
@@ -12,7 +12,7 @@ const SupprimerButton = (props) => {
           
           .delete("/api/message/" + props.messageID,{login : getLoginFromToken()},{
             headers: {
-              authorization: "Bearer " + this.token,
+              authorization: "Bearer " + getToken(),
             },
           })
           .then((res) => {

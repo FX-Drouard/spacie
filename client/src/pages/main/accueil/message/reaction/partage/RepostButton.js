@@ -17,7 +17,7 @@ const RepostButton = (props) => {
             "/api/message/repost/"+ props.message.id,
           {login : getLoginFromToken()},{
             headers: {
-              authorization: "Bearer " + this.token,
+              authorization: "Bearer " + getToken(),
             },
           }
           )

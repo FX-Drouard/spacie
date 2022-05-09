@@ -1,5 +1,6 @@
 const notificationsFile =  require("./modele");
 const jwt = require("jsonwebtoken");
+const { getLoginFromToken } = require("../../../tools/token");
 const notif = new notificationsFile.Notifications();
 class Api {
   constructor(db) {
@@ -7,8 +8,8 @@ class Api {
   }
 
   async getNotifs(req, res) {
-    const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
-    const login = decodedToken.userId;
+    
+    const login = getLoginFromToken(req);
     notif.getAllNotif(login).then((resp) => res.send(resp)).catch(err => res.stattus(503).send({ message: err }));
   }
 

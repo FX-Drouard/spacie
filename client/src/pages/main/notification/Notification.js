@@ -1,7 +1,7 @@
 import UserInfoDate from "../general/UserInfoDate";
 import React, { Component } from 'react'
 import axios from "axios";
-import { getLoginFromToken } from "../general/token";
+import { getLoginFromToken, getToken } from "../general/token";
 
 export default class Notification extends Component {
   constructor(props) {
@@ -39,7 +39,7 @@ export default class Notification extends Component {
                 axios.delete("/api/friend/demande/" + this.props.notification.demande,
                 {login : getLoginFromToken()},{
                   headers: {
-                    authorization: "Bearer " + this.token,
+                    authorization: "Bearer " + getToken(),
                   },
                 }
                 ).catch((err) => alert(err));
@@ -50,7 +50,7 @@ export default class Notification extends Component {
                 axios.post("/api/friend/accepte/" + this.props.notification.demande,
                 {login : getLoginFromToken()},{
                   headers: {
-                    authorization: "Bearer " + this.token,
+                    authorization: "Bearer " + getToken(),
                   },
                 }
                 ).catch((err) => alert(err));

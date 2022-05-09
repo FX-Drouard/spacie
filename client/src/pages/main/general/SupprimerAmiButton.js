@@ -1,6 +1,6 @@
 import axios from "axios";
 import React from "react";
-import { getLoginFromToken } from "./token";
+import { getLoginFromToken, getToken } from "./token";
 
 const SupprimerAmiButton = (props) => {
   return (
@@ -10,7 +10,7 @@ const SupprimerAmiButton = (props) => {
         axios.delete("/api/friend/" + props.login,
         {login : getLoginFromToken()},{
           headers: {
-            authorization: "Bearer " + this.token,
+            authorization: "Bearer " + getToken(),
           },
         }
         ).catch((err) => alert(err));
