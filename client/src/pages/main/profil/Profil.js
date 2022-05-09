@@ -24,6 +24,16 @@ class Profil extends Component {
       messages : [],
     };
 
+    axios
+    .get("/api/user/" + this.props.login)
+    .then((res) => {
+      console.log("reponse Profil: "+res.data._id)
+      this.state.user = res.data
+      console.log("un message: "+this.state.user)
+    })
+    .catch((err) => {
+      alert(err);
+    });
   }
 
   componentWillReceiveProps(props) {
@@ -38,16 +48,7 @@ class Profil extends Component {
 
     }
     console.log("login profil: "+this.props.login)
-    axios
-    .get("/api/user/" + this.props.login)
-    .then((res) => {
-      console.log("reponse Profil: "+res.data._id)
-      this.setState({user : res.data})
-      console.log("un message: "+this.state.user)
-    })
-    .catch((err) => {
-      alert(err);
-    });
+    
     
     this.setContainer();  
   }
