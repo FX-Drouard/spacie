@@ -8,7 +8,7 @@ class Api {
   }
 
   async getNotifs(req, res) {
-    
+    console.log("getNotifs");
     const login = getLoginFromToken(req);
     notif.getAllNotif(login).then((resp) => res.send(resp)).catch(err => res.stattus(503).send({ message: err }));
   }
