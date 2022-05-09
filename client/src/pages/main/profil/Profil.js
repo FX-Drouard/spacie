@@ -71,34 +71,36 @@ class Profil extends Component {
 
     if (this.state.buttonName == "Amis") {
       console.log(this.state.user.amis)
-      for (let idAmis of this.state.user.amis) { 
-        axios
-        .get("/api/friend/" + idAmis)
-        .then((res) => {
-          this.state.amis.push(res)
-          this.setState({
-            amis : this.state.amis
-          });
-        })
-        .catch((err) => alert(err));
-      }
-    
+      axios.get("/api/friend/"+ this.state.user._id).then((res) => {
       this.setState({
         container: (
           <ListeAmis
-            user={this.state.amis}
+            user={res.data}
             setPage={this.props.setPage}
           />
         ),
         buttonName: "Messages",
       });
+    }).catch((err) => {
+      this.setState({
+      container: (
+        <ListeAmis
+          user={[]}
+          setPage={this.props.setPage}
+        />
+      ),
+      buttonName: "Messages",
+    });})
+    return 
     }
+
     if (this.state.buttonName == "Messages") {
         for (let idMessage of this.state.user.messages) { 
           axios
           .get("/api/message/recherche/" + idMessage)
           .then((res) => {
-            this.state.messages.push(res)
+            console.log(res.data)
+            this.state.messages.push(res.data);
             this.setState({
               messages : this.state.messages
             });

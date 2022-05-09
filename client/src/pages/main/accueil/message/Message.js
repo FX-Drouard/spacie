@@ -103,7 +103,7 @@ class Message extends Component {
             </span>
           </div>
 
-          {!this.props.comment ? (
+          {!this.props.message_id ? (
             <div className="reaction_message">
               <CommenteButton
                 setBody={this.props.setBody}
@@ -117,7 +117,7 @@ class Message extends Component {
           )}
 
           <div className="reaction_message">
-            {this.userConnect === this.props.message.sender ? (
+            {this.state.userConnect === this.props.message.sender ? (
               <SupprimerButton
                 setBody={this.props.setBody}
                 setPage={this.props.setPage}
@@ -134,12 +134,12 @@ class Message extends Component {
             ) : (
               ""
             )}
-            {this.userConnect != this.props.message.sender &&
+            {this.state.userConnect != this.props.message.sender &&
               !this.props.comment && <span>{this.getNombrePartages()} </span>}
           </div>
 
           <div className="reaction_message">
-            {this.userConnect == this.props.message.sender && (
+            {this.state.userConnect == this.props.message.sender && (
               <ModifierButton
                 setBody={this.props.setBody}
                 message={this.props.message}
