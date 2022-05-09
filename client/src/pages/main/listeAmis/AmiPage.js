@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { Component } from "react";
-import { getLoginFromToken } from "../general/token";
+import { getLoginFromToken , getToken} from "../general/token";
 import ListeAmis from "./ListeAmis";
 
 class AmiPage extends Component {

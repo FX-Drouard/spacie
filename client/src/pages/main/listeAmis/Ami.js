@@ -1,4 +1,4 @@
-import React from "react";
+
 import SupprimerAmiButton from "../general/SupprimerAmiButton";
 import UserInfo from "../general/UserInfo";
 

@@ -26,9 +26,10 @@ class Api {
   }
 
   async getFriends(req, res) {
+    console.log("quelque chose")
     const { login } = req.params;
     user.getFriends(login).then((resp) => {
-      res.status(200).send({ friends: resp })
+      res.status(200).send(resp )
     }).catch((err) => {
       res.status(402).send({ message: err })
     })

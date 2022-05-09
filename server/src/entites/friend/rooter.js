@@ -11,7 +11,7 @@ function friendRoute(){
     const api = new apiFile.Api(db)
     rooter
       .get("/", auth,api.getFriendsConnected) // AmiPage
-      .get("/:login(\\+)", api.getFriends) //Profil
+      .get("/:login", api.getFriends) //Profil
       .post("/:login",auth, api.addFriend) // AjouterButton
       .delete("/:login",auth, api.delFriend) // SupprimerAmiButton
       .post("/accept/:demande",auth, api.acceptFriend) // Notification

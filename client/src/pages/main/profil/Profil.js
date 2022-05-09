@@ -73,7 +73,7 @@ class Profil extends Component {
       this.setState({
         container: (
           <ListeAmis
-            user={res.data}
+            users={res.data}
             setPage={this.props.setPage}
           />
         ),
