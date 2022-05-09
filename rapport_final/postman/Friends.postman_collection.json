@@ -11,11 +11,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8777/api/friend/Fristorm",
+					"raw": "https://spacie.fr/api/friend/Fristorm",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"spacie",
+						"fr"
 					],
-					"port": "8777",
 					"path": [
 						"api",
 						"friend",
@@ -31,11 +32,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8777/api/friend/",
+					"raw": "https://spacie.fr/api/friend/",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"spacie",
+						"fr"
 					],
-					"port": "8777",
 					"path": [
 						"api",
 						"friend",
@@ -49,13 +51,20 @@
 			"name": "addFriend",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "authorization",
+						"value": "token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJoYW1pZCIsImlhdCI6MTY1MjA5ODY4MSwiZXhwIjoxNjUyMTA1ODgxfQ.SECF_FMD-0Imu8TVUR_mAX8DSt2iLDcveChG7ckRLJg",
+						"type": "text"
+					}
+				],
 				"url": {
-					"raw": "localhost:8777/api/friend/Fristorm",
+					"raw": "https://spacie.fr/api/friend/Fristorm",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"spacie",
+						"fr"
 					],
-					"port": "8777",
 					"path": [
 						"api",
 						"friend",
@@ -69,13 +78,20 @@
 			"name": "delete friend of connected user",
 			"request": {
 				"method": "DELETE",
-				"header": [],
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Baerer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJoYW1pZCIsImlhdCI6MTY1MjEwNjExNSwiZXhwIjoxNjUyMTEzMzE1fQ.kR3yTQVZbGYr5H0zeBHIspphdEBu3g5LMpYjveTaRXU",
+						"type": "text"
+					}
+				],
 				"url": {
-					"raw": "localhost:8777/api/friend/Fristorm",
+					"raw": "https://spacie.fr/api/friend/Fristorm",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"spacie",
+						"fr"
 					],
-					"port": "8777",
 					"path": [
 						"api",
 						"friend",
@@ -89,17 +105,24 @@
 			"name": "accepter en ami",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Baerer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJoYW1pZCIsImlhdCI6MTY1MjEwNjExNSwiZXhwIjoxNjUyMTEzMzE1fQ.kR3yTQVZbGYr5H0zeBHIspphdEBu3g5LMpYjveTaRXU",
+						"type": "text"
+					}
+				],
 				"url": {
-					"raw": "localhost:8777/api/accept/{id_demande}",
+					"raw": "https://spacie.fr/api/accept/",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"spacie",
+						"fr"
 					],
-					"port": "8777",
 					"path": [
 						"api",
 						"accept",
-						"{id_demande}"
+						""
 					]
 				}
 			},
@@ -109,13 +132,20 @@
 			"name": "ne pas accepter la demande",
 			"request": {
 				"method": "DELETE",
-				"header": [],
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Baerer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJoYW1pZCIsImlhdCI6MTY1MjEwNjExNSwiZXhwIjoxNjUyMTEzMzE1fQ.kR3yTQVZbGYr5H0zeBHIspphdEBu3g5LMpYjveTaRXU",
+						"type": "text"
+					}
+				],
 				"url": {
-					"raw": "localhost:8777/api/demande/{id_demande}",
+					"raw": "https://spacie.fr/api/demande/{id_demande}",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"spacie",
+						"fr"
 					],
-					"port": "8777",
 					"path": [
 						"api",
 						"demande",

@@ -9,17 +9,30 @@
 			"name": "get notif du user connecte",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "authorization",
+						"value": "token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJoYW1pZCIsImlhdCI6MTY1MjA5ODY4MSwiZXhwIjoxNjUyMTA1ODgxfQ.SECF_FMD-0Imu8TVUR_mAX8DSt2iLDcveChG7ckRLJg",
+						"type": "text"
+					}
+				],
 				"url": {
-					"raw": "localhost:8777/api/notification/",
+					"raw": "https://spacie.fr/api/notification/?=",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"spacie",
+						"fr"
 					],
-					"port": "8777",
 					"path": [
 						"api",
 						"notification",
 						""
+					],
+					"query": [
+						{
+							"key": "",
+							"value": ""
+						}
 					]
 				}
 			},

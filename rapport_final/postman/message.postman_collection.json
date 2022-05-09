@@ -9,7 +9,13 @@
 			"name": "create",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "authorization",
+						"value": "a eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJGcmlzdG9ybSIsImlhdCI6MTY1MjA0MjgwMiwiZXhwIjoxNjUyMDUwMDAyfQ.k3D0vwzLGQwraKXJLp_x19Vd1LvjzuTkk1dWwcVG4mQ",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "\n{\n    \"messageText\" : \"je suis la\",\n    \"image\" : \"\",\n    \"priv\" : \"0\",\n    \"login\" : \"Fristorm\"\n}",
@@ -20,11 +26,12 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8777/api/message/create",
+					"raw": "https://spacie.fr/api/message/create",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"spacie",
+						"fr"
 					],
-					"port": "8777",
 					"path": [
 						"api",
 						"message",
@@ -49,11 +56,12 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8777/api/message/commentaire/627591ff4d9f15ae6f4ab9dc",
+					"raw": "https://spacie.fr/api/message/commentaire/627591ff4d9f15ae6f4ab9dc",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"spacie",
+						"fr"
 					],
-					"port": "8777",
 					"path": [
 						"api",
 						"message",
@@ -79,16 +87,23 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8777/api/message/update/627591ff4d9f15ae6f4ab9dc",
+					"raw": "https://spacie.fr/api/message/update/627591ff4d9f15ae6f4ab9dc?=Baerer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJoYW1pZCIsImlhdCI6MTY1MjEwNjExNSwiZXhwIjoxNjUyMTEzMzE1fQ.kR3yTQVZbGYr5H0zeBHIspphdEBu3g5LMpYjveTaRXU",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"spacie",
+						"fr"
 					],
-					"port": "8777",
 					"path": [
 						"api",
 						"message",
 						"update",
 						"627591ff4d9f15ae6f4ab9dc"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "Baerer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJoYW1pZCIsImlhdCI6MTY1MjEwNjExNSwiZXhwIjoxNjUyMTEzMzE1fQ.kR3yTQVZbGYr5H0zeBHIspphdEBu3g5LMpYjveTaRXU"
+						}
 					]
 				}
 			},
@@ -112,11 +127,12 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8777/api/message/",
+					"raw": "https://spacie.fr/api/message/",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"spacie",
+						"fr"
 					],
-					"port": "8777",
 					"path": [
 						"api",
 						"message",
@@ -132,11 +148,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8777/api/message/commentaire/627591ff4d9f15ae6f4ab9dc",
+					"raw": "https://spacie.fr/api/message/commentaire/627591ff4d9f15ae6f4ab9dc",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"spacie",
+						"fr"
 					],
-					"port": "8777",
 					"path": [
 						"api",
 						"message",
@@ -151,13 +168,20 @@
 			"name": "delete",
 			"request": {
 				"method": "DELETE",
-				"header": [],
+				"header": [
+					{
+						"key": "",
+						"value": "Baerer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJoYW1pZCIsImlhdCI6MTY1MjEwNjExNSwiZXhwIjoxNjUyMTEzMzE1fQ.kR3yTQVZbGYr5H0zeBHIspphdEBu3g5LMpYjveTaRXU",
+						"type": "text"
+					}
+				],
 				"url": {
-					"raw": "localhost:8777/api/message/627591ff4d9f15ae6f4ab9dc",
+					"raw": "https://spacie.fr/api/message/627591ff4d9f15ae6f4ab9dc",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"spacie",
+						"fr"
 					],
-					"port": "8777",
 					"path": [
 						"api",
 						"message",
@@ -177,7 +201,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n \"message\": \"je\",\n \"login\" : \"\"\n}",
+					"raw": "{\n \"message\": \"Bonjour\",\n \"login\" : \"\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -185,11 +209,12 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8777/api/message/recherche",
+					"raw": "https://spacie.fr/api/message/recherche",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"spacie",
+						"fr"
 					],
-					"port": "8777",
 					"path": [
 						"api",
 						"message",
@@ -217,11 +242,12 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8777/api/message/recherche/hashtags",
+					"raw": "https://spacie.fr/api/message/recherche/hashtags",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"spacie",
+						"fr"
 					],
-					"port": "8777",
 					"path": [
 						"api",
 						"message",
@@ -236,7 +262,13 @@
 			"name": "repost",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Baerer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJoYW1pZCIsImlhdCI6MTY1MjEwNjExNSwiZXhwIjoxNjUyMTEzMzE1fQ.kR3yTQVZbGYr5H0zeBHIspphdEBu3g5LMpYjveTaRXU",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n \"login\" : \"Fristorm\"\n}",
@@ -247,11 +279,12 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8777/api/message/repost/627591ff4d9f15ae6f4ab9dc",
+					"raw": "https://spacie.fr/api/message/repost/627591ff4d9f15ae6f4ab9dc",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"spacie",
+						"fr"
 					],
-					"port": "8777",
 					"path": [
 						"api",
 						"message",
@@ -264,12 +297,15 @@
 		},
 		{
 			"name": "star",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
-				"method": "GET",
-				"header": [],
+				"method": "POST",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Baerer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJoYW1pZCIsImlhdCI6MTY1MjEwNjExNSwiZXhwIjoxNjUyMTEzMzE1fQ.kR3yTQVZbGYr5H0zeBHIspphdEBu3g5LMpYjveTaRXU",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\"message_id\": \"627591ff4d9f15ae6f4ab9dc\",\"isLiked\" :\"false\"} ",
@@ -280,11 +316,12 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8777/api/message/star",
+					"raw": "https://spacie.fr/api/message/star",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"spacie",
+						"fr"
 					],
-					"port": "8777",
 					"path": [
 						"api",
 						"message",
