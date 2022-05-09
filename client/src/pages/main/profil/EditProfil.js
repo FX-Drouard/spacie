@@ -7,7 +7,7 @@ export default class EditProfil extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      image: this.props.user.photoProfil,
+      image: this.props.user.photo,
       nickName: this.props.user.nickName,
       bibliographie: this.props.user.biographie,
      
@@ -18,6 +18,7 @@ export default class EditProfil extends Component {
 
     this.confPassword = "";
     this.newPassword = "";
+    this.motDePasse = "";
   }
 
   componentWillReceiveProps(props) {
@@ -62,18 +63,35 @@ export default class EditProfil extends Component {
 
     axios
       .post("/api/user/edit", {
-        login: this.props.login,
+        login: this.props.user._id,
         nickName: this.state.nickName,
         bibliographie: this.state.bibliographie,
         photo: this.state.image,
         motDePasse: password,
+        ancienMotDePasse: this.motDePasse,
       },{
         headers: {
           authorization: "Bearer " + this.token,
         },
       })
       .then(() => {
-        this.props.refresh();
+        this.props.setPage(
+          <Profil
+            setBody={this.props.setBody}
+            setPage={this.props.setPage}
+            user={{
+              login: this.props._id,
+              nickName: this.state.nickName,
+              bibliographie: this.state.bibliographie,
+              photo: this.state.image,
+              amis : this.props.user.amis,
+              messages : this.props.user.messages,
+              email : this.props.user.email,
+              dateCreation : this.props.user.dateCreation,
+              dateNaissance : this.props.user.dateNaissance,
+            }}
+          />
+        );
       })
       .catch((err) => {
         this.setState({ messageErreur: err.message });
@@ -82,11 +100,9 @@ export default class EditProfil extends Component {
 
   supprimerCompte() {
     axios
-      .delete("/api/user/" + this.props.login, {login: this.props.login},{
-        headers: {
-          authorization: "Bearer " + this.token,
-        },
-      })
+      .delete("/api/user/" + this.props.login, {login: this.props.user_id, headers: {
+        authorization: "Bearer " + this.token,
+      },})
       .then((res) => {
         setToken({token : "",login : ""});
         this.props.setBody(

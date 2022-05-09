@@ -67,14 +67,29 @@
 
       async edit(req, res) {
         console.log("editApi")
-        const {login , nickName, password, biographie, photo} = req.body
-        user.update(login , nickName, password, biographie, photo).then((resp) => {
-          console.log("then edit")
-          res.status(200).send({message : resp})
-          console.log("fin edit")
-          
-          
-        }).catch(err => res.status(500).send({message : err}))
+        const {login , nickName, password, biographie, photo,ancienMotDePasse} = req.body
+        user.find(login).then(resp => {
+          if(crypto.
+            createHash("sha256").
+            update(ancienMotDePasse).
+            digest("hex") == resp.motDePasse
+          ){
+            user.update(login , nickName, password, biographie, photo).then((resp) => {
+              console.log("then edit")
+              res.status(200).send({message : resp})
+              console.log("fin edit")
+            }).catch(err => res.status(500).send({message : err}))
+            
+            return
+          }
+          res.status(401).send({message : "Mot de passe incorrect"})
+          return 
+        }).catch(err => {
+          console.log(err)
+          res.status(401).send({message : "login ou mot de passe incorrect"})
+          }
+        )
+      
       }
 
       async delete(req, res) {

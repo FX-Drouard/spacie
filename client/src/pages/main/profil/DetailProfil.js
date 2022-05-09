@@ -8,7 +8,7 @@ class DetailProfil extends Component {
   }
   componentWillReceiveProps(props) {
     this.props = props;
-    this.date = date.getDate(this.props.user.creationDate);
+    this.date = date.getDate(this.props.user.dateCreation);
     this.dateNaissance = date.getDate(this.props.user.dateNaissance);
   }
   render() {
@@ -17,7 +17,7 @@ class DetailProfil extends Component {
         <div className="info_ligne">
           <div className="info">
             <h3>Login</h3>
-            <p>{this.props.user.login}</p>
+            <p>{this.props.user._id}</p>
           </div>
 
           <div className="info">
@@ -43,7 +43,7 @@ class DetailProfil extends Component {
         <div className="info_ligne">
           <div className="info">
             <h3>email</h3>
-            <p className="breaker">{this.props.user.mail}</p>
+            <p className="breaker">{this.props.user.email}</p>
           </div>
           <div className="info">
             <h3>Biographie</h3>
