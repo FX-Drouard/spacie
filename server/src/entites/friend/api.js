@@ -1,7 +1,8 @@
 const friendsFile =  require("./modele");
 const notifFile = require("../notif/modele");
 const userFile = require("../user/modele");
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
+const { getLoginFromToken } = require("../../../tools/token");
 
 const friends = new friendsFile.Friends();
 const user = new userFile.User();
@@ -15,8 +16,8 @@ class Api {
   }
 
   async getFriendsConnected(req, res) {
-    const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
-    const login = decodedToken.userId;
+    
+    const login = getLoginFromToken(req);
     user.getFriends(login).then((resp) => {
       res.status(200).send({ users: resp })
     }).catch((err) => {
@@ -35,8 +36,7 @@ class Api {
 
   async addFriend(req, res) {
     const { login } = req.params
-    const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
-    const login_emeteur = decodedToken.userId;
+    const login_emeteur = getLoginFromToken(req);
     friends.addFriend(login_emeteur, login).then((resp) => {
       notif.addNotif(login,login_emeteur+" vous as ajouté en amis",resp)
       .then(() => {
@@ -49,8 +49,8 @@ class Api {
 
   async delFriend(req, res) {
     const { login } = req.params;
-    const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
-    const login_emeteur = decodedToken.userId;
+
+    const login_emeteur = getLoginFromToken(req);
     user.removeFriends(login_emeteur, login).then(() => {
       res.status(200)
     })
