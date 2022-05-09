@@ -109,9 +109,7 @@
           console.log("then get")
           res.status(200).send(resp)
           console.log("fin get "+resp._id)
-          
-        }
-        ).catch(err => res.status(500).send({message :  "erreur get"}))
+        }).catch(err => res.status(200).send([]))
       }
 
       async getInfos(req, res) {
