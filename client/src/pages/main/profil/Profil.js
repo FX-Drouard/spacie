@@ -17,7 +17,7 @@ class Profil extends Component {
     this.token = getToken()
     this.state = {
       container: null,
-      buttonName: "Amis",
+      buttonName: "Messages",
       userConnect: null,
       user : this.props.user,
       isFriend : false,
