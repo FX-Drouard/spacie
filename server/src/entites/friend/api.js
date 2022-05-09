@@ -19,9 +19,9 @@ class Api {
     
     const login = getLoginFromToken(req);
     user.getFriends(login).then((resp) => {
-      res.status(200).send({ users: resp })
+      res.status(200).send( resp )
     }).catch((err) => {
-      res.status(402).send({ message: err })
+      res.status(404).send( err )
     })
   }
 
@@ -31,7 +31,7 @@ class Api {
     user.getFriends(login).then((resp) => {
       res.status(200).send(resp )
     }).catch((err) => {
-      res.status(402).send({ message: err })
+      res.status(402).send( err )
     })
   }
 
