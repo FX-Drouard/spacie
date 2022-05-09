@@ -127,7 +127,7 @@ class Message {
       .then(res => { 
           this.dbUser.find(login).then(res => {
             this.dbUser.update(login,{
-              messages : res.messages.filter(item => item !== message_id)
+              messages : res.messages.filter(item => item != new ObjectId(message_id))
             })
             .then(() => resolve("le message est supprime"))
             .catch(err => reject(err))
