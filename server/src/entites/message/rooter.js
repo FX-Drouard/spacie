@@ -20,8 +20,9 @@ function messageRoute(){
                 .delete("/:message_id",auth,api.delete)// SupprimerButton
                 .get("/recherche", api.get)//ResultatReacherche
                 .get("/recherche/hashtags", api.getHashtags)//ResultatReacherche
-
-            console.log("message")
+                .get("/recherche/:message_id", api.getMessageById)//Profil
+            
+                console.log("message")
             resolve(rooter)
         }).catch(err => {
             console.log(err)

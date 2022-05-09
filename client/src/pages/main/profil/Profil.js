@@ -96,7 +96,7 @@ class Profil extends Component {
     if (this.state.buttonName == "Messages") {
         for (let idMessage of this.state.user.messages) { 
           axios
-          .get("/api/message/" + idMessage)
+          .get("/api/message/recherche/" + idMessage)
           .then((res) => {
             this.state.messages.push(res)
             this.setState({

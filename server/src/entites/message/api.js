@@ -56,6 +56,14 @@ class Api {
       .catch((err) => res.status(500).send(err))
     }
 
+    async getMessageById(req, res) {
+      const message_id = req.params.message_id
+      message.getMessageById(message_id)
+      .then((resp) => res.status(200).send(resp))
+      .catch((err) => res.status(500).send(err))
+    }
+
+
     async getHashtags(req, res) {
      
       const login = req.params.login
