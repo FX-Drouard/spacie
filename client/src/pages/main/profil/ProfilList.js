@@ -11,7 +11,6 @@ class ProfilList extends Component {
         {this.props.resultat.map((e, index) => (
           <ProfilInfo
             key={index}
-            serveur={this.props.serveur}
             setPage={this.props.setPage}
             setBody={this.props.setBody}
             user={e}

@@ -22,7 +22,7 @@ class ResultatReacherche extends Component {
             container: (
               <ProfilList
                 setPage={this.props.setPage}
-                resultat={[res]}
+                resultat={[res.data]}
                 setBody={this.props.setBody}
               />
             ),
@@ -44,11 +44,12 @@ class ResultatReacherche extends Component {
     axios
       .get(root ,  {message :this.props.recherche,login : login} )
       .then((res) => {
+        console.log(res.data)
         this.setState({
           container: (
             <MessageList
               setPage={this.props.setPage}
-              resultat={res}
+              resultat={res.data}
               setBody={this.props.setBody}
             />
           ),
