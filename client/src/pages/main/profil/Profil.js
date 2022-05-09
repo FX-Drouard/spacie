@@ -23,6 +23,8 @@ class Profil extends Component {
       isFriend : false,
       messages : [],
     };
+    this.date = date.getDate(this.state.user.creationDate);
+
 
   }
 
@@ -48,7 +50,6 @@ class Profil extends Component {
       }
       this.setState({isFriend : isFriend})
       }
-    this.date = date.getDate(this.state.user.creationDate);
     this.setContainer();  
   }
 
@@ -128,7 +129,7 @@ class Profil extends Component {
           <span className="photoProfil">
             <img
               id="pdp"
-              src={this.state.user.photoProfil}
+              src={this.state.user.photo}
               alt="Photo de Profil"
             />
           </span>
@@ -136,11 +137,11 @@ class Profil extends Component {
             <div className="info_ligne">
               <div id="loginProfil" className="info">
                 <h3>Login</h3>
-                <p className="breaker">{this.state.user.login}</p>
+                <p className="breaker">{this.state.user._id}</p>
               </div>
               <div id="emailProfil" className="info">
                 <h3>email</h3>
-                <p className="breaker">{this.state.user.mail}</p>
+                <p className="breaker">{this.state.user.email}</p>
               </div>
               <div id="loginProfil" className="info">
                 <h3>Nick name</h3>
@@ -154,20 +155,20 @@ class Profil extends Component {
               </div>
             </div>
             <div id="button_profil">
-              {this.state.user.login == this.state.userConnect ? (
+              {this.state.user._id == this.state.userConnect ? (
                 <div className="buttons" onClick={() => this.disconnect()}>
                   Déconnection
                 </div>
               ) : (
                 testToken(this.token) &&
                 (this.state.isFriend? (
-                  <SupprimerAmiButton user={this.props.user} />
+                  <SupprimerAmiButton user={this.state.user._id} />
                 ) : (
-                  <AjouterButton user={this.props.user} />
+                  <AjouterButton user={this.state.user._id} />
                 ))
               )}
 
-              {this.state.user.login != this.state.userConnect && (
+              {this.state.user._id != this.state.userConnect && (
                 <div
                   className="buttons"
                   onClick={() => {
@@ -186,7 +187,7 @@ class Profil extends Component {
                 contentStyle={{ padding: "10px", width: "500px" }}
               >
                 {(close) => (
-                  <DetailProfil user={this.props.user} close={close} />
+                  <DetailProfil user={this.state.user} close={close} />
                 )}
               </Popup>
               {this.state.user.nickName == this.state.userConnect && (
@@ -199,7 +200,7 @@ class Profil extends Component {
                 >
                   {(close) => (
                     <EditProfil
-                      user={this.props.user}
+                      user={this.state.user}
                       close={close}
                       setBody={this.props.setBody}
                     />
