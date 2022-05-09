@@ -106,9 +106,9 @@
       async get(req, res) {
         const {login} = req.params
         user.find(login).then((resp) => {
-          console.log("then get")
+          console.log("then get "+login)
           res.status(200).send(resp)
-          console.log("fin get "+resp._id)
+          console.log("fin get ")
         }).catch(err => res.status(200).send([]))
       }
 

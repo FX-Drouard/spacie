@@ -8,11 +8,9 @@ const SupprimerAmiButton = (props) => {
       className="buttons"
       onClick={() => {
         axios.delete("/api/friend/" + props.login,
-        {login : getLoginFromToken()},{
-          headers: {
-            authorization: "Bearer " + getToken(),
-          },
-        }
+        {login : getLoginFromToken(),headers: {
+          authorization: "Bearer " + getToken(),
+        },}
         ).catch((err) => alert(err));
       }}
     >
