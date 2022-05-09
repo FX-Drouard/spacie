@@ -13,10 +13,10 @@ class Suggestion extends Component {
   componentWillMount() {
     if (testToken(this.token))
       axios
-        .get("/api/user/info/all", {login : getLoginFromToken()},{
+        .get("/api/user/info/all", {login : getLoginFromToken(), 
           headers: {
-            authorization: "Bearer " + this.token,
-          },
+          authorization: "Bearer " + this.token,
+          }
         })
         .then((res) => {
           this.setState({ resultat: res.data.slice(0, 5) });

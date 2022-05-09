@@ -14,7 +14,7 @@ class UserInfo extends Component {
       <Profil
         setBody={this.props.setBody}
         setPage={this.setPage}
-        user={this.props.user.login}
+        user={this.props.user}
       />
     );
   }

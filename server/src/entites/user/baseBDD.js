@@ -14,6 +14,7 @@
           email: email,
           dateNaissance: dateNaissance,
           dateCreation: dateCreation,
+          biographie: "",
           amis : [],
           messages : []
         })

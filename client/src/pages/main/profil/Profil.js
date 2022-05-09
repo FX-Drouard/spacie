@@ -86,7 +86,7 @@ class Profil extends Component {
       this.setState({
         container: (
           <ListeAmis
-            user={this.state.user}
+            user={this.state.amis}
             setPage={this.props.setPage}
           />
         ),
@@ -168,7 +168,7 @@ class Profil extends Component {
                 ))
               )}
 
-              {this.state.user._id != this.state.userConnect && (
+             
                 <div
                   className="buttons"
                   onClick={() => {
@@ -177,7 +177,7 @@ class Profil extends Component {
                 >
                   {this.state.buttonName}
                 </div>
-              )}
+              
 
               <Popup
                 trigger={<div className="buttons">Details</div>}
