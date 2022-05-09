@@ -66,10 +66,10 @@ class Api {
     }
 
     async star(req, res) {
-      const login = token.getLoginFromToken()
+      const login = token.getLoginFromToken(req)
       const {message_id,isLiked} = req.body
       message.getMessageById(message_id).then((message) => {
-        notif.addNotif(message.sender,token.getLoginFromToken() + ' a star votre message'  )
+        notif.addNotif(message.sender,token.getLoginFromToken(req) + ' a star votre message'  )
         .catch((err) => {res.status(503).send({message: err})})
       })     
       message.star(login, message_id,isLiked)
@@ -80,7 +80,7 @@ class Api {
     async newCommentaire(req, res) {
       const { messageText , image, priv } = req.body
       const {message_id} = req.params
-      const login = token.getLoginFromToken()
+      const login = token.getLoginFromToken(req)
      
       message.getMessageById(message_id).then((message) => {
        
@@ -96,7 +96,7 @@ class Api {
     async repost(req, res) {
       const {message_id} = req.params
       // const login = req.body.login
-      const login = token.getLoginFromToken()
+      const login = token.getLoginFromToken(req)
       message.getMessageById(message_id).then((message) => {
         notif.addNotif(message.sender,login+ ' a reposte votre message'  )
         .catch((err) => {res.status(503).send({message: err})})
