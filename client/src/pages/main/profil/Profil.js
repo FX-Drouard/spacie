@@ -40,6 +40,19 @@ class Profil extends Component {
     this.props = props;
   }
 
+  refresh() {
+    axios
+    .get("/api/user/" + this.props.login)
+    .then((res) => {
+      console.log("reponse Profil: "+res.data._id)
+      this.setState({user : res.data})
+      console.log("un message: "+this.state.user)
+    })
+    .catch((err) => {
+      alert(err);
+    });
+  }
+
   componentWillMount() {
     
     if (testToken(this.token)){
@@ -71,8 +84,8 @@ class Profil extends Component {
   }
 
   setContainer() {
-    if (this.state.user == null) {
-      return 
+    while (this.state.user == null) {
+      this.refresh()
     }
     if (this.buttonName == "Amis") {
       console.log(this.state.user.amis)
