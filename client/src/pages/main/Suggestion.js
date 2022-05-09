@@ -40,14 +40,17 @@ class Suggestion extends Component {
             className="buttons"
             onClick={() => {
               axios
-                .get("/api/user")
-                .then((res) => {
-                  this.setState({ resultat: res.data.slice(0, 5) });
-                })
-                .catch((err) => {
-                  this.setState({ resultat: [] });
-                
-                });
+              .get("/api/user/info/all", {login : getLoginFromToken(), 
+                headers: {
+                authorization: "Bearer " + this.token,
+                }
+              })
+              .then((res) => {
+                this.setState({ resultat: res.data.slice(0, 5) });
+              })
+              .catch((err) => {
+                this.setState({ resultat: [] });
+              });
             }}
           >
             Suggerer
