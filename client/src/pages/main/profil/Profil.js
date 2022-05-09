@@ -116,7 +116,7 @@ class Profil extends Component {
                 resultat={this.state.messages}
               />
             ),
-            buttonName: "Message",
+            buttonName: "Amis",
           });
        
     }
