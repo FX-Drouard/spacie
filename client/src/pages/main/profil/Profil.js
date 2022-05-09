@@ -69,7 +69,7 @@ class Profil extends Component {
   }
 
   setContainer() {
-    this.setState({messages : []});
+    
     if (this.state.buttonName == "Amis") {
       console.log(this.state.user.amis)
       axios.get("/api/friend/"+ this.state.user._id).then((res) => {
@@ -98,13 +98,14 @@ class Profil extends Component {
     }
 
     if (this.state.buttonName == "Messages") {
+        let messages = []
         for (let idMessage of this.state.user.messages) { 
           axios
           .get("/api/message/recherche/" + idMessage)
           .then((res) => {
-            this.state.messages.push(res.data)
+            messages.push(res.data)
             this.setState({
-              messages : this.state.messages
+              messages : messages
             });
           })
           .catch((err) => alert(err));
