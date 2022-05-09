@@ -75,33 +75,31 @@ class Api {
           login_recepteur,
           login_emeteur+" vous as ajouté en amis")
         .then(() => {
-          notif.getNotifications(login_recepteur,demande)
+          friends.removeFriend(demande).then(() => {
+            notif.getNotifications(login_recepteur,demande)
             .then((resp) => {
               resp.forEach(element => {
                 notif.deleteNotification(element._id)
                 .catch(() => {
-                  res.status(500).send({ message: "probleme dans notifications" })
+                  throw new Error("probleme dans notifications")
                 })
               });
-            }).catch(() => {
-              res.status(500).send({ message: "probleme dans notifications" })
+              res.sendStatus(200)
+            }).catch((err) => {
+              user.removeFriend(login_emeteur, login_recepteur).then(() => 
+              {res.status(503).send({message: err})})
             })
+          }).catch(() => {
+            res.status(500).send({ message: "probleme dans notifications" })
+          })
         })
         .catch((err) => {
           res.status(503).send({message: err})
         })
-        friends.removeFriend(demande).then(() => {
-          res.status(200).send({ message: "Validé" })
-        }).catch((err) => {
-          user.removeFriend(login_emeteur, login_recepteur)
-            .catch((err) => {res.status(503).send({message: err})}); 
-          res.status(402).send({ message: err })
-        })
-          
+    
       }).catch((err) => {
           user.removeFriend(login_emeteur, login_recepteur)
-            .catch((err) => {res.status(503).send({message: err})}); 
-          res.status(402).send({ message: err })
+            .then((err) => {res.status(503).send({message: err})}); 
       })
     }).catch((err) => {
       res.status(410).send({ message: err })
