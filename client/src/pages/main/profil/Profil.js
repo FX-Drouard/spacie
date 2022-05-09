@@ -55,11 +55,9 @@ class Profil extends Component {
 
   disconnect() {
     axios
-      .delete("/api/user/signout", {login : this.state.userConnect},{
-        headers: {
-          authorization: "Bearer " + this.token,
-        },
-      })
+      .delete("/api/user/signout", {login : this.state.userConnect,headers: {
+        authorization: "Bearer " + this.token,
+      },})
       .then((res) => {
         setToken(res.data);
         this.props.setBody(<LoginPage setBody={this.props.setBody} />);
@@ -190,7 +188,7 @@ class Profil extends Component {
                   <DetailProfil user={this.state.user} close={close} />
                 )}
               </Popup>
-              {this.state.user.nickName == this.state.userConnect && (
+              {this.state.user._id == this.state.userConnect && (
                 <Popup
                   trigger={<div className="buttons display"> Modifier</div>}
                   modal
