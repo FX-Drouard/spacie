@@ -99,7 +99,7 @@ class Profil extends Component {
           axios
           .get("/api/message/recherche/" + idMessage)
           .then((res) => {
-            console.log(res.data)
+            console.log(this.state.messages)
             this.state.messages.push(res.data)
             this.setState({
               messages : this.state.messages
@@ -211,8 +211,10 @@ class Profil extends Component {
               )}
             </div>
           </div>
+          
         </section>
         {this.state.container}
+        {console.log(this.state.container)}
       </div>
     );
   }

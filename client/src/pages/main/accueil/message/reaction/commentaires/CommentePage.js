@@ -5,14 +5,14 @@ import Commentaires from "./Commantaires";
 class CommentePage extends Component {
   constructor(props) {
     super(props);
-
+    this.state={resultat: []};
     this.refresh = this.refresh.bind(this);
     this.refresh()
   }
   refresh() {
     axios
-      .get("/api/message/commentaire/" + this.props.message.id)
-      .then((res) => this.setState({ resultat: res }))
+      .get("/api/message/commentaire/" + this.props.message._id)
+      .then((res) => this.setState({ resultat: res.data }))
       .catch((err) => this.setState({ resultat: [] }));
   }
   render() {
@@ -21,7 +21,7 @@ class CommentePage extends Component {
         <NewMessage
           setPage={this.setPage}
           erreur={this.props.erreur}
-          messageID={this.props.message.id}
+          messageID={this.props.message._id}
           refresh={this.refresh}
         />
         <Commentaires

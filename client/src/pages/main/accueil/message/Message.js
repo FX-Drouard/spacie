@@ -121,7 +121,7 @@ class Message extends Component {
               <SupprimerButton
                 setBody={this.props.setBody}
                 setPage={this.props.setPage}
-                messageID={this.props.message.id}
+                messageID={this.props.message._id}
                 setMessageResult={this.setMessageResult}
               />
             ) : !this.props.comment ? (
