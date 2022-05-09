@@ -121,10 +121,23 @@ class Message {
     )
   }
 
-  delete(message_id) {
+  delete(message_id,login) {
     return new Promise((resolve, reject) => {
       this.dbMessage.delete(message_id)
-      .then(res => resolve(res))
+      .then(res => { 
+          this.dbUser.find(login).then(res => {
+            this.dbUser.update(login,{
+              messages : res.messages.filter(item => item !== message_id)
+            })
+            .then(() => resolve("le message est supprime"))
+            .catch(err => reject(err))
+          }).catch(err => {
+              reject(err)
+          }
+        )
+        
+        resolve(res)
+      })
       .catch(err => reject(err))
     })
   }

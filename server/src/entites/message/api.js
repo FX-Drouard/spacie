@@ -87,6 +87,7 @@ class Api {
         })
         .catch((err) => {res.status(515).send({message: err})})
       }
+
       )    
     }
 
@@ -99,9 +100,9 @@ class Api {
         message.newMessage(login, messageText, image,priv, message_id).
         then(resp => 
           {
-            notif.addNotif(msg.sender, login + ' a commente votre message', null )
+            notif.addNotif(msg.sender, login + ' a commente votre message'  )
             .then(() => res.status(200).send(resp))
-          }
+          .catch((err) => {res.status(503).send({message: err})})}
         ).catch(err => res.status(404).send(err))
         
       })     
@@ -124,7 +125,8 @@ class Api {
    
     async delete(req, res) {
       const message_id = req.params.message_id
-      message.delete(message_id)
+      const login = token.getLoginFromToken(req)
+      message.delete(message_id,login)
       .then((resp) => res.status(200).send(resp))
       .catch((err) => res.status(500).send(err))
     }
