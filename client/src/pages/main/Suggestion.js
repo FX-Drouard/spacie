@@ -19,7 +19,7 @@ class Suggestion extends Component {
           }
         })
         .then((res) => {
-          this.setState({ resultat: res.data.slice(0, 5) });
+          this.setState({ resultat: res.data.length > 5 ? res.data.slice(0,5) : res.data });
         })
         .catch((err) => {
           this.setState({ resultat: [] });
@@ -30,7 +30,6 @@ class Suggestion extends Component {
       return (
         <div id="suggestion_profil">
           <ProfilList
-            serveur={this.props.serveur}
             setPage={this.props.setPage}
             setBody={this.props.setBody}
             resultat={this.state.resultat}
@@ -46,7 +45,7 @@ class Suggestion extends Component {
                 }
               })
               .then((res) => {
-                this.setState({ resultat: res.data.slice(0, 5) });
+                this.setState({ resultat: res.data.length > 5 ? res.data.slice(0,5) : res.data });
               })
               .catch((err) => {
                 this.setState({ resultat: [] });

@@ -24,8 +24,6 @@ class Profil extends Component {
       messages : [],
     };
     this.date = date.getDate(this.state.user.dateCreation);
-
-
   }
 
   componentWillReceiveProps(props) {
@@ -97,7 +95,6 @@ class Profil extends Component {
           axios
           .get("/api/message/recherche/" + idMessage)
           .then((res) => {
-            console.log(this.state.messages)
             this.state.messages.push(res.data)
             this.setState({
               messages : this.state.messages
@@ -106,16 +103,16 @@ class Profil extends Component {
           .catch((err) => alert(err));
         }
       
-          this.setState({
-            container: (
-              <MessageList
-                setPage={this.props.setPage}
-                setBody={this.props.setBody}
-                resultat={this.state.messages}
-              />
-            ),
-            buttonName: "Amis",
-          });
+        this.setState({
+          container: (
+            <MessageList
+              setPage={this.props.setPage}
+              setBody={this.props.setBody}
+              resultat={this.state.messages}
+            />
+          ),
+          buttonName: "Amis",
+        });
        
     }
   }

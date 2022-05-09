@@ -116,7 +116,7 @@
         console.log("getInfosApi")
         user.getAll().then((resp) => {
           console.log("then getInfos")
-          res.status(200).send({users : resp})
+          res.status(200).send(resp)
           console.log("fin getInfos")
           
         }).catch(err => res.status(500).send(err))

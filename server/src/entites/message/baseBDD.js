@@ -80,7 +80,6 @@ class MessageBase {
   }
 
   getMessageById(message_id){
-    console.log("message_id",message_id)
     return new Promise((resolve, reject) => {
       this.db
       .findOne( {_id: new ObjectId(message_id)})
