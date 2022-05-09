@@ -69,7 +69,7 @@ class Profil extends Component {
   }
 
   setContainer() {
-
+    this.setState({messages : []});
     if (this.state.buttonName == "Amis") {
       console.log(this.state.user.amis)
       axios.get("/api/friend/"+ this.state.user._id).then((res) => {
