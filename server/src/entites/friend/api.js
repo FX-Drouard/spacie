@@ -37,8 +37,12 @@ class Api {
   async addFriend(req, res) {
     const { login } = req.params
     const login_emeteur = getLoginFromToken(req);
+    if(login == login_emeteur) {
+      res.status(401).send({ message: "Vous ne pouvez pas vous ajouter vous-même" })
+      return
+    } 
     friends.addFriend(login_emeteur, login).then((resp) => {
-      notif.addNotif(login,login_emeteur+" vous as ajouté en amis",resp)
+      notif.addNotif(login,login_emeteur+" vous as ajouté en amis",resp.insertedId)
       .then(() => {
           res.status(200).send({ message: "Validé" })
       }).catch((err) => {
