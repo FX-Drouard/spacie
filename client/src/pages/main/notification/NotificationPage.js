@@ -14,12 +14,10 @@ export default class NotificationPage extends Component {
   }
   componentWillMount() {
     axios
-      .get("/api/notification/",{login : getLoginFromToken()},
-      {
-        headers: {
-          authorization: "Bearer " + getToken(),
-        },
-      })
+      .get("/api/notification/",{login : getLoginFromToken(),headers: {
+        authorization: "Bearer " + getToken(),
+      }},
+      )
       .then((res) => {
         this.setState({ resultat: res.data });
       })

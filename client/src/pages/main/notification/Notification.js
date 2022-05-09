@@ -28,15 +28,15 @@ export default class Notification extends Component {
     return (
         <div className="notification">
           <UserInfoDate
-            user={this.state.user}
+            user={this.props.notification.notifier}
             setPage={this.props.setPage}
             date={this.props.notification.date}
           />
-          <div className="message_textuel">{this.props.notification.text}</div>
-          {this.props.notification.demande && (
+          <div className="message_textuel">{this.props.notification.message}</div>
+          {this.props.notification.demande_id && (
             <div className="notification_button">
               <div className="buttons" onClick={()=>{
-                axios.delete("/api/friend/demande/" + this.props.notification.demande,
+                axios.delete("/api/friend/demande/" + this.props.notification.demande_id,
                 {login : getLoginFromToken()},{
                   headers: {
                     authorization: "Bearer " + getToken(),
@@ -47,7 +47,7 @@ export default class Notification extends Component {
                 Annuler
               </div>
               <div className="buttons" onClick={()=>{
-                axios.post("/api/friend/accepte/" + this.props.notification.demande,
+                axios.post("/api/friend/accepte/" + this.props.notification.demande_id,
                 {login : getLoginFromToken()},{
                   headers: {
                     authorization: "Bearer " + getToken(),
