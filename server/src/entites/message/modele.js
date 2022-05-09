@@ -1,6 +1,7 @@
 const  messageBase = require("./baseBDD");
 const userBase = require("../user/baseBDD")
-const {getCollection} = require("../../../connectionMongoDB")
+const {getCollection} = require("../../../connectionMongoDB");
+const { ObjectId } = require("mongodb");
 class Message {
   constructor() {
   }
@@ -52,7 +53,7 @@ class Message {
 
   update(message_id, message, image, priv){
     return new Promise((resolve, reject) => {
-      const doc = { _id: message_id };
+      const doc = { _id: new ObjectId(message_id) };
       if (message) doc['message'] = message;
       if (image) doc['image'] = image;
       if (priv) doc['priv'] = priv;

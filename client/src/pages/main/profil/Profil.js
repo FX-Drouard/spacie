@@ -214,7 +214,6 @@ class Profil extends Component {
           
         </section>
         {this.state.container}
-        {console.log(this.state.container)}
       </div>
     );
   }

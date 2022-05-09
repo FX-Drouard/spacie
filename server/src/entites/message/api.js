@@ -97,8 +97,9 @@ class Api {
       message.getMessageById(message_id).then((msg) => {
         message.newMessage(login, messageText, image,priv, message_id).
         then(resp => 
-          {res.status(200).send(resp);
-            notif.addNotif(msg.sender, login + ' a commente votre message'  ).then(() => res.status(200).send(resp))
+          {
+            notif.addNotif(msg.sender, login + ' a commente votre message'  )
+            .then(() => res.status(200).send(resp))
           .catch((err) => {res.status(503).send({message: err})})}
         ).catch(err => res.status(404).send(err))
         
