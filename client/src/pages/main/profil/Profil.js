@@ -69,7 +69,7 @@ class Profil extends Component {
 
   setContainer() {
 
-    if (this.buttonName == "Amis") {
+    if (this.state.buttonName == "Amis") {
       console.log(this.state.user.amis)
       for (let idAmis in this.state.user.amis) { 
         axios
@@ -93,7 +93,7 @@ class Profil extends Component {
         buttonName: "Messages",
       });
     }
-    if (this.buttonName == "Messages") {
+    if (this.state.buttonName == "Messages") {
         for (let idMessage in this.state.user.messages) { 
           axios
           .get("/api/message/" + idMessage)
