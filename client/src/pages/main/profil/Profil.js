@@ -23,7 +23,7 @@ class Profil extends Component {
       isFriend : false,
       messages : [],
     };
-    this.date = date.getDate(this.state.user.creationDate);
+    this.date = date.getDate(this.state.user.dateCreation);
 
 
   }
@@ -32,7 +32,7 @@ class Profil extends Component {
     this.props = props;
   }
 
-  componentWillMount() {
+  componentDidMount() {
     
     if (testToken(this.token)){
      
