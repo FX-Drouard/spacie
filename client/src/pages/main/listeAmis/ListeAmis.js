@@ -9,6 +9,7 @@ const ListeAmis = (props) => {
           key={index}
           user={user}
           setPage={props.setPage}
+          refresh={props.refresh}
         />
       ))}
     </div>

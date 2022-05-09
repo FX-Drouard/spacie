@@ -23,6 +23,7 @@ class Profil extends Component {
       isFriend : false,
       messages : [],
     };
+    this.refresh = this.refresh.bind(this);
     this.date = date.getDate(this.state.user.dateCreation);
   }
 
@@ -49,6 +50,10 @@ class Profil extends Component {
     this.setContainer();  
   }
 
+  refresh() {
+    this.setContainer();
+  }
+
   disconnect() {
     axios
       .delete("/api/user/signout", {login : this.state.userConnect,headers: {
@@ -73,6 +78,7 @@ class Profil extends Component {
           <ListeAmis
             users={res.data}
             setPage={this.props.setPage}
+            refresh={this.refresh}
           />
         ),
         buttonName: "Messages",
@@ -83,6 +89,7 @@ class Profil extends Component {
         <ListeAmis
           user={[]}
           setPage={this.props.setPage}
+          refresh={this.refresh}
         />
       ),
       buttonName: "Messages",
@@ -103,16 +110,18 @@ class Profil extends Component {
           .catch((err) => alert(err));
         }
       
-        this.setState({
-          container: (
-            <MessageList
-              setPage={this.props.setPage}
-              setBody={this.props.setBody}
-              resultat={this.state.messages}
-            />
-          ),
-          buttonName: "Amis",
-        });
+
+          this.setState({
+            container: (
+              <MessageList
+                setPage={this.props.setPage}
+                setBody={this.props.setBody}
+                resultat={this.state.messages}
+                refresh={this.refresh}
+              />
+            ),
+            buttonName: "Amis",
+          });
        
     }
   }

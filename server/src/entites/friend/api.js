@@ -56,7 +56,7 @@ class Api {
     const { login } = req.params;
 
     const login_emeteur = getLoginFromToken(req);
-    user.removeFriends(login_emeteur, login).then(() => {
+    user.removeFriend(login_emeteur, login).then(() => {
       res.status(200)
     })
     .catch((err) => {res.status(503).send({message: err})}); 

@@ -11,7 +11,7 @@ const SupprimerAmiButton = (props) => {
         {login : getLoginFromToken(),headers: {
           authorization: "Bearer " + getToken(),
         },}
-        ).catch((err) => alert(err));
+        ).then(() => props.refresh()).catch((err) => alert(err));
       }}
     >
       Bloquer

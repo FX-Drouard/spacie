@@ -16,7 +16,7 @@ export default class Ami extends Component {
 
   componentWillMount() {
     axios
-    .get("/api/user/" + getLoginFromToken())
+    .get("/api/user/" + this.props.user)
     .then((res) => {
       this.setState({user : res.data})
     })
@@ -31,7 +31,7 @@ export default class Ami extends Component {
       <div className="ami">
       <UserInfo user={this.state.user} setPage={this.props.setPage} />
       <div className="ami_button">
-        <SupprimerAmiButton login={this.props.user} />
+        <SupprimerAmiButton login={this.props.user} refresh={this.props.refresh} />
       </div>
     </div>
     )
