@@ -5,10 +5,7 @@ class FriendsBase {
 
   create(login1, login2) {
     return new Promise((resolve, reject) => {
-      this.db.findOne({ emeteur: login1, recepteur: login2 })
-      .then(() => {
-        reject("Cette demande est deja presente");
-      });
+      
       this.db
         .insertOne({
           emeteur: login1,
