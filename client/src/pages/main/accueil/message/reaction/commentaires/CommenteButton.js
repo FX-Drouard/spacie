@@ -21,7 +21,7 @@ class CommenteButton extends Component {
       this.visible ? (
         <CommentePage
           setBody={this.props.setBody}
-          serveur={this.props.serveur}
+          setPage={this.props.setPage}
           message={this.props.message}
         />
       ) : (

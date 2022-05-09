@@ -16,7 +16,6 @@ class Commentaires extends Component {
             key={key}
             comment={true}
             setBody={this.props.setBody}
-            serveur={this.props.serveur}
             setPage={this.setPage}
             message={e}
           />
