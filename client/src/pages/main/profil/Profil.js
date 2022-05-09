@@ -19,38 +19,15 @@ class Profil extends Component {
       container: null,
       buttonName: "Amis",
       userConnect: null,
-      user : null,
+      user : this.props.user,
       isFriend : false,
       messages : [],
     };
 
-    axios
-    .get("/api/user/" + this.props.login)
-    .then((res) => {
-      console.log("reponse Profil: "+res.data._id)
-      this.state.user = res.data
-      console.log("un message: "+this.state.user)
-    })
-    .catch((err) => {
-      alert(err);
-    });
   }
 
   componentWillReceiveProps(props) {
     this.props = props;
-  }
-
-  refresh() {
-    axios
-    .get("/api/user/" + this.props.login)
-    .then((res) => {
-      console.log("reponse Profil: "+res.data._id)
-      this.setState({user : res.data})
-      console.log("un message: "+this.state.user)
-    })
-    .catch((err) => {
-      alert(err);
-    });
   }
 
   componentWillMount() {
@@ -60,13 +37,21 @@ class Profil extends Component {
       this.setState({userConnect: getLoginFromToken()});
 
     }
-    console.log("login profil: "+this.props.login)
-    
-    
+   
+    if (testToken(this.token)){
+      console.log(this.state.user)
+      let isFriend = false
+      for (let ami in this.state.user.amis) {
+        if (ami == this.state.userConnect) {
+          isFriend = true
+        }
+      }
+      this.setState({isFriend : isFriend})
+      }
+    this.date = date.getDate(this.state.user.creationDate);
     this.setContainer();  
   }
 
-  
   disconnect() {
     axios
       .delete("/api/user/signout", {login : this.state.userConnect},{
@@ -84,9 +69,7 @@ class Profil extends Component {
   }
 
   setContainer() {
-    while (this.state.user == null) {
-      this.refresh()
-    }
+
     if (this.buttonName == "Amis") {
       console.log(this.state.user.amis)
       for (let idAmis in this.state.user.amis) { 
@@ -139,20 +122,6 @@ class Profil extends Component {
   }
 
   render() {
-    if (this.state.user == null) {
-      return <div>Loading...</div>;
-    }
-    if (testToken(this.token)){
-      console.log(this.state.user)
-      let isFriend = false
-      for (let ami in this.state.user.amis) {
-        if (ami == this.state.userConnect) {
-          isFriend = true
-        }
-      }
-      this.setState({isFriend : isFriend})
-      }
-    this.date = date.getDate(this.state.user.creationDate);
     return (
       <div className="millieu">
         <section id="info_user">
