@@ -3,7 +3,6 @@ import React from "react";
 import { getLoginFromToken, getToken } from "./token";
 
 const SupprimerAmiButton = (props) => {
-  console.log("KIKIKI "+props.login)
   return (
     <div
       className="buttons"
@@ -12,7 +11,7 @@ const SupprimerAmiButton = (props) => {
         {login : getLoginFromToken(),headers: {
           authorization: "Bearer " + getToken(),
         },}
-        ).catch((err) => alert(err));
+        ).then(() => props.refresh()).catch((err) => alert(err));
       }}
     >
       Supprimer
