@@ -79,11 +79,17 @@
   }
 
   addFriend(login1, login2) {
-    this.update(login1, { amis: [...this.getInfo(login1).amis, login2] });
+    console.log("login2:  ", login2)
+    return this.getInfo(login1).then((res) => {
+      res.amis.push(login2)
+      this.update(login1, { amis: res.amis})
+    })
   }
   
   removeFriend(login1, login2) {
-    this.update(login1, { amis: this.getInfo(login1).amis.filter((friend) => friend !== login2) });
+    this.getInfo(login1).then((res) => {
+      this.update(login1, { amis: res.amis.filter((friend) => friend !== login2) })
+    })
   }
   
   getFriend(login) {

@@ -91,11 +91,10 @@ const {getCollection} = require("../../../connectionMongoDB")
   removeFriend(login1, login2) {
     return new Promise((resolve, reject) => {
       this.user.removeFriend(login1, login2)
-      .then(() => {
+      
         this.user.removeFriend(login2, login1)
-          .then((res) => resolve(res))
-          .catch((err) => reject(err));
-      }).catch((err) => reject(err));
+        resolve()
+          
     });
   }
   getFriends(login){
