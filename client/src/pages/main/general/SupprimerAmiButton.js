@@ -3,6 +3,7 @@ import React from "react";
 import { getLoginFromToken, getToken } from "./token";
 
 const SupprimerAmiButton = (props) => {
+  console.log("KIKIKI "+props.login)
   return (
     <div
       className="buttons"

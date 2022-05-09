@@ -18,7 +18,7 @@ class FriendsBase {
 
   find(id) {
     return new Promise((resolve, reject) => {
-      this.db.findOne({ _id: id })
+      this.db.findOne({ _id: new ObjectId(id) })
       .then((res) => {
         resolve(res);
       }).catch((err) => {

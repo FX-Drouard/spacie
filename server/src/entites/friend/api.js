@@ -65,8 +65,8 @@ class Api {
   async acceptFriend(req, res) {
     const { demande } = req.params;
     friends.find(demande).then((resp) => { 
-      const login_emeteur = resp.login_emeteur; 
-      const login_recepteur = resp.login_recepteur;
+      const login_emeteur = resp.emeteur; 
+      const login_recepteur = resp.recepteur;
       user.addFriends(login_emeteur, login_recepteur).then(() => {
         notif.addNotif(
           login_recepteur,
@@ -108,7 +108,7 @@ class Api {
   async delDemande(req, res) {
     const { demande } = req.body
     friends.find(demande).then((resp) => { 
-        const login_recepteur = resp.login_recepteur;
+        const login_recepteur = resp.recepteur;
         friends.removeFriend(demande).then(() => {
           notif.getNotifications(login_recepteur,demande)
             .then((resp) => {
