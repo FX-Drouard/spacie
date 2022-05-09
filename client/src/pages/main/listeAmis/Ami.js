@@ -16,7 +16,7 @@ export default class Ami extends Component {
 
   componentWillMount() {
     axios
-    .get("/api/user/" + getLoginFromToken())
+    .get("/api/user/" + this.props.user)
     .then((res) => {
       this.setState({user : res.data})
     })

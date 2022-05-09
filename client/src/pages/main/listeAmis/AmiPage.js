@@ -19,7 +19,7 @@ class AmiPage extends Component {
       },}
       )
       .then((res) => {
-        this.setState({ resultat: res });
+        this.setState({ resultat: res.data });
       })
       .catch(() => this.setState({ resultat: [] }));
   }
