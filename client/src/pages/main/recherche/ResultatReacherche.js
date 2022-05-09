@@ -12,6 +12,11 @@ class ResultatReacherche extends Component {
     };
   }
 
+  componentWillReceiveProps(props) {
+    this.props = props;
+    this.componentWillMount();
+  }
+
   componentWillMount() {
     if (!this.props.recherche) return;
     if (this.props.recherche[0] == "@") {
