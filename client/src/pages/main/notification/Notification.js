@@ -28,7 +28,7 @@ export default class Notification extends Component {
     return (
         <div className="notification">
           <UserInfoDate
-            user={this.props.notification.notifier}
+            user={this.state.user}
             setPage={this.props.setPage}
             date={this.props.notification.date}
           />
@@ -37,7 +37,7 @@ export default class Notification extends Component {
             <div className="notification_button">
               <div className="buttons" onClick={()=>{
                 axios.delete("/api/friend/demande/" + this.props.notification.demande_id,
-                {login : getLoginFromToken()},{
+                {login : getLoginFromToken(),
                   headers: {
                     authorization: "Bearer " + getToken(),
                   },
