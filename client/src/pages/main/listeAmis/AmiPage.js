@@ -14,7 +14,9 @@ class AmiPage extends Component {
   componentWillMount() {
     axios
       .get("/api/friend/",
-      {login : getLoginFromToken()}
+      {login : getLoginFromToken(),  headers: {
+        authorization: "Bearer " + getToken(),
+      },}
       )
       .then((res) => {
         this.setState({ resultat: res });

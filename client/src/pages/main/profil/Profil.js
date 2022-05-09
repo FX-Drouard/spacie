@@ -35,9 +35,7 @@ class Profil extends Component {
   componentDidMount() {
     
     if (testToken(this.token)){
-     
       this.setState({userConnect: getLoginFromToken()});
-
     }
    
     if (testToken(this.token)){
