@@ -129,6 +129,8 @@ class Profil extends Component {
               id="pdp"
               src={this.state.user.photo}
               alt="Photo de Profil"
+              maxWidth="80px"
+              maxHeight="60px"
             />
           </span>
           <div id="info_profil">
@@ -201,6 +203,7 @@ class Profil extends Component {
                       user={this.state.user}
                       close={close}
                       setBody={this.props.setBody}
+                      setPage={this.props.setPage}
                     />
                   )}
                 </Popup>
