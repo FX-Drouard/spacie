@@ -53,13 +53,13 @@ class DetailProfil extends Component {
         <div className="info_ligne">
           <div className="info">
             <h3>Amis</h3>
-            <p className="breaker">{this.props.user.amis.length()}</p>
+            <p className="breaker">{this.props.user.amis.length}</p>
           </div>
         </div>
         <div className="info_ligne">
           <div className="info">
             <h3>Messages</h3>
-            <p className="breaker">{this.props.user.messages.length()}</p>
+            <p className="breaker">{this.props.user.messages.length}</p>
           </div>
         </div>
         <div style={{ display: "flex", justifyContent: "center" }}>
