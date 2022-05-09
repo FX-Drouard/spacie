@@ -18,6 +18,10 @@ class ResultatReacherche extends Component {
       axios
         .get("/api/user/"+this.props.recherche.substring(1))
         .then((res) => {
+          if(!res.data) {
+            this.setState({container: <div>Aucun résultat</div>});
+            return;
+          }
           this.setState({
             container: (
               <ProfilList
@@ -45,6 +49,9 @@ class ResultatReacherche extends Component {
       .get(root ,  {message :this.props.recherche,login : login} )
       .then((res) => {
         console.log(res.data)
+        if(res.data.length == 0){
+          this.setState({ container: <div>Aucun résultat</div> });
+        }else{
         this.setState({
           container: (
             <MessageList
@@ -54,7 +61,8 @@ class ResultatReacherche extends Component {
             />
           ),
         });
-      })
+        }})
+  
       .catch((err) => this.setState({ container: <div>{err}</div> }));
   }
 
