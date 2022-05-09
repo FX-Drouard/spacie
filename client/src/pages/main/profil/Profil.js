@@ -129,8 +129,8 @@ class Profil extends Component {
               id="pdp"
               src={this.state.user.photo}
               alt="Photo de Profil"
-              maxWidth="80px"
-              maxHeight="60px"
+              maxwidth="80px"
+              maxheight="60px"
             />
           </span>
           <div id="info_profil">

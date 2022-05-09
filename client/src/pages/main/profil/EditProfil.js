@@ -93,6 +93,7 @@ export default class EditProfil extends Component {
             }}
           />
         );
+        this.props.close();
       })
       .catch((err) => {
         this.setState({ messageErreur: err.message });
