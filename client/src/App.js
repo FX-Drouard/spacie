@@ -19,7 +19,7 @@ class App extends Component {
       setToken({token : "",login : ""});
     //}
     //if (!testToken(this.token)){
-    setToken({token : "",login : ""});//}
+    //setToken({token : "",login : ""});//}
   }
 
   componentWillMount() {
