@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Main from "./pages/main/Main.js";
-import {setToken} from "./pages/main/general/token.js";
+import {setToken, getToken, testToken} from "./pages/main/general/token.js";
 import axios from "axios";
 
 class App extends Component {
@@ -14,7 +14,9 @@ class App extends Component {
     this.state = {
       page: null,
     };
-    setToken({token : "",login : ""});
+    this.token = getToken()
+    if (!testToken(this.token)){
+    setToken({token : "",login : ""});}
   }
 
   componentWillMount() {
