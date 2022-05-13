@@ -14,9 +14,12 @@ class App extends Component {
     this.state = {
       page: null,
     };
-    this.token = getToken()
-    if (!testToken(this.token)){
-    setToken({token : "",login : ""});}
+    //this.token = getToken()
+    //if  (this.token=undefined) {
+      setToken({token : "",login : ""});
+    //}
+    //if (!testToken(this.token)){
+    setToken({token : "",login : ""});//}
   }
 
   componentWillMount() {
